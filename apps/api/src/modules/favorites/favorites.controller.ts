@@ -7,8 +7,7 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
-import { db, favorites } from '@devkit/database';
-import { eq, and } from 'drizzle-orm';
+import { db, favorites, eq, and } from '@devkit/database';
 import * as jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'devkit_super_secret_jwt_key_development_2026';

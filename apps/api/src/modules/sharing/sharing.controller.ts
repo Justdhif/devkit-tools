@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
-import { db, sharedItems } from '@devkit/database';
-import { eq } from 'drizzle-orm';
+import { db, sharedItems, eq } from '@devkit/database';
 
 @Controller('share')
 export class SharingController {

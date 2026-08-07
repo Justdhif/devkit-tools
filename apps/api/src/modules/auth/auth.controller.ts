@@ -7,8 +7,7 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
-import { db, users } from '@devkit/database';
-import { eq } from 'drizzle-orm';
+import { db, users, eq } from '@devkit/database';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
