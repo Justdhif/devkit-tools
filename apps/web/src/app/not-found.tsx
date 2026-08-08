@@ -30,11 +30,6 @@ export default function NotFound() {
 
         {/* 404 High-Tech Badge */}
         <div className="space-y-3 relative z-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold">
-            <ShieldAlert className="w-3.5 h-3.5" />
-            <span>HTTP Status 404</span>
-          </div>
-
           <h1 className="text-6xl sm:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent via-purple-400 to-emerald-400 tracking-tight font-mono">
             404
           </h1>
