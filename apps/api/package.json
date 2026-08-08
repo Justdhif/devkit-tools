@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd ../.. && pnpm turbo run build --filter=@devkit/database... --filter=@devkit/tool-core... --filter=@devkit/shared... && npx @vercel/ncc build apps/api/api/index.ts -o apps/api/api",
+    "build": "cd ../.. && pnpm turbo run build --filter=@devkit/database... --filter=@devkit/tool-core... --filter=@devkit/shared... && npx @vercel/ncc build apps/api/src/serverless.ts -o apps/api/api",
     "vercel-build": "pnpm build",
     "dev": "nest start --watch",
     "start": "node dist/main",
