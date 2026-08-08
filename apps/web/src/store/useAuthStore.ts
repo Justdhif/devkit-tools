@@ -12,18 +12,18 @@ export interface AuthUser {
 interface AuthStoreState {
   user: AuthUser | null;
   token: string | null;
+  refreshToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
 
-  login: (email: string, password: string) => Promise<boolean>;
   loginOAuth: (
     provider: 'github' | 'google',
     details?: { email?: string; name?: string; avatarUrl?: string }
   ) => Promise<boolean>;
-  register: (name: string, email: string, password: string) => Promise<boolean>;
   logout: () => void;
   fetchMe: () => Promise<void>;
+  refreshTokens: () => Promise<boolean>;
 }
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
@@ -33,37 +33,10 @@ export const useAuthStore = create<AuthStoreState>()(
     (set, get) => ({
       user: null,
       token: null,
+      refreshToken: null,
       isAuthenticated: false,
       isLoading: false,
       error: null,
-
-      login: async (email, password) => {
-        set({ isLoading: true, error: null });
-        try {
-          const res = await fetch(`${API_BASE_URL}/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-          });
-          const data = await res.json();
-          if (!res.ok || !data.success) {
-            set({ error: data.message || 'Invalid email or password', isLoading: false });
-            return false;
-          }
-
-          set({
-            user: data.user,
-            token: data.token,
-            isAuthenticated: true,
-            isLoading: false,
-            error: null,
-          });
-          return true;
-        } catch (err: any) {
-          set({ error: 'Network error. Please try again.', isLoading: false });
-          return false;
-        }
-      },
 
       loginOAuth: async (provider, details = {}) => {
         set({ isLoading: true, error: null });
@@ -81,35 +54,8 @@ export const useAuthStore = create<AuthStoreState>()(
 
           set({
             user: data.user,
-            token: data.token,
-            isAuthenticated: true,
-            isLoading: false,
-            error: null,
-          });
-          return true;
-        } catch (err: any) {
-          set({ error: 'Network error. Please try again.', isLoading: false });
-          return false;
-        }
-      },
-
-      register: async (name, email, password) => {
-        set({ isLoading: true, error: null });
-        try {
-          const res = await fetch(`${API_BASE_URL}/auth/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password }),
-          });
-          const data = await res.json();
-          if (!res.ok || !data.success) {
-            set({ error: data.message || 'Registration failed', isLoading: false });
-            return false;
-          }
-
-          set({
-            user: data.user,
-            token: data.token,
+            token: data.accessToken || data.token,
+            refreshToken: data.refreshToken || null,
             isAuthenticated: true,
             isLoading: false,
             error: null,
@@ -122,12 +68,38 @@ export const useAuthStore = create<AuthStoreState>()(
       },
 
       logout: () => {
-        set({ user: null, token: null, isAuthenticated: false, error: null });
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false, error: null });
+      },
+
+      refreshTokens: async () => {
+        const { refreshToken } = get();
+        if (!refreshToken) return false;
+        try {
+          const res = await fetch(`${API_BASE_URL}/auth/refresh`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ refreshToken }),
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            set({
+              user: data.user,
+              token: data.accessToken || data.token,
+              refreshToken: data.refreshToken || refreshToken,
+              isAuthenticated: true,
+            });
+            return true;
+          }
+        } catch (err) {}
+
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+        return false;
       },
 
       fetchMe: async () => {
-        const { token } = get();
-        if (!token) return;
+        const { token, refreshToken } = get();
+        if (!token && !refreshToken) return;
+
         try {
           const res = await fetch(`${API_BASE_URL}/auth/me`, {
             headers: { Authorization: `Bearer ${token}` },
@@ -136,13 +108,19 @@ export const useAuthStore = create<AuthStoreState>()(
           if (res.ok && data.success) {
             set({
               user: data.user,
-              token: data.token || token,
+              token: data.accessToken || data.token || token,
+              refreshToken: data.refreshToken || refreshToken,
               isAuthenticated: true,
             });
-          } else {
-            set({ user: null, token: null, isAuthenticated: false });
+            return;
           }
         } catch (err) {}
+
+        if (refreshToken) {
+          await get().refreshTokens();
+        } else {
+          set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+        }
       },
     }),
     {
@@ -150,6 +128,7 @@ export const useAuthStore = create<AuthStoreState>()(
       partialize: (state) => ({
         user: state.user,
         token: state.token,
+        refreshToken: state.refreshToken,
         isAuthenticated: state.isAuthenticated,
       }),
     }

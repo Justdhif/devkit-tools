@@ -179,13 +179,24 @@ export class AuthController {
       user = newUser;
     }
 
-    const token = jwt.sign({ sub: user.id, email: user.email }, JWT_SECRET, {
-      expiresIn: '7d',
-    });
+    const accessToken = jwt.sign(
+      { sub: user.id, email: user.email, type: 'access' },
+      JWT_SECRET,
+      { expiresIn: '15m' }
+    );
+    const refreshToken = jwt.sign(
+      { sub: user.id, email: user.email, type: 'refresh' },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    await db.update(users).set({ refreshToken }).where(eq(users.id, user.id));
 
     return {
       success: true,
-      token,
+      accessToken,
+      refreshToken,
+      token: accessToken,
       user: {
         id: user.id,
         email: user.email,
@@ -315,6 +326,56 @@ export class AuthController {
     });
   }
 
+  @Post('refresh')
+  async refresh(@Body() body: { refreshToken?: string }) {
+    const { refreshToken } = body;
+    if (!refreshToken) {
+      throw new BadRequestException('Refresh token is required.');
+    }
+
+    try {
+      const decoded = jwt.verify(refreshToken, JWT_SECRET) as { sub: string; email: string; type?: string };
+      if (decoded.type && decoded.type !== 'refresh') {
+        throw new UnauthorizedException('Invalid token type for refresh.');
+      }
+
+      const records = await db.select().from(users).where(eq(users.id, decoded.sub)).limit(1);
+      if (!records || records.length === 0) {
+        throw new UnauthorizedException('User no longer exists.');
+      }
+
+      const user = records[0];
+      const newAccessToken = jwt.sign(
+        { sub: user.id, email: user.email, type: 'access' },
+        JWT_SECRET,
+        { expiresIn: '15m' }
+      );
+      const newRefreshToken = jwt.sign(
+        { sub: user.id, email: user.email, type: 'refresh' },
+        JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+
+      await db.update(users).set({ refreshToken: newRefreshToken }).where(eq(users.id, user.id));
+
+      return {
+        success: true,
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
+        token: newAccessToken,
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          provider: user.provider,
+          avatarUrl: user.avatarUrl,
+        },
+      };
+    } catch (err: any) {
+      throw new UnauthorizedException('Invalid or expired refresh token.');
+    }
+  }
+
   @Get('me')
   async getMe(@Headers('authorization') authHeader?: string) {
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -323,20 +384,31 @@ export class AuthController {
 
     const token = authHeader.replace(/^Bearer\s+/i, '');
     try {
-      const decoded = jwt.verify(token, JWT_SECRET) as { sub: string; email: string };
+      const decoded = jwt.verify(token, JWT_SECRET) as { sub: string; email: string; type?: string };
       const records = await db.select().from(users).where(eq(users.id, decoded.sub)).limit(1);
       if (!records || records.length === 0) {
         throw new UnauthorizedException('User no longer exists.');
       }
 
       const user = records[0];
-      const renewedToken = jwt.sign({ sub: user.id, email: user.email }, JWT_SECRET, {
-        expiresIn: '7d',
-      });
+      const renewedAccessToken = jwt.sign(
+        { sub: user.id, email: user.email, type: 'access' },
+        JWT_SECRET,
+        { expiresIn: '15m' }
+      );
+      const renewedRefreshToken = jwt.sign(
+        { sub: user.id, email: user.email, type: 'refresh' },
+        JWT_SECRET,
+        { expiresIn: '7d' }
+      );
+
+      await db.update(users).set({ refreshToken: renewedRefreshToken }).where(eq(users.id, user.id));
 
       return {
         success: true,
-        token: renewedToken,
+        accessToken: renewedAccessToken,
+        refreshToken: renewedRefreshToken,
+        token: renewedAccessToken,
         user: {
           id: user.id,
           email: user.email,

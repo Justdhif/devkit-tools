@@ -8,6 +8,7 @@ export const users = pgTable('users', {
   provider: text('provider').default('email').notNull(),
   providerId: text('provider_id'),
   avatarUrl: text('avatar_url'),
+  refreshToken: text('refresh_token'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

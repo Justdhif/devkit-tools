@@ -38,7 +38,8 @@ function AuthCallbackContent() {
         if (res.ok && data.success) {
           useAuthStore.setState({
             user: data.user,
-            token: data.token,
+            token: data.accessToken || data.token,
+            refreshToken: data.refreshToken || null,
             isAuthenticated: true,
           });
           router.push("/");
