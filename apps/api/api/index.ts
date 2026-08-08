@@ -8,7 +8,7 @@ let cachedServer: any;
 async function bootstrapServer() {
   if (!cachedServer) {
     const app = await NestFactory.create(AppModule);
-    app.setGlobalPrefix('api');
+    app.setGlobalPrefix('api', { exclude: ['/'] });
     app.enableCors({
       origin: true,
       credentials: true,
