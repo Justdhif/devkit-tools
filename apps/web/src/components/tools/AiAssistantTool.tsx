@@ -100,13 +100,10 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
           </div>
           <div>
             <h2 className="text-sm font-semibold text-devText-primary flex items-center gap-2">
-              Contextual AI Developer Assistant
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-mono font-bold">
-                Groq LLM Powered
-              </span>
+              Contextual AI
             </h2>
             <p className="text-xs text-devText-secondary">
-              Embedded developer utilities powered by Groq Llama 3.3 70B model.
+              Embedded developer utilities.
             </p>
           </div>
         </div>
@@ -124,7 +121,7 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
           ) : (
             <>
               <Zap className="w-4 h-4" />
-              <span>Generate with AI</span>
+              <span>Generate</span>
             </>
           )}
         </button>
