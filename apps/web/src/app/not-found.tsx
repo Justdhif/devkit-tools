@@ -1,19 +1,42 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Home, Search, Terminal, ArrowLeft, Code2, ShieldAlert } from 'lucide-react';
-import { useDevKitStore } from '../store/useDevKitStore';
+import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Home,
+  Search,
+  Terminal,
+  ArrowLeft,
+  Code2,
+  ShieldAlert,
+} from "lucide-react";
+import { useDevKitStore } from "../store/useDevKitStore";
 
 export default function NotFound() {
   const { toggleCommandPalette } = useDevKitStore();
 
   const quickTools = [
-    { slug: 'json-formatter', name: 'JSON Formatter', desc: 'Prettify & validate JSON data' },
-    { slug: 'jwt-decoder', name: 'JWT Decoder', desc: 'Inspect token headers & claims' },
-    { slug: 'hash-generator', name: 'Hash Generator', desc: 'MD5, SHA-256, SHA-512 hashes' },
-    { slug: 'regex-tester', name: 'Regex Tester', desc: 'Test regular expressions live' },
+    {
+      slug: "json-formatter",
+      name: "JSON Formatter",
+      desc: "Prettify & validate JSON data",
+    },
+    {
+      slug: "jwt-decoder",
+      name: "JWT Decoder",
+      desc: "Inspect token headers & claims",
+    },
+    {
+      slug: "hash-generator",
+      name: "Hash Generator",
+      desc: "MD5, SHA-256, SHA-512 hashes",
+    },
+    {
+      slug: "regex-tester",
+      name: "Regex Tester",
+      desc: "Test regular expressions live",
+    },
   ];
 
   return (
@@ -24,10 +47,6 @@ export default function NotFound() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="w-full max-w-2xl space-y-8 shadow-2xl text-center relative overflow-hidden"
       >
-        {/* Glow Effects */}
-        <div className="absolute -top-24 -left-24 w-48 h-48 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
         {/* 404 High-Tech Badge */}
         <div className="space-y-3 relative z-10">
           <h1 className="text-6xl sm:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent via-purple-400 to-emerald-400 tracking-tight font-mono">
@@ -38,7 +57,8 @@ export default function NotFound() {
             Lost in Code Space?
           </h2>
           <p className="text-xs sm:text-sm text-devText-secondary max-w-md mx-auto leading-relaxed">
-            The developer utility or page you requested could not be found. It may have been renamed, moved, or deleted.
+            The developer utility or page you requested could not be found. It
+            may have been renamed, moved, or deleted.
           </p>
         </div>
 
@@ -82,7 +102,9 @@ export default function NotFound() {
                   <div className="text-xs font-semibold text-devText-primary group-hover:text-accent transition-colors truncate">
                     {tool.name}
                   </div>
-                  <div className="text-[11px] text-devText-muted truncate">{tool.desc}</div>
+                  <div className="text-[11px] text-devText-muted truncate">
+                    {tool.desc}
+                  </div>
                 </div>
               </Link>
             ))}
