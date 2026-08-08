@@ -3,11 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Search, Sparkles, Star, ShieldCheck, ArrowRight, Wrench, Command } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
 import { CORE_TOOLS, searchTools } from '@devkit/tool-core';
 import { useDevKitStore } from '../store/useDevKitStore';
 
 export default function HomePage() {
+  const router = useRouter();
   const [filterQuery, setFilterQuery] = useState('');
   const { toggleFavorite, isFavorite, toggleCommandPalette, fetchFavoritesFromDB } = useDevKitStore();
 
@@ -129,7 +131,8 @@ export default function HomePage() {
                 key={tool.slug}
                 variants={cardVariants}
                 whileHover={{ y: -3, transition: { duration: 0.15 } }}
-                className="group relative p-5 bg-surface border border-border rounded-xl hover:border-accent/50 hover:shadow-xl transition-all flex flex-col justify-between"
+                onClick={() => router.push(`/tools/${tool.slug}`)}
+                className="group relative p-5 bg-surface border border-border rounded-xl hover:border-accent/50 hover:shadow-xl transition-all flex flex-col justify-between cursor-pointer"
               >
                 <div>
                   <div className="flex items-start justify-between">
@@ -139,9 +142,10 @@ export default function HomePage() {
                     <button
                       onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         toggleFavorite(tool.slug);
                       }}
-                      className="p-1 text-devText-muted hover:text-amber-400"
+                      className="p-1 text-devText-muted hover:text-amber-400 relative z-10"
                     >
                       <Star className={`w-4 h-4 ${favorited ? 'fill-amber-400 text-amber-400' : ''}`} />
                     </button>
@@ -160,13 +164,10 @@ export default function HomePage() {
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Client Privacy</span>
                   </div>
-                  <Link
-                    href={`/tools/${tool.slug}`}
-                    className="flex items-center space-x-1 text-accent font-semibold group-hover:translate-x-0.5 transition-transform"
-                  >
+                  <span className="flex items-center space-x-1 text-accent font-semibold group-hover:translate-x-0.5 transition-transform">
                     <span>Open Tool</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </span>
                 </div>
               </motion.div>
             );

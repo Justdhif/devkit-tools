@@ -7,7 +7,10 @@ import { useDevKitStore } from '../../store/useDevKitStore';
 import { CORE_TOOLS } from '@devkit/tool-core';
 import { AuthGuard } from '../../components/AuthGuard';
 
+import { useRouter } from 'next/navigation';
+
 export default function FavoritesPage() {
+  const router = useRouter();
   const { favorites, toggleFavorite, fetchFavoritesFromDB } = useDevKitStore();
 
   React.useEffect(() => {
@@ -17,7 +20,7 @@ export default function FavoritesPage() {
   const favoritedTools = CORE_TOOLS.filter((t) => favorites.includes(t.slug));
 
   return (
-    <AuthGuard title="Favorites Cloud Sync" description="Sign in to sync your starred developer utilities across your browsers and devices.">
+    <AuthGuard title="Starred Favorites" description="Sign in to sync your starred developer utilities across your browsers and devices.">
       <div className="p-4 sm:p-8 max-w-6xl mx-auto space-y-6">
         <div className="flex items-center space-x-3">
           <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
@@ -42,7 +45,8 @@ export default function FavoritesPage() {
             {favoritedTools.map((tool) => (
               <div
                 key={tool.slug}
-                className="p-5 bg-surface border border-border rounded-xl flex flex-col justify-between hover:border-accent/40 transition-colors"
+                onClick={() => router.push(`/tools/${tool.slug}`)}
+                className="p-5 bg-surface border border-border rounded-xl flex flex-col justify-between hover:border-accent/40 transition-all hover:-translate-y-0.5 cursor-pointer group"
               >
                 <div>
                   <div className="flex items-start justify-between">
@@ -50,13 +54,16 @@ export default function FavoritesPage() {
                       {tool.category}
                     </span>
                     <button
-                      onClick={() => toggleFavorite(tool.slug)}
-                      className="text-amber-400 hover:opacity-75"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleFavorite(tool.slug);
+                      }}
+                      className="text-amber-400 hover:opacity-75 relative z-10"
                     >
                       <Star className="w-4 h-4 fill-amber-400" />
                     </button>
                   </div>
-                  <h3 className="text-base font-bold text-devText-primary mt-3">{tool.name}</h3>
+                  <h3 className="text-base font-bold text-devText-primary mt-3 group-hover:text-accent transition-colors">{tool.name}</h3>
                   <p className="text-xs text-devText-secondary mt-1 line-clamp-2">{tool.description}</p>
                 </div>
 
@@ -65,13 +72,10 @@ export default function FavoritesPage() {
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Privacy First</span>
                   </span>
-                  <Link
-                    href={`/tools/${tool.slug}`}
-                    className="flex items-center space-x-1 text-accent font-semibold hover:underline"
-                  >
+                  <span className="flex items-center space-x-1 text-accent font-semibold group-hover:translate-x-0.5 transition-transform">
                     <span>Open Tool</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </span>
                 </div>
               </div>
             ))}
