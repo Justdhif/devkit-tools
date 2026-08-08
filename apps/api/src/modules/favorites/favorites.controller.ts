@@ -7,7 +7,7 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
-import { db, favorites, eq, and } from '@devkit/database';
+import { db, favorites, eq, and } from '../../database';
 import * as jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'devkit_super_secret_jwt_key_development_2026';

@@ -1,1536 +1,47 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 79944:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+/***/ 31644:
+/***/ ((module) => {
 
 "use strict";
-// ESM COMPAT FLAG
-__nccwpck_require__.r(__webpack_exports__);
-
-// EXPORTS
-__nccwpck_require__.d(__webpack_exports__, {
-  BaseName: () => (/* reexport */ BaseName),
-  Column: () => (/* reexport */ Column),
-  ColumnAliasProxyHandler: () => (/* reexport */ ColumnAliasProxyHandler),
-  ColumnBuilder: () => (/* reexport */ ColumnBuilder),
-  Columns: () => (/* reexport */ Columns),
-  ConsoleLogWriter: () => (/* reexport */ ConsoleLogWriter),
-  DefaultLogger: () => (/* reexport */ DefaultLogger),
-  DrizzleError: () => (/* reexport */ DrizzleError),
-  ExtraConfigBuilder: () => (/* reexport */ ExtraConfigBuilder),
-  FakePrimitiveParam: () => (/* reexport */ FakePrimitiveParam),
-  IsAlias: () => (/* reexport */ IsAlias),
-  Many: () => (/* reexport */ Many),
-  Name: () => (/* reexport */ Name),
-  NoopLogger: () => (/* reexport */ NoopLogger),
-  One: () => (/* reexport */ One),
-  OriginalName: () => (/* reexport */ OriginalName),
-  Param: () => (/* reexport */ Param),
-  Placeholder: () => (/* reexport */ Placeholder),
-  QueryPromise: () => (/* reexport */ QueryPromise),
-  Relation: () => (/* reexport */ Relation),
-  RelationTableAliasProxyHandler: () => (/* reexport */ RelationTableAliasProxyHandler),
-  Relations: () => (/* reexport */ Relations),
-  SQL: () => (/* reexport */ SQL),
-  Schema: () => (/* reexport */ Schema),
-  StringChunk: () => (/* reexport */ StringChunk),
-  Subquery: () => (/* reexport */ Subquery),
-  Table: () => (/* reexport */ Table),
-  TableAliasProxyHandler: () => (/* reexport */ TableAliasProxyHandler),
-  TableName: () => (/* reexport */ TableName),
-  TransactionRollbackError: () => (/* reexport */ TransactionRollbackError),
-  View: () => (/* reexport */ View),
-  ViewBaseConfig: () => (/* reexport */ ViewBaseConfig),
-  WithSubquery: () => (/* reexport */ WithSubquery),
-  aliasedRelation: () => (/* reexport */ aliasedRelation),
-  aliasedTable: () => (/* reexport */ aliasedTable),
-  aliasedTableColumn: () => (/* reexport */ aliasedTableColumn),
-  and: () => (/* reexport */ and),
-  applyMixins: () => (/* reexport */ applyMixins),
-  arrayContained: () => (/* reexport */ arrayContained),
-  arrayContains: () => (/* reexport */ arrayContains),
-  arrayOverlaps: () => (/* reexport */ arrayOverlaps),
-  asc: () => (/* reexport */ asc),
-  avg: () => (/* reexport */ avg),
-  avgDistinct: () => (/* reexport */ avgDistinct),
-  between: () => (/* reexport */ between),
-  bindIfParam: () => (/* reexport */ bindIfParam),
-  count: () => (/* reexport */ count),
-  countDistinct: () => (/* reexport */ countDistinct),
-  createMany: () => (/* reexport */ createMany),
-  createOne: () => (/* reexport */ createOne),
-  createTableRelationsHelpers: () => (/* reexport */ createTableRelationsHelpers),
-  db: () => (/* reexport */ db),
-  desc: () => (/* reexport */ desc),
-  entityKind: () => (/* reexport */ entityKind),
-  eq: () => (/* reexport */ eq),
-  exists: () => (/* reexport */ exists),
-  extractTablesRelationalConfig: () => (/* reexport */ extractTablesRelationalConfig),
-  favorites: () => (/* reexport */ favorites),
-  fillPlaceholders: () => (/* reexport */ fillPlaceholders),
-  getOperators: () => (/* reexport */ getOperators),
-  getOrderByOperators: () => (/* reexport */ getOrderByOperators),
-  getTableColumns: () => (/* reexport */ getTableColumns),
-  getTableLikeName: () => (/* reexport */ getTableLikeName),
-  getTableName: () => (/* reexport */ getTableName),
-  gt: () => (/* reexport */ conditions_gt),
-  gte: () => (/* reexport */ gte),
-  hasOwnEntityKind: () => (/* reexport */ hasOwnEntityKind),
-  haveSameKeys: () => (/* reexport */ haveSameKeys),
-  ilike: () => (/* reexport */ ilike),
-  inArray: () => (/* reexport */ inArray),
-  is: () => (/* reexport */ is),
-  isDriverValueEncoder: () => (/* reexport */ isDriverValueEncoder),
-  isNotNull: () => (/* reexport */ isNotNull),
-  isNull: () => (/* reexport */ isNull),
-  isSQLWrapper: () => (/* reexport */ isSQLWrapper),
-  isTable: () => (/* reexport */ isTable),
-  like: () => (/* reexport */ like),
-  lt: () => (/* reexport */ lt),
-  lte: () => (/* reexport */ lte),
-  mapColumnsInAliasedSQLToAlias: () => (/* reexport */ mapColumnsInAliasedSQLToAlias),
-  mapColumnsInSQLToAlias: () => (/* reexport */ mapColumnsInSQLToAlias),
-  mapRelationalRow: () => (/* reexport */ mapRelationalRow),
-  mapResultRow: () => (/* reexport */ mapResultRow),
-  mapUpdateSet: () => (/* reexport */ mapUpdateSet),
-  max: () => (/* reexport */ max),
-  min: () => (/* reexport */ min),
-  name: () => (/* reexport */ sql_name),
-  ne: () => (/* reexport */ ne),
-  noopDecoder: () => (/* reexport */ noopDecoder),
-  noopEncoder: () => (/* reexport */ noopEncoder),
-  noopMapper: () => (/* reexport */ noopMapper),
-  normalizeRelation: () => (/* reexport */ normalizeRelation),
-  not: () => (/* reexport */ not),
-  notBetween: () => (/* reexport */ notBetween),
-  notExists: () => (/* reexport */ notExists),
-  notIlike: () => (/* reexport */ notIlike),
-  notInArray: () => (/* reexport */ notInArray),
-  notLike: () => (/* reexport */ notLike),
-  or: () => (/* reexport */ conditions_or),
-  orderSelectedFields: () => (/* reexport */ orderSelectedFields),
-  param: () => (/* reexport */ param),
-  placeholder: () => (/* reexport */ placeholder),
-  relations: () => (/* reexport */ relations),
-  savedWorkspaces: () => (/* reexport */ savedWorkspaces),
-  sharedItems: () => (/* reexport */ sharedItems),
-  sql: () => (/* reexport */ sql),
-  sum: () => (/* reexport */ sum),
-  sumDistinct: () => (/* reexport */ sumDistinct),
-  toolHistory: () => (/* reexport */ toolHistory),
-  tools: () => (/* reexport */ tools),
-  users: () => (/* reexport */ users),
-  workspaceTools: () => (/* reexport */ workspaceTools)
-});
-
-// NAMESPACE OBJECT: ./database/drizzle/dist/schema.js
-var schema_namespaceObject = {};
-__nccwpck_require__.r(schema_namespaceObject);
-__nccwpck_require__.d(schema_namespaceObject, {
-  favorites: () => (favorites),
-  savedWorkspaces: () => (savedWorkspaces),
-  sharedItems: () => (sharedItems),
-  toolHistory: () => (toolHistory),
-  tools: () => (tools),
-  users: () => (users),
-  workspaceTools: () => (workspaceTools)
-});
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/entity.js
-const entityKind = Symbol.for("drizzle:entityKind");
-const hasOwnEntityKind = Symbol.for("drizzle:hasOwnEntityKind");
-function is(value, type) {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-  if (value instanceof type) {
-    return true;
-  }
-  if (!Object.prototype.hasOwnProperty.call(type, entityKind)) {
-    throw new Error(
-      `Class "${type.name ?? "<unknown>"}" doesn't look like a Drizzle entity. If this is incorrect and the class is provided by Drizzle, please report this as a bug.`
-    );
-  }
-  let cls = value.constructor;
-  if (cls) {
-    while (cls) {
-      if (entityKind in cls && cls[entityKind] === type[entityKind]) {
-        return true;
-      }
-      cls = Object.getPrototypeOf(cls);
-    }
-  }
-  return false;
-}
-
-//# sourceMappingURL=entity.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/table.js
-
-const TableName = Symbol.for("drizzle:Name");
-const Schema = Symbol.for("drizzle:Schema");
-const Columns = Symbol.for("drizzle:Columns");
-const OriginalName = Symbol.for("drizzle:OriginalName");
-const BaseName = Symbol.for("drizzle:BaseName");
-const IsAlias = Symbol.for("drizzle:IsAlias");
-const ExtraConfigBuilder = Symbol.for("drizzle:ExtraConfigBuilder");
-const IsDrizzleTable = Symbol.for("drizzle:IsDrizzleTable");
-class Table {
-  static [entityKind] = "Table";
-  /** @internal */
-  static Symbol = {
-    Name: TableName,
-    Schema,
-    OriginalName,
-    Columns,
-    BaseName,
-    IsAlias,
-    ExtraConfigBuilder
-  };
-  /**
-   * @internal
-   * Can be changed if the table is aliased.
-   */
-  [TableName];
-  /**
-   * @internal
-   * Used to store the original name of the table, before any aliasing.
-   */
-  [OriginalName];
-  /** @internal */
-  [Schema];
-  /** @internal */
-  [Columns];
-  /**
-   *  @internal
-   * Used to store the table name before the transformation via the `tableCreator` functions.
-   */
-  [BaseName];
-  /** @internal */
-  [IsAlias] = false;
-  /** @internal */
-  [ExtraConfigBuilder] = void 0;
-  [IsDrizzleTable] = true;
-  constructor(name, schema, baseName) {
-    this[TableName] = this[OriginalName] = name;
-    this[Schema] = schema;
-    this[BaseName] = baseName;
-  }
-}
-function isTable(table) {
-  return typeof table === "object" && table !== null && IsDrizzleTable in table;
-}
-function getTableName(table) {
-  return table[TableName];
-}
-
-//# sourceMappingURL=table.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/table.js
-
-
-const InlineForeignKeys = Symbol.for("drizzle:PgInlineForeignKeys");
-class PgTable extends Table {
-  static [entityKind] = "PgTable";
-  /** @internal */
-  static Symbol = Object.assign({}, Table.Symbol, {
-    InlineForeignKeys
-  });
-  /**@internal */
-  [InlineForeignKeys] = [];
-  /** @internal */
-  [Table.Symbol.ExtraConfigBuilder] = void 0;
-}
-function pgTableWithSchema(name, columns, extraConfig, schema, baseName = name) {
-  const rawTable = new PgTable(name, schema, baseName);
-  const builtColumns = Object.fromEntries(
-    Object.entries(columns).map(([name2, colBuilderBase]) => {
-      const colBuilder = colBuilderBase;
-      const column = colBuilder.build(rawTable);
-      rawTable[InlineForeignKeys].push(...colBuilder.buildForeignKeys(column, rawTable));
-      return [name2, column];
-    })
-  );
-  const table = Object.assign(rawTable, builtColumns);
-  table[Table.Symbol.Columns] = builtColumns;
-  if (extraConfig) {
-    table[PgTable.Symbol.ExtraConfigBuilder] = extraConfig;
-  }
-  return table;
-}
-const pgTable = (name, columns, extraConfig) => {
-  return pgTableWithSchema(name, columns, extraConfig, void 0);
-};
-function pgTableCreator(customizeTableName) {
-  return (name, columns, extraConfig) => {
-    return pgTableWithSchema(customizeTableName(name), columns, extraConfig, void 0, name);
-  };
-}
-
-//# sourceMappingURL=table.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/column-builder.js
-
-class ColumnBuilder {
-  static [entityKind] = "ColumnBuilder";
-  config;
-  constructor(name, dataType, columnType) {
-    this.config = {
-      name,
-      notNull: false,
-      default: void 0,
-      hasDefault: false,
-      primaryKey: false,
-      isUnique: false,
-      uniqueName: void 0,
-      uniqueType: void 0,
-      dataType,
-      columnType
-    };
-  }
-  /**
-   * Changes the data type of the column. Commonly used with `json` columns. Also, useful for branded types.
-   *
-   * @example
-   * ```ts
-   * const users = pgTable('users', {
-   * 	id: integer('id').$type<UserId>().primaryKey(),
-   * 	details: json('details').$type<UserDetails>().notNull(),
-   * });
-   * ```
-   */
-  $type() {
-    return this;
-  }
-  /**
-   * Adds a `not null` clause to the column definition.
-   *
-   * Affects the `select` model of the table - columns *without* `not null` will be nullable on select.
-   */
-  notNull() {
-    this.config.notNull = true;
-    return this;
-  }
-  /**
-   * Adds a `default <value>` clause to the column definition.
-   *
-   * Affects the `insert` model of the table - columns *with* `default` are optional on insert.
-   *
-   * If you need to set a dynamic default value, use {@link $defaultFn} instead.
-   */
-  default(value) {
-    this.config.default = value;
-    this.config.hasDefault = true;
-    return this;
-  }
-  /**
-   * Adds a dynamic default value to the column.
-   * The function will be called when the row is inserted, and the returned value will be used as the column value.
-   *
-   * **Note:** This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`.
-   */
-  $defaultFn(fn) {
-    this.config.defaultFn = fn;
-    this.config.hasDefault = true;
-    return this;
-  }
-  /**
-   * Alias for {@link $defaultFn}.
-   */
-  $default = this.$defaultFn;
-  /**
-   * Adds a dynamic update value to the column.
-   * The function will be called when the row is updated, and the returned value will be used as the column value if none is provided.
-   * If no `default` (or `$defaultFn`) value is provided, the function will be called when the row is inserted as well, and the returned value will be used as the column value.
-   *
-   * **Note:** This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`.
-   */
-  $onUpdateFn(fn) {
-    this.config.onUpdateFn = fn;
-    this.config.hasDefault = true;
-    return this;
-  }
-  /**
-   * Alias for {@link $onUpdateFn}.
-   */
-  $onUpdate = this.$onUpdateFn;
-  /**
-   * Adds a `primary key` clause to the column definition. This implicitly makes the column `not null`.
-   *
-   * In SQLite, `integer primary key` implicitly makes the column auto-incrementing.
-   */
-  primaryKey() {
-    this.config.primaryKey = true;
-    this.config.notNull = true;
-    return this;
-  }
-}
-
-//# sourceMappingURL=column-builder.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/column.js
-
-class Column {
-  constructor(table, config) {
-    this.table = table;
-    this.config = config;
-    this.name = config.name;
-    this.notNull = config.notNull;
-    this.default = config.default;
-    this.defaultFn = config.defaultFn;
-    this.onUpdateFn = config.onUpdateFn;
-    this.hasDefault = config.hasDefault;
-    this.primary = config.primaryKey;
-    this.isUnique = config.isUnique;
-    this.uniqueName = config.uniqueName;
-    this.uniqueType = config.uniqueType;
-    this.dataType = config.dataType;
-    this.columnType = config.columnType;
-  }
-  static [entityKind] = "Column";
-  name;
-  primary;
-  notNull;
-  default;
-  defaultFn;
-  onUpdateFn;
-  hasDefault;
-  isUnique;
-  uniqueName;
-  uniqueType;
-  dataType;
-  columnType;
-  enumValues = void 0;
-  config;
-  mapFromDriverValue(value) {
-    return value;
-  }
-  mapToDriverValue(value) {
-    return value;
-  }
-}
-
-//# sourceMappingURL=column.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/foreign-keys.js
-
-
-class ForeignKeyBuilder {
-  static [entityKind] = "PgForeignKeyBuilder";
-  /** @internal */
-  reference;
-  /** @internal */
-  _onUpdate = "no action";
-  /** @internal */
-  _onDelete = "no action";
-  constructor(config, actions) {
-    this.reference = () => {
-      const { name, columns, foreignColumns } = config();
-      return { name, columns, foreignTable: foreignColumns[0].table, foreignColumns };
-    };
-    if (actions) {
-      this._onUpdate = actions.onUpdate;
-      this._onDelete = actions.onDelete;
-    }
-  }
-  onUpdate(action) {
-    this._onUpdate = action === void 0 ? "no action" : action;
-    return this;
-  }
-  onDelete(action) {
-    this._onDelete = action === void 0 ? "no action" : action;
-    return this;
-  }
-  /** @internal */
-  build(table) {
-    return new ForeignKey(table, this);
-  }
-}
-class ForeignKey {
-  constructor(table, builder) {
-    this.table = table;
-    this.reference = builder.reference;
-    this.onUpdate = builder._onUpdate;
-    this.onDelete = builder._onDelete;
-  }
-  static [entityKind] = "PgForeignKey";
-  reference;
-  onUpdate;
-  onDelete;
-  getName() {
-    const { name, columns, foreignColumns } = this.reference();
-    const columnNames = columns.map((column) => column.name);
-    const foreignColumnNames = foreignColumns.map((column) => column.name);
-    const chunks = [
-      this.table[PgTable.Symbol.Name],
-      ...columnNames,
-      foreignColumns[0].table[PgTable.Symbol.Name],
-      ...foreignColumnNames
-    ];
-    return name ?? `${chunks.join("_")}_fk`;
-  }
-}
-function foreignKey(config) {
-  function mappedConfig() {
-    const { name, columns, foreignColumns } = config;
-    return {
-      name,
-      columns,
-      foreignColumns
-    };
-  }
-  return new ForeignKeyBuilder(mappedConfig);
-}
-
-//# sourceMappingURL=foreign-keys.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/tracing-utils.js
-function iife(fn, ...args) {
-  return fn(...args);
-}
-
-//# sourceMappingURL=tracing-utils.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/unique-constraint.js
-
-
-function unique(name) {
-  return new UniqueOnConstraintBuilder(name);
-}
-function uniqueKeyName(table, columns) {
-  return `${table[PgTable.Symbol.Name]}_${columns.join("_")}_unique`;
-}
-class UniqueConstraintBuilder {
-  constructor(columns, name) {
-    this.name = name;
-    this.columns = columns;
-  }
-  static [entityKind] = (/* unused pure expression or super */ null && ("PgUniqueConstraintBuilder"));
-  /** @internal */
-  columns;
-  /** @internal */
-  nullsNotDistinctConfig = false;
-  nullsNotDistinct() {
-    this.nullsNotDistinctConfig = true;
-    return this;
-  }
-  /** @internal */
-  build(table) {
-    return new UniqueConstraint(table, this.columns, this.nullsNotDistinctConfig, this.name);
-  }
-}
-class UniqueOnConstraintBuilder {
-  static [entityKind] = (/* unused pure expression or super */ null && ("PgUniqueOnConstraintBuilder"));
-  /** @internal */
-  name;
-  constructor(name) {
-    this.name = name;
-  }
-  on(...columns) {
-    return new UniqueConstraintBuilder(columns, this.name);
-  }
-}
-class UniqueConstraint {
-  constructor(table, columns, nullsNotDistinct, name) {
-    this.table = table;
-    this.columns = columns;
-    this.name = name ?? uniqueKeyName(this.table, this.columns.map((column) => column.name));
-    this.nullsNotDistinct = nullsNotDistinct;
-  }
-  static [entityKind] = (/* unused pure expression or super */ null && ("PgUniqueConstraint"));
-  columns;
-  name;
-  nullsNotDistinct = false;
-  getName() {
-    return this.name;
-  }
-}
-
-//# sourceMappingURL=unique-constraint.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/utils/array.js
-function parsePgArrayValue(arrayString, startFrom, inQuotes) {
-  for (let i = startFrom; i < arrayString.length; i++) {
-    const char = arrayString[i];
-    if (char === "\\") {
-      i++;
-      continue;
-    }
-    if (char === '"') {
-      return [arrayString.slice(startFrom, i).replace(/\\/g, ""), i + 1];
-    }
-    if (inQuotes) {
-      continue;
-    }
-    if (char === "," || char === "}") {
-      return [arrayString.slice(startFrom, i).replace(/\\/g, ""), i];
-    }
-  }
-  return [arrayString.slice(startFrom).replace(/\\/g, ""), arrayString.length];
-}
-function parsePgNestedArray(arrayString, startFrom = 0) {
-  const result = [];
-  let i = startFrom;
-  let lastCharIsComma = false;
-  while (i < arrayString.length) {
-    const char = arrayString[i];
-    if (char === ",") {
-      if (lastCharIsComma || i === startFrom) {
-        result.push("");
-      }
-      lastCharIsComma = true;
-      i++;
-      continue;
-    }
-    lastCharIsComma = false;
-    if (char === "\\") {
-      i += 2;
-      continue;
-    }
-    if (char === '"') {
-      const [value2, startFrom2] = parsePgArrayValue(arrayString, i + 1, true);
-      result.push(value2);
-      i = startFrom2;
-      continue;
-    }
-    if (char === "}") {
-      return [result, i + 1];
-    }
-    if (char === "{") {
-      const [value2, startFrom2] = parsePgNestedArray(arrayString, i + 1);
-      result.push(value2);
-      i = startFrom2;
-      continue;
-    }
-    const [value, newStartFrom] = parsePgArrayValue(arrayString, i, false);
-    result.push(value);
-    i = newStartFrom;
-  }
-  return [result, i];
-}
-function parsePgArray(arrayString) {
-  const [result] = parsePgNestedArray(arrayString, 1);
-  return result;
-}
-function makePgArray(array) {
-  return `{${array.map((item) => {
-    if (Array.isArray(item)) {
-      return makePgArray(item);
-    }
-    if (typeof item === "string") {
-      return `"${item.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
-    }
-    return `${item}`;
-  }).join(",")}}`;
-}
-
-//# sourceMappingURL=array.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/common.js
-
-
-
-
-
-
-
-class PgColumnBuilder extends ColumnBuilder {
-  foreignKeyConfigs = [];
-  static [entityKind] = "PgColumnBuilder";
-  array(size) {
-    return new PgArrayBuilder(this.config.name, this, size);
-  }
-  references(ref, actions = {}) {
-    this.foreignKeyConfigs.push({ ref, actions });
-    return this;
-  }
-  unique(name, config) {
-    this.config.isUnique = true;
-    this.config.uniqueName = name;
-    this.config.uniqueType = config?.nulls;
-    return this;
-  }
-  /** @internal */
-  buildForeignKeys(column, table) {
-    return this.foreignKeyConfigs.map(({ ref, actions }) => {
-      return iife(
-        (ref2, actions2) => {
-          const builder = new ForeignKeyBuilder(() => {
-            const foreignColumn = ref2();
-            return { columns: [column], foreignColumns: [foreignColumn] };
-          });
-          if (actions2.onUpdate) {
-            builder.onUpdate(actions2.onUpdate);
-          }
-          if (actions2.onDelete) {
-            builder.onDelete(actions2.onDelete);
-          }
-          return builder.build(table);
-        },
-        ref,
-        actions
-      );
-    });
-  }
-}
-class PgColumn extends Column {
-  constructor(table, config) {
-    if (!config.uniqueName) {
-      config.uniqueName = uniqueKeyName(table, [config.name]);
-    }
-    super(table, config);
-    this.table = table;
-  }
-  static [entityKind] = "PgColumn";
-}
-class PgArrayBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgArrayBuilder";
-  constructor(name, baseBuilder, size) {
-    super(name, "array", "PgArray");
-    this.config.baseBuilder = baseBuilder;
-    this.config.size = size;
-  }
-  /** @internal */
-  build(table) {
-    const baseColumn = this.config.baseBuilder.build(table);
-    return new PgArray(
-      table,
-      this.config,
-      baseColumn
-    );
-  }
-}
-class PgArray extends PgColumn {
-  constructor(table, config, baseColumn, range) {
-    super(table, config);
-    this.baseColumn = baseColumn;
-    this.range = range;
-    this.size = config.size;
-  }
-  size;
-  static [entityKind] = "PgArray";
-  getSQLType() {
-    return `${this.baseColumn.getSQLType()}[${typeof this.size === "number" ? this.size : ""}]`;
-  }
-  mapFromDriverValue(value) {
-    if (typeof value === "string") {
-      value = parsePgArray(value);
-    }
-    return value.map((v) => this.baseColumn.mapFromDriverValue(v));
-  }
-  mapToDriverValue(value, isNestedArray = false) {
-    const a = value.map(
-      (v) => v === null ? null : is(this.baseColumn, PgArray) ? this.baseColumn.mapToDriverValue(v, true) : this.baseColumn.mapToDriverValue(v)
-    );
-    if (isNestedArray)
-      return a;
-    return makePgArray(a);
-  }
-}
-
-//# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/text.js
-
-
-class PgTextBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgTextBuilder";
-  constructor(name, config) {
-    super(name, "string", "PgText");
-    this.config.enumValues = config.enum;
-  }
-  /** @internal */
-  build(table) {
-    return new PgText(table, this.config);
-  }
-}
-class PgText extends PgColumn {
-  static [entityKind] = "PgText";
-  enumValues = this.config.enumValues;
-  getSQLType() {
-    return "text";
-  }
-}
-function text_text(name, config = {}) {
-  return new PgTextBuilder(name, config);
-}
-
-//# sourceMappingURL=text.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/enum.js
-
-
-const isPgEnumSym = Symbol.for("drizzle:isPgEnum");
-function isPgEnum(obj) {
-  return !!obj && typeof obj === "function" && isPgEnumSym in obj && obj[isPgEnumSym] === true;
-}
-class PgEnumColumnBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgEnumColumnBuilder";
-  constructor(name, enumInstance) {
-    super(name, "string", "PgEnumColumn");
-    this.config.enum = enumInstance;
-  }
-  /** @internal */
-  build(table) {
-    return new PgEnumColumn(
-      table,
-      this.config
-    );
-  }
-}
-class PgEnumColumn extends PgColumn {
-  static [entityKind] = "PgEnumColumn";
-  enum = this.config.enum;
-  enumValues = this.config.enum.enumValues;
-  constructor(table, config) {
-    super(table, config);
-    this.enum = config.enum;
-  }
-  getSQLType() {
-    return this.enum.enumName;
-  }
-}
-function pgEnum(enumName, values) {
-  return pgEnumWithSchema(enumName, values, void 0);
-}
-function pgEnumWithSchema(enumName, values, schema) {
-  const enumInstance = Object.assign(
-    (name) => new PgEnumColumnBuilder(name, enumInstance),
-    {
-      enumName,
-      enumValues: values,
-      schema,
-      [isPgEnumSym]: true
-    }
-  );
-  return enumInstance;
-}
-
-//# sourceMappingURL=enum.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/subquery.js
-
-class Subquery {
-  static [entityKind] = "Subquery";
-  constructor(sql, selection, alias, isWith = false) {
-    this._ = {
-      brand: "Subquery",
-      sql,
-      selectedFields: selection,
-      alias,
-      isWith
-    };
-  }
-  // getSQL(): SQL<unknown> {
-  // 	return new SQL([this]);
-  // }
-}
-class WithSubquery extends Subquery {
-  static [entityKind] = "WithSubquery";
-}
-
-//# sourceMappingURL=subquery.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/version.js
-// package.json
-var version = "0.30.10";
-
-// src/version.ts
-var compatibilityVersion = 6;
-
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/tracing.js
-
-
-let otel;
-let rawTracer;
-const tracer = {
-  startActiveSpan(name, fn) {
-    if (!otel) {
-      return fn();
-    }
-    if (!rawTracer) {
-      rawTracer = otel.trace.getTracer("drizzle-orm", version);
-    }
-    return iife(
-      (otel2, rawTracer2) => rawTracer2.startActiveSpan(
-        name,
-        (span) => {
-          try {
-            return fn(span);
-          } catch (e) {
-            span.setStatus({
-              code: otel2.SpanStatusCode.ERROR,
-              message: e instanceof Error ? e.message : "Unknown error"
-              // eslint-disable-line no-instanceof/no-instanceof
-            });
-            throw e;
-          } finally {
-            span.end();
-          }
-        }
-      ),
-      otel,
-      rawTracer
-    );
-  }
-};
-
-//# sourceMappingURL=tracing.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/view-common.js
-const ViewBaseConfig = Symbol.for("drizzle:ViewBaseConfig");
-
-//# sourceMappingURL=view-common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/sql.js
-
-
-
-
-
-
-
-class FakePrimitiveParam {
-  static [entityKind] = "FakePrimitiveParam";
-}
-function isSQLWrapper(value) {
-  return value !== null && value !== void 0 && typeof value.getSQL === "function";
-}
-function mergeQueries(queries) {
-  const result = { sql: "", params: [] };
-  for (const query of queries) {
-    result.sql += query.sql;
-    result.params.push(...query.params);
-    if (query.typings?.length) {
-      if (!result.typings) {
-        result.typings = [];
-      }
-      result.typings.push(...query.typings);
-    }
-  }
-  return result;
-}
-class StringChunk {
-  static [entityKind] = "StringChunk";
-  value;
-  constructor(value) {
-    this.value = Array.isArray(value) ? value : [value];
-  }
-  getSQL() {
-    return new SQL([this]);
-  }
-}
-class SQL {
-  constructor(queryChunks) {
-    this.queryChunks = queryChunks;
-  }
-  static [entityKind] = "SQL";
-  /** @internal */
-  decoder = noopDecoder;
-  shouldInlineParams = false;
-  append(query) {
-    this.queryChunks.push(...query.queryChunks);
-    return this;
-  }
-  toQuery(config) {
-    return tracer.startActiveSpan("drizzle.buildSQL", (span) => {
-      const query = this.buildQueryFromSourceParams(this.queryChunks, config);
-      span?.setAttributes({
-        "drizzle.query.text": query.sql,
-        "drizzle.query.params": JSON.stringify(query.params)
-      });
-      return query;
-    });
-  }
-  buildQueryFromSourceParams(chunks, _config) {
-    const config = Object.assign({}, _config, {
-      inlineParams: _config.inlineParams || this.shouldInlineParams,
-      paramStartIndex: _config.paramStartIndex || { value: 0 }
-    });
-    const {
-      escapeName,
-      escapeParam,
-      prepareTyping,
-      inlineParams,
-      paramStartIndex
-    } = config;
-    return mergeQueries(chunks.map((chunk) => {
-      if (is(chunk, StringChunk)) {
-        return { sql: chunk.value.join(""), params: [] };
-      }
-      if (is(chunk, Name)) {
-        return { sql: escapeName(chunk.value), params: [] };
-      }
-      if (chunk === void 0) {
-        return { sql: "", params: [] };
-      }
-      if (Array.isArray(chunk)) {
-        const result = [new StringChunk("(")];
-        for (const [i, p] of chunk.entries()) {
-          result.push(p);
-          if (i < chunk.length - 1) {
-            result.push(new StringChunk(", "));
-          }
-        }
-        result.push(new StringChunk(")"));
-        return this.buildQueryFromSourceParams(result, config);
-      }
-      if (is(chunk, SQL)) {
-        return this.buildQueryFromSourceParams(chunk.queryChunks, {
-          ...config,
-          inlineParams: inlineParams || chunk.shouldInlineParams
-        });
-      }
-      if (is(chunk, Table)) {
-        const schemaName = chunk[Table.Symbol.Schema];
-        const tableName = chunk[Table.Symbol.Name];
-        return {
-          sql: schemaName === void 0 ? escapeName(tableName) : escapeName(schemaName) + "." + escapeName(tableName),
-          params: []
-        };
-      }
-      if (is(chunk, Column)) {
-        return { sql: escapeName(chunk.table[Table.Symbol.Name]) + "." + escapeName(chunk.name), params: [] };
-      }
-      if (is(chunk, View)) {
-        const schemaName = chunk[ViewBaseConfig].schema;
-        const viewName = chunk[ViewBaseConfig].name;
-        return {
-          sql: schemaName === void 0 ? escapeName(viewName) : escapeName(schemaName) + "." + escapeName(viewName),
-          params: []
-        };
-      }
-      if (is(chunk, Param)) {
-        const mappedValue = chunk.value === null ? null : chunk.encoder.mapToDriverValue(chunk.value);
-        if (is(mappedValue, SQL)) {
-          return this.buildQueryFromSourceParams([mappedValue], config);
-        }
-        if (inlineParams) {
-          return { sql: this.mapInlineParam(mappedValue, config), params: [] };
-        }
-        let typings;
-        if (prepareTyping !== void 0) {
-          typings = [prepareTyping(chunk.encoder)];
-        }
-        return { sql: escapeParam(paramStartIndex.value++, mappedValue), params: [mappedValue], typings };
-      }
-      if (is(chunk, Placeholder)) {
-        return { sql: escapeParam(paramStartIndex.value++, chunk), params: [chunk] };
-      }
-      if (is(chunk, SQL.Aliased) && chunk.fieldAlias !== void 0) {
-        return { sql: escapeName(chunk.fieldAlias), params: [] };
-      }
-      if (is(chunk, Subquery)) {
-        if (chunk._.isWith) {
-          return { sql: escapeName(chunk._.alias), params: [] };
-        }
-        return this.buildQueryFromSourceParams([
-          new StringChunk("("),
-          chunk._.sql,
-          new StringChunk(") "),
-          new Name(chunk._.alias)
-        ], config);
-      }
-      if (isPgEnum(chunk)) {
-        if (chunk.schema) {
-          return { sql: escapeName(chunk.schema) + "." + escapeName(chunk.enumName), params: [] };
-        }
-        return { sql: escapeName(chunk.enumName), params: [] };
-      }
-      if (isSQLWrapper(chunk)) {
-        return this.buildQueryFromSourceParams([
-          new StringChunk("("),
-          chunk.getSQL(),
-          new StringChunk(")")
-        ], config);
-      }
-      if (inlineParams) {
-        return { sql: this.mapInlineParam(chunk, config), params: [] };
-      }
-      return { sql: escapeParam(paramStartIndex.value++, chunk), params: [chunk] };
-    }));
-  }
-  mapInlineParam(chunk, { escapeString }) {
-    if (chunk === null) {
-      return "null";
-    }
-    if (typeof chunk === "number" || typeof chunk === "boolean") {
-      return chunk.toString();
-    }
-    if (typeof chunk === "string") {
-      return escapeString(chunk);
-    }
-    if (typeof chunk === "object") {
-      const mappedValueAsString = chunk.toString();
-      if (mappedValueAsString === "[object Object]") {
-        return escapeString(JSON.stringify(chunk));
-      }
-      return escapeString(mappedValueAsString);
-    }
-    throw new Error("Unexpected param value: " + chunk);
-  }
-  getSQL() {
-    return this;
-  }
-  as(alias) {
-    if (alias === void 0) {
-      return this;
-    }
-    return new SQL.Aliased(this, alias);
-  }
-  mapWith(decoder) {
-    this.decoder = typeof decoder === "function" ? { mapFromDriverValue: decoder } : decoder;
-    return this;
-  }
-  inlineParams() {
-    this.shouldInlineParams = true;
-    return this;
-  }
-  /**
-   * This method is used to conditionally include a part of the query.
-   *
-   * @param condition - Condition to check
-   * @returns itself if the condition is `true`, otherwise `undefined`
-   */
-  if(condition) {
-    return condition ? this : void 0;
-  }
-}
-class Name {
-  constructor(value) {
-    this.value = value;
-  }
-  static [entityKind] = "Name";
-  brand;
-  getSQL() {
-    return new SQL([this]);
-  }
-}
-function sql_name(value) {
-  return new Name(value);
-}
-function isDriverValueEncoder(value) {
-  return typeof value === "object" && value !== null && "mapToDriverValue" in value && typeof value.mapToDriverValue === "function";
-}
-const noopDecoder = {
-  mapFromDriverValue: (value) => value
-};
-const noopEncoder = {
-  mapToDriverValue: (value) => value
-};
-const noopMapper = {
-  ...noopDecoder,
-  ...noopEncoder
-};
-class Param {
-  /**
-   * @param value - Parameter value
-   * @param encoder - Encoder to convert the value to a driver parameter
-   */
-  constructor(value, encoder = noopEncoder) {
-    this.value = value;
-    this.encoder = encoder;
-  }
-  static [entityKind] = "Param";
-  brand;
-  getSQL() {
-    return new SQL([this]);
-  }
-}
-function param(value, encoder) {
-  return new Param(value, encoder);
-}
-function sql(strings, ...params) {
-  const queryChunks = [];
-  if (params.length > 0 || strings.length > 0 && strings[0] !== "") {
-    queryChunks.push(new StringChunk(strings[0]));
-  }
-  for (const [paramIndex, param2] of params.entries()) {
-    queryChunks.push(param2, new StringChunk(strings[paramIndex + 1]));
-  }
-  return new SQL(queryChunks);
-}
-((sql2) => {
-  function empty() {
-    return new SQL([]);
-  }
-  sql2.empty = empty;
-  function fromList(list) {
-    return new SQL(list);
-  }
-  sql2.fromList = fromList;
-  function raw(str) {
-    return new SQL([new StringChunk(str)]);
-  }
-  sql2.raw = raw;
-  function join(chunks, separator) {
-    const result = [];
-    for (const [i, chunk] of chunks.entries()) {
-      if (i > 0 && separator !== void 0) {
-        result.push(separator);
-      }
-      result.push(chunk);
-    }
-    return new SQL(result);
-  }
-  sql2.join = join;
-  function identifier(value) {
-    return new Name(value);
-  }
-  sql2.identifier = identifier;
-  function placeholder2(name2) {
-    return new Placeholder(name2);
-  }
-  sql2.placeholder = placeholder2;
-  function param2(value, encoder) {
-    return new Param(value, encoder);
-  }
-  sql2.param = param2;
-})(sql || (sql = {}));
-((SQL2) => {
-  class Aliased {
-    constructor(sql2, fieldAlias) {
-      this.sql = sql2;
-      this.fieldAlias = fieldAlias;
-    }
-    static [entityKind] = "SQL.Aliased";
-    /** @internal */
-    isSelectionField = false;
-    getSQL() {
-      return this.sql;
-    }
-    /** @internal */
-    clone() {
-      return new Aliased(this.sql, this.fieldAlias);
-    }
-  }
-  SQL2.Aliased = Aliased;
-})(SQL || (SQL = {}));
-class Placeholder {
-  constructor(name2) {
-    this.name = name2;
-  }
-  static [entityKind] = "Placeholder";
-  getSQL() {
-    return new SQL([this]);
-  }
-}
-function placeholder(name2) {
-  return new Placeholder(name2);
-}
-function fillPlaceholders(params, values) {
-  return params.map((p) => {
-    if (is(p, Placeholder)) {
-      if (!(p.name in values)) {
-        throw new Error(`No value for placeholder "${p.name}" was provided`);
-      }
-      return values[p.name];
-    }
-    return p;
-  });
-}
-class View {
-  static [entityKind] = "View";
-  /** @internal */
-  [ViewBaseConfig];
-  constructor({ name: name2, schema, selectedFields, query }) {
-    this[ViewBaseConfig] = {
-      name: name2,
-      originalName: name2,
-      schema,
-      selectedFields,
-      query,
-      isExisting: !query,
-      isAlias: false
-    };
-  }
-  getSQL() {
-    return new SQL([this]);
-  }
-}
-Column.prototype.getSQL = function() {
-  return new SQL([this]);
-};
-Table.prototype.getSQL = function() {
-  return new SQL([this]);
-};
-Subquery.prototype.getSQL = function() {
-  return new SQL([this]);
-};
-
-//# sourceMappingURL=sql.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/date.common.js
-
-
-
-class PgDateColumnBaseBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgDateColumnBaseBuilder";
-  defaultNow() {
-    return this.default(sql`now()`);
-  }
-}
-
-//# sourceMappingURL=date.common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/timestamp.js
-
-
-
-class PgTimestampBuilder extends PgDateColumnBaseBuilder {
-  static [entityKind] = "PgTimestampBuilder";
-  constructor(name, withTimezone, precision) {
-    super(name, "date", "PgTimestamp");
-    this.config.withTimezone = withTimezone;
-    this.config.precision = precision;
-  }
-  /** @internal */
-  build(table) {
-    return new PgTimestamp(table, this.config);
-  }
-}
-class PgTimestamp extends PgColumn {
-  static [entityKind] = "PgTimestamp";
-  withTimezone;
-  precision;
-  constructor(table, config) {
-    super(table, config);
-    this.withTimezone = config.withTimezone;
-    this.precision = config.precision;
-  }
-  getSQLType() {
-    const precision = this.precision === void 0 ? "" : ` (${this.precision})`;
-    return `timestamp${precision}${this.withTimezone ? " with time zone" : ""}`;
-  }
-  mapFromDriverValue = (value) => {
-    return new Date(this.withTimezone ? value : value + "+0000");
-  };
-  mapToDriverValue = (value) => {
-    return value.toISOString();
-  };
-}
-class PgTimestampStringBuilder extends PgDateColumnBaseBuilder {
-  static [entityKind] = "PgTimestampStringBuilder";
-  constructor(name, withTimezone, precision) {
-    super(name, "string", "PgTimestampString");
-    this.config.withTimezone = withTimezone;
-    this.config.precision = precision;
-  }
-  /** @internal */
-  build(table) {
-    return new PgTimestampString(
-      table,
-      this.config
-    );
-  }
-}
-class PgTimestampString extends PgColumn {
-  static [entityKind] = "PgTimestampString";
-  withTimezone;
-  precision;
-  constructor(table, config) {
-    super(table, config);
-    this.withTimezone = config.withTimezone;
-    this.precision = config.precision;
-  }
-  getSQLType() {
-    const precision = this.precision === void 0 ? "" : `(${this.precision})`;
-    return `timestamp${precision}${this.withTimezone ? " with time zone" : ""}`;
-  }
-}
-function timestamp(name, config = {}) {
-  if (config.mode === "string") {
-    return new PgTimestampStringBuilder(name, config.withTimezone ?? false, config.precision);
-  }
-  return new PgTimestampBuilder(name, config.withTimezone ?? false, config.precision);
-}
-
-//# sourceMappingURL=timestamp.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/primary-keys.js
-
-
-function primaryKey(...config) {
-  if (config[0].columns) {
-    return new PrimaryKeyBuilder(config[0].columns, config[0].name);
-  }
-  return new PrimaryKeyBuilder(config);
-}
-class PrimaryKeyBuilder {
-  static [entityKind] = "PgPrimaryKeyBuilder";
-  /** @internal */
-  columns;
-  /** @internal */
-  name;
-  constructor(columns, name) {
-    this.columns = columns;
-    this.name = name;
-  }
-  /** @internal */
-  build(table) {
-    return new PrimaryKey(table, this.columns, this.name);
-  }
-}
-class PrimaryKey {
-  constructor(table, columns, name) {
-    this.table = table;
-    this.columns = columns;
-    this.name = name;
-  }
-  static [entityKind] = "PgPrimaryKey";
-  columns;
-  name;
-  getName() {
-    return this.name ?? `${this.table[PgTable.Symbol.Name]}_${this.columns.map((column) => column.name).join("_")}_pk`;
-  }
-}
-
-//# sourceMappingURL=primary-keys.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/boolean.js
-
-
-class PgBooleanBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgBooleanBuilder";
-  constructor(name) {
-    super(name, "boolean", "PgBoolean");
-  }
-  /** @internal */
-  build(table) {
-    return new PgBoolean(table, this.config);
-  }
-}
-class PgBoolean extends PgColumn {
-  static [entityKind] = "PgBoolean";
-  getSQLType() {
-    return "boolean";
-  }
-}
-function boolean_boolean(name) {
-  return new PgBooleanBuilder(name);
-}
-
-//# sourceMappingURL=boolean.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/jsonb.js
-
-
-class PgJsonbBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgJsonbBuilder";
-  constructor(name) {
-    super(name, "json", "PgJsonb");
-  }
-  /** @internal */
-  build(table) {
-    return new PgJsonb(table, this.config);
-  }
-}
-class PgJsonb extends PgColumn {
-  static [entityKind] = "PgJsonb";
-  constructor(table, config) {
-    super(table, config);
-  }
-  getSQLType() {
-    return "jsonb";
-  }
-  mapToDriverValue(value) {
-    return JSON.stringify(value);
-  }
-  mapFromDriverValue(value) {
-    if (typeof value === "string") {
-      try {
-        return JSON.parse(value);
-      } catch {
-        return value;
-      }
-    }
-    return value;
-  }
-}
-function jsonb(name) {
-  return new PgJsonbBuilder(name);
-}
-
-//# sourceMappingURL=jsonb.js.map
-;// CONCATENATED MODULE: ./database/drizzle/dist/schema.js
-
-const users = pgTable('users', {
-    id: text_text('id').primaryKey(),
-    email: text_text('email').notNull().unique(),
-    name: text_text('name'),
-    passwordHash: text_text('password_hash'),
-    provider: text_text('provider').default('email').notNull(),
-    providerId: text_text('provider_id'),
-    avatarUrl: text_text('avatar_url'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at').defaultNow().notNull(),
-});
-const tools = pgTable('tools', {
-    id: text_text('id').primaryKey(),
-    slug: text_text('slug').notNull().unique(),
-    name: text_text('name').notNull(),
-    category: text_text('category').notNull(),
-    description: text_text('description').notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-});
-const favorites = pgTable('favorites', {
-    userId: text_text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-    toolSlug: text_text('tool_slug').notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-}, (table) => ({
-    pk: primaryKey({ columns: [table.userId, table.toolSlug] }),
-}));
-const toolHistory = pgTable('tool_history', {
-    id: text_text('id').primaryKey(),
-    userId: text_text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-    toolSlug: text_text('tool_slug').notNull(),
-    inputSummary: text_text('input_summary'),
-    isSensitive: boolean_boolean('is_sensitive').default(false).notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-});
-const savedWorkspaces = pgTable('saved_workspaces', {
-    id: text_text('id').primaryKey(),
-    userId: text_text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-    name: text_text('name').notNull(),
-    description: text_text('description'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at').defaultNow().notNull(),
-});
-const workspaceTools = pgTable('workspace_tools', {
-    workspaceId: text_text('workspace_id').notNull().references(() => savedWorkspaces.id, { onDelete: 'cascade' }),
-    toolSlug: text_text('tool_slug').notNull(),
-}, (table) => ({
-    pk: primaryKey({ columns: [table.workspaceId, table.toolSlug] }),
-}));
-const sharedItems = pgTable('shared_items', {
-    id: text_text('id').primaryKey(),
-    userId: text_text('user_id').references(() => users.id, { onDelete: 'set null' }),
-    toolSlug: text_text('tool_slug').notNull(),
-    title: text_text('title').notNull(),
-    configuration: jsonb('configuration').notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-});
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/@neondatabase+serverless@0.9.5/node_modules/@neondatabase/serverless/index.mjs
-var to=Object.create;var Ce=Object.defineProperty;var ro=Object.getOwnPropertyDescriptor;var no=Object.getOwnPropertyNames;var io=Object.getPrototypeOf,so=Object.prototype.hasOwnProperty;var oo=(r,e,t)=>e in r?Ce(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):
-r[e]=t;var a=(r,e)=>Ce(r,"name",{value:e,configurable:!0});var z=(r,e)=>()=>(r&&(e=r(r=0)),e);var I=(r,e)=>()=>(e||r((e={exports:{}}).exports,e),e.exports),ie=(r,e)=>{for(var t in e)
-Ce(r,t,{get:e[t],enumerable:!0})},An=(r,e,t,n)=>{if(e&&typeof e=="object"||typeof e==
-"function")for(let i of no(e))!so.call(r,i)&&i!==t&&Ce(r,i,{get:()=>e[i],enumerable:!(n=
-ro(e,i))||n.enumerable});return r};var Te=(r,e,t)=>(t=r!=null?to(io(r)):{},An(e||!r||!r.__esModule?Ce(t,"default",{
-value:r,enumerable:!0}):t,r)),N=r=>An(Ce({},"__esModule",{value:!0}),r);var _=(r,e,t)=>oo(r,typeof e!="symbol"?e+"":e,t);var In=I(nt=>{"use strict";p();nt.byteLength=uo;nt.toByteArray=ho;nt.fromByteArray=
-po;var ae=[],te=[],ao=typeof Uint8Array<"u"?Uint8Array:Array,Pt="ABCDEFGHIJKLMNO\
-PQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(ve=0,Cn=Pt.length;ve<Cn;++ve)
-ae[ve]=Pt[ve],te[Pt.charCodeAt(ve)]=ve;var ve,Cn;te[45]=62;te[95]=63;function Tn(r){
+var to=Object.create;var Te=Object.defineProperty;var ro=Object.getOwnPropertyDescriptor;var no=Object.getOwnPropertyNames;var io=Object.getPrototypeOf,so=Object.prototype.hasOwnProperty;var oo=(r,e,t)=>e in r?Te(r,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):
+r[e]=t;var a=(r,e)=>Te(r,"name",{value:e,configurable:!0});var z=(r,e)=>()=>(r&&(e=r(r=0)),e);var I=(r,e)=>()=>(e||r((e={exports:{}}).exports,e),e.exports),te=(r,e)=>{for(var t in e)
+Te(r,t,{get:e[t],enumerable:!0})},Tn=(r,e,t,n)=>{if(e&&typeof e=="object"||typeof e==
+"function")for(let i of no(e))!so.call(r,i)&&i!==t&&Te(r,i,{get:()=>e[i],enumerable:!(n=
+ro(e,i))||n.enumerable});return r};var Ie=(r,e,t)=>(t=r!=null?to(io(r)):{},Tn(e||!r||!r.__esModule?Te(t,"default",{
+value:r,enumerable:!0}):t,r)),N=r=>Tn(Te({},"__esModule",{value:!0}),r);var _=(r,e,t)=>oo(r,typeof e!="symbol"?e+"":e,t);var Bn=I(nt=>{"use strict";p();nt.byteLength=uo;nt.toByteArray=ho;nt.fromByteArray=
+po;var ue=[],re=[],ao=typeof Uint8Array<"u"?Uint8Array:Array,Bt="ABCDEFGHIJKLMNO\
+PQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(Ae=0,In=Bt.length;Ae<In;++Ae)
+ue[Ae]=Bt[Ae],re[Bt.charCodeAt(Ae)]=Ae;var Ae,In;re[45]=62;re[95]=63;function Pn(r){
 var e=r.length;if(e%4>0)throw new Error("Invalid string. Length must be a multip\
-le of 4");var t=r.indexOf("=");t===-1&&(t=e);var n=t===e?0:4-t%4;return[t,n]}a(Tn,
-"getLens");function uo(r){var e=Tn(r),t=e[0],n=e[1];return(t+n)*3/4-n}a(uo,"byte\
+le of 4");var t=r.indexOf("=");t===-1&&(t=e);var n=t===e?0:4-t%4;return[t,n]}a(Pn,
+"getLens");function uo(r){var e=Pn(r),t=e[0],n=e[1];return(t+n)*3/4-n}a(uo,"byte\
 Length");function co(r,e,t){return(e+t)*3/4-t}a(co,"_byteLength");function ho(r){
-var e,t=Tn(r),n=t[0],i=t[1],s=new ao(co(r,n,i)),o=0,u=i>0?n-4:n,c;for(c=0;c<u;c+=
-4)e=te[r.charCodeAt(c)]<<18|te[r.charCodeAt(c+1)]<<12|te[r.charCodeAt(c+2)]<<6|te[r.
+var e,t=Pn(r),n=t[0],i=t[1],s=new ao(co(r,n,i)),o=0,u=i>0?n-4:n,c;for(c=0;c<u;c+=
+4)e=re[r.charCodeAt(c)]<<18|re[r.charCodeAt(c+1)]<<12|re[r.charCodeAt(c+2)]<<6|re[r.
 charCodeAt(c+3)],s[o++]=e>>16&255,s[o++]=e>>8&255,s[o++]=e&255;return i===2&&(e=
-te[r.charCodeAt(c)]<<2|te[r.charCodeAt(c+1)]>>4,s[o++]=e&255),i===1&&(e=te[r.charCodeAt(
-c)]<<10|te[r.charCodeAt(c+1)]<<4|te[r.charCodeAt(c+2)]>>2,s[o++]=e>>8&255,s[o++]=
-e&255),s}a(ho,"toByteArray");function lo(r){return ae[r>>18&63]+ae[r>>12&63]+ae[r>>
-6&63]+ae[r&63]}a(lo,"tripletToBase64");function fo(r,e,t){for(var n,i=[],s=e;s<t;s+=
+re[r.charCodeAt(c)]<<2|re[r.charCodeAt(c+1)]>>4,s[o++]=e&255),i===1&&(e=re[r.charCodeAt(
+c)]<<10|re[r.charCodeAt(c+1)]<<4|re[r.charCodeAt(c+2)]>>2,s[o++]=e>>8&255,s[o++]=
+e&255),s}a(ho,"toByteArray");function lo(r){return ue[r>>18&63]+ue[r>>12&63]+ue[r>>
+6&63]+ue[r&63]}a(lo,"tripletToBase64");function fo(r,e,t){for(var n,i=[],s=e;s<t;s+=
 3)n=(r[s]<<16&16711680)+(r[s+1]<<8&65280)+(r[s+2]&255),i.push(lo(n));return i.join(
 "")}a(fo,"encodeChunk");function po(r){for(var e,t=r.length,n=t%3,i=[],s=16383,o=0,
-u=t-n;o<u;o+=s)i.push(fo(r,o,o+s>u?u:o+s));return n===1?(e=r[t-1],i.push(ae[e>>2]+
-ae[e<<4&63]+"==")):n===2&&(e=(r[t-2]<<8)+r[t-1],i.push(ae[e>>10]+ae[e>>4&63]+ae[e<<
-2&63]+"=")),i.join("")}a(po,"fromByteArray")});var Pn=I(Bt=>{p();Bt.read=function(r,e,t,n,i){var s,o,u=i*8-n-1,c=(1<<u)-1,h=c>>
+u=t-n;o<u;o+=s)i.push(fo(r,o,o+s>u?u:o+s));return n===1?(e=r[t-1],i.push(ue[e>>2]+
+ue[e<<4&63]+"==")):n===2&&(e=(r[t-2]<<8)+r[t-1],i.push(ue[e>>10]+ue[e>>4&63]+ue[e<<
+2&63]+"=")),i.join("")}a(po,"fromByteArray")});var Ln=I(Lt=>{p();Lt.read=function(r,e,t,n,i){var s,o,u=i*8-n-1,c=(1<<u)-1,h=c>>
 1,l=-7,d=t?i-1:0,b=t?-1:1,C=r[e+d];for(d+=b,s=C&(1<<-l)-1,C>>=-l,l+=u;l>0;s=s*256+
 r[e+d],d+=b,l-=8);for(o=s&(1<<-l)-1,s>>=-l,l+=n;l>0;o=o*256+r[e+d],d+=b,l-=8);if(s===
 0)s=1-h;else{if(s===c)return o?NaN:(C?-1:1)*(1/0);o=o+Math.pow(2,n),s=s-h}return(C?
--1:1)*o*Math.pow(2,s-n)};Bt.write=function(r,e,t,n,i,s){var o,u,c,h=s*8-i-1,l=(1<<
+-1:1)*o*Math.pow(2,s-n)};Lt.write=function(r,e,t,n,i,s){var o,u,c,h=s*8-i-1,l=(1<<
 h)-1,d=l>>1,b=i===23?Math.pow(2,-24)-Math.pow(2,-77):0,C=n?0:s-1,B=n?1:-1,W=e<0||
 e===0&&1/e<0?1:0;for(e=Math.abs(e),isNaN(e)||e===1/0?(u=isNaN(e)?1:0,o=l):(o=Math.
 floor(Math.log(e)/Math.LN2),e*(c=Math.pow(2,-o))<1&&(o--,c*=2),o+d>=1?e+=b/c:e+=
 b*Math.pow(2,1-d),e*c>=2&&(o++,c/=2),o+d>=l?(u=0,o=l):o+d>=1?(u=(e*c-1)*Math.pow(
 2,i),o=o+d):(u=e*Math.pow(2,d-1)*Math.pow(2,i),o=0));i>=8;r[t+C]=u&255,C+=B,u/=256,
-i-=8);for(o=o<<i|u,h+=i;h>0;r[t+C]=o&255,C+=B,o/=256,h-=8);r[t+C-B]|=W*128}});var $n=I(Le=>{"use strict";p();var Lt=In(),Pe=Pn(),Bn=typeof Symbol=="function"&&
-typeof Symbol.for=="function"?Symbol.for("nodejs.util.inspect.custom"):null;Le.Buffer=
-f;Le.SlowBuffer=So;Le.INSPECT_MAX_BYTES=50;var it=2147483647;Le.kMaxLength=it;f.
+i-=8);for(o=o<<i|u,h+=i;h>0;r[t+C]=o&255,C+=B,o/=256,h-=8);r[t+C-B]|=W*128}});var Kn=I(Re=>{"use strict";p();var Rt=Bn(),Be=Ln(),Rn=typeof Symbol=="function"&&
+typeof Symbol.for=="function"?Symbol.for("nodejs.util.inspect.custom"):null;Re.Buffer=
+f;Re.SlowBuffer=So;Re.INSPECT_MAX_BYTES=50;var it=2147483647;Re.kMaxLength=it;f.
 TYPED_ARRAY_SUPPORT=yo();!f.TYPED_ARRAY_SUPPORT&&typeof console<"u"&&typeof console.
 error=="function"&&console.error("This browser lacks typed array (Uint8Array) su\
 pport which is required by `buffer` v5.x. Use `buffer` v4.x if you require old b\
@@ -1539,49 +50,49 @@ return 42},"foo")};return Object.setPrototypeOf(e,Uint8Array.prototype),Object.s
 r,e),r.foo()===42}catch{return!1}}a(yo,"typedArraySupport");Object.defineProperty(
 f.prototype,"parent",{enumerable:!0,get:a(function(){if(f.isBuffer(this))return this.
 buffer},"get")});Object.defineProperty(f.prototype,"offset",{enumerable:!0,get:a(
-function(){if(f.isBuffer(this))return this.byteOffset},"get")});function fe(r){if(r>
+function(){if(f.isBuffer(this))return this.byteOffset},"get")});function pe(r){if(r>
 it)throw new RangeError('The value "'+r+'" is invalid for option "size"');let e=new Uint8Array(
-r);return Object.setPrototypeOf(e,f.prototype),e}a(fe,"createBuffer");function f(r,e,t){
+r);return Object.setPrototypeOf(e,f.prototype),e}a(pe,"createBuffer");function f(r,e,t){
 if(typeof r=="number"){if(typeof e=="string")throw new TypeError('The "string" a\
-rgument must be of type string. Received type number');return Dt(r)}return Mn(r,
-e,t)}a(f,"Buffer");f.poolSize=8192;function Mn(r,e,t){if(typeof r=="string")return go(
+rgument must be of type string. Received type number');return kt(r)}return kn(r,
+e,t)}a(f,"Buffer");f.poolSize=8192;function kn(r,e,t){if(typeof r=="string")return go(
 r,e);if(ArrayBuffer.isView(r))return wo(r);if(r==null)throw new TypeError("The f\
 irst argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-l\
-ike Object. Received type "+typeof r);if(ue(r,ArrayBuffer)||r&&ue(r.buffer,ArrayBuffer)||
-typeof SharedArrayBuffer<"u"&&(ue(r,SharedArrayBuffer)||r&&ue(r.buffer,SharedArrayBuffer)))
-return Ft(r,e,t);if(typeof r=="number")throw new TypeError('The "value" argument\
+ike Object. Received type "+typeof r);if(ce(r,ArrayBuffer)||r&&ce(r.buffer,ArrayBuffer)||
+typeof SharedArrayBuffer<"u"&&(ce(r,SharedArrayBuffer)||r&&ce(r.buffer,SharedArrayBuffer)))
+return Mt(r,e,t);if(typeof r=="number")throw new TypeError('The "value" argument\
  must not be of type number. Received type number');let n=r.valueOf&&r.valueOf();
 if(n!=null&&n!==r)return f.from(n,e,t);let i=bo(r);if(i)return i;if(typeof Symbol<
 "u"&&Symbol.toPrimitive!=null&&typeof r[Symbol.toPrimitive]=="function")return f.
 from(r[Symbol.toPrimitive]("string"),e,t);throw new TypeError("The first argumen\
 t must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. \
-Received type "+typeof r)}a(Mn,"from");f.from=function(r,e,t){return Mn(r,e,t)};
+Received type "+typeof r)}a(kn,"from");f.from=function(r,e,t){return kn(r,e,t)};
 Object.setPrototypeOf(f.prototype,Uint8Array.prototype);Object.setPrototypeOf(f,
-Uint8Array);function Dn(r){if(typeof r!="number")throw new TypeError('"size" arg\
+Uint8Array);function Un(r){if(typeof r!="number")throw new TypeError('"size" arg\
 ument must be of type number');if(r<0)throw new RangeError('The value "'+r+'" is\
- invalid for option "size"')}a(Dn,"assertSize");function mo(r,e,t){return Dn(r),
-r<=0?fe(r):e!==void 0?typeof t=="string"?fe(r).fill(e,t):fe(r).fill(e):fe(r)}a(mo,
-"alloc");f.alloc=function(r,e,t){return mo(r,e,t)};function Dt(r){return Dn(r),fe(
-r<0?0:kt(r)|0)}a(Dt,"allocUnsafe");f.allocUnsafe=function(r){return Dt(r)};f.allocUnsafeSlow=
-function(r){return Dt(r)};function go(r,e){if((typeof e!="string"||e==="")&&(e="\
-utf8"),!f.isEncoding(e))throw new TypeError("Unknown encoding: "+e);let t=kn(r,e)|
-0,n=fe(t),i=n.write(r,e);return i!==t&&(n=n.slice(0,i)),n}a(go,"fromString");function Rt(r){
-let e=r.length<0?0:kt(r.length)|0,t=fe(e);for(let n=0;n<e;n+=1)t[n]=r[n]&255;return t}
-a(Rt,"fromArrayLike");function wo(r){if(ue(r,Uint8Array)){let e=new Uint8Array(r);
-return Ft(e.buffer,e.byteOffset,e.byteLength)}return Rt(r)}a(wo,"fromArrayView");
-function Ft(r,e,t){if(e<0||r.byteLength<e)throw new RangeError('"offset" is outs\
+ invalid for option "size"')}a(Un,"assertSize");function mo(r,e,t){return Un(r),
+r<=0?pe(r):e!==void 0?typeof t=="string"?pe(r).fill(e,t):pe(r).fill(e):pe(r)}a(mo,
+"alloc");f.alloc=function(r,e,t){return mo(r,e,t)};function kt(r){return Un(r),pe(
+r<0?0:Ut(r)|0)}a(kt,"allocUnsafe");f.allocUnsafe=function(r){return kt(r)};f.allocUnsafeSlow=
+function(r){return kt(r)};function go(r,e){if((typeof e!="string"||e==="")&&(e="\
+utf8"),!f.isEncoding(e))throw new TypeError("Unknown encoding: "+e);let t=On(r,e)|
+0,n=pe(t),i=n.write(r,e);return i!==t&&(n=n.slice(0,i)),n}a(go,"fromString");function Ft(r){
+let e=r.length<0?0:Ut(r.length)|0,t=pe(e);for(let n=0;n<e;n+=1)t[n]=r[n]&255;return t}
+a(Ft,"fromArrayLike");function wo(r){if(ce(r,Uint8Array)){let e=new Uint8Array(r);
+return Mt(e.buffer,e.byteOffset,e.byteLength)}return Ft(r)}a(wo,"fromArrayView");
+function Mt(r,e,t){if(e<0||r.byteLength<e)throw new RangeError('"offset" is outs\
 ide of buffer bounds');if(r.byteLength<e+(t||0))throw new RangeError('"length" i\
 s outside of buffer bounds');let n;return e===void 0&&t===void 0?n=new Uint8Array(
 r):t===void 0?n=new Uint8Array(r,e):n=new Uint8Array(r,e,t),Object.setPrototypeOf(
-n,f.prototype),n}a(Ft,"fromArrayBuffer");function bo(r){if(f.isBuffer(r)){let e=kt(
-r.length)|0,t=fe(e);return t.length===0||r.copy(t,0,0,e),t}if(r.length!==void 0)
-return typeof r.length!="number"||Ot(r.length)?fe(0):Rt(r);if(r.type==="Buffer"&&
-Array.isArray(r.data))return Rt(r.data)}a(bo,"fromObject");function kt(r){if(r>=
+n,f.prototype),n}a(Mt,"fromArrayBuffer");function bo(r){if(f.isBuffer(r)){let e=Ut(
+r.length)|0,t=pe(e);return t.length===0||r.copy(t,0,0,e),t}if(r.length!==void 0)
+return typeof r.length!="number"||Nt(r.length)?pe(0):Ft(r);if(r.type==="Buffer"&&
+Array.isArray(r.data))return Ft(r.data)}a(bo,"fromObject");function Ut(r){if(r>=
 it)throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x"+
-it.toString(16)+" bytes");return r|0}a(kt,"checked");function So(r){return+r!=r&&
+it.toString(16)+" bytes");return r|0}a(Ut,"checked");function So(r){return+r!=r&&
 (r=0),f.alloc(+r)}a(So,"SlowBuffer");f.isBuffer=a(function(e){return e!=null&&e.
-_isBuffer===!0&&e!==f.prototype},"isBuffer");f.compare=a(function(e,t){if(ue(e,Uint8Array)&&
-(e=f.from(e,e.offset,e.byteLength)),ue(t,Uint8Array)&&(t=f.from(t,t.offset,t.byteLength)),
+_isBuffer===!0&&e!==f.prototype},"isBuffer");f.compare=a(function(e,t){if(ce(e,Uint8Array)&&
+(e=f.from(e,e.offset,e.byteLength)),ce(t,Uint8Array)&&(t=f.from(t,t.offset,t.byteLength)),
 !f.isBuffer(e)||!f.isBuffer(t))throw new TypeError('The "buf1", "buf2" arguments\
  must be one of type Buffer or Uint8Array');if(e===t)return 0;let n=e.length,i=t.
 length;for(let s=0,o=Math.min(n,i);s<o;++s)if(e[s]!==t[s]){n=e[s],i=t[s];break}return n<
@@ -1591,70 +102,70 @@ ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}},"isEn
 coding");f.concat=a(function(e,t){if(!Array.isArray(e))throw new TypeError('"lis\
 t" argument must be an Array of Buffers');if(e.length===0)return f.alloc(0);let n;
 if(t===void 0)for(t=0,n=0;n<e.length;++n)t+=e[n].length;let i=f.allocUnsafe(t),s=0;
-for(n=0;n<e.length;++n){let o=e[n];if(ue(o,Uint8Array))s+o.length>i.length?(f.isBuffer(
+for(n=0;n<e.length;++n){let o=e[n];if(ce(o,Uint8Array))s+o.length>i.length?(f.isBuffer(
 o)||(o=f.from(o)),o.copy(i,s)):Uint8Array.prototype.set.call(i,o,s);else if(f.isBuffer(
 o))o.copy(i,s);else throw new TypeError('"list" argument must be an Array of Buf\
-fers');s+=o.length}return i},"concat");function kn(r,e){if(f.isBuffer(r))return r.
-length;if(ArrayBuffer.isView(r)||ue(r,ArrayBuffer))return r.byteLength;if(typeof r!=
+fers');s+=o.length}return i},"concat");function On(r,e){if(f.isBuffer(r))return r.
+length;if(ArrayBuffer.isView(r)||ce(r,ArrayBuffer))return r.byteLength;if(typeof r!=
 "string")throw new TypeError('The "string" argument must be one of type string, \
 Buffer, or ArrayBuffer. Received type '+typeof r);let t=r.length,n=arguments.length>
 2&&arguments[2]===!0;if(!n&&t===0)return 0;let i=!1;for(;;)switch(e){case"ascii":case"\
-latin1":case"binary":return t;case"utf8":case"utf-8":return Mt(r).length;case"uc\
+latin1":case"binary":return t;case"utf8":case"utf-8":return Dt(r).length;case"uc\
 s2":case"ucs-2":case"utf16le":case"utf-16le":return t*2;case"hex":return t>>>1;case"\
-base64":return Gn(r).length;default:if(i)return n?-1:Mt(r).length;e=(""+e).toLowerCase(),
-i=!0}}a(kn,"byteLength");f.byteLength=kn;function xo(r,e,t){let n=!1;if((e===void 0||
+base64":return Vn(r).length;default:if(i)return n?-1:Dt(r).length;e=(""+e).toLowerCase(),
+i=!0}}a(On,"byteLength");f.byteLength=On;function xo(r,e,t){let n=!1;if((e===void 0||
 e<0)&&(e=0),e>this.length||((t===void 0||t>this.length)&&(t=this.length),t<=0)||
 (t>>>=0,e>>>=0,t<=e))return"";for(r||(r="utf8");;)switch(r){case"hex":return Lo(
-this,e,t);case"utf8":case"utf-8":return On(this,e,t);case"ascii":return Po(this,
+this,e,t);case"utf8":case"utf-8":return qn(this,e,t);case"ascii":return Po(this,
 e,t);case"latin1":case"binary":return Bo(this,e,t);case"base64":return To(this,e,
 t);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return Ro(this,e,t);default:
 if(n)throw new TypeError("Unknown encoding: "+r);r=(r+"").toLowerCase(),n=!0}}a(
-xo,"slowToString");f.prototype._isBuffer=!0;function Ee(r,e,t){let n=r[e];r[e]=r[t],
-r[t]=n}a(Ee,"swap");f.prototype.swap16=a(function(){let e=this.length;if(e%2!==0)
+xo,"slowToString");f.prototype._isBuffer=!0;function Ce(r,e,t){let n=r[e];r[e]=r[t],
+r[t]=n}a(Ce,"swap");f.prototype.swap16=a(function(){let e=this.length;if(e%2!==0)
 throw new RangeError("Buffer size must be a multiple of 16-bits");for(let t=0;t<
-e;t+=2)Ee(this,t,t+1);return this},"swap16");f.prototype.swap32=a(function(){let e=this.
+e;t+=2)Ce(this,t,t+1);return this},"swap16");f.prototype.swap32=a(function(){let e=this.
 length;if(e%4!==0)throw new RangeError("Buffer size must be a multiple of 32-bit\
-s");for(let t=0;t<e;t+=4)Ee(this,t,t+3),Ee(this,t+1,t+2);return this},"swap32");
+s");for(let t=0;t<e;t+=4)Ce(this,t,t+3),Ce(this,t+1,t+2);return this},"swap32");
 f.prototype.swap64=a(function(){let e=this.length;if(e%8!==0)throw new RangeError(
-"Buffer size must be a multiple of 64-bits");for(let t=0;t<e;t+=8)Ee(this,t,t+7),
-Ee(this,t+1,t+6),Ee(this,t+2,t+5),Ee(this,t+3,t+4);return this},"swap64");f.prototype.
-toString=a(function(){let e=this.length;return e===0?"":arguments.length===0?On(
+"Buffer size must be a multiple of 64-bits");for(let t=0;t<e;t+=8)Ce(this,t,t+7),
+Ce(this,t+1,t+6),Ce(this,t+2,t+5),Ce(this,t+3,t+4);return this},"swap64");f.prototype.
+toString=a(function(){let e=this.length;return e===0?"":arguments.length===0?qn(
 this,0,e):xo.apply(this,arguments)},"toString");f.prototype.toLocaleString=f.prototype.
 toString;f.prototype.equals=a(function(e){if(!f.isBuffer(e))throw new TypeError(
 "Argument must be a Buffer");return this===e?!0:f.compare(this,e)===0},"equals");
-f.prototype.inspect=a(function(){let e="",t=Le.INSPECT_MAX_BYTES;return e=this.toString(
+f.prototype.inspect=a(function(){let e="",t=Re.INSPECT_MAX_BYTES;return e=this.toString(
 "hex",0,t).replace(/(.{2})/g,"$1 ").trim(),this.length>t&&(e+=" ... "),"<Buffer "+
-e+">"},"inspect");Bn&&(f.prototype[Bn]=f.prototype.inspect);f.prototype.compare=
-a(function(e,t,n,i,s){if(ue(e,Uint8Array)&&(e=f.from(e,e.offset,e.byteLength)),!f.
+e+">"},"inspect");Rn&&(f.prototype[Rn]=f.prototype.inspect);f.prototype.compare=
+a(function(e,t,n,i,s){if(ce(e,Uint8Array)&&(e=f.from(e,e.offset,e.byteLength)),!f.
 isBuffer(e))throw new TypeError('The "target" argument must be one of type Buffe\
 r or Uint8Array. Received type '+typeof e);if(t===void 0&&(t=0),n===void 0&&(n=e?
 e.length:0),i===void 0&&(i=0),s===void 0&&(s=this.length),t<0||n>e.length||i<0||
 s>this.length)throw new RangeError("out of range index");if(i>=s&&t>=n)return 0;
 if(i>=s)return-1;if(t>=n)return 1;if(t>>>=0,n>>>=0,i>>>=0,s>>>=0,this===e)return 0;
 let o=s-i,u=n-t,c=Math.min(o,u),h=this.slice(i,s),l=e.slice(t,n);for(let d=0;d<c;++d)
-if(h[d]!==l[d]){o=h[d],u=l[d];break}return o<u?-1:u<o?1:0},"compare");function Un(r,e,t,n,i){
+if(h[d]!==l[d]){o=h[d],u=l[d];break}return o<u?-1:u<o?1:0},"compare");function Nn(r,e,t,n,i){
 if(r.length===0)return-1;if(typeof t=="string"?(n=t,t=0):t>2147483647?t=2147483647:
-t<-2147483648&&(t=-2147483648),t=+t,Ot(t)&&(t=i?0:r.length-1),t<0&&(t=r.length+t),
+t<-2147483648&&(t=-2147483648),t=+t,Nt(t)&&(t=i?0:r.length-1),t<0&&(t=r.length+t),
 t>=r.length){if(i)return-1;t=r.length-1}else if(t<0)if(i)t=0;else return-1;if(typeof e==
-"string"&&(e=f.from(e,n)),f.isBuffer(e))return e.length===0?-1:Ln(r,e,t,n,i);if(typeof e==
+"string"&&(e=f.from(e,n)),f.isBuffer(e))return e.length===0?-1:Fn(r,e,t,n,i);if(typeof e==
 "number")return e=e&255,typeof Uint8Array.prototype.indexOf=="function"?i?Uint8Array.
-prototype.indexOf.call(r,e,t):Uint8Array.prototype.lastIndexOf.call(r,e,t):Ln(r,
-[e],t,n,i);throw new TypeError("val must be string, number or Buffer")}a(Un,"bid\
-irectionalIndexOf");function Ln(r,e,t,n,i){let s=1,o=r.length,u=e.length;if(n!==
+prototype.indexOf.call(r,e,t):Uint8Array.prototype.lastIndexOf.call(r,e,t):Fn(r,
+[e],t,n,i);throw new TypeError("val must be string, number or Buffer")}a(Nn,"bid\
+irectionalIndexOf");function Fn(r,e,t,n,i){let s=1,o=r.length,u=e.length;if(n!==
 void 0&&(n=String(n).toLowerCase(),n==="ucs2"||n==="ucs-2"||n==="utf16le"||n==="\
 utf-16le")){if(r.length<2||e.length<2)return-1;s=2,o/=2,u/=2,t/=2}function c(l,d){
 return s===1?l[d]:l.readUInt16BE(d*s)}a(c,"read");let h;if(i){let l=-1;for(h=t;h<
 o;h++)if(c(r,h)===c(e,l===-1?0:h-l)){if(l===-1&&(l=h),h-l+1===u)return l*s}else l!==
 -1&&(h-=h-l),l=-1}else for(t+u>o&&(t=o-u),h=t;h>=0;h--){let l=!0;for(let d=0;d<u;d++)
-if(c(r,h+d)!==c(e,d)){l=!1;break}if(l)return h}return-1}a(Ln,"arrayIndexOf");f.prototype.
+if(c(r,h+d)!==c(e,d)){l=!1;break}if(l)return h}return-1}a(Fn,"arrayIndexOf");f.prototype.
 includes=a(function(e,t,n){return this.indexOf(e,t,n)!==-1},"includes");f.prototype.
-indexOf=a(function(e,t,n){return Un(this,e,t,n,!0)},"indexOf");f.prototype.lastIndexOf=
-a(function(e,t,n){return Un(this,e,t,n,!1)},"lastIndexOf");function vo(r,e,t,n){
+indexOf=a(function(e,t,n){return Nn(this,e,t,n,!0)},"indexOf");f.prototype.lastIndexOf=
+a(function(e,t,n){return Nn(this,e,t,n,!1)},"lastIndexOf");function vo(r,e,t,n){
 t=Number(t)||0;let i=r.length-t;n?(n=Number(n),n>i&&(n=i)):n=i;let s=e.length;n>
-s/2&&(n=s/2);let o;for(o=0;o<n;++o){let u=parseInt(e.substr(o*2,2),16);if(Ot(u))
-return o;r[t+o]=u}return o}a(vo,"hexWrite");function Eo(r,e,t,n){return st(Mt(e,
+s/2&&(n=s/2);let o;for(o=0;o<n;++o){let u=parseInt(e.substr(o*2,2),16);if(Nt(u))
+return o;r[t+o]=u}return o}a(vo,"hexWrite");function Eo(r,e,t,n){return st(Dt(e,
 r.length-t),r,t,n)}a(Eo,"utf8Write");function _o(r,e,t,n){return st(ko(e),r,t,n)}
-a(_o,"asciiWrite");function Ao(r,e,t,n){return st(Gn(e),r,t,n)}a(Ao,"base64Write");
+a(_o,"asciiWrite");function Ao(r,e,t,n){return st(Vn(e),r,t,n)}a(Ao,"base64Write");
 function Co(r,e,t,n){return st(Uo(e,r.length-t),r,t,n)}a(Co,"ucs2Write");f.prototype.
 write=a(function(e,t,n,i){if(t===void 0)i="utf8",n=this.length,t=0;else if(n===void 0&&
 typeof t=="string")i=t,n=this.length,t=0;else if(isFinite(t))t=t>>>0,isFinite(n)?
@@ -1668,7 +179,7 @@ e,t,n);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return Co(this,e,t,n)
 if(o)throw new TypeError("Unknown encoding: "+i);i=(""+i).toLowerCase(),o=!0}},"\
 write");f.prototype.toJSON=a(function(){return{type:"Buffer",data:Array.prototype.
 slice.call(this._arr||this,0)}},"toJSON");function To(r,e,t){return e===0&&t===r.
-length?Lt.fromByteArray(r):Lt.fromByteArray(r.slice(e,t))}a(To,"base64Slice");function On(r,e,t){
+length?Rt.fromByteArray(r):Rt.fromByteArray(r.slice(e,t))}a(To,"base64Slice");function qn(r,e,t){
 t=Math.min(r.length,t);let n=[],i=e;for(;i<t;){let s=r[i],o=null,u=s>239?4:s>223?
 3:s>191?2:1;if(i+u<=t){let c,h,l,d;switch(u){case 1:s<128&&(o=s);break;case 2:c=
 r[i+1],(c&192)===128&&(d=(s&31)<<6|c&63,d>127&&(o=d));break;case 3:c=r[i+1],h=r[i+
@@ -1676,9 +187,9 @@ r[i+1],(c&192)===128&&(d=(s&31)<<6|c&63,d>127&&(o=d));break;case 3:c=r[i+1],h=r[
 d>57343)&&(o=d));break;case 4:c=r[i+1],h=r[i+2],l=r[i+3],(c&192)===128&&(h&192)===
 128&&(l&192)===128&&(d=(s&15)<<18|(c&63)<<12|(h&63)<<6|l&63,d>65535&&d<1114112&&
 (o=d))}}o===null?(o=65533,u=1):o>65535&&(o-=65536,n.push(o>>>10&1023|55296),o=56320|
-o&1023),n.push(o),i+=u}return Io(n)}a(On,"utf8Slice");var Rn=4096;function Io(r){
-let e=r.length;if(e<=Rn)return String.fromCharCode.apply(String,r);let t="",n=0;
-for(;n<e;)t+=String.fromCharCode.apply(String,r.slice(n,n+=Rn));return t}a(Io,"d\
+o&1023),n.push(o),i+=u}return Io(n)}a(qn,"utf8Slice");var Mn=4096;function Io(r){
+let e=r.length;if(e<=Mn)return String.fromCharCode.apply(String,r);let t="",n=0;
+for(;n<e;)t+=String.fromCharCode.apply(String,r.slice(n,n+=Mn));return t}a(Io,"d\
 ecodeCodePointsArray");function Po(r,e,t){let n="";t=Math.min(r.length,t);for(let i=e;i<
 t;++i)n+=String.fromCharCode(r[i]&127);return n}a(Po,"asciiSlice");function Bo(r,e,t){
 let n="";t=Math.min(r.length,t);for(let i=e;i<t;++i)n+=String.fromCharCode(r[i]);
@@ -1704,11 +215,11 @@ readUint32LE=f.prototype.readUInt32LE=a(function(e,t){return e=e>>>0,t||q(e,4,th
 length),(this[e]|this[e+1]<<8|this[e+2]<<16)+this[e+3]*16777216},"readUInt32LE");
 f.prototype.readUint32BE=f.prototype.readUInt32BE=a(function(e,t){return e=e>>>0,
 t||q(e,4,this.length),this[e]*16777216+(this[e+1]<<16|this[e+2]<<8|this[e+3])},"\
-readUInt32BE");f.prototype.readBigUInt64LE=ge(a(function(e){e=e>>>0,Be(e,"offset");
+readUInt32BE");f.prototype.readBigUInt64LE=we(a(function(e){e=e>>>0,Le(e,"offset");
 let t=this[e],n=this[e+7];(t===void 0||n===void 0)&&We(e,this.length-8);let i=t+
 this[++e]*2**8+this[++e]*2**16+this[++e]*2**24,s=this[++e]+this[++e]*2**8+this[++e]*
 2**16+n*2**24;return BigInt(i)+(BigInt(s)<<BigInt(32))},"readBigUInt64LE"));f.prototype.
-readBigUInt64BE=ge(a(function(e){e=e>>>0,Be(e,"offset");let t=this[e],n=this[e+7];
+readBigUInt64BE=we(a(function(e){e=e>>>0,Le(e,"offset");let t=this[e],n=this[e+7];
 (t===void 0||n===void 0)&&We(e,this.length-8);let i=t*2**24+this[++e]*2**16+this[++e]*
 2**8+this[++e],s=this[++e]*2**24+this[++e]*2**16+this[++e]*2**8+n;return(BigInt(
 i)<<BigInt(32))+BigInt(s)},"readBigUInt64BE"));f.prototype.readIntLE=a(function(e,t,n){
@@ -1724,20 +235,20 @@ a(function(e,t){e=e>>>0,t||q(e,2,this.length);let n=this[e]|this[e+1]<<8;return 
 "readInt16BE");f.prototype.readInt32LE=a(function(e,t){return e=e>>>0,t||q(e,4,this.
 length),this[e]|this[e+1]<<8|this[e+2]<<16|this[e+3]<<24},"readInt32LE");f.prototype.
 readInt32BE=a(function(e,t){return e=e>>>0,t||q(e,4,this.length),this[e]<<24|this[e+
-1]<<16|this[e+2]<<8|this[e+3]},"readInt32BE");f.prototype.readBigInt64LE=ge(a(function(e){
-e=e>>>0,Be(e,"offset");let t=this[e],n=this[e+7];(t===void 0||n===void 0)&&We(e,
+1]<<16|this[e+2]<<8|this[e+3]},"readInt32BE");f.prototype.readBigInt64LE=we(a(function(e){
+e=e>>>0,Le(e,"offset");let t=this[e],n=this[e+7];(t===void 0||n===void 0)&&We(e,
 this.length-8);let i=this[e+4]+this[e+5]*2**8+this[e+6]*2**16+(n<<24);return(BigInt(
 i)<<BigInt(32))+BigInt(t+this[++e]*2**8+this[++e]*2**16+this[++e]*2**24)},"readB\
-igInt64LE"));f.prototype.readBigInt64BE=ge(a(function(e){e=e>>>0,Be(e,"offset");
+igInt64LE"));f.prototype.readBigInt64BE=we(a(function(e){e=e>>>0,Le(e,"offset");
 let t=this[e],n=this[e+7];(t===void 0||n===void 0)&&We(e,this.length-8);let i=(t<<
 24)+this[++e]*2**16+this[++e]*2**8+this[++e];return(BigInt(i)<<BigInt(32))+BigInt(
 this[++e]*2**24+this[++e]*2**16+this[++e]*2**8+n)},"readBigInt64BE"));f.prototype.
-readFloatLE=a(function(e,t){return e=e>>>0,t||q(e,4,this.length),Pe.read(this,e,
+readFloatLE=a(function(e,t){return e=e>>>0,t||q(e,4,this.length),Be.read(this,e,
 !0,23,4)},"readFloatLE");f.prototype.readFloatBE=a(function(e,t){return e=e>>>0,
-t||q(e,4,this.length),Pe.read(this,e,!1,23,4)},"readFloatBE");f.prototype.readDoubleLE=
-a(function(e,t){return e=e>>>0,t||q(e,8,this.length),Pe.read(this,e,!0,52,8)},"r\
+t||q(e,4,this.length),Be.read(this,e,!1,23,4)},"readFloatBE");f.prototype.readDoubleLE=
+a(function(e,t){return e=e>>>0,t||q(e,8,this.length),Be.read(this,e,!0,52,8)},"r\
 eadDoubleLE");f.prototype.readDoubleBE=a(function(e,t){return e=e>>>0,t||q(e,8,this.
-length),Pe.read(this,e,!1,52,8)},"readDoubleBE");function Y(r,e,t,n,i,s){if(!f.isBuffer(
+length),Be.read(this,e,!1,52,8)},"readDoubleBE");function Y(r,e,t,n,i,s){if(!f.isBuffer(
 r))throw new TypeError('"buffer" argument must be a Buffer instance');if(e>i||e<
 s)throw new RangeError('"value" argument is out of bounds');if(t+n>r.length)throw new RangeError(
 "Index out of range")}a(Y,"checkInt");f.prototype.writeUintLE=f.prototype.writeUIntLE=
@@ -1756,16 +267,16 @@ f.prototype.writeUInt32LE=a(function(e,t,n){return e=+e,t=t>>>0,n||Y(this,e,t,4,
 4294967295,0),this[t+3]=e>>>24,this[t+2]=e>>>16,this[t+1]=e>>>8,this[t]=e&255,t+
 4},"writeUInt32LE");f.prototype.writeUint32BE=f.prototype.writeUInt32BE=a(function(e,t,n){
 return e=+e,t=t>>>0,n||Y(this,e,t,4,4294967295,0),this[t]=e>>>24,this[t+1]=e>>>16,
-this[t+2]=e>>>8,this[t+3]=e&255,t+4},"writeUInt32BE");function Nn(r,e,t,n,i){Hn(
+this[t+2]=e>>>8,this[t+3]=e&255,t+4},"writeUInt32BE");function Qn(r,e,t,n,i){$n(
 e,n,i,r,t,7);let s=Number(e&BigInt(4294967295));r[t++]=s,s=s>>8,r[t++]=s,s=s>>8,
 r[t++]=s,s=s>>8,r[t++]=s;let o=Number(e>>BigInt(32)&BigInt(4294967295));return r[t++]=
-o,o=o>>8,r[t++]=o,o=o>>8,r[t++]=o,o=o>>8,r[t++]=o,t}a(Nn,"wrtBigUInt64LE");function qn(r,e,t,n,i){
-Hn(e,n,i,r,t,7);let s=Number(e&BigInt(4294967295));r[t+7]=s,s=s>>8,r[t+6]=s,s=s>>
+o,o=o>>8,r[t++]=o,o=o>>8,r[t++]=o,o=o>>8,r[t++]=o,t}a(Qn,"wrtBigUInt64LE");function Wn(r,e,t,n,i){
+$n(e,n,i,r,t,7);let s=Number(e&BigInt(4294967295));r[t+7]=s,s=s>>8,r[t+6]=s,s=s>>
 8,r[t+5]=s,s=s>>8,r[t+4]=s;let o=Number(e>>BigInt(32)&BigInt(4294967295));return r[t+
-3]=o,o=o>>8,r[t+2]=o,o=o>>8,r[t+1]=o,o=o>>8,r[t]=o,t+8}a(qn,"wrtBigUInt64BE");f.
-prototype.writeBigUInt64LE=ge(a(function(e,t=0){return Nn(this,e,t,BigInt(0),BigInt(
-"0xffffffffffffffff"))},"writeBigUInt64LE"));f.prototype.writeBigUInt64BE=ge(a(function(e,t=0){
-return qn(this,e,t,BigInt(0),BigInt("0xffffffffffffffff"))},"writeBigUInt64BE"));
+3]=o,o=o>>8,r[t+2]=o,o=o>>8,r[t+1]=o,o=o>>8,r[t]=o,t+8}a(Wn,"wrtBigUInt64BE");f.
+prototype.writeBigUInt64LE=we(a(function(e,t=0){return Qn(this,e,t,BigInt(0),BigInt(
+"0xffffffffffffffff"))},"writeBigUInt64LE"));f.prototype.writeBigUInt64BE=we(a(function(e,t=0){
+return Wn(this,e,t,BigInt(0),BigInt("0xffffffffffffffff"))},"writeBigUInt64BE"));
 f.prototype.writeIntLE=a(function(e,t,n,i){if(e=+e,t=t>>>0,!i){let c=Math.pow(2,
 8*n-1);Y(this,e,t,n,c-1,-c)}let s=0,o=1,u=0;for(this[t]=e&255;++s<n&&(o*=256);)e<
 0&&u===0&&this[t+s-1]!==0&&(u=1),this[t+s]=(e/o>>0)-u&255;return t+n},"writeIntL\
@@ -1782,19 +293,19 @@ t+2},"writeInt16BE");f.prototype.writeInt32LE=a(function(e,t,n){return e=+e,t=t>
 e>>>16,this[t+3]=e>>>24,t+4},"writeInt32LE");f.prototype.writeInt32BE=a(function(e,t,n){
 return e=+e,t=t>>>0,n||Y(this,e,t,4,2147483647,-2147483648),e<0&&(e=4294967295+e+
 1),this[t]=e>>>24,this[t+1]=e>>>16,this[t+2]=e>>>8,this[t+3]=e&255,t+4},"writeIn\
-t32BE");f.prototype.writeBigInt64LE=ge(a(function(e,t=0){return Nn(this,e,t,-BigInt(
+t32BE");f.prototype.writeBigInt64LE=we(a(function(e,t=0){return Qn(this,e,t,-BigInt(
 "0x8000000000000000"),BigInt("0x7fffffffffffffff"))},"writeBigInt64LE"));f.prototype.
-writeBigInt64BE=ge(a(function(e,t=0){return qn(this,e,t,-BigInt("0x8000000000000\
-000"),BigInt("0x7fffffffffffffff"))},"writeBigInt64BE"));function Qn(r,e,t,n,i,s){
+writeBigInt64BE=we(a(function(e,t=0){return Wn(this,e,t,-BigInt("0x8000000000000\
+000"),BigInt("0x7fffffffffffffff"))},"writeBigInt64BE"));function jn(r,e,t,n,i,s){
 if(t+n>r.length)throw new RangeError("Index out of range");if(t<0)throw new RangeError(
-"Index out of range")}a(Qn,"checkIEEE754");function Wn(r,e,t,n,i){return e=+e,t=
-t>>>0,i||Qn(r,e,t,4,34028234663852886e22,-34028234663852886e22),Pe.write(r,e,t,n,
-23,4),t+4}a(Wn,"writeFloat");f.prototype.writeFloatLE=a(function(e,t,n){return Wn(
-this,e,t,!0,n)},"writeFloatLE");f.prototype.writeFloatBE=a(function(e,t,n){return Wn(
-this,e,t,!1,n)},"writeFloatBE");function jn(r,e,t,n,i){return e=+e,t=t>>>0,i||Qn(
-r,e,t,8,17976931348623157e292,-17976931348623157e292),Pe.write(r,e,t,n,52,8),t+8}
-a(jn,"writeDouble");f.prototype.writeDoubleLE=a(function(e,t,n){return jn(this,e,
-t,!0,n)},"writeDoubleLE");f.prototype.writeDoubleBE=a(function(e,t,n){return jn(
+"Index out of range")}a(jn,"checkIEEE754");function Hn(r,e,t,n,i){return e=+e,t=
+t>>>0,i||jn(r,e,t,4,34028234663852886e22,-34028234663852886e22),Be.write(r,e,t,n,
+23,4),t+4}a(Hn,"writeFloat");f.prototype.writeFloatLE=a(function(e,t,n){return Hn(
+this,e,t,!0,n)},"writeFloatLE");f.prototype.writeFloatBE=a(function(e,t,n){return Hn(
+this,e,t,!1,n)},"writeFloatBE");function Gn(r,e,t,n,i){return e=+e,t=t>>>0,i||jn(
+r,e,t,8,17976931348623157e292,-17976931348623157e292),Be.write(r,e,t,n,52,8),t+8}
+a(Gn,"writeDouble");f.prototype.writeDoubleLE=a(function(e,t,n){return Gn(this,e,
+t,!0,n)},"writeDoubleLE");f.prototype.writeDoubleBE=a(function(e,t,n){return Gn(
 this,e,t,!1,n)},"writeDoubleBE");f.prototype.copy=a(function(e,t,n,i){if(!f.isBuffer(
 e))throw new TypeError("argument should be a Buffer");if(n||(n=0),!i&&i!==0&&(i=
 this.length),t>=e.length&&(t=e.length),t||(t=0),i>0&&i<n&&(i=n),i===n||e.length===
@@ -1813,32 +324,32 @@ length<n)throw new RangeError("Out of range index");if(n<=t)return this;t=t>>>0,
 n=n===void 0?this.length:n>>>0,e||(e=0);let s;if(typeof e=="number")for(s=t;s<n;++s)
 this[s]=e;else{let o=f.isBuffer(e)?e:f.from(e,i),u=o.length;if(u===0)throw new TypeError(
 'The value "'+e+'" is invalid for argument "value"');for(s=0;s<n-t;++s)this[s+t]=
-o[s%u]}return this},"fill");var Ie={};function Ut(r,e,t){var n;Ie[r]=(n=class extends t{constructor(){
+o[s%u]}return this},"fill");var Pe={};function Ot(r,e,t){var n;Pe[r]=(n=class extends t{constructor(){
 super(),Object.defineProperty(this,"message",{value:e.apply(this,arguments),writable:!0,
 configurable:!0}),this.name=`${this.name} [${r}]`,this.stack,delete this.name}get code(){
 return r}set code(s){Object.defineProperty(this,"code",{configurable:!0,enumerable:!0,
 value:s,writable:!0})}toString(){return`${this.name} [${r}]: ${this.message}`}},
-a(n,"NodeError"),n)}a(Ut,"E");Ut("ERR_BUFFER_OUT_OF_BOUNDS",function(r){return r?
+a(n,"NodeError"),n)}a(Ot,"E");Ot("ERR_BUFFER_OUT_OF_BOUNDS",function(r){return r?
 `${r} is outside of buffer bounds`:"Attempt to access memory outside buffer boun\
-ds"},RangeError);Ut("ERR_INVALID_ARG_TYPE",function(r,e){return`The "${r}" argum\
-ent must be of type number. Received type ${typeof e}`},TypeError);Ut("ERR_OUT_O\
+ds"},RangeError);Ot("ERR_INVALID_ARG_TYPE",function(r,e){return`The "${r}" argum\
+ent must be of type number. Received type ${typeof e}`},TypeError);Ot("ERR_OUT_O\
 F_RANGE",function(r,e,t){let n=`The value of "${r}" is out of range.`,i=t;return Number.
-isInteger(t)&&Math.abs(t)>2**32?i=Fn(String(t)):typeof t=="bigint"&&(i=String(t),
-(t>BigInt(2)**BigInt(32)||t<-(BigInt(2)**BigInt(32)))&&(i=Fn(i)),i+="n"),n+=` It\
- must be ${e}. Received ${i}`,n},RangeError);function Fn(r){let e="",t=r.length,
+isInteger(t)&&Math.abs(t)>2**32?i=Dn(String(t)):typeof t=="bigint"&&(i=String(t),
+(t>BigInt(2)**BigInt(32)||t<-(BigInt(2)**BigInt(32)))&&(i=Dn(i)),i+="n"),n+=` It\
+ must be ${e}. Received ${i}`,n},RangeError);function Dn(r){let e="",t=r.length,
 n=r[0]==="-"?1:0;for(;t>=n+4;t-=3)e=`_${r.slice(t-3,t)}${e}`;return`${r.slice(0,
-t)}${e}`}a(Fn,"addNumericalSeparator");function Fo(r,e,t){Be(e,"offset"),(r[e]===
-void 0||r[e+t]===void 0)&&We(e,r.length-(t+1))}a(Fo,"checkBounds");function Hn(r,e,t,n,i,s){
+t)}${e}`}a(Dn,"addNumericalSeparator");function Fo(r,e,t){Le(e,"offset"),(r[e]===
+void 0||r[e+t]===void 0)&&We(e,r.length-(t+1))}a(Fo,"checkBounds");function $n(r,e,t,n,i,s){
 if(r>t||r<e){let o=typeof e=="bigint"?"n":"",u;throw s>3?e===0||e===BigInt(0)?u=
 `>= 0${o} and < 2${o} ** ${(s+1)*8}${o}`:u=`>= -(2${o} ** ${(s+1)*8-1}${o}) and \
-< 2 ** ${(s+1)*8-1}${o}`:u=`>= ${e}${o} and <= ${t}${o}`,new Ie.ERR_OUT_OF_RANGE(
-"value",u,r)}Fo(n,i,s)}a(Hn,"checkIntBI");function Be(r,e){if(typeof r!="number")
-throw new Ie.ERR_INVALID_ARG_TYPE(e,"number",r)}a(Be,"validateNumber");function We(r,e,t){
-throw Math.floor(r)!==r?(Be(r,t),new Ie.ERR_OUT_OF_RANGE(t||"offset","an integer",
-r)):e<0?new Ie.ERR_BUFFER_OUT_OF_BOUNDS:new Ie.ERR_OUT_OF_RANGE(t||"offset",`>= ${t?
+< 2 ** ${(s+1)*8-1}${o}`:u=`>= ${e}${o} and <= ${t}${o}`,new Pe.ERR_OUT_OF_RANGE(
+"value",u,r)}Fo(n,i,s)}a($n,"checkIntBI");function Le(r,e){if(typeof r!="number")
+throw new Pe.ERR_INVALID_ARG_TYPE(e,"number",r)}a(Le,"validateNumber");function We(r,e,t){
+throw Math.floor(r)!==r?(Le(r,t),new Pe.ERR_OUT_OF_RANGE(t||"offset","an integer",
+r)):e<0?new Pe.ERR_BUFFER_OUT_OF_BOUNDS:new Pe.ERR_OUT_OF_RANGE(t||"offset",`>= ${t?
 1:0} and <= ${e}`,r)}a(We,"boundsError");var Mo=/[^+/0-9A-Za-z-_]/g;function Do(r){
 if(r=r.split("=")[0],r=r.trim().replace(Mo,""),r.length<2)return"";for(;r.length%
-4!==0;)r=r+"=";return r}a(Do,"base64clean");function Mt(r,e){e=e||1/0;let t,n=r.
+4!==0;)r=r+"=";return r}a(Do,"base64clean");function Dt(r,e){e=e||1/0;let t,n=r.
 length,i=null,s=[];for(let o=0;o<n;++o){if(t=r.charCodeAt(o),t>55295&&t<57344){if(!i){
 if(t>56319){(e-=3)>-1&&s.push(239,191,189);continue}else if(o+1===n){(e-=3)>-1&&
 s.push(239,191,189);continue}i=t;continue}if(t<56320){(e-=3)>-1&&s.push(239,191,
@@ -1847,67 +358,67 @@ s.push(239,191,189);continue}i=t;continue}if(t<56320){(e-=3)>-1&&s.push(239,191,
 s.push(t>>6|192,t&63|128)}else if(t<65536){if((e-=3)<0)break;s.push(t>>12|224,t>>
 6&63|128,t&63|128)}else if(t<1114112){if((e-=4)<0)break;s.push(t>>18|240,t>>12&63|
 128,t>>6&63|128,t&63|128)}else throw new Error("Invalid code point")}return s}a(
-Mt,"utf8ToBytes");function ko(r){let e=[];for(let t=0;t<r.length;++t)e.push(r.charCodeAt(
+Dt,"utf8ToBytes");function ko(r){let e=[];for(let t=0;t<r.length;++t)e.push(r.charCodeAt(
 t)&255);return e}a(ko,"asciiToBytes");function Uo(r,e){let t,n,i,s=[];for(let o=0;o<
 r.length&&!((e-=2)<0);++o)t=r.charCodeAt(o),n=t>>8,i=t%256,s.push(i),s.push(n);return s}
-a(Uo,"utf16leToBytes");function Gn(r){return Lt.toByteArray(Do(r))}a(Gn,"base64T\
+a(Uo,"utf16leToBytes");function Vn(r){return Rt.toByteArray(Do(r))}a(Vn,"base64T\
 oBytes");function st(r,e,t,n){let i;for(i=0;i<n&&!(i+t>=e.length||i>=r.length);++i)
-e[i+t]=r[i];return i}a(st,"blitBuffer");function ue(r,e){return r instanceof e||
+e[i+t]=r[i];return i}a(st,"blitBuffer");function ce(r,e){return r instanceof e||
 r!=null&&r.constructor!=null&&r.constructor.name!=null&&r.constructor.name===e.name}
-a(ue,"isInstance");function Ot(r){return r!==r}a(Ot,"numberIsNaN");var Oo=function(){
+a(ce,"isInstance");function Nt(r){return r!==r}a(Nt,"numberIsNaN");var Oo=function(){
 let r="0123456789abcdef",e=new Array(256);for(let t=0;t<16;++t){let n=t*16;for(let i=0;i<
-16;++i)e[n+i]=r[t]+r[i]}return e}();function ge(r){return typeof BigInt>"u"?No:r}
-a(ge,"defineBigIntMethod");function No(){throw new Error("BigInt not supported")}
+16;++i)e[n+i]=r[t]+r[i]}return e}();function we(r){return typeof BigInt>"u"?No:r}
+a(we,"defineBigIntMethod");function No(){throw new Error("BigInt not supported")}
 a(No,"BufferBigIntNotDefined")});var S,x,v,g,y,m,p=z(()=>{"use strict";S=globalThis,x=globalThis.setImmediate??(r=>setTimeout(
 r,0)),v=globalThis.clearImmediate??(r=>clearTimeout(r)),g=globalThis.crypto??{};
 g.subtle??(g.subtle={});y=typeof globalThis.Buffer=="function"&&typeof globalThis.
-Buffer.allocUnsafe=="function"?globalThis.Buffer:$n().Buffer,m=globalThis.process??
+Buffer.allocUnsafe=="function"?globalThis.Buffer:Kn().Buffer,m=globalThis.process??
 {};m.env??(m.env={});try{m.nextTick(()=>{})}catch{let e=Promise.resolve();m.nextTick=
-e.then.bind(e)}});var we=I((Xc,Nt)=>{"use strict";p();var Re=typeof Reflect=="object"?Reflect:null,
-Vn=Re&&typeof Re.apply=="function"?Re.apply:a(function(e,t,n){return Function.prototype.
-apply.call(e,t,n)},"ReflectApply"),ot;Re&&typeof Re.ownKeys=="function"?ot=Re.ownKeys:
+e.then.bind(e)}});var be=I((eh,qt)=>{"use strict";p();var Fe=typeof Reflect=="object"?Reflect:null,
+zn=Fe&&typeof Fe.apply=="function"?Fe.apply:a(function(e,t,n){return Function.prototype.
+apply.call(e,t,n)},"ReflectApply"),ot;Fe&&typeof Fe.ownKeys=="function"?ot=Fe.ownKeys:
 Object.getOwnPropertySymbols?ot=a(function(e){return Object.getOwnPropertyNames(
 e).concat(Object.getOwnPropertySymbols(e))},"ReflectOwnKeys"):ot=a(function(e){return Object.
 getOwnPropertyNames(e)},"ReflectOwnKeys");function qo(r){console&&console.warn&&
-console.warn(r)}a(qo,"ProcessEmitWarning");var zn=Number.isNaN||a(function(e){return e!==
-e},"NumberIsNaN");function L(){L.init.call(this)}a(L,"EventEmitter");Nt.exports=
-L;Nt.exports.once=Ho;L.EventEmitter=L;L.prototype._events=void 0;L.prototype._eventsCount=
-0;L.prototype._maxListeners=void 0;var Kn=10;function at(r){if(typeof r!="functi\
+console.warn(r)}a(qo,"ProcessEmitWarning");var Zn=Number.isNaN||a(function(e){return e!==
+e},"NumberIsNaN");function L(){L.init.call(this)}a(L,"EventEmitter");qt.exports=
+L;qt.exports.once=Ho;L.EventEmitter=L;L.prototype._events=void 0;L.prototype._eventsCount=
+0;L.prototype._maxListeners=void 0;var Yn=10;function at(r){if(typeof r!="functi\
 on")throw new TypeError('The "listener" argument must be of type Function. Recei\
 ved type '+typeof r)}a(at,"checkListener");Object.defineProperty(L,"defaultMaxLi\
-steners",{enumerable:!0,get:a(function(){return Kn},"get"),set:a(function(r){if(typeof r!=
-"number"||r<0||zn(r))throw new RangeError('The value of "defaultMaxListeners" is\
- out of range. It must be a non-negative number. Received '+r+".");Kn=r},"set")});
+steners",{enumerable:!0,get:a(function(){return Yn},"get"),set:a(function(r){if(typeof r!=
+"number"||r<0||Zn(r))throw new RangeError('The value of "defaultMaxListeners" is\
+ out of range. It must be a non-negative number. Received '+r+".");Yn=r},"set")});
 L.init=function(){(this._events===void 0||this._events===Object.getPrototypeOf(this).
 _events)&&(this._events=Object.create(null),this._eventsCount=0),this._maxListeners=
 this._maxListeners||void 0};L.prototype.setMaxListeners=a(function(e){if(typeof e!=
-"number"||e<0||zn(e))throw new RangeError('The value of "n" is out of range. It \
+"number"||e<0||Zn(e))throw new RangeError('The value of "n" is out of range. It \
 must be a non-negative number. Received '+e+".");return this._maxListeners=e,this},
-"setMaxListeners");function Yn(r){return r._maxListeners===void 0?L.defaultMaxListeners:
-r._maxListeners}a(Yn,"_getMaxListeners");L.prototype.getMaxListeners=a(function(){
-return Yn(this)},"getMaxListeners");L.prototype.emit=a(function(e){for(var t=[],
+"setMaxListeners");function Jn(r){return r._maxListeners===void 0?L.defaultMaxListeners:
+r._maxListeners}a(Jn,"_getMaxListeners");L.prototype.getMaxListeners=a(function(){
+return Jn(this)},"getMaxListeners");L.prototype.emit=a(function(e){for(var t=[],
 n=1;n<arguments.length;n++)t.push(arguments[n]);var i=e==="error",s=this._events;
 if(s!==void 0)i=i&&s.error===void 0;else if(!i)return!1;if(i){var o;if(t.length>
 0&&(o=t[0]),o instanceof Error)throw o;var u=new Error("Unhandled error."+(o?" ("+
 o.message+")":""));throw u.context=o,u}var c=s[e];if(c===void 0)return!1;if(typeof c==
-"function")Vn(c,this,t);else for(var h=c.length,l=ti(c,h),n=0;n<h;++n)Vn(l[n],this,
-t);return!0},"emit");function Zn(r,e,t,n){var i,s,o;if(at(t),s=r._events,s===void 0?
+"function")zn(c,this,t);else for(var h=c.length,l=ni(c,h),n=0;n<h;++n)zn(l[n],this,
+t);return!0},"emit");function Xn(r,e,t,n){var i,s,o;if(at(t),s=r._events,s===void 0?
 (s=r._events=Object.create(null),r._eventsCount=0):(s.newListener!==void 0&&(r.emit(
 "newListener",e,t.listener?t.listener:t),s=r._events),o=s[e]),o===void 0)o=s[e]=
 t,++r._eventsCount;else if(typeof o=="function"?o=s[e]=n?[t,o]:[o,t]:n?o.unshift(
-t):o.push(t),i=Yn(r),i>0&&o.length>i&&!o.warned){o.warned=!0;var u=new Error("Po\
+t):o.push(t),i=Jn(r),i>0&&o.length>i&&!o.warned){o.warned=!0;var u=new Error("Po\
 ssible EventEmitter memory leak detected. "+o.length+" "+String(e)+" listeners a\
 dded. Use emitter.setMaxListeners() to increase limit");u.name="MaxListenersExce\
-ededWarning",u.emitter=r,u.type=e,u.count=o.length,qo(u)}return r}a(Zn,"_addList\
-ener");L.prototype.addListener=a(function(e,t){return Zn(this,e,t,!1)},"addListe\
+ededWarning",u.emitter=r,u.type=e,u.count=o.length,qo(u)}return r}a(Xn,"_addList\
+ener");L.prototype.addListener=a(function(e,t){return Xn(this,e,t,!1)},"addListe\
 ner");L.prototype.on=L.prototype.addListener;L.prototype.prependListener=a(function(e,t){
-return Zn(this,e,t,!0)},"prependListener");function Qo(){if(!this.fired)return this.
+return Xn(this,e,t,!0)},"prependListener");function Qo(){if(!this.fired)return this.
 target.removeListener(this.type,this.wrapFn),this.fired=!0,arguments.length===0?
 this.listener.call(this.target):this.listener.apply(this.target,arguments)}a(Qo,
-"onceWrapper");function Jn(r,e,t){var n={fired:!1,wrapFn:void 0,target:r,type:e,
-listener:t},i=Qo.bind(n);return i.listener=t,n.wrapFn=i,i}a(Jn,"_onceWrap");L.prototype.
-once=a(function(e,t){return at(t),this.on(e,Jn(this,e,t)),this},"once");L.prototype.
-prependOnceListener=a(function(e,t){return at(t),this.prependListener(e,Jn(this,
+"onceWrapper");function ei(r,e,t){var n={fired:!1,wrapFn:void 0,target:r,type:e,
+listener:t},i=Qo.bind(n);return i.listener=t,n.wrapFn=i,i}a(ei,"_onceWrap");L.prototype.
+once=a(function(e,t){return at(t),this.on(e,ei(this,e,t)),this},"once");L.prototype.
+prependOnceListener=a(function(e,t){return at(t),this.prependListener(e,ei(this,
 e,t)),this},"prependOnceListener");L.prototype.removeListener=a(function(e,t){var n,
 i,s,o,u;if(at(t),i=this._events,i===void 0)return this;if(n=i[e],n===void 0)return this;
 if(n===t||n.listener===t)--this._eventsCount===0?this._events=Object.create(null):
@@ -1923,28 +434,28 @@ this;if(arguments.length===0){var s=Object.keys(n),o;for(i=0;i<s.length;++i)o=s[
 o!=="removeListener"&&this.removeAllListeners(o);return this.removeAllListeners(
 "removeListener"),this._events=Object.create(null),this._eventsCount=0,this}if(t=
 n[e],typeof t=="function")this.removeListener(e,t);else if(t!==void 0)for(i=t.length-
-1;i>=0;i--)this.removeListener(e,t[i]);return this},"removeAllListeners");function Xn(r,e,t){
+1;i>=0;i--)this.removeListener(e,t[i]);return this},"removeAllListeners");function ti(r,e,t){
 var n=r._events;if(n===void 0)return[];var i=n[e];return i===void 0?[]:typeof i==
-"function"?t?[i.listener||i]:[i]:t?jo(i):ti(i,i.length)}a(Xn,"_listeners");L.prototype.
-listeners=a(function(e){return Xn(this,e,!0)},"listeners");L.prototype.rawListeners=
-a(function(e){return Xn(this,e,!1)},"rawListeners");L.listenerCount=function(r,e){
-return typeof r.listenerCount=="function"?r.listenerCount(e):ei.call(r,e)};L.prototype.
-listenerCount=ei;function ei(r){var e=this._events;if(e!==void 0){var t=e[r];if(typeof t==
-"function")return 1;if(t!==void 0)return t.length}return 0}a(ei,"listenerCount");
+"function"?t?[i.listener||i]:[i]:t?jo(i):ni(i,i.length)}a(ti,"_listeners");L.prototype.
+listeners=a(function(e){return ti(this,e,!0)},"listeners");L.prototype.rawListeners=
+a(function(e){return ti(this,e,!1)},"rawListeners");L.listenerCount=function(r,e){
+return typeof r.listenerCount=="function"?r.listenerCount(e):ri.call(r,e)};L.prototype.
+listenerCount=ri;function ri(r){var e=this._events;if(e!==void 0){var t=e[r];if(typeof t==
+"function")return 1;if(t!==void 0)return t.length}return 0}a(ri,"listenerCount");
 L.prototype.eventNames=a(function(){return this._eventsCount>0?ot(this._events):
-[]},"eventNames");function ti(r,e){for(var t=new Array(e),n=0;n<e;++n)t[n]=r[n];
-return t}a(ti,"arrayClone");function Wo(r,e){for(;e+1<r.length;e++)r[e]=r[e+1];r.
+[]},"eventNames");function ni(r,e){for(var t=new Array(e),n=0;n<e;++n)t[n]=r[n];
+return t}a(ni,"arrayClone");function Wo(r,e){for(;e+1<r.length;e++)r[e]=r[e+1];r.
 pop()}a(Wo,"spliceOne");function jo(r){for(var e=new Array(r.length),t=0;t<e.length;++t)
 e[t]=r[t].listener||r[t];return e}a(jo,"unwrapListeners");function Ho(r,e){return new Promise(
 function(t,n){function i(o){r.removeListener(e,s),n(o)}a(i,"errorListener");function s(){
 typeof r.removeListener=="function"&&r.removeListener("error",i),t([].slice.call(
-arguments))}a(s,"resolver"),ri(r,e,s,{once:!0}),e!=="error"&&Go(r,i,{once:!0})})}
-a(Ho,"once");function Go(r,e,t){typeof r.on=="function"&&ri(r,"error",e,t)}a(Go,
-"addErrorHandlerIfEventEmitter");function ri(r,e,t,n){if(typeof r.on=="function")
+arguments))}a(s,"resolver"),ii(r,e,s,{once:!0}),e!=="error"&&Go(r,i,{once:!0})})}
+a(Ho,"once");function Go(r,e,t){typeof r.on=="function"&&ii(r,"error",e,t)}a(Go,
+"addErrorHandlerIfEventEmitter");function ii(r,e,t,n){if(typeof r.on=="function")
 n.once?r.once(e,t):r.on(e,t);else if(typeof r.addEventListener=="function")r.addEventListener(
 e,a(function i(s){n.once&&r.removeEventListener(e,i),t(s)},"wrapListener"));else
 throw new TypeError('The "emitter" argument must be of type EventEmitter. Receiv\
-ed type '+typeof r)}a(ri,"eventTargetAgnosticAddListener")});var je={};ie(je,{default:()=>$o});var $o,He=z(()=>{"use strict";p();$o={}});function Ge(r){let e=1779033703,t=3144134277,n=1013904242,i=2773480762,s=1359893119,
+ed type '+typeof r)}a(ii,"eventTargetAgnosticAddListener")});var je={};te(je,{default:()=>$o});var $o,He=z(()=>{"use strict";p();$o={}});function Ge(r){let e=1779033703,t=3144134277,n=1013904242,i=2773480762,s=1359893119,
 o=2600822924,u=528734635,c=1541459225,h=0,l=0,d=[1116352408,1899447441,3049323471,
 3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,
 1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,
@@ -1956,13 +467,13 @@ o=2600822924,u=528734635,c=1541459225,h=0,l=0,d=[1116352408,1899447441,304932347
 2361852424,2428436474,2756734187,3204031479,3329325298],b=a((A,w)=>A>>>w|A<<32-w,
 "rrot"),C=new Uint32Array(64),B=new Uint8Array(64),W=a(()=>{for(let R=0,G=0;R<16;R++,
 G+=4)C[R]=B[G]<<24|B[G+1]<<16|B[G+2]<<8|B[G+3];for(let R=16;R<64;R++){let G=b(C[R-
-15],7)^b(C[R-15],18)^C[R-15]>>>3,he=b(C[R-2],17)^b(C[R-2],19)^C[R-2]>>>10;C[R]=C[R-
-16]+G+C[R-7]+he|0}let A=e,w=t,P=n,V=i,k=s,j=o,ce=u,ee=c;for(let R=0;R<64;R++){let G=b(
-k,6)^b(k,11)^b(k,25),he=k&j^~k&ce,ye=ee+G+he+d[R]+C[R]|0,xe=b(A,2)^b(A,13)^b(A,22),
-me=A&w^A&P^w&P,se=xe+me|0;ee=ce,ce=j,j=k,k=V+ye|0,V=P,P=w,w=A,A=ye+se|0}e=e+A|0,
-t=t+w|0,n=n+P|0,i=i+V|0,s=s+k|0,o=o+j|0,u=u+ce|0,c=c+ee|0,l=0},"process"),X=a(A=>{
+15],7)^b(C[R-15],18)^C[R-15]>>>3,le=b(C[R-2],17)^b(C[R-2],19)^C[R-2]>>>10;C[R]=C[R-
+16]+G+C[R-7]+le|0}let A=e,w=t,P=n,V=i,k=s,j=o,he=u,ee=c;for(let R=0;R<64;R++){let G=b(
+k,6)^b(k,11)^b(k,25),le=k&j^~k&he,me=ee+G+le+d[R]+C[R]|0,_e=b(A,2)^b(A,13)^b(A,22),
+ge=A&w^A&P^w&P,oe=_e+ge|0;ee=he,he=j,j=k,k=V+me|0,V=P,P=w,w=A,A=me+oe|0}e=e+A|0,
+t=t+w|0,n=n+P|0,i=i+V|0,s=s+k|0,o=o+j|0,u=u+he|0,c=c+ee|0,l=0},"process"),X=a(A=>{
 typeof A=="string"&&(A=new TextEncoder().encode(A));for(let w=0;w<A.length;w++)B[l++]=
-A[w],l===64&&W();h+=A.length},"add"),de=a(()=>{if(B[l++]=128,l==64&&W(),l+8>64){
+A[w],l===64&&W();h+=A.length},"add"),ye=a(()=>{if(B[l++]=128,l==64&&W(),l+8>64){
 for(;l<64;)B[l++]=0;W()}for(;l<58;)B[l++]=0;let A=h*8;B[l++]=A/1099511627776&255,
 B[l++]=A/4294967296&255,B[l++]=A>>>24,B[l++]=A>>>16&255,B[l++]=A>>>8&255,B[l++]=
 A&255,W();let w=new Uint8Array(32);return w[0]=e>>>24,w[1]=e>>>16&255,w[2]=e>>>8&
@@ -1971,8 +482,8 @@ w[9]=n>>>16&255,w[10]=n>>>8&255,w[11]=n&255,w[12]=i>>>24,w[13]=i>>>16&255,w[14]=
 i>>>8&255,w[15]=i&255,w[16]=s>>>24,w[17]=s>>>16&255,w[18]=s>>>8&255,w[19]=s&255,
 w[20]=o>>>24,w[21]=o>>>16&255,w[22]=o>>>8&255,w[23]=o&255,w[24]=u>>>24,w[25]=u>>>
 16&255,w[26]=u>>>8&255,w[27]=u&255,w[28]=c>>>24,w[29]=c>>>16&255,w[30]=c>>>8&255,
-w[31]=c&255,w},"digest");return r===void 0?{add:X,digest:de}:(X(r),de())}var ni=z(
-()=>{"use strict";p();a(Ge,"sha256")});var O,$e,ii=z(()=>{"use strict";p();O=class O{constructor(){_(this,"_dataLength",
+w[31]=c&255,w},"digest");return r===void 0?{add:X,digest:ye}:(X(r),ye())}var si=z(
+()=>{"use strict";p();a(Ge,"sha256")});var O,$e,oi=z(()=>{"use strict";p();O=class O{constructor(){_(this,"_dataLength",
 0);_(this,"_bufferLength",0);_(this,"_state",new Int32Array(4));_(this,"_buffer",
 new ArrayBuffer(68));_(this,"_buffer8");_(this,"_buffer32");this._buffer8=new Uint8Array(
 this._buffer,0,68),this._buffer32=new Uint32Array(this._buffer,0,17),this.start()}static hashByteArray(e,t=!1){
@@ -2049,7 +560,7 @@ u[2],16),h=parseInt(u[1],16)||0;i[14]=c,i[15]=h}return O._md5cycle(this._state,i
 e?this._state:O._hex(this._state)}};a(O,"Md5"),_(O,"stateIdentity",new Int32Array(
 [1732584193,-271733879,-1732584194,271733878])),_(O,"buffer32Identity",new Int32Array(
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])),_(O,"hexChars","0123456789abcdef"),_(O,"hexO\
-ut",[]),_(O,"onePassHasher",new O);$e=O});var qt={};ie(qt,{createHash:()=>Ko,createHmac:()=>zo,randomBytes:()=>Vo});function Vo(r){
+ut",[]),_(O,"onePassHasher",new O);$e=O});var Qt={};te(Qt,{createHash:()=>Ko,createHmac:()=>zo,randomBytes:()=>Vo});function Vo(r){
 return g.getRandomValues(y.alloc(r))}function Ko(r){if(r==="sha256")return{update:a(
 function(e){return{digest:a(function(){return y.from(Ge(e))},"digest")}},"update")};
 if(r==="md5")return{update:a(function(e){return{digest:a(function(){return typeof e==
@@ -2061,8 +572,8 @@ digest:a(function(){typeof e=="string"&&(e=new TextEncoder().encode(e)),typeof t
 64){let c=new Uint8Array(64);c.set(e),e=c}let i=new Uint8Array(64),s=new Uint8Array(
 64);for(let c=0;c<64;c++)i[c]=54^e[c],s[c]=92^e[c];let o=new Uint8Array(t.length+
 64);o.set(i,0),o.set(t,64);let u=new Uint8Array(96);return u.set(s,0),u.set(Ge(o),
-64),y.from(Ge(u))},"digest")}},"update")}}var Qt=z(()=>{"use strict";p();ni();ii();
-a(Vo,"randomBytes");a(Ko,"createHash");a(zo,"createHmac")});var jt=I(si=>{"use strict";p();si.parse=function(r,e){return new Wt(r,e).parse()};
+64),y.from(Ge(u))},"digest")}},"update")}}var Wt=z(()=>{"use strict";p();si();oi();
+a(Vo,"randomBytes");a(Ko,"createHash");a(zo,"createHmac")});var Ht=I(ai=>{"use strict";p();ai.parse=function(r,e){return new jt(r,e).parse()};
 var ut=class ut{constructor(e,t){this.source=e,this.transform=t||Yo,this.position=
 0,this.entries=[],this.recorded=[],this.dimension=0}isEof(){return this.position>=
 this.source.length}nextCharacter(){var e=this.source[this.position++];return e===
@@ -2077,97 +588,97 @@ n.parse(!0)),this.position+=n.position-2);else if(t.value==="}"&&!i){if(this.dim
 !this.dimension&&(this.newEntry(),e))return this.entries}else t.value==='"'&&!t.
 escaped?(i&&this.newEntry(!0),i=!i):t.value===","&&!i?this.newEntry():this.record(
 t.value);if(this.dimension!==0)throw new Error("array dimension not balanced");return this.
-entries}};a(ut,"ArrayParser");var Wt=ut;function Yo(r){return r}a(Yo,"identity")});var Ht=I((mh,oi)=>{p();var Zo=jt();oi.exports={create:a(function(r,e){return{parse:a(
-function(){return Zo.parse(r,e)},"parse")}},"create")}});var ci=I((bh,ui)=>{"use strict";p();var Jo=/(\d{1,})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})(\.\d{1,})?.*?( BC)?$/,
+entries}};a(ut,"ArrayParser");var jt=ut;function Yo(r){return r}a(Yo,"identity")});var Gt=I((gh,ui)=>{p();var Zo=Ht();ui.exports={create:a(function(r,e){return{parse:a(
+function(){return Zo.parse(r,e)},"parse")}},"create")}});var li=I((Sh,hi)=>{"use strict";p();var Jo=/(\d{1,})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})(\.\d{1,})?.*?( BC)?$/,
 Xo=/^(\d{1,})-(\d{2})-(\d{2})( BC)?$/,ea=/([Z+-])(\d{2})?:?(\d{2})?:?(\d{2})?/,ta=/^-?infinity$/;
-ui.exports=a(function(e){if(ta.test(e))return Number(e.replace("i","I"));var t=Jo.
-exec(e);if(!t)return ra(e)||null;var n=!!t[8],i=parseInt(t[1],10);n&&(i=ai(i));var s=parseInt(
+hi.exports=a(function(e){if(ta.test(e))return Number(e.replace("i","I"));var t=Jo.
+exec(e);if(!t)return ra(e)||null;var n=!!t[8],i=parseInt(t[1],10);n&&(i=ci(i));var s=parseInt(
 t[2],10)-1,o=t[3],u=parseInt(t[4],10),c=parseInt(t[5],10),h=parseInt(t[6],10),l=t[7];
 l=l?1e3*parseFloat(l):0;var d,b=na(e);return b!=null?(d=new Date(Date.UTC(i,s,o,
-u,c,h,l)),Gt(i)&&d.setUTCFullYear(i),b!==0&&d.setTime(d.getTime()-b)):(d=new Date(
-i,s,o,u,c,h,l),Gt(i)&&d.setFullYear(i)),d},"parseDate");function ra(r){var e=Xo.
-exec(r);if(e){var t=parseInt(e[1],10),n=!!e[4];n&&(t=ai(t));var i=parseInt(e[2],
-10)-1,s=e[3],o=new Date(t,i,s);return Gt(t)&&o.setFullYear(t),o}}a(ra,"getDate");
+u,c,h,l)),$t(i)&&d.setUTCFullYear(i),b!==0&&d.setTime(d.getTime()-b)):(d=new Date(
+i,s,o,u,c,h,l),$t(i)&&d.setFullYear(i)),d},"parseDate");function ra(r){var e=Xo.
+exec(r);if(e){var t=parseInt(e[1],10),n=!!e[4];n&&(t=ci(t));var i=parseInt(e[2],
+10)-1,s=e[3],o=new Date(t,i,s);return $t(t)&&o.setFullYear(t),o}}a(ra,"getDate");
 function na(r){if(r.endsWith("+00"))return 0;var e=ea.exec(r.split(" ")[1]);if(e){
 var t=e[1];if(t==="Z")return 0;var n=t==="-"?-1:1,i=parseInt(e[2],10)*3600+parseInt(
-e[3]||0,10)*60+parseInt(e[4]||0,10);return i*n*1e3}}a(na,"timeZoneOffset");function ai(r){
-return-(r-1)}a(ai,"bcYearToNegativeYear");function Gt(r){return r>=0&&r<100}a(Gt,
-"is0To99")});var li=I((vh,hi)=>{p();hi.exports=sa;var ia=Object.prototype.hasOwnProperty;function sa(r){
+e[3]||0,10)*60+parseInt(e[4]||0,10);return i*n*1e3}}a(na,"timeZoneOffset");function ci(r){
+return-(r-1)}a(ci,"bcYearToNegativeYear");function $t(r){return r>=0&&r<100}a($t,
+"is0To99")});var pi=I((Eh,fi)=>{p();fi.exports=sa;var ia=Object.prototype.hasOwnProperty;function sa(r){
 for(var e=1;e<arguments.length;e++){var t=arguments[e];for(var n in t)ia.call(t,
-n)&&(r[n]=t[n])}return r}a(sa,"extend")});var di=I((Ah,pi)=>{"use strict";p();var oa=li();pi.exports=Fe;function Fe(r){if(!(this instanceof
-Fe))return new Fe(r);oa(this,wa(r))}a(Fe,"PostgresInterval");var aa=["seconds","\
-minutes","hours","days","months","years"];Fe.prototype.toPostgres=function(){var r=aa.
+n)&&(r[n]=t[n])}return r}a(sa,"extend")});var mi=I((Ch,yi)=>{"use strict";p();var oa=pi();yi.exports=Me;function Me(r){if(!(this instanceof
+Me))return new Me(r);oa(this,wa(r))}a(Me,"PostgresInterval");var aa=["seconds","\
+minutes","hours","days","months","years"];Me.prototype.toPostgres=function(){var r=aa.
 filter(this.hasOwnProperty,this);return this.milliseconds&&r.indexOf("seconds")<
 0&&r.push("seconds"),r.length===0?"0":r.map(function(e){var t=this[e]||0;return e===
 "seconds"&&this.milliseconds&&(t=(t+this.milliseconds/1e3).toFixed(6).replace(/\.?0+$/,
 "")),t+" "+e},this).join(" ")};var ua={years:"Y",months:"M",days:"D",hours:"H",minutes:"\
-M",seconds:"S"},ca=["years","months","days"],ha=["hours","minutes","seconds"];Fe.
-prototype.toISOString=Fe.prototype.toISO=function(){var r=ca.map(t,this).join(""),
+M",seconds:"S"},ca=["years","months","days"],ha=["hours","minutes","seconds"];Me.
+prototype.toISOString=Me.prototype.toISO=function(){var r=ca.map(t,this).join(""),
 e=ha.map(t,this).join("");return"P"+r+"T"+e;function t(n){var i=this[n]||0;return n===
 "seconds"&&this.milliseconds&&(i=(i+this.milliseconds/1e3).toFixed(6).replace(/0+$/,
-"")),i+ua[n]}};var $t="([+-]?\\d+)",la=$t+"\\s+years?",fa=$t+"\\s+mons?",pa=$t+"\
+"")),i+ua[n]}};var Vt="([+-]?\\d+)",la=Vt+"\\s+years?",fa=Vt+"\\s+mons?",pa=Vt+"\
 \\s+days?",da="([+-])?([\\d]*):(\\d\\d):(\\d\\d)\\.?(\\d{1,6})?",ya=new RegExp([
-la,fa,pa,da].map(function(r){return"("+r+")?"}).join("\\s*")),fi={years:2,months:4,
+la,fa,pa,da].map(function(r){return"("+r+")?"}).join("\\s*")),di={years:2,months:4,
 days:6,hours:9,minutes:10,seconds:11,milliseconds:12},ma=["hours","minutes","sec\
 onds","milliseconds"];function ga(r){var e=r+"000000".slice(r.length);return parseInt(
 e,10)/1e3}a(ga,"parseMilliseconds");function wa(r){if(!r)return{};var e=ya.exec(
-r),t=e[8]==="-";return Object.keys(fi).reduce(function(n,i){var s=fi[i],o=e[s];return!o||
+r),t=e[8]==="-";return Object.keys(di).reduce(function(n,i){var s=di[i],o=e[s];return!o||
 (o=i==="milliseconds"?ga(o):parseInt(o,10),!o)||(t&&~ma.indexOf(i)&&(o*=-1),n[i]=
-o),n},{})}a(wa,"parse")});var mi=I((Ih,yi)=>{"use strict";p();yi.exports=a(function(e){if(/^\\x/.test(e))return new y(
+o),n},{})}a(wa,"parse")});var wi=I((Ph,gi)=>{"use strict";p();gi.exports=a(function(e){if(/^\\x/.test(e))return new y(
 e.substr(2),"hex");for(var t="",n=0;n<e.length;)if(e[n]!=="\\")t+=e[n],++n;else if(/[0-7]{3}/.
 test(e.substr(n+1,3)))t+=String.fromCharCode(parseInt(e.substr(n+1,3),8)),n+=4;else{
 for(var i=1;n+i<e.length&&e[n+i]==="\\";)i++;for(var s=0;s<Math.floor(i/2);++s)t+=
-"\\";n+=Math.floor(i/2)*2}return new y(t,"binary")},"parseBytea")});var Ei=I((Lh,vi)=>{p();var Ve=jt(),Ke=Ht(),ct=ci(),wi=di(),bi=mi();function ht(r){
-return a(function(t){return t===null?t:r(t)},"nullAllowed")}a(ht,"allowNull");function Si(r){
+"\\";n+=Math.floor(i/2)*2}return new y(t,"binary")},"parseBytea")});var Ai=I((Rh,_i)=>{p();var Ve=Ht(),Ke=Gt(),ct=li(),Si=mi(),xi=wi();function ht(r){
+return a(function(t){return t===null?t:r(t)},"nullAllowed")}a(ht,"allowNull");function vi(r){
 return r===null?r:r==="TRUE"||r==="t"||r==="true"||r==="y"||r==="yes"||r==="on"||
-r==="1"}a(Si,"parseBool");function ba(r){return r?Ve.parse(r,Si):null}a(ba,"pars\
-eBoolArray");function Sa(r){return parseInt(r,10)}a(Sa,"parseBaseTenInt");function Vt(r){
-return r?Ve.parse(r,ht(Sa)):null}a(Vt,"parseIntegerArray");function xa(r){return r?
-Ve.parse(r,ht(function(e){return xi(e).trim()})):null}a(xa,"parseBigIntegerArray");
+r==="1"}a(vi,"parseBool");function ba(r){return r?Ve.parse(r,vi):null}a(ba,"pars\
+eBoolArray");function Sa(r){return parseInt(r,10)}a(Sa,"parseBaseTenInt");function Kt(r){
+return r?Ve.parse(r,ht(Sa)):null}a(Kt,"parseIntegerArray");function xa(r){return r?
+Ve.parse(r,ht(function(e){return Ei(e).trim()})):null}a(xa,"parseBigIntegerArray");
 var va=a(function(r){if(!r)return null;var e=Ke.create(r,function(t){return t!==
-null&&(t=Zt(t)),t});return e.parse()},"parsePointArray"),Kt=a(function(r){if(!r)
+null&&(t=Jt(t)),t});return e.parse()},"parsePointArray"),zt=a(function(r){if(!r)
 return null;var e=Ke.create(r,function(t){return t!==null&&(t=parseFloat(t)),t});
-return e.parse()},"parseFloatArray"),re=a(function(r){if(!r)return null;var e=Ke.
-create(r);return e.parse()},"parseStringArray"),zt=a(function(r){if(!r)return null;
+return e.parse()},"parseFloatArray"),ne=a(function(r){if(!r)return null;var e=Ke.
+create(r);return e.parse()},"parseStringArray"),Yt=a(function(r){if(!r)return null;
 var e=Ke.create(r,function(t){return t!==null&&(t=ct(t)),t});return e.parse()},"\
 parseDateArray"),Ea=a(function(r){if(!r)return null;var e=Ke.create(r,function(t){
-return t!==null&&(t=wi(t)),t});return e.parse()},"parseIntervalArray"),_a=a(function(r){
-return r?Ve.parse(r,ht(bi)):null},"parseByteAArray"),Yt=a(function(r){return parseInt(
-r,10)},"parseInteger"),xi=a(function(r){var e=String(r);return/^\d+$/.test(e)?e:
-r},"parseBigInteger"),gi=a(function(r){return r?Ve.parse(r,ht(JSON.parse)):null},
-"parseJsonArray"),Zt=a(function(r){return r[0]!=="("?null:(r=r.substring(1,r.length-
+return t!==null&&(t=Si(t)),t});return e.parse()},"parseIntervalArray"),_a=a(function(r){
+return r?Ve.parse(r,ht(xi)):null},"parseByteAArray"),Zt=a(function(r){return parseInt(
+r,10)},"parseInteger"),Ei=a(function(r){var e=String(r);return/^\d+$/.test(e)?e:
+r},"parseBigInteger"),bi=a(function(r){return r?Ve.parse(r,ht(JSON.parse)):null},
+"parseJsonArray"),Jt=a(function(r){return r[0]!=="("?null:(r=r.substring(1,r.length-
 1).split(","),{x:parseFloat(r[0]),y:parseFloat(r[1])})},"parsePoint"),Aa=a(function(r){
 if(r[0]!=="<"&&r[1]!=="(")return null;for(var e="(",t="",n=!1,i=2;i<r.length-1;i++){
 if(n||(e+=r[i]),r[i]===")"){n=!0;continue}else if(!n)continue;r[i]!==","&&(t+=r[i])}
-var s=Zt(e);return s.radius=parseFloat(t),s},"parseCircle"),Ca=a(function(r){r(20,
-xi),r(21,Yt),r(23,Yt),r(26,Yt),r(700,parseFloat),r(701,parseFloat),r(16,Si),r(1082,
-ct),r(1114,ct),r(1184,ct),r(600,Zt),r(651,re),r(718,Aa),r(1e3,ba),r(1001,_a),r(1005,
-Vt),r(1007,Vt),r(1028,Vt),r(1016,xa),r(1017,va),r(1021,Kt),r(1022,Kt),r(1231,Kt),
-r(1014,re),r(1015,re),r(1008,re),r(1009,re),r(1040,re),r(1041,re),r(1115,zt),r(1182,
-zt),r(1185,zt),r(1186,wi),r(1187,Ea),r(17,bi),r(114,JSON.parse.bind(JSON)),r(3802,
-JSON.parse.bind(JSON)),r(199,gi),r(3807,gi),r(3907,re),r(2951,re),r(791,re),r(1183,
-re),r(1270,re)},"init");vi.exports={init:Ca}});var Ai=I((Mh,_i)=>{"use strict";p();var Z=1e6;function Ta(r){var e=r.readInt32BE(
+var s=Jt(e);return s.radius=parseFloat(t),s},"parseCircle"),Ca=a(function(r){r(20,
+Ei),r(21,Zt),r(23,Zt),r(26,Zt),r(700,parseFloat),r(701,parseFloat),r(16,vi),r(1082,
+ct),r(1114,ct),r(1184,ct),r(600,Jt),r(651,ne),r(718,Aa),r(1e3,ba),r(1001,_a),r(1005,
+Kt),r(1007,Kt),r(1028,Kt),r(1016,xa),r(1017,va),r(1021,zt),r(1022,zt),r(1231,zt),
+r(1014,ne),r(1015,ne),r(1008,ne),r(1009,ne),r(1040,ne),r(1041,ne),r(1115,Yt),r(1182,
+Yt),r(1185,Yt),r(1186,Si),r(1187,Ea),r(17,xi),r(114,JSON.parse.bind(JSON)),r(3802,
+JSON.parse.bind(JSON)),r(199,bi),r(3807,bi),r(3907,ne),r(2951,ne),r(791,ne),r(1183,
+ne),r(1270,ne)},"init");_i.exports={init:Ca}});var Ti=I((Dh,Ci)=>{"use strict";p();var Z=1e6;function Ta(r){var e=r.readInt32BE(
 0),t=r.readUInt32BE(4),n="";e<0&&(e=~e+(t===0),t=~t+1>>>0,n="-");var i="",s,o,u,
 c,h,l;{if(s=e%Z,e=e/Z>>>0,o=4294967296*s+t,t=o/Z>>>0,u=""+(o-Z*t),t===0&&e===0)return n+
 u+i;for(c="",h=6-u.length,l=0;l<h;l++)c+="0";i=c+u+i}{if(s=e%Z,e=e/Z>>>0,o=4294967296*
 s+t,t=o/Z>>>0,u=""+(o-Z*t),t===0&&e===0)return n+u+i;for(c="",h=6-u.length,l=0;l<
 h;l++)c+="0";i=c+u+i}{if(s=e%Z,e=e/Z>>>0,o=4294967296*s+t,t=o/Z>>>0,u=""+(o-Z*t),
 t===0&&e===0)return n+u+i;for(c="",h=6-u.length,l=0;l<h;l++)c+="0";i=c+u+i}return s=
-e%Z,o=4294967296*s+t,u=""+o%Z,n+u+i}a(Ta,"readInt8");_i.exports=Ta});var Bi=I((Uh,Pi)=>{p();var Ia=Ai(),F=a(function(r,e,t,n,i){t=t||0,n=n||!1,i=i||function(C,B,W){
+e%Z,o=4294967296*s+t,u=""+o%Z,n+u+i}a(Ta,"readInt8");Ci.exports=Ta});var Ri=I((Oh,Li)=>{p();var Ia=Ti(),F=a(function(r,e,t,n,i){t=t||0,n=n||!1,i=i||function(C,B,W){
 return C*Math.pow(2,W)+B};var s=t>>3,o=a(function(C){return n?~C&255:C},"inv"),u=255,
 c=8-t%8;e<c&&(u=255<<8-e&255,c=e),t&&(u=u>>t%8);var h=0;t%8+e>=8&&(h=i(0,o(r[s])&
 u,c));for(var l=e+t>>3,d=s+1;d<l;d++)h=i(h,o(r[d]),8);var b=(e+t)%8;return b>0&&
-(h=i(h,o(r[l])>>8-b,b)),h},"parseBits"),Ii=a(function(r,e,t){var n=Math.pow(2,t-
+(h=i(h,o(r[l])>>8-b,b)),h},"parseBits"),Bi=a(function(r,e,t){var n=Math.pow(2,t-
 1)-1,i=F(r,1),s=F(r,t,1);if(s===0)return 0;var o=1,u=a(function(h,l,d){h===0&&(h=
 1);for(var b=1;b<=d;b++)o/=2,(l&1<<d-b)>0&&(h+=o);return h},"parsePrecisionBits"),
 c=F(r,e,t+1,!1,u);return s==Math.pow(2,t+1)-1?c===0?i===0?1/0:-1/0:NaN:(i===0?1:
 -1)*Math.pow(2,s-n)*c},"parseFloatFromBits"),Pa=a(function(r){return F(r,1)==1?-1*
-(F(r,15,1,!0)+1):F(r,15,1)},"parseInt16"),Ci=a(function(r){return F(r,1)==1?-1*(F(
-r,31,1,!0)+1):F(r,31,1)},"parseInt32"),Ba=a(function(r){return Ii(r,23,8)},"pars\
-eFloat32"),La=a(function(r){return Ii(r,52,11)},"parseFloat64"),Ra=a(function(r){
+(F(r,15,1,!0)+1):F(r,15,1)},"parseInt16"),Ii=a(function(r){return F(r,1)==1?-1*(F(
+r,31,1,!0)+1):F(r,31,1)},"parseInt32"),Ba=a(function(r){return Bi(r,23,8)},"pars\
+eFloat32"),La=a(function(r){return Bi(r,52,11)},"parseFloat64"),Ra=a(function(r){
 var e=F(r,16,32);if(e==49152)return NaN;for(var t=Math.pow(1e4,F(r,16,16)),n=0,i=[],
 s=F(r,16),o=0;o<s;o++)n+=F(r,16,64+16*o)*t,t/=1e4;var u=Math.pow(10,F(r,16,48));
-return(e===0?1:-1)*Math.round(n*u)/u},"parseNumeric"),Ti=a(function(r,e){var t=F(
+return(e===0?1:-1)*Math.round(n*u)/u},"parseNumeric"),Pi=a(function(r,e){var t=F(
 e,1),n=F(e,63,1),i=new Date((t===0?1:-1)*n/1e3+9466848e5);return r||i.setTime(i.
 getTime()+i.getTimezoneOffset()*6e4),i.usec=n%1e3,i.getMicroSeconds=function(){return this.
 usec},i.setMicroSeconds=function(s){this.usec=s},i.getUTCMicroSeconds=function(){
@@ -2179,10 +690,10 @@ d;console.log("ERROR: ElementType not implemented: "+h)},"parseElement"),c=a(fun
 var d=[],b;if(h.length>1){var C=h.shift();for(b=0;b<C;b++)d[b]=c(h,l);h.unshift(
 C)}else for(b=0;b<h[0];b++)d[b]=u(l);return d},"parse");return c(s,n)},"parseArr\
 ay"),Fa=a(function(r){return r.toString("utf8")},"parseText"),Ma=a(function(r){return r===
-null?null:F(r,8)>0},"parseBool"),Da=a(function(r){r(20,Ia),r(21,Pa),r(23,Ci),r(26,
-Ci),r(1700,Ra),r(700,Ba),r(701,La),r(16,Ma),r(1114,Ti.bind(null,!1)),r(1184,Ti.bind(
+null?null:F(r,8)>0},"parseBool"),Da=a(function(r){r(20,Ia),r(21,Pa),r(23,Ii),r(26,
+Ii),r(1700,Ra),r(700,Ba),r(701,La),r(16,Ma),r(1114,Pi.bind(null,!1)),r(1184,Pi.bind(
 null,!0)),r(1e3,ze),r(1007,ze),r(1016,ze),r(1008,ze),r(1009,ze),r(25,Fa)},"init");
-Pi.exports={init:Da}});var Ri=I((qh,Li)=>{p();Li.exports={BOOL:16,BYTEA:17,CHAR:18,INT8:20,INT2:21,INT4:23,
+Li.exports={init:Da}});var Mi=I((Qh,Fi)=>{p();Fi.exports={BOOL:16,BYTEA:17,CHAR:18,INT8:20,INT2:21,INT4:23,
 REGPROC:24,TEXT:25,OID:26,TID:27,XID:28,CID:29,JSON:114,XML:142,PG_NODE_TREE:194,
 SMGR:210,PATH:602,POLYGON:604,CIDR:650,FLOAT4:700,FLOAT8:701,ABSTIME:702,RELTIME:703,
 TINTERVAL:704,CIRCLE:718,MACADDR8:774,MONEY:790,MACADDR:829,INET:869,ACLITEM:1033,
@@ -2190,28 +701,28 @@ BPCHAR:1042,VARCHAR:1043,DATE:1082,TIME:1083,TIMESTAMP:1114,TIMESTAMPTZ:1184,INT
 TIMETZ:1266,BIT:1560,VARBIT:1562,NUMERIC:1700,REFCURSOR:1790,REGPROCEDURE:2202,REGOPER:2203,
 REGOPERATOR:2204,REGCLASS:2205,REGTYPE:2206,UUID:2950,TXID_SNAPSHOT:2970,PG_LSN:3220,
 PG_NDISTINCT:3361,PG_DEPENDENCIES:3402,TSVECTOR:3614,TSQUERY:3615,GTSVECTOR:3642,
-REGCONFIG:3734,REGDICTIONARY:3769,JSONB:3802,REGNAMESPACE:4089,REGROLE:4096}});var Je=I(Ze=>{p();var ka=Ei(),Ua=Bi(),Oa=Ht(),Na=Ri();Ze.getTypeParser=qa;Ze.setTypeParser=
-Qa;Ze.arrayParser=Oa;Ze.builtins=Na;var Ye={text:{},binary:{}};function Fi(r){return String(
-r)}a(Fi,"noParse");function qa(r,e){return e=e||"text",Ye[e]&&Ye[e][r]||Fi}a(qa,
+REGCONFIG:3734,REGDICTIONARY:3769,JSONB:3802,REGNAMESPACE:4089,REGROLE:4096}});var Je=I(Ze=>{p();var ka=Ai(),Ua=Ri(),Oa=Gt(),Na=Mi();Ze.getTypeParser=qa;Ze.setTypeParser=
+Qa;Ze.arrayParser=Oa;Ze.builtins=Na;var Ye={text:{},binary:{}};function Di(r){return String(
+r)}a(Di,"noParse");function qa(r,e){return e=e||"text",Ye[e]&&Ye[e][r]||Di}a(qa,
 "getTypeParser");function Qa(r,e,t){typeof e=="function"&&(t=e,e="text"),Ye[e][r]=
 t}a(Qa,"setTypeParser");ka.init(function(r,e){Ye.text[r]=e});Ua.init(function(r,e){
-Ye.binary[r]=e})});var Xe=I((Gh,Jt)=>{"use strict";p();Jt.exports={host:"localhost",user:m.platform===
+Ye.binary[r]=e})});var Xe=I(($h,Xt)=>{"use strict";p();Xt.exports={host:"localhost",user:m.platform===
 "win32"?m.env.USERNAME:m.env.USER,database:void 0,password:null,connectionString:void 0,
 port:5432,rows:0,binary:!1,max:10,idleTimeoutMillis:3e4,client_encoding:"",ssl:!1,
 application_name:void 0,fallback_application_name:void 0,options:void 0,parseInputDatesAsUTC:!1,
 statement_timeout:!1,lock_timeout:!1,idle_in_transaction_session_timeout:!1,query_timeout:!1,
-connect_timeout:0,keepalives:1,keepalives_idle:0};var Me=Je(),Wa=Me.getTypeParser(
-20,"text"),ja=Me.getTypeParser(1016,"text");Jt.exports.__defineSetter__("parseIn\
-t8",function(r){Me.setTypeParser(20,"text",r?Me.getTypeParser(23,"text"):Wa),Me.
-setTypeParser(1016,"text",r?Me.getTypeParser(1007,"text"):ja)})});var et=I((Vh,Di)=>{"use strict";p();var Ha=(Qt(),N(qt)),Ga=Xe();function $a(r){var e=r.
+connect_timeout:0,keepalives:1,keepalives_idle:0};var De=Je(),Wa=De.getTypeParser(
+20,"text"),ja=De.getTypeParser(1016,"text");Xt.exports.__defineSetter__("parseIn\
+t8",function(r){De.setTypeParser(20,"text",r?De.getTypeParser(23,"text"):Wa),De.
+setTypeParser(1016,"text",r?De.getTypeParser(1007,"text"):ja)})});var et=I((Kh,Ui)=>{"use strict";p();var Ha=(Wt(),N(Qt)),Ga=Xe();function $a(r){var e=r.
 replace(/\\/g,"\\\\").replace(/"/g,'\\"');return'"'+e+'"'}a($a,"escapeElement");
-function Mi(r){for(var e="{",t=0;t<r.length;t++)t>0&&(e=e+","),r[t]===null||typeof r[t]>
-"u"?e=e+"NULL":Array.isArray(r[t])?e=e+Mi(r[t]):r[t]instanceof y?e+="\\\\x"+r[t].
-toString("hex"):e+=$a(lt(r[t]));return e=e+"}",e}a(Mi,"arrayString");var lt=a(function(r,e){
+function ki(r){for(var e="{",t=0;t<r.length;t++)t>0&&(e=e+","),r[t]===null||typeof r[t]>
+"u"?e=e+"NULL":Array.isArray(r[t])?e=e+ki(r[t]):r[t]instanceof y?e+="\\\\x"+r[t].
+toString("hex"):e+=$a(lt(r[t]));return e=e+"}",e}a(ki,"arrayString");var lt=a(function(r,e){
 if(r==null)return null;if(r instanceof y)return r;if(ArrayBuffer.isView(r)){var t=y.
 from(r.buffer,r.byteOffset,r.byteLength);return t.length===r.byteLength?t:t.slice(
 r.byteOffset,r.byteOffset+r.byteLength)}return r instanceof Date?Ga.parseInputDatesAsUTC?
-za(r):Ka(r):Array.isArray(r)?Mi(r):typeof r=="object"?Va(r,e):r.toString()},"pre\
+za(r):Ka(r):Array.isArray(r)?ki(r):typeof r=="object"?Va(r,e):r.toString()},"pre\
 pareValue");function Va(r,e){if(r&&typeof r.toPostgres=="function"){if(e=e||[],e.
 indexOf(r)!==-1)throw new Error('circular reference detected while preparing "'+
 r+'" for query');return e.push(r),lt(r.toPostgres(lt),e)}return JSON.stringify(r)}
@@ -2226,12 +737,12 @@ T"+H(r.getUTCHours(),2)+":"+H(r.getUTCMinutes(),2)+":"+H(r.getUTCSeconds(),2)+".
 H(r.getUTCMilliseconds(),3);return n+="+00:00",t&&(n+=" BC"),n}a(za,"dateToStrin\
 gUTC");function Ya(r,e,t){return r=typeof r=="string"?{text:r}:r,e&&(typeof e=="\
 function"?r.callback=e:r.values=e),t&&(r.callback=t),r}a(Ya,"normalizeQueryConfi\
-g");var Xt=a(function(r){return Ha.createHash("md5").update(r,"utf-8").digest("h\
-ex")},"md5"),Za=a(function(r,e,t){var n=Xt(e+r),i=Xt(y.concat([y.from(n),t]));return"\
-md5"+i},"postgresMd5PasswordHash");Di.exports={prepareValue:a(function(e){return lt(
-e)},"prepareValueWrapper"),normalizeQueryConfig:Ya,postgresMd5PasswordHash:Za,md5:Xt}});var qi=I((Yh,Ni)=>{"use strict";p();var er=(Qt(),N(qt));function Ja(r){if(r.indexOf(
+g");var er=a(function(r){return Ha.createHash("md5").update(r,"utf-8").digest("h\
+ex")},"md5"),Za=a(function(r,e,t){var n=er(e+r),i=er(y.concat([y.from(n),t]));return"\
+md5"+i},"postgresMd5PasswordHash");Ui.exports={prepareValue:a(function(e){return lt(
+e)},"prepareValueWrapper"),normalizeQueryConfig:Ya,postgresMd5PasswordHash:Za,md5:er}});var Wi=I((Zh,Qi)=>{"use strict";p();var tr=(Wt(),N(Qt));function Ja(r){if(r.indexOf(
 "SCRAM-SHA-256")===-1)throw new Error("SASL: Only mechanism SCRAM-SHA-256 is cur\
-rently supported");let e=er.randomBytes(18).toString("base64");return{mechanism:"\
+rently supported");let e=tr.randomBytes(18).toString("base64");return{mechanism:"\
 SCRAM-SHA-256",clientNonce:e,response:"n,,n=*,r="+e,message:"SASLInitialResponse"}}
 a(Ja,"startSession");function Xa(r,e,t){if(r.message!=="SASLInitialResponse")throw new Error(
 "SASL: Last message was not SASLInitialResponse");if(typeof e!="string")throw new Error(
@@ -2241,9 +752,9 @@ a(Ja,"startSession");function Xa(r,e,t){if(r.message!=="SASLInitialResponse")thr
 r.clientNonce.length)throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAGE: server n\
 once is too short")}else throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAGE: serv\
 er nonce does not start with client nonce");var i=y.from(n.salt,"base64"),s=su(e,
-i,n.iteration),o=De(s,"Client Key"),u=iu(o),c="n=*,r="+r.clientNonce,h="r="+n.nonce+
-",s="+n.salt+",i="+n.iteration,l="c=biws,r="+n.nonce,d=c+","+h+","+l,b=De(u,d),C=Oi(
-o,b),B=C.toString("base64"),W=De(s,"Server Key"),X=De(W,d);r.message="SASLRespon\
+i,n.iteration),o=ke(s,"Client Key"),u=iu(o),c="n=*,r="+r.clientNonce,h="r="+n.nonce+
+",s="+n.salt+",i="+n.iteration,l="c=biws,r="+n.nonce,d=c+","+h+","+l,b=ke(u,d),C=qi(
+o,b),B=C.toString("base64"),W=ke(s,"Server Key"),X=ke(W,d);r.message="SASLRespon\
 se",r.serverSignature=X.toString("base64"),r.response=l+",p="+B}a(Xa,"continueSe\
 ssion");function eu(r,e){if(r.message!=="SASLResponse")throw new Error("SASL: La\
 st message was not SASLResponse");if(typeof e!="string")throw new Error("SASL: S\
@@ -2252,94 +763,94 @@ e);if(t!==r.serverSignature)throw new Error("SASL: SCRAM-SERVER-FINAL-MESSAGE: s
 erver signature does not match")}a(eu,"finalizeSession");function tu(r){if(typeof r!=
 "string")throw new TypeError("SASL: text must be a string");return r.split("").map(
 (e,t)=>r.charCodeAt(t)).every(e=>e>=33&&e<=43||e>=45&&e<=126)}a(tu,"isPrintableC\
-hars");function ki(r){return/^(?:[a-zA-Z0-9+/]{4})*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?$/.
-test(r)}a(ki,"isBase64");function Ui(r){if(typeof r!="string")throw new TypeError(
+hars");function Oi(r){return/^(?:[a-zA-Z0-9+/]{4})*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?$/.
+test(r)}a(Oi,"isBase64");function Ni(r){if(typeof r!="string")throw new TypeError(
 "SASL: attribute pairs text must be a string");return new Map(r.split(",").map(e=>{
 if(!/^.=/.test(e))throw new Error("SASL: Invalid attribute pair entry");let t=e[0],
-n=e.substring(2);return[t,n]}))}a(Ui,"parseAttributePairs");function ru(r){let e=Ui(
+n=e.substring(2);return[t,n]}))}a(Ni,"parseAttributePairs");function ru(r){let e=Ni(
 r),t=e.get("r");if(t){if(!tu(t))throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAG\
 E: nonce must only contain printable characters")}else throw new Error("SASL: SC\
-RAM-SERVER-FIRST-MESSAGE: nonce missing");let n=e.get("s");if(n){if(!ki(n))throw new Error(
+RAM-SERVER-FIRST-MESSAGE: nonce missing");let n=e.get("s");if(n){if(!Oi(n))throw new Error(
 "SASL: SCRAM-SERVER-FIRST-MESSAGE: salt must be base64")}else throw new Error("S\
 ASL: SCRAM-SERVER-FIRST-MESSAGE: salt missing");let i=e.get("i");if(i){if(!/^[1-9][0-9]*$/.
 test(i))throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAGE: invalid iteration cou\
 nt")}else throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAGE: iteration missing");
 let s=parseInt(i,10);return{nonce:t,salt:n,iteration:s}}a(ru,"parseServerFirstMe\
-ssage");function nu(r){let t=Ui(r).get("v");if(t){if(!ki(t))throw new Error("SAS\
+ssage");function nu(r){let t=Ni(r).get("v");if(t){if(!Oi(t))throw new Error("SAS\
 L: SCRAM-SERVER-FINAL-MESSAGE: server signature must be base64")}else throw new Error(
 "SASL: SCRAM-SERVER-FINAL-MESSAGE: server signature is missing");return{serverSignature:t}}
-a(nu,"parseServerFinalMessage");function Oi(r,e){if(!y.isBuffer(r))throw new TypeError(
+a(nu,"parseServerFinalMessage");function qi(r,e){if(!y.isBuffer(r))throw new TypeError(
 "first argument must be a Buffer");if(!y.isBuffer(e))throw new TypeError("second\
  argument must be a Buffer");if(r.length!==e.length)throw new Error("Buffer leng\
 ths must match");if(r.length===0)throw new Error("Buffers cannot be empty");return y.
-from(r.map((t,n)=>r[n]^e[n]))}a(Oi,"xorBuffers");function iu(r){return er.createHash(
-"sha256").update(r).digest()}a(iu,"sha256");function De(r,e){return er.createHmac(
-"sha256",r).update(e).digest()}a(De,"hmacSha256");function su(r,e,t){for(var n=De(
-r,y.concat([e,y.from([0,0,0,1])])),i=n,s=0;s<t-1;s++)n=De(r,n),i=Oi(i,n);return i}
-a(su,"Hi");Ni.exports={startSession:Ja,continueSession:Xa,finalizeSession:eu}});var tr={};ie(tr,{join:()=>ou});function ou(...r){return r.join("/")}var rr=z(()=>{
-"use strict";p();a(ou,"join")});var nr={};ie(nr,{stat:()=>au});function au(r,e){e(new Error("No filesystem"))}var ir=z(
-()=>{"use strict";p();a(au,"stat")});var sr={};ie(sr,{default:()=>uu});var uu,or=z(()=>{"use strict";p();uu={}});var Qi={};ie(Qi,{StringDecoder:()=>ar});var ur,ar,Wi=z(()=>{"use strict";p();ur=
-class ur{constructor(e){_(this,"td");this.td=new TextDecoder(e)}write(e){return this.
-td.decode(e,{stream:!0})}end(e){return this.td.decode(e)}};a(ur,"StringDecoder");
-ar=ur});var $i=I((ol,Gi)=>{"use strict";p();var{Transform:cu}=(or(),N(sr)),{StringDecoder:hu}=(Wi(),N(Qi)),
-be=Symbol("last"),ft=Symbol("decoder");function lu(r,e,t){let n;if(this.overflow){
+from(r.map((t,n)=>r[n]^e[n]))}a(qi,"xorBuffers");function iu(r){return tr.createHash(
+"sha256").update(r).digest()}a(iu,"sha256");function ke(r,e){return tr.createHmac(
+"sha256",r).update(e).digest()}a(ke,"hmacSha256");function su(r,e,t){for(var n=ke(
+r,y.concat([e,y.from([0,0,0,1])])),i=n,s=0;s<t-1;s++)n=ke(r,n),i=qi(i,n);return i}
+a(su,"Hi");Qi.exports={startSession:Ja,continueSession:Xa,finalizeSession:eu}});var rr={};te(rr,{join:()=>ou});function ou(...r){return r.join("/")}var nr=z(()=>{
+"use strict";p();a(ou,"join")});var ir={};te(ir,{stat:()=>au});function au(r,e){e(new Error("No filesystem"))}var sr=z(
+()=>{"use strict";p();a(au,"stat")});var or={};te(or,{default:()=>uu});var uu,ar=z(()=>{"use strict";p();uu={}});var ji={};te(ji,{StringDecoder:()=>ur});var cr,ur,Hi=z(()=>{"use strict";p();cr=
+class cr{constructor(e){_(this,"td");this.td=new TextDecoder(e)}write(e){return this.
+td.decode(e,{stream:!0})}end(e){return this.td.decode(e)}};a(cr,"StringDecoder");
+ur=cr});var Ki=I((al,Vi)=>{"use strict";p();var{Transform:cu}=(ar(),N(or)),{StringDecoder:hu}=(Hi(),N(ji)),
+Se=Symbol("last"),ft=Symbol("decoder");function lu(r,e,t){let n;if(this.overflow){
 if(n=this[ft].write(r).split(this.matcher),n.length===1)return t();n.shift(),this.
-overflow=!1}else this[be]+=this[ft].write(r),n=this[be].split(this.matcher);this[be]=
-n.pop();for(let i=0;i<n.length;i++)try{Hi(this,this.mapper(n[i]))}catch(s){return t(
-s)}if(this.overflow=this[be].length>this.maxLength,this.overflow&&!this.skipOverflow){
+overflow=!1}else this[Se]+=this[ft].write(r),n=this[Se].split(this.matcher);this[Se]=
+n.pop();for(let i=0;i<n.length;i++)try{$i(this,this.mapper(n[i]))}catch(s){return t(
+s)}if(this.overflow=this[Se].length>this.maxLength,this.overflow&&!this.skipOverflow){
 t(new Error("maximum buffer reached"));return}t()}a(lu,"transform");function fu(r){
-if(this[be]+=this[ft].end(),this[be])try{Hi(this,this.mapper(this[be]))}catch(e){
-return r(e)}r()}a(fu,"flush");function Hi(r,e){e!==void 0&&r.push(e)}a(Hi,"push");
-function ji(r){return r}a(ji,"noop");function pu(r,e,t){switch(r=r||/\r?\n/,e=e||
-ji,t=t||{},arguments.length){case 1:typeof r=="function"?(e=r,r=/\r?\n/):typeof r==
+if(this[Se]+=this[ft].end(),this[Se])try{$i(this,this.mapper(this[Se]))}catch(e){
+return r(e)}r()}a(fu,"flush");function $i(r,e){e!==void 0&&r.push(e)}a($i,"push");
+function Gi(r){return r}a(Gi,"noop");function pu(r,e,t){switch(r=r||/\r?\n/,e=e||
+Gi,t=t||{},arguments.length){case 1:typeof r=="function"?(e=r,r=/\r?\n/):typeof r==
 "object"&&!(r instanceof RegExp)&&!r[Symbol.split]&&(t=r,r=/\r?\n/);break;case 2:
-typeof r=="function"?(t=e,e=r,r=/\r?\n/):typeof e=="object"&&(t=e,e=ji)}t=Object.
+typeof r=="function"?(t=e,e=r,r=/\r?\n/):typeof e=="object"&&(t=e,e=Gi)}t=Object.
 assign({},t),t.autoDestroy=!0,t.transform=lu,t.flush=fu,t.readableObjectMode=!0;
-let n=new cu(t);return n[be]="",n[ft]=new hu("utf8"),n.matcher=r,n.mapper=e,n.maxLength=
+let n=new cu(t);return n[Se]="",n[ft]=new hu("utf8"),n.matcher=r,n.mapper=e,n.maxLength=
 t.maxLength,n.skipOverflow=t.skipOverflow||!1,n.overflow=!1,n._destroy=function(i,s){
-this._writableState.errorEmitted=!1,s(i)},n}a(pu,"split");Gi.exports=pu});var zi=I((cl,pe)=>{"use strict";p();var Vi=(rr(),N(tr)),du=(or(),N(sr)).Stream,yu=$i(),
-Ki=(He(),N(je)),mu=5432,pt=m.platform==="win32",tt=m.stderr,gu=56,wu=7,bu=61440,
-Su=32768;function xu(r){return(r&bu)==Su}a(xu,"isRegFile");var ke=["host","port",
-"database","user","password"],cr=ke.length,vu=ke[cr-1];function hr(){var r=tt instanceof
+this._writableState.errorEmitted=!1,s(i)},n}a(pu,"split");Vi.exports=pu});var Zi=I((hl,de)=>{"use strict";p();var zi=(nr(),N(rr)),du=(ar(),N(or)).Stream,yu=Ki(),
+Yi=(He(),N(je)),mu=5432,pt=m.platform==="win32",tt=m.stderr,gu=56,wu=7,bu=61440,
+Su=32768;function xu(r){return(r&bu)==Su}a(xu,"isRegFile");var Ue=["host","port",
+"database","user","password"],hr=Ue.length,vu=Ue[hr-1];function lr(){var r=tt instanceof
 du&&tt.writable===!0;if(r){var e=Array.prototype.slice.call(arguments).concat(`
-`);tt.write(Ki.format.apply(Ki,e))}}a(hr,"warn");Object.defineProperty(pe.exports,
-"isWin",{get:a(function(){return pt},"get"),set:a(function(r){pt=r},"set")});pe.
-exports.warnTo=function(r){var e=tt;return tt=r,e};pe.exports.getFileName=function(r){
-var e=r||m.env,t=e.PGPASSFILE||(pt?Vi.join(e.APPDATA||"./","postgresql","pgpass.\
-conf"):Vi.join(e.HOME||"./",".pgpass"));return t};pe.exports.usePgPass=function(r,e){
+`);tt.write(Yi.format.apply(Yi,e))}}a(lr,"warn");Object.defineProperty(de.exports,
+"isWin",{get:a(function(){return pt},"get"),set:a(function(r){pt=r},"set")});de.
+exports.warnTo=function(r){var e=tt;return tt=r,e};de.exports.getFileName=function(r){
+var e=r||m.env,t=e.PGPASSFILE||(pt?zi.join(e.APPDATA||"./","postgresql","pgpass.\
+conf"):zi.join(e.HOME||"./",".pgpass"));return t};de.exports.usePgPass=function(r,e){
 return Object.prototype.hasOwnProperty.call(m.env,"PGPASSWORD")?!1:pt?!0:(e=e||"\
-<unkn>",xu(r.mode)?r.mode&(gu|wu)?(hr('WARNING: password file "%s" has group or \
-world access; permissions should be u=rw (0600) or less',e),!1):!0:(hr('WARNING:\
- password file "%s" is not a plain file',e),!1))};var Eu=pe.exports.match=function(r,e){
-return ke.slice(0,-1).reduce(function(t,n,i){return i==1&&Number(r[n]||mu)===Number(
-e[n])?t&&!0:t&&(e[n]==="*"||e[n]===r[n])},!0)};pe.exports.getPassword=function(r,e,t){
+<unkn>",xu(r.mode)?r.mode&(gu|wu)?(lr('WARNING: password file "%s" has group or \
+world access; permissions should be u=rw (0600) or less',e),!1):!0:(lr('WARNING:\
+ password file "%s" is not a plain file',e),!1))};var Eu=de.exports.match=function(r,e){
+return Ue.slice(0,-1).reduce(function(t,n,i){return i==1&&Number(r[n]||mu)===Number(
+e[n])?t&&!0:t&&(e[n]==="*"||e[n]===r[n])},!0)};de.exports.getPassword=function(r,e,t){
 var n,i=e.pipe(yu());function s(c){var h=_u(c);h&&Au(h)&&Eu(r,h)&&(n=h[vu],i.end())}
 a(s,"onLine");var o=a(function(){e.destroy(),t(n)},"onEnd"),u=a(function(c){e.destroy(),
-hr("WARNING: error on reading file: %s",c),t(void 0)},"onErr");e.on("error",u),i.
-on("data",s).on("end",o).on("error",u)};var _u=pe.exports.parseLine=function(r){
+lr("WARNING: error on reading file: %s",c),t(void 0)},"onErr");e.on("error",u),i.
+on("data",s).on("end",o).on("error",u)};var _u=de.exports.parseLine=function(r){
 if(r.length<11||r.match(/^\s+#/))return null;for(var e="",t="",n=0,i=0,s=0,o={},
 u=!1,c=a(function(l,d,b){var C=r.substring(d,b);Object.hasOwnProperty.call(m.env,
-"PGPASS_NO_DEESCAPE")||(C=C.replace(/\\([:\\])/g,"$1")),o[ke[l]]=C},"addToObj"),
-h=0;h<r.length-1;h+=1){if(e=r.charAt(h+1),t=r.charAt(h),u=n==cr-1,u){c(n,i);break}
+"PGPASS_NO_DEESCAPE")||(C=C.replace(/\\([:\\])/g,"$1")),o[Ue[l]]=C},"addToObj"),
+h=0;h<r.length-1;h+=1){if(e=r.charAt(h+1),t=r.charAt(h),u=n==hr-1,u){c(n,i);break}
 h>=0&&e==":"&&t!=="\\"&&(c(n,i,h+1),i=h+2,n+=1)}return o=Object.keys(o).length===
-cr?o:null,o},Au=pe.exports.isValidEntry=function(r){for(var e={0:function(o){return o.
+hr?o:null,o},Au=de.exports.isValidEntry=function(r){for(var e={0:function(o){return o.
 length>0},1:function(o){return o==="*"?!0:(o=Number(o),isFinite(o)&&o>0&&o<9007199254740992&&
 Math.floor(o)===o)},2:function(o){return o.length>0},3:function(o){return o.length>
-0},4:function(o){return o.length>0}},t=0;t<ke.length;t+=1){var n=e[t],i=r[ke[t]]||
-"",s=n(i);if(!s)return!1}return!0}});var Zi=I((pl,lr)=>{"use strict";p();var fl=(rr(),N(tr)),Yi=(ir(),N(nr)),dt=zi();
-lr.exports=function(r,e){var t=dt.getFileName();Yi.stat(t,function(n,i){if(n||!dt.
-usePgPass(i,t))return e(void 0);var s=Yi.createReadStream(t);dt.getPassword(r,s,
-e)})};lr.exports.warnTo=dt.warnTo});var mt=I((yl,Ji)=>{"use strict";p();var Cu=Je();function yt(r){this._types=r||Cu,
+0},4:function(o){return o.length>0}},t=0;t<Ue.length;t+=1){var n=e[t],i=r[Ue[t]]||
+"",s=n(i);if(!s)return!1}return!0}});var Xi=I((dl,fr)=>{"use strict";p();var pl=(nr(),N(rr)),Ji=(sr(),N(ir)),dt=Zi();
+fr.exports=function(r,e){var t=dt.getFileName();Ji.stat(t,function(n,i){if(n||!dt.
+usePgPass(i,t))return e(void 0);var s=Ji.createReadStream(t);dt.getPassword(r,s,
+e)})};fr.exports.warnTo=dt.warnTo});var mt=I((ml,es)=>{"use strict";p();var Cu=Je();function yt(r){this._types=r||Cu,
 this.text={},this.binary={}}a(yt,"TypeOverrides");yt.prototype.getOverrides=function(r){
 switch(r){case"text":return this.text;case"binary":return this.binary;default:return{}}};
 yt.prototype.setTypeParser=function(r,e,t){typeof e=="function"&&(t=e,e="text"),
 this.getOverrides(e)[r]=t};yt.prototype.getTypeParser=function(r,e){return e=e||
-"text",this.getOverrides(e)[r]||this._types.getTypeParser(r,e)};Ji.exports=yt});var Xi={};ie(Xi,{default:()=>Tu});var Tu,es=z(()=>{"use strict";p();Tu={}});var ts={};ie(ts,{parse:()=>fr});function fr(r,e=!1){let{protocol:t}=new URL(r),n="\
+"text",this.getOverrides(e)[r]||this._types.getTypeParser(r,e)};es.exports=yt});var ts={};te(ts,{default:()=>Tu});var Tu,rs=z(()=>{"use strict";p();Tu={}});var ns={};te(ns,{parse:()=>pr});function pr(r,e=!1){let{protocol:t}=new URL(r),n="\
 http:"+r.substring(t.length),{username:i,password:s,host:o,hostname:u,port:c,pathname:h,
 search:l,searchParams:d,hash:b}=new URL(n);s=decodeURIComponent(s),i=decodeURIComponent(
 i),h=decodeURIComponent(h);let C=i+":"+s,B=e?Object.fromEntries(d.entries()):l;return{
 href:r,protocol:t,auth:C,username:i,password:s,host:o,hostname:u,port:c,pathname:h,
-search:l,query:B,hash:b}}var pr=z(()=>{"use strict";p();a(fr,"parse")});var ns=I((xl,rs)=>{"use strict";p();var Iu=(pr(),N(ts)),dr=(ir(),N(nr));function yr(r){
+search:l,query:B,hash:b}}var dr=z(()=>{"use strict";p();a(pr,"parse")});var ss=I((vl,is)=>{"use strict";p();var Iu=(dr(),N(ns)),yr=(sr(),N(ir));function mr(r){
 if(r.charAt(0)==="/"){var t=r.split(" ");return{host:t[0],database:t[1]}}var e=Iu.
 parse(/ |%[^a-f0-9]|%[a-f0-9][^a-f0-9]/i.test(r)?encodeURI(r).replace(/\%25(\d\d)/g,
 "%$1"):r,!0),t=e.query;for(var n in t)Array.isArray(t[n])&&(t[n]=t[n][t[n].length-
@@ -2350,19 +861,19 @@ pathname;if(!t.host&&s&&/^%2f/i.test(s)){var o=s.split("/");t.host=decodeURIComp
 o[0]),s=o.splice(1).join("/")}switch(s&&s.charAt(0)==="/"&&(s=s.slice(1)||null),
 t.database=s&&decodeURI(s),(t.ssl==="true"||t.ssl==="1")&&(t.ssl=!0),t.ssl==="0"&&
 (t.ssl=!1),(t.sslcert||t.sslkey||t.sslrootcert||t.sslmode)&&(t.ssl={}),t.sslcert&&
-(t.ssl.cert=dr.readFileSync(t.sslcert).toString()),t.sslkey&&(t.ssl.key=dr.readFileSync(
-t.sslkey).toString()),t.sslrootcert&&(t.ssl.ca=dr.readFileSync(t.sslrootcert).toString()),
+(t.ssl.cert=yr.readFileSync(t.sslcert).toString()),t.sslkey&&(t.ssl.key=yr.readFileSync(
+t.sslkey).toString()),t.sslrootcert&&(t.ssl.ca=yr.readFileSync(t.sslrootcert).toString()),
 t.sslmode){case"disable":{t.ssl=!1;break}case"prefer":case"require":case"verify-\
 ca":case"verify-full":break;case"no-verify":{t.ssl.rejectUnauthorized=!1;break}}
-return t}a(yr,"parse");rs.exports=yr;yr.parse=yr});var gt=I((_l,os)=>{"use strict";p();var Pu=(es(),N(Xi)),ss=Xe(),is=ns().parse,$=a(
+return t}a(mr,"parse");is.exports=mr;mr.parse=mr});var gt=I((Al,us)=>{"use strict";p();var Pu=(rs(),N(ts)),as=Xe(),os=ss().parse,$=a(
 function(r,e,t){return t===void 0?t=m.env["PG"+r.toUpperCase()]:t===!1||(t=m.env[t]),
-e[r]||t||ss[r]},"val"),Bu=a(function(){switch(m.env.PGSSLMODE){case"disable":return!1;case"\
+e[r]||t||as[r]},"val"),Bu=a(function(){switch(m.env.PGSSLMODE){case"disable":return!1;case"\
 prefer":case"require":case"verify-ca":case"verify-full":return!0;case"no-verify":
-return{rejectUnauthorized:!1}}return ss.ssl},"readSSLConfigFromEnvironment"),Ue=a(
+return{rejectUnauthorized:!1}}return as.ssl},"readSSLConfigFromEnvironment"),Oe=a(
 function(r){return"'"+(""+r).replace(/\\/g,"\\\\").replace(/'/g,"\\'")+"'"},"quo\
-teParamValue"),ne=a(function(r,e,t){var n=e[t];n!=null&&r.push(t+"="+Ue(n))},"ad\
-d"),gr=class gr{constructor(e){e=typeof e=="string"?is(e):e||{},e.connectionString&&
-(e=Object.assign({},e,is(e.connectionString))),this.user=$("user",e),this.database=
+teParamValue"),ie=a(function(r,e,t){var n=e[t];n!=null&&r.push(t+"="+Oe(n))},"ad\
+d"),wr=class wr{constructor(e){e=typeof e=="string"?os(e):e||{},e.connectionString&&
+(e=Object.assign({},e,os(e.connectionString))),this.user=$("user",e),this.database=
 $("database",e),this.database===void 0&&(this.database=this.user),this.port=parseInt(
 $("port",e),10),this.host=$("host",e),Object.defineProperty(this,"password",{configurable:!0,
 enumerable:!1,writable:!0,value:$("password",e)}),this.binary=$("binary",e),this.
@@ -2379,20 +890,20 @@ void 0?this.connect_timeout=m.env.PGCONNECT_TIMEOUT||0:this.connect_timeout=Math
 floor(e.connectionTimeoutMillis/1e3),e.keepAlive===!1?this.keepalives=0:e.keepAlive===
 !0&&(this.keepalives=1),typeof e.keepAliveInitialDelayMillis=="number"&&(this.keepalives_idle=
 Math.floor(e.keepAliveInitialDelayMillis/1e3))}getLibpqConnectionString(e){var t=[];
-ne(t,this,"user"),ne(t,this,"password"),ne(t,this,"port"),ne(t,this,"application\
-_name"),ne(t,this,"fallback_application_name"),ne(t,this,"connect_timeout"),ne(t,
+ie(t,this,"user"),ie(t,this,"password"),ie(t,this,"port"),ie(t,this,"application\
+_name"),ie(t,this,"fallback_application_name"),ie(t,this,"connect_timeout"),ie(t,
 this,"options");var n=typeof this.ssl=="object"?this.ssl:this.ssl?{sslmode:this.
-ssl}:{};if(ne(t,n,"sslmode"),ne(t,n,"sslca"),ne(t,n,"sslkey"),ne(t,n,"sslcert"),
-ne(t,n,"sslrootcert"),this.database&&t.push("dbname="+Ue(this.database)),this.replication&&
-t.push("replication="+Ue(this.replication)),this.host&&t.push("host="+Ue(this.host)),
+ssl}:{};if(ie(t,n,"sslmode"),ie(t,n,"sslca"),ie(t,n,"sslkey"),ie(t,n,"sslcert"),
+ie(t,n,"sslrootcert"),this.database&&t.push("dbname="+Oe(this.database)),this.replication&&
+t.push("replication="+Oe(this.replication)),this.host&&t.push("host="+Oe(this.host)),
 this.isDomainSocket)return e(null,t.join(" "));this.client_encoding&&t.push("cli\
-ent_encoding="+Ue(this.client_encoding)),Pu.lookup(this.host,function(i,s){return i?
-e(i,null):(t.push("hostaddr="+Ue(s)),e(null,t.join(" ")))})}};a(gr,"ConnectionPa\
-rameters");var mr=gr;os.exports=mr});var cs=I((Tl,us)=>{"use strict";p();var Lu=Je(),as=/^([A-Za-z]+)(?: (\d+))?(?: (\d+))?/,
-br=class br{constructor(e,t){this.command=null,this.rowCount=null,this.oid=null,
+ent_encoding="+Oe(this.client_encoding)),Pu.lookup(this.host,function(i,s){return i?
+e(i,null):(t.push("hostaddr="+Oe(s)),e(null,t.join(" ")))})}};a(wr,"ConnectionPa\
+rameters");var gr=wr;us.exports=gr});var ls=I((Il,hs)=>{"use strict";p();var Lu=Je(),cs=/^([A-Za-z]+)(?: (\d+))?(?: (\d+))?/,
+Sr=class Sr{constructor(e,t){this.command=null,this.rowCount=null,this.oid=null,
 this.rows=[],this.fields=[],this._parsers=void 0,this._types=t,this.RowCtor=null,
 this.rowAsArray=e==="array",this.rowAsArray&&(this.parseRow=this._parseRowAsArray)}addCommandComplete(e){
-var t;e.text?t=as.exec(e.text):t=as.exec(e.command),t&&(this.command=t[1],t[3]?(this.
+var t;e.text?t=cs.exec(e.text):t=cs.exec(e.command),t&&(this.command=t[1],t[3]?(this.
 oid=parseInt(t[2],10),this.rowCount=parseInt(t[3],10)):t[2]&&(this.rowCount=parseInt(
 t[2],10)))}_parseRowAsArray(e){for(var t=new Array(e.length),n=0,i=e.length;n<i;n++){
 var s=e[n];s!==null?t[n]=this._parsers[n](s):t[n]=null}return t}parseRow(e){for(var t={},
@@ -2400,16 +911,16 @@ n=0,i=e.length;n<i;n++){var s=e[n],o=this.fields[n].name;s!==null?t[o]=this._par
 s):t[o]=null}return t}addRow(e){this.rows.push(e)}addFields(e){this.fields=e,this.
 fields.length&&(this._parsers=new Array(e.length));for(var t=0;t<e.length;t++){var n=e[t];
 this._types?this._parsers[t]=this._types.getTypeParser(n.dataTypeID,n.format||"t\
-ext"):this._parsers[t]=Lu.getTypeParser(n.dataTypeID,n.format||"text")}}};a(br,"\
-Result");var wr=br;us.exports=wr});var ps=I((Bl,fs)=>{"use strict";p();var{EventEmitter:Ru}=we(),hs=cs(),ls=et(),xr=class xr extends Ru{constructor(e,t,n){
-super(),e=ls.normalizeQueryConfig(e,t,n),this.text=e.text,this.values=e.values,this.
+ext"):this._parsers[t]=Lu.getTypeParser(n.dataTypeID,n.format||"text")}}};a(Sr,"\
+Result");var br=Sr;hs.exports=br});var ys=I((Ll,ds)=>{"use strict";p();var{EventEmitter:Ru}=be(),fs=ls(),ps=et(),vr=class vr extends Ru{constructor(e,t,n){
+super(),e=ps.normalizeQueryConfig(e,t,n),this.text=e.text,this.values=e.values,this.
 rows=e.rows,this.types=e.types,this.name=e.name,this.binary=e.binary,this.portal=
 e.portal||"",this.callback=e.callback,this._rowMode=e.rowMode,m.domain&&e.callback&&
-(this.callback=m.domain.bind(e.callback)),this._result=new hs(this._rowMode,this.
+(this.callback=m.domain.bind(e.callback)),this._result=new fs(this._rowMode,this.
 types),this._results=this._result,this.isPreparedStatement=!1,this._canceledDueToError=
 !1,this._promise=null}requiresPreparation(){return this.name||this.rows?!0:!this.
 text||!this.values?!1:this.values.length>0}_checkForMultirow(){this._result.command&&
-(Array.isArray(this._results)||(this._results=[this._result]),this._result=new hs(
+(Array.isArray(this._results)||(this._results=[this._result]),this._result=new fs(
 this._rowMode,this.types),this._results.push(this._result))}handleRowDescription(e){
 this._checkForMultirow(),this._result.addFields(e.fields),this._accumulateRows=this.
 callback||!this.listeners("row").length}handleDataRow(e){let t;if(!this._canceledDueToError){
@@ -2431,12 +942,12 @@ name]}handlePortalSuspended(e){this._getRows(e,this.rows)}_getRows(e,t){e.execut
 {portal:this.portal,rows:t}),t?e.flush():e.sync()}prepare(e){this.isPreparedStatement=
 !0,this.hasBeenParsed(e)||e.parse({text:this.text,name:this.name,types:this.types});
 try{e.bind({portal:this.portal,statement:this.name,values:this.values,binary:this.
-binary,valueMapper:ls.prepareValue})}catch(t){this.handleError(t,e);return}e.describe(
+binary,valueMapper:ps.prepareValue})}catch(t){this.handleError(t,e);return}e.describe(
 {type:"P",name:this.portal||""}),this._getRows(e,this.rows)}handleCopyInResponse(e){
-e.sendCopyFail("No source stream defined")}handleCopyData(e,t){}};a(xr,"Query");
-var Sr=xr;fs.exports=Sr});var ys={};ie(ys,{Socket:()=>_e,isIP:()=>Fu});function Fu(r){return 0}var ds,Mu,E,
-_e,wt=z(()=>{"use strict";p();ds=Te(we(),1);a(Fu,"isIP");Mu=a(r=>r.replace(/^[^.]+\./,
-"api."),"transformHost"),E=class E extends ds.EventEmitter{constructor(){super(...arguments);
+e.sendCopyFail("No source stream defined")}handleCopyData(e,t){}};a(vr,"Query");
+var xr=vr;ds.exports=xr});var gs={};te(gs,{Socket:()=>xe,isIP:()=>Fu});function Fu(r){return 0}var ms,Mu,E,
+xe,wt=z(()=>{"use strict";p();ms=Ie(be(),1);a(Fu,"isIP");Mu=a(r=>r.replace(/^[^.]+\./,
+"api."),"transformHost"),E=class E extends ms.EventEmitter{constructor(){super(...arguments);
 _(this,"opts",{});_(this,"connecting",!1);_(this,"pending",!0);_(this,"writable",
 !0);_(this,"encrypted",!1);_(this,"authorized",!1);_(this,"destroyed",!1);_(this,
 "ws",null);_(this,"writeBuffer");_(this,"tlsState",0);_(this,"tlsRead");_(this,"\
@@ -2515,7 +1026,7 @@ end()}};a(E,"Socket"),_(E,"defaults",{poolQueryViaFetch:!1,fetchEndpoint:a(t=>"h
 ttps://"+Mu(t)+"/sql","fetchEndpoint"),fetchConnectionCache:!0,fetchFunction:void 0,
 webSocketConstructor:void 0,wsProxy:a(t=>t+"/v2","wsProxy"),useSecureWebSocket:!0,
 forceDisablePgSSL:!0,coalesceWrites:!0,pipelineConnect:"password",subtls:void 0,
-rootCerts:"",pipelineTLS:!1,disableSNI:!1}),_(E,"opts",{});_e=E});var Yr=I(T=>{"use strict";p();Object.defineProperty(T,"__esModule",{value:!0});T.
+rootCerts:"",pipelineTLS:!1,disableSNI:!1}),_(E,"opts",{});xe=E});var Zr=I(T=>{"use strict";p();Object.defineProperty(T,"__esModule",{value:!0});T.
 NoticeMessage=T.DataRowMessage=T.CommandCompleteMessage=T.ReadyForQueryMessage=T.
 NotificationResponseMessage=T.BackendKeyDataMessage=T.AuthenticationMD5Password=
 T.ParameterStatusMessage=T.ParameterDescriptionMessage=T.RowDescriptionMessage=T.
@@ -2525,36 +1036,36 @@ void 0;T.parseComplete={name:"parseComplete",length:5};T.bindComplete={name:"bin
 dComplete",length:5};T.closeComplete={name:"closeComplete",length:5};T.noData={name:"\
 noData",length:5};T.portalSuspended={name:"portalSuspended",length:5};T.replicationStart=
 {name:"replicationStart",length:4};T.emptyQuery={name:"emptyQuery",length:4};T.copyDone=
-{name:"copyDone",length:4};var kr=class kr extends Error{constructor(e,t,n){super(
-e),this.length=t,this.name=n}};a(kr,"DatabaseError");var vr=kr;T.DatabaseError=vr;
-var Ur=class Ur{constructor(e,t){this.length=e,this.chunk=t,this.name="copyData"}};
-a(Ur,"CopyDataMessage");var Er=Ur;T.CopyDataMessage=Er;var Or=class Or{constructor(e,t,n,i){
-this.length=e,this.name=t,this.binary=n,this.columnTypes=new Array(i)}};a(Or,"Co\
-pyResponse");var _r=Or;T.CopyResponse=_r;var Nr=class Nr{constructor(e,t,n,i,s,o,u){
+{name:"copyDone",length:4};var Ur=class Ur extends Error{constructor(e,t,n){super(
+e),this.length=t,this.name=n}};a(Ur,"DatabaseError");var Er=Ur;T.DatabaseError=Er;
+var Or=class Or{constructor(e,t){this.length=e,this.chunk=t,this.name="copyData"}};
+a(Or,"CopyDataMessage");var _r=Or;T.CopyDataMessage=_r;var Nr=class Nr{constructor(e,t,n,i){
+this.length=e,this.name=t,this.binary=n,this.columnTypes=new Array(i)}};a(Nr,"Co\
+pyResponse");var Ar=Nr;T.CopyResponse=Ar;var qr=class qr{constructor(e,t,n,i,s,o,u){
 this.name=e,this.tableID=t,this.columnID=n,this.dataTypeID=i,this.dataTypeSize=s,
-this.dataTypeModifier=o,this.format=u}};a(Nr,"Field");var Ar=Nr;T.Field=Ar;var qr=class qr{constructor(e,t){
+this.dataTypeModifier=o,this.format=u}};a(qr,"Field");var Cr=qr;T.Field=Cr;var Qr=class Qr{constructor(e,t){
 this.length=e,this.fieldCount=t,this.name="rowDescription",this.fields=new Array(
-this.fieldCount)}};a(qr,"RowDescriptionMessage");var Cr=qr;T.RowDescriptionMessage=
-Cr;var Qr=class Qr{constructor(e,t){this.length=e,this.parameterCount=t,this.name=
-"parameterDescription",this.dataTypeIDs=new Array(this.parameterCount)}};a(Qr,"P\
-arameterDescriptionMessage");var Tr=Qr;T.ParameterDescriptionMessage=Tr;var Wr=class Wr{constructor(e,t,n){
+this.fieldCount)}};a(Qr,"RowDescriptionMessage");var Tr=Qr;T.RowDescriptionMessage=
+Tr;var Wr=class Wr{constructor(e,t){this.length=e,this.parameterCount=t,this.name=
+"parameterDescription",this.dataTypeIDs=new Array(this.parameterCount)}};a(Wr,"P\
+arameterDescriptionMessage");var Ir=Wr;T.ParameterDescriptionMessage=Ir;var jr=class jr{constructor(e,t,n){
 this.length=e,this.parameterName=t,this.parameterValue=n,this.name="parameterSta\
-tus"}};a(Wr,"ParameterStatusMessage");var Ir=Wr;T.ParameterStatusMessage=Ir;var jr=class jr{constructor(e,t){
-this.length=e,this.salt=t,this.name="authenticationMD5Password"}};a(jr,"Authenti\
-cationMD5Password");var Pr=jr;T.AuthenticationMD5Password=Pr;var Hr=class Hr{constructor(e,t,n){
-this.length=e,this.processID=t,this.secretKey=n,this.name="backendKeyData"}};a(Hr,
-"BackendKeyDataMessage");var Br=Hr;T.BackendKeyDataMessage=Br;var Gr=class Gr{constructor(e,t,n,i){
+tus"}};a(jr,"ParameterStatusMessage");var Pr=jr;T.ParameterStatusMessage=Pr;var Hr=class Hr{constructor(e,t){
+this.length=e,this.salt=t,this.name="authenticationMD5Password"}};a(Hr,"Authenti\
+cationMD5Password");var Br=Hr;T.AuthenticationMD5Password=Br;var Gr=class Gr{constructor(e,t,n){
+this.length=e,this.processID=t,this.secretKey=n,this.name="backendKeyData"}};a(Gr,
+"BackendKeyDataMessage");var Lr=Gr;T.BackendKeyDataMessage=Lr;var $r=class $r{constructor(e,t,n,i){
 this.length=e,this.processId=t,this.channel=n,this.payload=i,this.name="notifica\
-tion"}};a(Gr,"NotificationResponseMessage");var Lr=Gr;T.NotificationResponseMessage=
-Lr;var $r=class $r{constructor(e,t){this.length=e,this.status=t,this.name="ready\
-ForQuery"}};a($r,"ReadyForQueryMessage");var Rr=$r;T.ReadyForQueryMessage=Rr;var Vr=class Vr{constructor(e,t){
-this.length=e,this.text=t,this.name="commandComplete"}};a(Vr,"CommandCompleteMes\
-sage");var Fr=Vr;T.CommandCompleteMessage=Fr;var Kr=class Kr{constructor(e,t){this.
-length=e,this.fields=t,this.name="dataRow",this.fieldCount=t.length}};a(Kr,"Data\
-RowMessage");var Mr=Kr;T.DataRowMessage=Mr;var zr=class zr{constructor(e,t){this.
-length=e,this.message=t,this.name="notice"}};a(zr,"NoticeMessage");var Dr=zr;T.NoticeMessage=
-Dr});var ms=I(bt=>{"use strict";p();Object.defineProperty(bt,"__esModule",{value:!0});
-bt.Writer=void 0;var Jr=class Jr{constructor(e=256){this.size=e,this.offset=5,this.
+tion"}};a($r,"NotificationResponseMessage");var Rr=$r;T.NotificationResponseMessage=
+Rr;var Vr=class Vr{constructor(e,t){this.length=e,this.status=t,this.name="ready\
+ForQuery"}};a(Vr,"ReadyForQueryMessage");var Fr=Vr;T.ReadyForQueryMessage=Fr;var Kr=class Kr{constructor(e,t){
+this.length=e,this.text=t,this.name="commandComplete"}};a(Kr,"CommandCompleteMes\
+sage");var Mr=Kr;T.CommandCompleteMessage=Mr;var zr=class zr{constructor(e,t){this.
+length=e,this.fields=t,this.name="dataRow",this.fieldCount=t.length}};a(zr,"Data\
+RowMessage");var Dr=zr;T.DataRowMessage=Dr;var Yr=class Yr{constructor(e,t){this.
+length=e,this.message=t,this.name="notice"}};a(Yr,"NoticeMessage");var kr=Yr;T.NoticeMessage=
+kr});var ws=I(bt=>{"use strict";p();Object.defineProperty(bt,"__esModule",{value:!0});
+bt.Writer=void 0;var Xr=class Xr{constructor(e=256){this.size=e,this.offset=5,this.
 headerPosition=0,this.buffer=y.allocUnsafe(e)}ensure(e){var t=this.buffer.length-
 this.offset;if(t<e){var n=this.buffer,i=n.length+(n.length>>1)+e;this.buffer=y.allocUnsafe(
 i),n.copy(this.buffer)}}addInt32(e){return this.ensure(4),this.buffer[this.offset++]=
@@ -2568,44 +1079,44 @@ offset+=t,this}add(e){return this.ensure(e.length),e.copy(this.buffer,this.offse
 this.offset+=e.length,this}join(e){if(e){this.buffer[this.headerPosition]=e;let t=this.
 offset-(this.headerPosition+1);this.buffer.writeInt32BE(t,this.headerPosition+1)}
 return this.buffer.slice(e?0:5,this.offset)}flush(e){var t=this.join(e);return this.
-offset=5,this.headerPosition=0,this.buffer=y.allocUnsafe(this.size),t}};a(Jr,"Wr\
-iter");var Zr=Jr;bt.Writer=Zr});var ws=I(xt=>{"use strict";p();Object.defineProperty(xt,"__esModule",{value:!0});
-xt.serialize=void 0;var Xr=ms(),M=new Xr.Writer,Du=a(r=>{M.addInt16(3).addInt16(
+offset=5,this.headerPosition=0,this.buffer=y.allocUnsafe(this.size),t}};a(Xr,"Wr\
+iter");var Jr=Xr;bt.Writer=Jr});var Ss=I(xt=>{"use strict";p();Object.defineProperty(xt,"__esModule",{value:!0});
+xt.serialize=void 0;var en=ws(),M=new en.Writer,Du=a(r=>{M.addInt16(3).addInt16(
 0);for(let n of Object.keys(r))M.addCString(n).addCString(r[n]);M.addCString("cl\
-ient_encoding").addCString("UTF8");var e=M.addCString("").flush(),t=e.length+4;return new Xr.
+ient_encoding").addCString("UTF8");var e=M.addCString("").flush(),t=e.length+4;return new en.
 Writer().addInt32(t).add(e).flush()},"startup"),ku=a(()=>{let r=y.allocUnsafe(8);
 return r.writeInt32BE(8,0),r.writeInt32BE(80877103,4),r},"requestSsl"),Uu=a(r=>M.
 addCString(r).flush(112),"password"),Ou=a(function(r,e){return M.addCString(r).addInt32(
 y.byteLength(e)).addString(e),M.flush(112)},"sendSASLInitialResponseMessage"),Nu=a(
 function(r){return M.addString(r).flush(112)},"sendSCRAMClientFinalMessage"),qu=a(
-r=>M.addCString(r).flush(81),"query"),gs=[],Qu=a(r=>{let e=r.name||"";e.length>63&&
+r=>M.addCString(r).flush(81),"query"),bs=[],Qu=a(r=>{let e=r.name||"";e.length>63&&
 (console.error("Warning! Postgres only supports 63 characters for query names."),
 console.error("You supplied %s (%s)",e,e.length),console.error("This can cause c\
-onflicts and silent errors executing queries"));let t=r.types||gs;for(var n=t.length,
+onflicts and silent errors executing queries"));let t=r.types||bs;for(var n=t.length,
 i=M.addCString(e).addCString(r.text).addInt16(n),s=0;s<n;s++)i.addInt32(t[s]);return M.
-flush(80)},"parse"),Oe=new Xr.Writer,Wu=a(function(r,e){for(let t=0;t<r.length;t++){
-let n=e?e(r[t],t):r[t];n==null?(M.addInt16(0),Oe.addInt32(-1)):n instanceof y?(M.
-addInt16(1),Oe.addInt32(n.length),Oe.add(n)):(M.addInt16(0),Oe.addInt32(y.byteLength(
-n)),Oe.addString(n))}},"writeValues"),ju=a((r={})=>{let e=r.portal||"",t=r.statement||
-"",n=r.binary||!1,i=r.values||gs,s=i.length;return M.addCString(e).addCString(t),
-M.addInt16(s),Wu(i,r.valueMapper),M.addInt16(s),M.add(Oe.flush()),M.addInt16(n?1:
+flush(80)},"parse"),Ne=new en.Writer,Wu=a(function(r,e){for(let t=0;t<r.length;t++){
+let n=e?e(r[t],t):r[t];n==null?(M.addInt16(0),Ne.addInt32(-1)):n instanceof y?(M.
+addInt16(1),Ne.addInt32(n.length),Ne.add(n)):(M.addInt16(0),Ne.addInt32(y.byteLength(
+n)),Ne.addString(n))}},"writeValues"),ju=a((r={})=>{let e=r.portal||"",t=r.statement||
+"",n=r.binary||!1,i=r.values||bs,s=i.length;return M.addCString(e).addCString(t),
+M.addInt16(s),Wu(i,r.valueMapper),M.addInt16(s),M.add(Ne.flush()),M.addInt16(n?1:
 0),M.flush(66)},"bind"),Hu=y.from([69,0,0,0,9,0,0,0,0,0]),Gu=a(r=>{if(!r||!r.portal&&
 !r.rows)return Hu;let e=r.portal||"",t=r.rows||0,n=y.byteLength(e),i=4+n+1+4,s=y.
 allocUnsafe(1+i);return s[0]=69,s.writeInt32BE(i,1),s.write(e,5,"utf-8"),s[n+5]=
 0,s.writeUInt32BE(t,s.length-4),s},"execute"),$u=a((r,e)=>{let t=y.allocUnsafe(16);
 return t.writeInt32BE(16,0),t.writeInt16BE(1234,4),t.writeInt16BE(5678,6),t.writeInt32BE(
-r,8),t.writeInt32BE(e,12),t},"cancel"),en=a((r,e)=>{let n=4+y.byteLength(e)+1,i=y.
+r,8),t.writeInt32BE(e,12),t},"cancel"),tn=a((r,e)=>{let n=4+y.byteLength(e)+1,i=y.
 allocUnsafe(1+n);return i[0]=r,i.writeInt32BE(n,1),i.write(e,5,"utf-8"),i[n]=0,i},
 "cstringMessage"),Vu=M.addCString("P").flush(68),Ku=M.addCString("S").flush(68),
-zu=a(r=>r.name?en(68,`${r.type}${r.name||""}`):r.type==="P"?Vu:Ku,"describe"),Yu=a(
-r=>{let e=`${r.type}${r.name||""}`;return en(67,e)},"close"),Zu=a(r=>M.add(r).flush(
-100),"copyData"),Ju=a(r=>en(102,r),"copyFail"),St=a(r=>y.from([r,0,0,0,4]),"code\
+zu=a(r=>r.name?tn(68,`${r.type}${r.name||""}`):r.type==="P"?Vu:Ku,"describe"),Yu=a(
+r=>{let e=`${r.type}${r.name||""}`;return tn(67,e)},"close"),Zu=a(r=>M.add(r).flush(
+100),"copyData"),Ju=a(r=>tn(102,r),"copyFail"),St=a(r=>y.from([r,0,0,0,4]),"code\
 OnlyBuffer"),Xu=St(72),ec=St(83),tc=St(88),rc=St(99),nc={startup:Du,password:Uu,
 requestSsl:ku,sendSASLInitialResponseMessage:Ou,sendSCRAMClientFinalMessage:Nu,query:qu,
 parse:Qu,bind:ju,execute:Gu,describe:zu,close:Yu,flush:a(()=>Xu,"flush"),sync:a(
 ()=>ec,"sync"),end:a(()=>tc,"end"),copyData:Zu,copyDone:a(()=>rc,"copyDone"),copyFail:Ju,
-cancel:$u};xt.serialize=nc});var bs=I(vt=>{"use strict";p();Object.defineProperty(vt,"__esModule",{value:!0});
-vt.BufferReader=void 0;var ic=y.allocUnsafe(0),rn=class rn{constructor(e=0){this.
+cancel:$u};xt.serialize=nc});var xs=I(vt=>{"use strict";p();Object.defineProperty(vt,"__esModule",{value:!0});
+vt.BufferReader=void 0;var ic=y.allocUnsafe(0),nn=class nn{constructor(e=0){this.
 offset=e,this.buffer=ic,this.encoding="utf-8"}setBuffer(e,t){this.offset=e,this.
 buffer=t}int16(){let e=this.buffer.readInt16BE(this.offset);return this.offset+=
 2,e}byte(){let e=this.buffer[this.offset];return this.offset++,e}int32(){let e=this.
@@ -2613,15 +1124,15 @@ buffer.readInt32BE(this.offset);return this.offset+=4,e}string(e){let t=this.buf
 toString(this.encoding,this.offset,this.offset+e);return this.offset+=e,t}cstring(){
 let e=this.offset,t=e;for(;this.buffer[t++]!==0;);return this.offset=t,this.buffer.
 toString(this.encoding,e,t-1)}bytes(e){let t=this.buffer.slice(this.offset,this.
-offset+e);return this.offset+=e,t}};a(rn,"BufferReader");var tn=rn;vt.BufferReader=
-tn});var vs=I(Et=>{"use strict";p();Object.defineProperty(Et,"__esModule",{value:!0});
-Et.Parser=void 0;var D=Yr(),sc=bs(),nn=1,oc=4,Ss=nn+oc,xs=y.allocUnsafe(0),on=class on{constructor(e){
-if(this.buffer=xs,this.bufferLength=0,this.bufferOffset=0,this.reader=new sc.BufferReader,
+offset+e);return this.offset+=e,t}};a(nn,"BufferReader");var rn=nn;vt.BufferReader=
+rn});var _s=I(Et=>{"use strict";p();Object.defineProperty(Et,"__esModule",{value:!0});
+Et.Parser=void 0;var D=Zr(),sc=xs(),sn=1,oc=4,vs=sn+oc,Es=y.allocUnsafe(0),an=class an{constructor(e){
+if(this.buffer=Es,this.bufferLength=0,this.bufferOffset=0,this.reader=new sc.BufferReader,
 e?.mode==="binary")throw new Error("Binary mode not supported yet");this.mode=e?.
 mode||"text"}parse(e,t){this.mergeBuffer(e);let n=this.bufferOffset+this.bufferLength,
-i=this.bufferOffset;for(;i+Ss<=n;){let s=this.buffer[i],o=this.buffer.readUInt32BE(
-i+nn),u=nn+o;if(u+i<=n){let c=this.handlePacket(i+Ss,s,o,this.buffer);t(c),i+=u}else
-break}i===n?(this.buffer=xs,this.bufferLength=0,this.bufferOffset=0):(this.bufferLength=
+i=this.bufferOffset;for(;i+vs<=n;){let s=this.buffer[i],o=this.buffer.readUInt32BE(
+i+sn),u=sn+o;if(u+i<=n){let c=this.handlePacket(i+vs,s,o,this.buffer);t(c),i+=u}else
+break}i===n?(this.buffer=Es,this.bufferLength=0,this.bufferOffset=0):(this.bufferLength=
 n-i,this.bufferOffset=i)}mergeBuffer(e){if(this.bufferLength>0){let t=this.bufferLength+
 e.byteLength;if(t+this.bufferOffset>this.buffer.byteLength){let i;if(t<=this.buffer.
 byteLength&&this.bufferOffset>=this.bufferLength)i=this.buffer;else{let s=this.buffer.
@@ -2678,16 +1189,16 @@ this.reader.cstring(),o=this.reader.string(1);let u=s.M,c=i==="notice"?new D.Not
 t,u):new D.DatabaseError(u,t,i);return c.severity=s.S,c.code=s.C,c.detail=s.D,c.
 hint=s.H,c.position=s.P,c.internalPosition=s.p,c.internalQuery=s.q,c.where=s.W,c.
 schema=s.s,c.table=s.t,c.column=s.c,c.dataType=s.d,c.constraint=s.n,c.file=s.F,c.
-line=s.L,c.routine=s.R,c}};a(on,"Parser");var sn=on;Et.Parser=sn});var an=I(Se=>{"use strict";p();Object.defineProperty(Se,"__esModule",{value:!0});
-Se.DatabaseError=Se.serialize=Se.parse=void 0;var ac=Yr();Object.defineProperty(
-Se,"DatabaseError",{enumerable:!0,get:a(function(){return ac.DatabaseError},"get")});
-var uc=ws();Object.defineProperty(Se,"serialize",{enumerable:!0,get:a(function(){
-return uc.serialize},"get")});var cc=vs();function hc(r,e){let t=new cc.Parser;return r.
-on("data",n=>t.parse(n,e)),new Promise(n=>r.on("end",()=>n()))}a(hc,"parse");Se.
-parse=hc});var Es={};ie(Es,{connect:()=>lc});function lc({socket:r,servername:e}){return r.
-startTls(e),r}var _s=z(()=>{"use strict";p();a(lc,"connect")});var hn=I((tf,Ts)=>{"use strict";p();var As=(wt(),N(ys)),fc=we().EventEmitter,{parse:pc,
-serialize:Q}=an(),Cs=Q.flush(),dc=Q.sync(),yc=Q.end(),cn=class cn extends fc{constructor(e){
-super(),e=e||{},this.stream=e.stream||new As.Socket,this._keepAlive=e.keepAlive,
+line=s.L,c.routine=s.R,c}};a(an,"Parser");var on=an;Et.Parser=on});var un=I(ve=>{"use strict";p();Object.defineProperty(ve,"__esModule",{value:!0});
+ve.DatabaseError=ve.serialize=ve.parse=void 0;var ac=Zr();Object.defineProperty(
+ve,"DatabaseError",{enumerable:!0,get:a(function(){return ac.DatabaseError},"get")});
+var uc=Ss();Object.defineProperty(ve,"serialize",{enumerable:!0,get:a(function(){
+return uc.serialize},"get")});var cc=_s();function hc(r,e){let t=new cc.Parser;return r.
+on("data",n=>t.parse(n,e)),new Promise(n=>r.on("end",()=>n()))}a(hc,"parse");ve.
+parse=hc});var As={};te(As,{connect:()=>lc});function lc({socket:r,servername:e}){return r.
+startTls(e),r}var Cs=z(()=>{"use strict";p();a(lc,"connect")});var ln=I((rf,Ps)=>{"use strict";p();var Ts=(wt(),N(gs)),fc=be().EventEmitter,{parse:pc,
+serialize:Q}=un(),Is=Q.flush(),dc=Q.sync(),yc=Q.end(),hn=class hn extends fc{constructor(e){
+super(),e=e||{},this.stream=e.stream||new Ts.Socket,this._keepAlive=e.keepAlive,
 this._keepAliveInitialDelayMillis=e.keepAliveInitialDelayMillis,this.lastBuffer=
 !1,this.parsedStatements={},this.ssl=e.ssl||!1,this._ending=!1,this._emitMessage=
 !1;var t=this;this.on("newListener",function(n){n==="message"&&(t._emitMessage=!0)})}connect(e,t){
@@ -2700,8 +1211,8 @@ ssl)return this.attachListeners(this.stream);this.stream.once("data",function(s)
 var o=s.toString("utf8");switch(o){case"S":break;case"N":return n.stream.end(),n.
 emit("error",new Error("The server does not support SSL connections"));default:return n.
 stream.end(),n.emit("error",new Error("There was an error establishing an SSL co\
-nnection"))}var u=(_s(),N(Es));let c={socket:n.stream};n.ssl!==!0&&(Object.assign(
-c,n.ssl),"key"in n.ssl&&(c.key=n.ssl.key)),As.isIP(t)===0&&(c.servername=t);try{
+nnection"))}var u=(Cs(),N(As));let c={socket:n.stream};n.ssl!==!0&&(Object.assign(
+c,n.ssl),"key"in n.ssl&&(c.key=n.ssl.key)),Ts.isIP(t)===0&&(c.servername=t);try{
 n.stream=u.connect(c)}catch(h){return n.emit("error",h)}n.attachListeners(n.stream),
 n.stream.on("error",i),n.emit("sslconnect")})}attachListeners(e){e.on("end",()=>{
 this.emit("end")}),pc(e,t=>{var n=t.name==="error"?"errorMessage":t.name;this._emitMessage&&
@@ -2711,14 +1222,14 @@ this._send(Q.password(e))}sendSASLInitialResponseMessage(e,t){this._send(Q.sendS
 e,t))}sendSCRAMClientFinalMessage(e){this._send(Q.sendSCRAMClientFinalMessage(e))}_send(e){
 return this.stream.writable?this.stream.write(e):!1}query(e){this._send(Q.query(
 e))}parse(e){this._send(Q.parse(e))}bind(e){this._send(Q.bind(e))}execute(e){this.
-_send(Q.execute(e))}flush(){this.stream.writable&&this.stream.write(Cs)}sync(){this.
-_ending=!0,this._send(Cs),this._send(dc)}ref(){this.stream.ref()}unref(){this.stream.
+_send(Q.execute(e))}flush(){this.stream.writable&&this.stream.write(Is)}sync(){this.
+_ending=!0,this._send(Is),this._send(dc)}ref(){this.stream.ref()}unref(){this.stream.
 unref()}end(){if(this._ending=!0,!this._connecting||!this.stream.writable){this.
 stream.end();return}return this.stream.write(yc,()=>{this.stream.end()})}close(e){
 this._send(Q.close(e))}describe(e){this._send(Q.describe(e))}sendCopyFromChunk(e){
 this._send(Q.copyData(e))}endCopyFrom(){this._send(Q.copyDone())}sendCopyFail(e){
-this._send(Q.copyFail(e))}};a(cn,"Connection");var un=cn;Ts.exports=un});var Bs=I((of,Ps)=>{"use strict";p();var mc=we().EventEmitter,sf=(He(),N(je)),gc=et(),
-ln=qi(),wc=Zi(),bc=mt(),Sc=gt(),Is=ps(),xc=Xe(),vc=hn(),fn=class fn extends mc{constructor(e){
+this._send(Q.copyFail(e))}};a(hn,"Connection");var cn=hn;Ps.exports=cn});var Rs=I((af,Ls)=>{"use strict";p();var mc=be().EventEmitter,of=(He(),N(je)),gc=et(),
+fn=Wi(),wc=Xi(),bc=mt(),Sc=gt(),Bs=ys(),xc=Xe(),vc=ln(),pn=class pn extends mc{constructor(e){
 super(),this.connectionParameters=new Sc(e),this.user=this.connectionParameters.
 user,this.database=this.connectionParameters.database,this.port=this.connectionParameters.
 port,this.host=this.connectionParameters.host,Object.defineProperty(this,"passwo\
@@ -2772,10 +1283,10 @@ n=>{n!==void 0&&(this.connectionParameters.password=this.password=n),e()})}_hand
 this._checkPgPass(()=>{this.connection.password(this.password)})}_handleAuthMD5Password(e){
 this._checkPgPass(()=>{let t=gc.postgresMd5PasswordHash(this.user,this.password,
 e.salt);this.connection.password(t)})}_handleAuthSASL(e){this._checkPgPass(()=>{
-this.saslSession=ln.startSession(e.mechanisms),this.connection.sendSASLInitialResponseMessage(
+this.saslSession=fn.startSession(e.mechanisms),this.connection.sendSASLInitialResponseMessage(
 this.saslSession.mechanism,this.saslSession.response)})}_handleAuthSASLContinue(e){
-ln.continueSession(this.saslSession,this.password,e.data),this.connection.sendSCRAMClientFinalMessage(
-this.saslSession.response)}_handleAuthSASLFinal(e){ln.finalizeSession(this.saslSession,
+fn.continueSession(this.saslSession,this.password,e.data),this.connection.sendSCRAMClientFinalMessage(
+this.saslSession.response)}_handleAuthSASLFinal(e){fn.finalizeSession(this.saslSession,
 e.data),this.saslSession=null}_handleBackendKeyData(e){this.processID=e.processID,
 this.secretKey=e.secretKey}_handleReadyForQuery(e){this._connecting&&(this._connecting=
 !1,this._connected=!0,clearTimeout(this.connectionTimeoutHandle),this._connectionCallback&&
@@ -2816,7 +1327,7 @@ e&&m.nextTick(()=>{this.activeQuery.handleError(e,this.connection),this.readyFor
 emit("drain"))}query(e,t,n){var i,s,o,u,c;if(e==null)throw new TypeError("Client\
  was passed a null or undefined query");return typeof e.submit=="function"?(o=e.
 query_timeout||this.connectionParameters.query_timeout,s=i=e,typeof t=="function"&&
-(i.callback=i.callback||t)):(o=this.connectionParameters.query_timeout,i=new Is(
+(i.callback=i.callback||t)):(o=this.connectionParameters.query_timeout,i=new Bs(
 e,t,n),i.callback||(s=new this._Promise((h,l)=>{i.callback=(d,b)=>d?l(d):h(b)}))),
 o&&(c=i.callback,u=setTimeout(()=>{var h=new Error("Query read timeout");m.nextTick(
 ()=>{i.handleError(h,this.connection)}),c(h),i.callback=()=>{};var l=this.queryQueue.
@@ -2830,19 +1341,19 @@ ot queryable"),this.connection)}),s)}ref(){this.connection.ref()}unref(){this.co
 unref()}end(e){if(this._ending=!0,!this.connection._connecting)if(e)e();else return this.
 _Promise.resolve();if(this.activeQuery||!this._queryable?this.connection.stream.
 destroy():this.connection.end(),e)this.connection.once("end",e);else return new this.
-_Promise(t=>{this.connection.once("end",t)})}};a(fn,"Client");var _t=fn;_t.Query=
-Is;Ps.exports=_t});var Ms=I((cf,Fs)=>{"use strict";p();var Ec=we().EventEmitter,Ls=a(function(){},"\
-NOOP"),Rs=a((r,e)=>{let t=r.findIndex(e);return t===-1?void 0:r.splice(t,1)[0]},
-"removeWhere"),yn=class yn{constructor(e,t,n){this.client=e,this.idleListener=t,
-this.timeoutId=n}};a(yn,"IdleItem");var pn=yn,mn=class mn{constructor(e){this.callback=
-e}};a(mn,"PendingItem");var Ne=mn;function _c(){throw new Error("Release called \
+_Promise(t=>{this.connection.once("end",t)})}};a(pn,"Client");var _t=pn;_t.Query=
+Bs;Ls.exports=_t});var ks=I((hf,Ds)=>{"use strict";p();var Ec=be().EventEmitter,Fs=a(function(){},"\
+NOOP"),Ms=a((r,e)=>{let t=r.findIndex(e);return t===-1?void 0:r.splice(t,1)[0]},
+"removeWhere"),mn=class mn{constructor(e,t,n){this.client=e,this.idleListener=t,
+this.timeoutId=n}};a(mn,"IdleItem");var dn=mn,gn=class gn{constructor(e){this.callback=
+e}};a(gn,"PendingItem");var qe=gn;function _c(){throw new Error("Release called \
 on client which has already been released to the pool.")}a(_c,"throwOnDoubleRele\
 ase");function At(r,e){if(e)return{callback:e,result:void 0};let t,n,i=a(function(o,u){
 o?t(o):n(u)},"cb"),s=new r(function(o,u){n=o,t=u}).catch(o=>{throw Error.captureStackTrace(
 o),o});return{callback:i,result:s}}a(At,"promisify");function Ac(r,e){return a(function t(n){
 n.client=e,e.removeListener("error",t),e.on("error",()=>{r.log("additional clien\
 t error after disconnection due to error",n)}),r._remove(e),r.emit("error",n,e)},
-"idleListener")}a(Ac,"makeIdleListener");var gn=class gn extends Ec{constructor(e,t){
+"idleListener")}a(Ac,"makeIdleListener");var wn=class wn extends Ec{constructor(e,t){
 super(),this.options=Object.assign({},e),e!=null&&"password"in e&&Object.defineProperty(
 this.options,"password",{configurable:!0,enumerable:!1,writable:!0,value:e.password}),
 e!=null&&e.ssl&&e.ssl.key&&Object.defineProperty(this.options.ssl,"key",{enumerable:!1}),
@@ -2861,17 +1372,17 @@ _pendingQueue.length){this.log("no queued requests");return}if(!this._idle.lengt
 this._isFull())return;let e=this._pendingQueue.shift();if(this._idle.length){let t=this.
 _idle.pop();clearTimeout(t.timeoutId);let n=t.client;n.ref&&n.ref();let i=t.idleListener;
 return this._acquireClient(n,e,i,!1)}if(!this._isFull())return this.newClient(e);
-throw new Error("unexpected condition")}_remove(e){let t=Rs(this._idle,n=>n.client===
+throw new Error("unexpected condition")}_remove(e){let t=Ms(this._idle,n=>n.client===
 e);t!==void 0&&clearTimeout(t.timeoutId),this._clients=this._clients.filter(n=>n!==
 e),e.end(),this.emit("remove",e)}connect(e){if(this.ending){let i=new Error("Can\
 not use a pool after calling end on the pool");return e?e(i):this.Promise.reject(
 i)}let t=At(this.Promise,e),n=t.result;if(this._isFull()||this._idle.length){if(this.
 _idle.length&&m.nextTick(()=>this._pulseQueue()),!this.options.connectionTimeoutMillis)
-return this._pendingQueue.push(new Ne(t.callback)),n;let i=a((u,c,h)=>{clearTimeout(
-o),t.callback(u,c,h)},"queueCallback"),s=new Ne(i),o=setTimeout(()=>{Rs(this._pendingQueue,
+return this._pendingQueue.push(new qe(t.callback)),n;let i=a((u,c,h)=>{clearTimeout(
+o),t.callback(u,c,h)},"queueCallback"),s=new qe(i),o=setTimeout(()=>{Ms(this._pendingQueue,
 u=>u.callback===i),s.timedOut=!0,t.callback(new Error("timeout exceeded when try\
 ing to connect"))},this.options.connectionTimeoutMillis);return this._pendingQueue.
-push(s),n}return this.newClient(new Ne(t.callback)),n}newClient(e){let t=new this.
+push(s),n}return this.newClient(new qe(t.callback)),n}newClient(e){let t=new this.
 Client(this.options);this._clients.push(t);let n=Ac(this,t);this.log("checking c\
 lient timeout");let i,s=!1;this.options.connectionTimeoutMillis&&(i=setTimeout(()=>{
 this.log("ending client due to timeout"),s=!0,t.connection?t.connection.stream.destroy():
@@ -2879,15 +1390,15 @@ t.end()},this.options.connectionTimeoutMillis)),this.log("connecting new client"
 t.connect(o=>{if(i&&clearTimeout(i),t.on("error",n),o)this.log("client failed to\
  connect",o),this._clients=this._clients.filter(u=>u!==t),s&&(o.message="Connect\
 ion terminated due to connection timeout"),this._pulseQueue(),e.timedOut||e.callback(
-o,void 0,Ls);else{if(this.log("new client connected"),this.options.maxLifetimeSeconds!==
+o,void 0,Fs);else{if(this.log("new client connected"),this.options.maxLifetimeSeconds!==
 0){let u=setTimeout(()=>{this.log("ending client due to expired lifetime"),this.
 _expired.add(t),this._idle.findIndex(h=>h.client===t)!==-1&&this._acquireClient(
-t,new Ne((h,l,d)=>d()),n,!1)},this.options.maxLifetimeSeconds*1e3);u.unref(),t.once(
+t,new qe((h,l,d)=>d()),n,!1)},this.options.maxLifetimeSeconds*1e3);u.unref(),t.once(
 "end",()=>clearTimeout(u))}return this._acquireClient(t,e,n,!0)}})}_acquireClient(e,t,n,i){
 i&&this.emit("connect",e),this.emit("acquire",e),e.release=this._releaseOnce(e,n),
 e.removeListener("error",n),t.timedOut?i&&this.options.verify?this.options.verify(
 e,e.release):e.release():i&&this.options.verify?this.options.verify(e,s=>{if(s)return e.
-release(s),t.callback(s,void 0,Ls);t.callback(void 0,e,e.release)}):t.callback(void 0,
+release(s),t.callback(s,void 0,Fs);t.callback(void 0,e,e.release)}):t.callback(void 0,
 e,e.release)}_releaseOnce(e,t){let n=!1;return i=>{n&&_c(),n=!0,this._release(e,
 t,i)}}_release(e,t,n){if(e.on("error",t),e._poolUseCount=(e._poolUseCount||0)+1,
 this.emit("release",n,e),n||this.ending||!e._queryable||e._ending||e._poolUseCount>=
@@ -2896,7 +1407,7 @@ pended client"),this._remove(e),this._pulseQueue();return}if(this._expired.has(e
 this.log("remove expired client"),this._expired.delete(e),this._remove(e),this._pulseQueue();
 return}let s;this.options.idleTimeoutMillis&&(s=setTimeout(()=>{this.log("remove\
  idle client"),this._remove(e)},this.options.idleTimeoutMillis),this.options.allowExitOnIdle&&
-s.unref()),this.options.allowExitOnIdle&&e.unref(),this._idle.push(new pn(e,t,s)),
+s.unref()),this.options.allowExitOnIdle&&e.unref(),this._idle.push(new dn(e,t,s)),
 this._pulseQueue()}query(e,t,n){if(typeof e=="function"){let s=At(this.Promise,e);
 return x(function(){return s.callback(new Error("Passing a function as the first\
  parameter to pool.query is not supported"))}),s.result}typeof t=="function"&&(n=
@@ -2910,7 +1421,7 @@ this.Promise.reject(n)}this.ending=!0;let t=At(this.Promise,e);return this._endC
 t.callback,this._pulseQueue(),t.result}get waitingCount(){return this._pendingQueue.
 length}get idleCount(){return this._idle.length}get expiredCount(){return this._clients.
 reduce((e,t)=>e+(this._expired.has(t)?1:0),0)}get totalCount(){return this._clients.
-length}};a(gn,"Pool");var dn=gn;Fs.exports=dn});var Ds={};ie(Ds,{default:()=>Cc});var Cc,ks=z(()=>{"use strict";p();Cc={}});var Us=I((pf,Tc)=>{Tc.exports={name:"pg",version:"8.8.0",description:"PostgreSQL\
+length}};a(wn,"Pool");var yn=wn;Ds.exports=yn});var Us={};te(Us,{default:()=>Cc});var Cc,Os=z(()=>{"use strict";p();Cc={}});var Ns=I((df,Tc)=>{Tc.exports={name:"pg",version:"8.8.0",description:"PostgreSQL\
  client - pure javascript & libpq with the same API",keywords:["database","libpq",
 "pg","postgre","postgres","postgresql","rdbms"],homepage:"https://github.com/bri\
 anc/node-postgres",repository:{type:"git",url:"git://github.com/brianc/node-post\
@@ -2921,21 +1432,21 @@ pes":"^2.1.0",pgpass:"1.x"},devDependencies:{async:"2.6.4",bluebird:"3.5.2",co:"
 4.6.0","pg-copy-streams":"0.3.0"},peerDependencies:{"pg-native":">=3.0.1"},peerDependenciesMeta:{
 "pg-native":{optional:!0}},scripts:{test:"make test-all"},files:["lib","SPONSORS\
 .md"],license:"MIT",engines:{node:">= 8.0.0"},gitHead:"c99fb2c127ddf8d712500db2c\
-7b9a5491a178655"}});var qs=I((df,Ns)=>{"use strict";p();var Os=we().EventEmitter,Ic=(He(),N(je)),wn=et(),
-qe=Ns.exports=function(r,e,t){Os.call(this),r=wn.normalizeQueryConfig(r,e,t),this.
+7b9a5491a178655"}});var Ws=I((yf,Qs)=>{"use strict";p();var qs=be().EventEmitter,Ic=(He(),N(je)),bn=et(),
+Qe=Qs.exports=function(r,e,t){qs.call(this),r=bn.normalizeQueryConfig(r,e,t),this.
 text=r.text,this.values=r.values,this.name=r.name,this.callback=r.callback,this.
 state="new",this._arrayMode=r.rowMode==="array",this._emitRowEvents=!1,this.on("\
 newListener",function(n){n==="row"&&(this._emitRowEvents=!0)}.bind(this))};Ic.inherits(
-qe,Os);var Pc={sqlState:"code",statementPosition:"position",messagePrimary:"mess\
+Qe,qs);var Pc={sqlState:"code",statementPosition:"position",messagePrimary:"mess\
 age",context:"where",schemaName:"schema",tableName:"table",columnName:"column",dataTypeName:"\
 dataType",constraintName:"constraint",sourceFile:"file",sourceLine:"line",sourceFunction:"\
-routine"};qe.prototype.handleError=function(r){var e=this.native.pq.resultErrorFields();
+routine"};Qe.prototype.handleError=function(r){var e=this.native.pq.resultErrorFields();
 if(e)for(var t in e){var n=Pc[t]||t;r[n]=e[t]}this.callback?this.callback(r):this.
-emit("error",r),this.state="error"};qe.prototype.then=function(r,e){return this.
-_getPromise().then(r,e)};qe.prototype.catch=function(r){return this._getPromise().
-catch(r)};qe.prototype._getPromise=function(){return this._promise?this._promise:
+emit("error",r),this.state="error"};Qe.prototype.then=function(r,e){return this.
+_getPromise().then(r,e)};Qe.prototype.catch=function(r){return this._getPromise().
+catch(r)};Qe.prototype._getPromise=function(){return this._promise?this._promise:
 (this._promise=new Promise(function(r,e){this._once("end",r),this._once("error",
-e)}.bind(this)),this._promise)};qe.prototype.submit=function(r){this.state="runn\
+e)}.bind(this)),this._promise)};Qe.prototype.submit=function(r){this.state="runn\
 ing";var e=this;this.native=r.native,r.native.arrayMode=this._arrayMode;var t=a(
 function(s,o,u){if(r.native.arrayMode=!1,x(function(){e.emit("_done")}),s)return e.
 handleError(s);e._emitRowEvents&&(u.length>1?o.forEach((c,h)=>{c.forEach(l=>{e.emit(
@@ -2944,22 +1455,22 @@ handleError(s);e._emitRowEvents&&(u.length>1?o.forEach((c,h)=>{c.forEach(l=>{e.e
 t)),this.name){this.name.length>63&&(console.error("Warning! Postgres only suppo\
 rts 63 characters for query names."),console.error("You supplied %s (%s)",this.name,
 this.name.length),console.error("This can cause conflicts and silent errors exec\
-uting queries"));var n=(this.values||[]).map(wn.prepareValue);if(r.namedQueries[this.
+uting queries"));var n=(this.values||[]).map(bn.prepareValue);if(r.namedQueries[this.
 name]){if(this.text&&r.namedQueries[this.name]!==this.text){let s=new Error(`Pre\
 pared statements must be unique - '${this.name}' was used for a different statem\
 ent`);return t(s)}return r.native.execute(this.name,n,t)}return r.native.prepare(
 this.name,this.text,n.length,function(s){return s?t(s):(r.namedQueries[e.name]=e.
 text,e.native.execute(e.name,n,t))})}else if(this.values){if(!Array.isArray(this.
 values)){let s=new Error("Query values must be an array");return t(s)}var i=this.
-values.map(wn.prepareValue);r.native.query(this.text,i,t)}else r.native.query(this.
-text,t)}});var Hs=I((wf,js)=>{"use strict";p();var Bc=(ks(),N(Ds)),Lc=mt(),gf=Us(),Qs=we().
-EventEmitter,Rc=(He(),N(je)),Fc=gt(),Ws=qs(),J=js.exports=function(r){Qs.call(this),
+values.map(bn.prepareValue);r.native.query(this.text,i,t)}else r.native.query(this.
+text,t)}});var $s=I((bf,Gs)=>{"use strict";p();var Bc=(Os(),N(Us)),Lc=mt(),wf=Ns(),js=be().
+EventEmitter,Rc=(He(),N(je)),Fc=gt(),Hs=Ws(),J=Gs.exports=function(r){js.call(this),
 r=r||{},this._Promise=r.Promise||S.Promise,this._types=new Lc(r.types),this.native=
 new Bc({types:this._types}),this._queryQueue=[],this._ending=!1,this._connecting=
 !1,this._connected=!1,this._queryable=!0;var e=this.connectionParameters=new Fc(
 r);this.user=e.user,Object.defineProperty(this,"password",{configurable:!0,enumerable:!1,
 writable:!0,value:e.password}),this.database=e.database,this.host=e.host,this.port=
-e.port,this.namedQueries={}};J.Query=Ws;Rc.inherits(J,Qs);J.prototype._errorAllQueries=
+e.port,this.namedQueries={}};J.Query=Hs;Rc.inherits(J,js);J.prototype._errorAllQueries=
 function(r){let e=a(t=>{m.nextTick(()=>{t.native=this.native,t.handleError(r)})},
 "enqueueError");this._hasActiveQuery()&&(e(this._activeQuery),this._activeQuery=
 null),this._queryQueue.forEach(e),this._queryQueue.length=0};J.prototype._connect=
@@ -2975,7 +1486,7 @@ prototype.connect=function(r){if(r){this._connect(r);return}return new this._Pro
 i,s,o,u;if(r==null)throw new TypeError("Client was passed a null or undefined qu\
 ery");if(typeof r.submit=="function")s=r.query_timeout||this.connectionParameters.
 query_timeout,i=n=r,typeof e=="function"&&(r.callback=e);else if(s=this.connectionParameters.
-query_timeout,n=new Ws(r,e,t),!n.callback){let c,h;i=new this._Promise((l,d)=>{c=
+query_timeout,n=new Hs(r,e,t),!n.callback){let c,h;i=new this._Promise((l,d)=>{c=
 l,h=d}),n.callback=(l,d)=>l?h(l):c(d)}return s&&(u=n.callback,o=setTimeout(()=>{
 var c=new Error("Query read timeout");m.nextTick(()=>{n.handleError(c,this.connection)}),
 u(c),n.callback=()=>{};var h=this._queryQueue.indexOf(n);h>-1&&this._queryQueue.
@@ -2997,66 +1508,69 @@ _activeQuery===r?this.native.cancel(function(){}):this._queryQueue.indexOf(r)!==
 -1&&this._queryQueue.splice(this._queryQueue.indexOf(r),1)};J.prototype.ref=function(){};
 J.prototype.unref=function(){};J.prototype.setTypeParser=function(r,e,t){return this.
 _types.setTypeParser(r,e,t)};J.prototype.getTypeParser=function(r,e){return this.
-_types.getTypeParser(r,e)}});var bn=I((xf,Gs)=>{"use strict";p();Gs.exports=Hs()});var Ct=I((Ef,rt)=>{"use strict";p();var Mc=Bs(),Dc=Xe(),kc=hn(),Uc=Ms(),{DatabaseError:Oc}=an(),
+_types.getTypeParser(r,e)}});var Sn=I((vf,Vs)=>{"use strict";p();Vs.exports=$s()});var Ct=I((_f,rt)=>{"use strict";p();var Mc=Rs(),Dc=Xe(),kc=ln(),Uc=ks(),{DatabaseError:Oc}=un(),
 Nc=a(r=>{var e;return e=class extends Uc{constructor(n){super(n,r)}},a(e,"BoundP\
-ool"),e},"poolFactory"),Sn=a(function(r){this.defaults=Dc,this.Client=r,this.Query=
+ool"),e},"poolFactory"),xn=a(function(r){this.defaults=Dc,this.Client=r,this.Query=
 this.Client.Query,this.Pool=Nc(this.Client),this._pools=[],this.Connection=kc,this.
 types=Je(),this.DatabaseError=Oc},"PG");typeof m.env.NODE_PG_FORCE_NATIVE<"u"?rt.
-exports=new Sn(bn()):(rt.exports=new Sn(Mc),Object.defineProperty(rt.exports,"na\
-tive",{configurable:!0,enumerable:!1,get(){var r=null;try{r=new Sn(bn())}catch(e){
+exports=new xn(Sn()):(rt.exports=new xn(Mc),Object.defineProperty(rt.exports,"na\
+tive",{configurable:!0,enumerable:!1,get(){var r=null;try{r=new xn(Sn())}catch(e){
 if(e.code!=="MODULE_NOT_FOUND")throw e}return Object.defineProperty(rt.exports,"\
-native",{value:r}),r}}))});p();var Tt=Te(Ct());wt();p();pr();wt();var Ks=Te(et()),zs=Te(mt());var xn=class xn extends Error{constructor(){super(...arguments);_(this,"name","N\
+native",{value:r}),r}}))});var jc={};te(jc,{Client:()=>Tt,ClientBase:()=>se.ClientBase,Connection:()=>se.Connection,
+DatabaseError:()=>se.DatabaseError,NeonDbError:()=>Ee,Pool:()=>_n,Query:()=>se.Query,
+defaults:()=>se.defaults,neon:()=>vn,neonConfig:()=>xe,types:()=>se.types});module.
+exports=N(jc);p();var It=Ie(Ct());wt();p();dr();wt();var Ys=Ie(et()),Zs=Ie(mt());var En=class En extends Error{constructor(){super(...arguments);_(this,"name","N\
 eonDbError");_(this,"severity");_(this,"code");_(this,"detail");_(this,"hint");_(
 this,"position");_(this,"internalPosition");_(this,"internalQuery");_(this,"wher\
 e");_(this,"schema");_(this,"table");_(this,"column");_(this,"dataType");_(this,
 "constraint");_(this,"file");_(this,"line");_(this,"routine");_(this,"sourceErro\
-r")}};a(xn,"NeonDbError");var Ae=xn,$s="transaction() expects an array of querie\
+r")}};a(En,"NeonDbError");var Ee=En,Ks="transaction() expects an array of querie\
 s, or a function returning an array of queries",qc=["severity","code","detail","\
 hint","position","internalPosition","internalQuery","where","schema","table","co\
-lumn","dataType","constraint","file","line","routine"];function Ys(r,{arrayMode:e,
+lumn","dataType","constraint","file","line","routine"];function vn(r,{arrayMode:e,
 fullResults:t,fetchOptions:n,isolationLevel:i,readOnly:s,deferrable:o,queryCallback:u,
 resultCallback:c}={}){if(!r)throw new Error("No database connection string was p\
 rovided to `neon()`. Perhaps an environment variable has not been set?");let h;try{
-h=fr(r)}catch{throw new Error("Database connection string provided to `neon()` i\
+h=pr(r)}catch{throw new Error("Database connection string provided to `neon()` i\
 s not a valid URL. Connection string: "+String(r))}let{protocol:l,username:d,password:b,
 hostname:C,port:B,pathname:W}=h;if(l!=="postgres:"&&l!=="postgresql:"||!d||!b||!C||
 !W)throw new Error("Database connection string format for `neon()` should be: po\
 stgresql://user:password@host.tld/dbname?option=value");function X(A,...w){let P,
 V;if(typeof A=="string")P=A,V=w[1],w=w[0]??[];else{P="";for(let j=0;j<A.length;j++)
-P+=A[j],j<w.length&&(P+="$"+(j+1))}w=w.map(j=>(0,Ks.prepareValue)(j));let k={query:P,
-params:w};return u&&u(k),Qc(de,k,V)}a(X,"resolve"),X.transaction=async(A,w)=>{if(typeof A==
-"function"&&(A=A(X)),!Array.isArray(A))throw new Error($s);A.forEach(k=>{if(k[Symbol.
-toStringTag]!=="NeonQueryPromise")throw new Error($s)});let P=A.map(k=>k.parameterizedQuery),
-V=A.map(k=>k.opts??{});return de(P,V,w)};async function de(A,w,P){let{fetchEndpoint:V,
-fetchFunction:k}=_e,j=typeof V=="function"?V(C,B):V,ce=Array.isArray(A)?{queries:A}:
-A,ee=n??{},R=e??!1,G=t??!1,he=i,ye=s,xe=o;P!==void 0&&(P.fetchOptions!==void 0&&
+P+=A[j],j<w.length&&(P+="$"+(j+1))}w=w.map(j=>(0,Ys.prepareValue)(j));let k={query:P,
+params:w};return u&&u(k),Qc(ye,k,V)}a(X,"resolve"),X.transaction=async(A,w)=>{if(typeof A==
+"function"&&(A=A(X)),!Array.isArray(A))throw new Error(Ks);A.forEach(k=>{if(k[Symbol.
+toStringTag]!=="NeonQueryPromise")throw new Error(Ks)});let P=A.map(k=>k.parameterizedQuery),
+V=A.map(k=>k.opts??{});return ye(P,V,w)};async function ye(A,w,P){let{fetchEndpoint:V,
+fetchFunction:k}=xe,j=typeof V=="function"?V(C,B):V,he=Array.isArray(A)?{queries:A}:
+A,ee=n??{},R=e??!1,G=t??!1,le=i,me=s,_e=o;P!==void 0&&(P.fetchOptions!==void 0&&
 (ee={...ee,...P.fetchOptions}),P.arrayMode!==void 0&&(R=P.arrayMode),P.fullResults!==
-void 0&&(G=P.fullResults),P.isolationLevel!==void 0&&(he=P.isolationLevel),P.readOnly!==
-void 0&&(ye=P.readOnly),P.deferrable!==void 0&&(xe=P.deferrable)),w!==void 0&&!Array.
-isArray(w)&&w.fetchOptions!==void 0&&(ee={...ee,...w.fetchOptions});let me={"Neo\
+void 0&&(G=P.fullResults),P.isolationLevel!==void 0&&(le=P.isolationLevel),P.readOnly!==
+void 0&&(me=P.readOnly),P.deferrable!==void 0&&(_e=P.deferrable)),w!==void 0&&!Array.
+isArray(w)&&w.fetchOptions!==void 0&&(ee={...ee,...w.fetchOptions});let ge={"Neo\
 n-Connection-String":r,"Neon-Raw-Text-Output":"true","Neon-Array-Mode":"true"};Array.
-isArray(A)&&(he!==void 0&&(me["Neon-Batch-Isolation-Level"]=he),ye!==void 0&&(me["\
-Neon-Batch-Read-Only"]=String(ye)),xe!==void 0&&(me["Neon-Batch-Deferrable"]=String(
-xe)));let se;try{se=await(k??fetch)(j,{method:"POST",body:JSON.stringify(ce),headers:me,
-...ee})}catch(oe){let U=new Ae(`Error connecting to database: ${oe.message}`);throw U.
-sourceError=oe,U}if(se.ok){let oe=await se.json();if(Array.isArray(A)){let U=oe.
-results;if(!Array.isArray(U))throw new Ae("Neon internal error: unexpected resul\
-t format");return U.map((K,le)=>{let It=w[le]??{},Xs=It.arrayMode??R,eo=It.fullResults??
-G;return Vs(K,{arrayMode:Xs,fullResults:eo,parameterizedQuery:A[le],resultCallback:c,
-types:It.types})})}else{let U=w??{},K=U.arrayMode??R,le=U.fullResults??G;return Vs(
-oe,{arrayMode:K,fullResults:le,parameterizedQuery:A,resultCallback:c,types:U.types})}}else{
-let{status:oe}=se;if(oe===400){let U=await se.json(),K=new Ae(U.message);for(let le of qc)
-K[le]=U[le]??void 0;throw K}else{let U=await se.text();throw new Ae(`Server erro\
-r (HTTP status ${oe}): ${U}`)}}}return a(de,"execute"),X}a(Ys,"neon");function Qc(r,e,t){
+isArray(A)&&(le!==void 0&&(ge["Neon-Batch-Isolation-Level"]=le),me!==void 0&&(ge["\
+Neon-Batch-Read-Only"]=String(me)),_e!==void 0&&(ge["Neon-Batch-Deferrable"]=String(
+_e)));let oe;try{oe=await(k??fetch)(j,{method:"POST",body:JSON.stringify(he),headers:ge,
+...ee})}catch(ae){let U=new Ee(`Error connecting to database: ${ae.message}`);throw U.
+sourceError=ae,U}if(oe.ok){let ae=await oe.json();if(Array.isArray(A)){let U=ae.
+results;if(!Array.isArray(U))throw new Ee("Neon internal error: unexpected resul\
+t format");return U.map((K,fe)=>{let Pt=w[fe]??{},Xs=Pt.arrayMode??R,eo=Pt.fullResults??
+G;return zs(K,{arrayMode:Xs,fullResults:eo,parameterizedQuery:A[fe],resultCallback:c,
+types:Pt.types})})}else{let U=w??{},K=U.arrayMode??R,fe=U.fullResults??G;return zs(
+ae,{arrayMode:K,fullResults:fe,parameterizedQuery:A,resultCallback:c,types:U.types})}}else{
+let{status:ae}=oe;if(ae===400){let U=await oe.json(),K=new Ee(U.message);for(let fe of qc)
+K[fe]=U[fe]??void 0;throw K}else{let U=await oe.text();throw new Ee(`Server erro\
+r (HTTP status ${ae}): ${U}`)}}}return a(ye,"execute"),X}a(vn,"neon");function Qc(r,e,t){
 return{[Symbol.toStringTag]:"NeonQueryPromise",parameterizedQuery:e,opts:t,then:a(
 (n,i)=>r(e,t).then(n,i),"then"),catch:a(n=>r(e,t).catch(n),"catch"),finally:a(n=>r(
-e,t).finally(n),"finally")}}a(Qc,"createNeonQueryPromise");function Vs(r,{arrayMode:e,
-fullResults:t,parameterizedQuery:n,resultCallback:i,types:s}){let o=new zs.default(
+e,t).finally(n),"finally")}}a(Qc,"createNeonQueryPromise");function zs(r,{arrayMode:e,
+fullResults:t,parameterizedQuery:n,resultCallback:i,types:s}){let o=new Zs.default(
 s),u=r.fields.map(l=>l.name),c=r.fields.map(l=>o.getTypeParser(l.dataTypeID)),h=e===
 !0?r.rows.map(l=>l.map((d,b)=>d===null?null:c[b](d))):r.rows.map(l=>Object.fromEntries(
 l.map((d,b)=>[u[b],d===null?null:c[b](d)])));return i&&i(n,r,h,{arrayMode:e,fullResults:t}),
-t?(r.viaNeonFetch=!0,r.rowAsArray=e,r.rows=h,r._parsers=c,r._types=o,r):h}a(Vs,"\
-processQueryResult");var Js=Te(gt()),Qe=Te(Ct());var En=class En extends Tt.Client{constructor(t){super(t);this.config=t}get neonConfig(){
+t?(r.viaNeonFetch=!0,r.rowAsArray=e,r.rows=h,r._parsers=c,r._types=o,r):h}a(zs,"\
+processQueryResult");var Js=Ie(gt()),se=Ie(Ct());var An=class An extends It.Client{constructor(t){super(t);this.config=t}get neonConfig(){
 return this.connection.stream}connect(t){let{neonConfig:n}=this;n.forceDisablePgSSL&&
 (this.ssl=this.connection.ssl=!1),this.ssl&&n.useSecureWebSocket&&console.warn("\
 SSL is enabled for both Postgres (e.g. ?sslmode=require in the connection string\
@@ -3079,7 +1593,7 @@ this._handleReadyForQuery()})}return o}async _handleAuthSASLContinue(t){let n=th
 saslSession,i=this.password,s=t.data;if(n.message!=="SASLInitialResponse"||typeof i!=
 "string"||typeof s!="string")throw new Error("SASL: protocol error");let o=Object.
 fromEntries(s.split(",").map(U=>{if(!/^.=/.test(U))throw new Error("SASL: Invali\
-d attribute pair entry");let K=U[0],le=U.substring(2);return[K,le]})),u=o.r,c=o.
+d attribute pair entry");let K=U[0],fe=U.substring(2);return[K,fe]})),u=o.r,c=o.
 s,h=o.i;if(!u||!/^[!-+--~]+$/.test(u))throw new Error("SASL: SCRAM-SERVER-FIRST-\
 MESSAGE: nonce missing/unprintable");if(!c||!/^(?:[a-zA-Z0-9+/]{4})*(?:[a-zA-Z0-9+/]{2}==|[a-zA-Z0-9+/]{3}=)?$/.
 test(c))throw new Error("SASL: SCRAM-SERVER-FIRST-MESSAGE: salt missing/not base\
@@ -3090,33 +1604,31 @@ if(u.length===n.clientNonce.length)throw new Error("SASL: SCRAM-SERVER-FIRST-MES
 SAGE: server nonce is too short");let l=parseInt(h,10),d=y.from(c,"base64"),b=new TextEncoder,
 C=b.encode(i),B=await g.subtle.importKey("raw",C,{name:"HMAC",hash:{name:"SHA-25\
 6"}},!1,["sign"]),W=new Uint8Array(await g.subtle.sign("HMAC",B,y.concat([d,y.from(
-[0,0,0,1])]))),X=W;for(var de=0;de<l-1;de++)W=new Uint8Array(await g.subtle.sign(
+[0,0,0,1])]))),X=W;for(var ye=0;ye<l-1;ye++)W=new Uint8Array(await g.subtle.sign(
 "HMAC",B,W)),X=y.from(X.map((U,K)=>X[K]^W[K]));let A=X,w=await g.subtle.importKey(
 "raw",A,{name:"HMAC",hash:{name:"SHA-256"}},!1,["sign"]),P=new Uint8Array(await g.
 subtle.sign("HMAC",w,b.encode("Client Key"))),V=await g.subtle.digest("SHA-256",
-P),k="n=*,r="+n.clientNonce,j="r="+u+",s="+c+",i="+l,ce="c=biws,r="+u,ee=k+","+j+
-","+ce,R=await g.subtle.importKey("raw",V,{name:"HMAC",hash:{name:"SHA-256"}},!1,
-["sign"]);var G=new Uint8Array(await g.subtle.sign("HMAC",R,b.encode(ee))),he=y.
-from(P.map((U,K)=>P[K]^G[K])),ye=he.toString("base64");let xe=await g.subtle.importKey(
-"raw",A,{name:"HMAC",hash:{name:"SHA-256"}},!1,["sign"]),me=await g.subtle.sign(
-"HMAC",xe,b.encode("Server Key")),se=await g.subtle.importKey("raw",me,{name:"HM\
-AC",hash:{name:"SHA-256"}},!1,["sign"]);var oe=y.from(await g.subtle.sign("HMAC",
-se,b.encode(ee)));n.message="SASLResponse",n.serverSignature=oe.toString("base64"),
-n.response=ce+",p="+ye,this.connection.sendSCRAMClientFinalMessage(this.saslSession.
-response)}};a(En,"NeonClient");var vn=En;function Wc(r,e){if(e)return{callback:e,
+P),k="n=*,r="+n.clientNonce,j="r="+u+",s="+c+",i="+l,he="c=biws,r="+u,ee=k+","+j+
+","+he,R=await g.subtle.importKey("raw",V,{name:"HMAC",hash:{name:"SHA-256"}},!1,
+["sign"]);var G=new Uint8Array(await g.subtle.sign("HMAC",R,b.encode(ee))),le=y.
+from(P.map((U,K)=>P[K]^G[K])),me=le.toString("base64");let _e=await g.subtle.importKey(
+"raw",A,{name:"HMAC",hash:{name:"SHA-256"}},!1,["sign"]),ge=await g.subtle.sign(
+"HMAC",_e,b.encode("Server Key")),oe=await g.subtle.importKey("raw",ge,{name:"HM\
+AC",hash:{name:"SHA-256"}},!1,["sign"]);var ae=y.from(await g.subtle.sign("HMAC",
+oe,b.encode(ee)));n.message="SASLResponse",n.serverSignature=ae.toString("base64"),
+n.response=he+",p="+me,this.connection.sendSCRAMClientFinalMessage(this.saslSession.
+response)}};a(An,"NeonClient");var Tt=An;function Wc(r,e){if(e)return{callback:e,
 result:void 0};let t,n,i=a(function(o,u){o?t(o):n(u)},"cb"),s=new r(function(o,u){
-n=o,t=u});return{callback:i,result:s}}a(Wc,"promisify");var _n=class _n extends Tt.Pool{constructor(){
-super(...arguments);_(this,"Client",vn);_(this,"hasFetchUnsupportedListeners",!1)}on(t,n){
+n=o,t=u});return{callback:i,result:s}}a(Wc,"promisify");var Cn=class Cn extends It.Pool{constructor(){
+super(...arguments);_(this,"Client",Tt);_(this,"hasFetchUnsupportedListeners",!1)}on(t,n){
 return t!=="error"&&(this.hasFetchUnsupportedListeners=!0),super.on(t,n)}query(t,n,i){
-if(!_e.poolQueryViaFetch||this.hasFetchUnsupportedListeners||typeof t=="function")
+if(!xe.poolQueryViaFetch||this.hasFetchUnsupportedListeners||typeof t=="function")
 return super.query(t,n,i);typeof n=="function"&&(i=n,n=void 0);let s=Wc(this.Promise,
 i);i=s.callback;try{let o=new Js.default(this.options),u=encodeURIComponent,c=encodeURI,
 h=`postgresql://${u(o.user)}:${u(o.password)}@${u(o.host)}/${c(o.database)}`,l=typeof t==
-"string"?t:t.text,d=n??t.values??[];Ys(h,{fullResults:!0,arrayMode:t.rowMode==="\
+"string"?t:t.text,d=n??t.values??[];vn(h,{fullResults:!0,arrayMode:t.rowMode==="\
 array"})(l,d,{types:t.types??this.options?.types}).then(C=>i(void 0,C)).catch(C=>i(
-C))}catch(o){i(o)}return s.result}};a(_n,"NeonPool");var Zs=(/* unused pure expression or super */ null && (_n));var export_ClientBase=Qe.ClientBase;var export_Connection=Qe.Connection;var export_DatabaseError=Qe.DatabaseError;
-var export_Query=Qe.Query;var export_defaults=Qe.defaults;var export_types=Qe.types;
-
+C))}catch(o){i(o)}return s.result}};a(Cn,"NeonPool");var _n=Cn;
 /*! Bundled license information:
 
 ieee754/index.js:
@@ -3130,4088 +1642,6 @@ buffer/index.js:
    * @license  MIT
    *)
 */
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/logger.js
-
-class ConsoleLogWriter {
-  static [entityKind] = "ConsoleLogWriter";
-  write(message) {
-    console.log(message);
-  }
-}
-class DefaultLogger {
-  static [entityKind] = "DefaultLogger";
-  writer;
-  constructor(config) {
-    this.writer = config?.writer ?? new ConsoleLogWriter();
-  }
-  logQuery(query, params) {
-    const stringifiedParams = params.map((p) => {
-      try {
-        return JSON.stringify(p);
-      } catch {
-        return String(p);
-      }
-    });
-    const paramsStr = stringifiedParams.length ? ` -- params: [${stringifiedParams.join(", ")}]` : "";
-    this.writer.write(`Query: ${query}${paramsStr}`);
-  }
-}
-class NoopLogger {
-  static [entityKind] = "NoopLogger";
-  logQuery() {
-  }
-}
-
-//# sourceMappingURL=logger.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/alias.js
-
-
-
-
-
-class ColumnAliasProxyHandler {
-  constructor(table) {
-    this.table = table;
-  }
-  static [entityKind] = "ColumnAliasProxyHandler";
-  get(columnObj, prop) {
-    if (prop === "table") {
-      return this.table;
-    }
-    return columnObj[prop];
-  }
-}
-class TableAliasProxyHandler {
-  constructor(alias, replaceOriginalName) {
-    this.alias = alias;
-    this.replaceOriginalName = replaceOriginalName;
-  }
-  static [entityKind] = "TableAliasProxyHandler";
-  get(target, prop) {
-    if (prop === Table.Symbol.IsAlias) {
-      return true;
-    }
-    if (prop === Table.Symbol.Name) {
-      return this.alias;
-    }
-    if (this.replaceOriginalName && prop === Table.Symbol.OriginalName) {
-      return this.alias;
-    }
-    if (prop === ViewBaseConfig) {
-      return {
-        ...target[ViewBaseConfig],
-        name: this.alias,
-        isAlias: true
-      };
-    }
-    if (prop === Table.Symbol.Columns) {
-      const columns = target[Table.Symbol.Columns];
-      if (!columns) {
-        return columns;
-      }
-      const proxiedColumns = {};
-      Object.keys(columns).map((key) => {
-        proxiedColumns[key] = new Proxy(
-          columns[key],
-          new ColumnAliasProxyHandler(new Proxy(target, this))
-        );
-      });
-      return proxiedColumns;
-    }
-    const value = target[prop];
-    if (is(value, Column)) {
-      return new Proxy(value, new ColumnAliasProxyHandler(new Proxy(target, this)));
-    }
-    return value;
-  }
-}
-class RelationTableAliasProxyHandler {
-  constructor(alias) {
-    this.alias = alias;
-  }
-  static [entityKind] = "RelationTableAliasProxyHandler";
-  get(target, prop) {
-    if (prop === "sourceTable") {
-      return aliasedTable(target.sourceTable, this.alias);
-    }
-    return target[prop];
-  }
-}
-function aliasedTable(table, tableAlias) {
-  return new Proxy(table, new TableAliasProxyHandler(tableAlias, false));
-}
-function aliasedRelation(relation, tableAlias) {
-  return new Proxy(relation, new RelationTableAliasProxyHandler(tableAlias));
-}
-function aliasedTableColumn(column, tableAlias) {
-  return new Proxy(
-    column,
-    new ColumnAliasProxyHandler(new Proxy(column.table, new TableAliasProxyHandler(tableAlias, false)))
-  );
-}
-function mapColumnsInAliasedSQLToAlias(query, alias) {
-  return new SQL.Aliased(mapColumnsInSQLToAlias(query.sql, alias), query.fieldAlias);
-}
-function mapColumnsInSQLToAlias(query, alias) {
-  return sql.join(query.queryChunks.map((c) => {
-    if (is(c, Column)) {
-      return aliasedTableColumn(c, alias);
-    }
-    if (is(c, SQL)) {
-      return mapColumnsInSQLToAlias(c, alias);
-    }
-    if (is(c, SQL.Aliased)) {
-      return mapColumnsInAliasedSQLToAlias(c, alias);
-    }
-    return c;
-  }));
-}
-
-//# sourceMappingURL=alias.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/errors.js
-
-class DrizzleError extends Error {
-  static [entityKind] = "DrizzleError";
-  constructor({ message, cause }) {
-    super(message);
-    this.name = "DrizzleError";
-    this.cause = cause;
-  }
-}
-class TransactionRollbackError extends DrizzleError {
-  static [entityKind] = "TransactionRollbackError";
-  constructor() {
-    super({ message: "Rollback" });
-  }
-}
-
-//# sourceMappingURL=errors.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/json.js
-
-
-class PgJsonBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgJsonBuilder";
-  constructor(name) {
-    super(name, "json", "PgJson");
-  }
-  /** @internal */
-  build(table) {
-    return new PgJson(table, this.config);
-  }
-}
-class PgJson extends PgColumn {
-  static [entityKind] = "PgJson";
-  constructor(table, config) {
-    super(table, config);
-  }
-  getSQLType() {
-    return "json";
-  }
-  mapToDriverValue(value) {
-    return JSON.stringify(value);
-  }
-  mapFromDriverValue(value) {
-    if (typeof value === "string") {
-      try {
-        return JSON.parse(value);
-      } catch {
-        return value;
-      }
-    }
-    return value;
-  }
-}
-function json(name) {
-  return new PgJsonBuilder(name);
-}
-
-//# sourceMappingURL=json.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/numeric.js
-
-
-class PgNumericBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgNumericBuilder";
-  constructor(name, precision, scale) {
-    super(name, "string", "PgNumeric");
-    this.config.precision = precision;
-    this.config.scale = scale;
-  }
-  /** @internal */
-  build(table) {
-    return new PgNumeric(table, this.config);
-  }
-}
-class PgNumeric extends PgColumn {
-  static [entityKind] = "PgNumeric";
-  precision;
-  scale;
-  constructor(table, config) {
-    super(table, config);
-    this.precision = config.precision;
-    this.scale = config.scale;
-  }
-  getSQLType() {
-    if (this.precision !== void 0 && this.scale !== void 0) {
-      return `numeric(${this.precision}, ${this.scale})`;
-    } else if (this.precision === void 0) {
-      return "numeric";
-    } else {
-      return `numeric(${this.precision})`;
-    }
-  }
-}
-function numeric(name, config) {
-  return new PgNumericBuilder(name, config?.precision, config?.scale);
-}
-const decimal = (/* unused pure expression or super */ null && (numeric));
-
-//# sourceMappingURL=numeric.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/time.js
-
-
-
-class PgTimeBuilder extends PgDateColumnBaseBuilder {
-  constructor(name, withTimezone, precision) {
-    super(name, "string", "PgTime");
-    this.withTimezone = withTimezone;
-    this.precision = precision;
-    this.config.withTimezone = withTimezone;
-    this.config.precision = precision;
-  }
-  static [entityKind] = "PgTimeBuilder";
-  /** @internal */
-  build(table) {
-    return new PgTime(table, this.config);
-  }
-}
-class PgTime extends PgColumn {
-  static [entityKind] = "PgTime";
-  withTimezone;
-  precision;
-  constructor(table, config) {
-    super(table, config);
-    this.withTimezone = config.withTimezone;
-    this.precision = config.precision;
-  }
-  getSQLType() {
-    const precision = this.precision === void 0 ? "" : `(${this.precision})`;
-    return `time${precision}${this.withTimezone ? " with time zone" : ""}`;
-  }
-}
-function time(name, config = {}) {
-  return new PgTimeBuilder(name, config.withTimezone ?? false, config.precision);
-}
-
-//# sourceMappingURL=time.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/date.js
-
-
-
-class PgDateBuilder extends PgDateColumnBaseBuilder {
-  static [entityKind] = "PgDateBuilder";
-  constructor(name) {
-    super(name, "date", "PgDate");
-  }
-  /** @internal */
-  build(table) {
-    return new PgDate(table, this.config);
-  }
-}
-class PgDate extends PgColumn {
-  static [entityKind] = "PgDate";
-  getSQLType() {
-    return "date";
-  }
-  mapFromDriverValue(value) {
-    return new Date(value);
-  }
-  mapToDriverValue(value) {
-    return value.toISOString();
-  }
-}
-class PgDateStringBuilder extends PgDateColumnBaseBuilder {
-  static [entityKind] = "PgDateStringBuilder";
-  constructor(name) {
-    super(name, "string", "PgDateString");
-  }
-  /** @internal */
-  build(table) {
-    return new PgDateString(
-      table,
-      this.config
-    );
-  }
-}
-class PgDateString extends PgColumn {
-  static [entityKind] = "PgDateString";
-  getSQLType() {
-    return "date";
-  }
-}
-function date(name, config) {
-  if (config?.mode === "date") {
-    return new PgDateBuilder(name);
-  }
-  return new PgDateStringBuilder(name);
-}
-
-//# sourceMappingURL=date.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/columns/uuid.js
-
-
-
-class PgUUIDBuilder extends PgColumnBuilder {
-  static [entityKind] = "PgUUIDBuilder";
-  constructor(name) {
-    super(name, "string", "PgUUID");
-  }
-  /**
-   * Adds `default gen_random_uuid()` to the column definition.
-   */
-  defaultRandom() {
-    return this.default(sql`gen_random_uuid()`);
-  }
-  /** @internal */
-  build(table) {
-    return new PgUUID(table, this.config);
-  }
-}
-class PgUUID extends PgColumn {
-  static [entityKind] = "PgUUID";
-  getSQLType() {
-    return "uuid";
-  }
-}
-function uuid(name) {
-  return new PgUUIDBuilder(name);
-}
-
-//# sourceMappingURL=uuid.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/expressions/conditions.js
-
-
-
-
-function bindIfParam(value, column) {
-  if (isDriverValueEncoder(column) && !isSQLWrapper(value) && !is(value, Param) && !is(value, Placeholder) && !is(value, Column) && !is(value, Table) && !is(value, View)) {
-    return new Param(value, column);
-  }
-  return value;
-}
-const eq = (left, right) => {
-  return sql`${left} = ${bindIfParam(right, left)}`;
-};
-const ne = (left, right) => {
-  return sql`${left} <> ${bindIfParam(right, left)}`;
-};
-function and(...unfilteredConditions) {
-  const conditions = unfilteredConditions.filter(
-    (c) => c !== void 0
-  );
-  if (conditions.length === 0) {
-    return void 0;
-  }
-  if (conditions.length === 1) {
-    return new SQL(conditions);
-  }
-  return new SQL([
-    new StringChunk("("),
-    sql.join(conditions, new StringChunk(" and ")),
-    new StringChunk(")")
-  ]);
-}
-function conditions_or(...unfilteredConditions) {
-  const conditions = unfilteredConditions.filter(
-    (c) => c !== void 0
-  );
-  if (conditions.length === 0) {
-    return void 0;
-  }
-  if (conditions.length === 1) {
-    return new SQL(conditions);
-  }
-  return new SQL([
-    new StringChunk("("),
-    sql.join(conditions, new StringChunk(" or ")),
-    new StringChunk(")")
-  ]);
-}
-function not(condition) {
-  return sql`not ${condition}`;
-}
-const conditions_gt = (left, right) => {
-  return sql`${left} > ${bindIfParam(right, left)}`;
-};
-const gte = (left, right) => {
-  return sql`${left} >= ${bindIfParam(right, left)}`;
-};
-const lt = (left, right) => {
-  return sql`${left} < ${bindIfParam(right, left)}`;
-};
-const lte = (left, right) => {
-  return sql`${left} <= ${bindIfParam(right, left)}`;
-};
-function inArray(column, values) {
-  if (Array.isArray(values)) {
-    if (values.length === 0) {
-      throw new Error("inArray requires at least one value");
-    }
-    return sql`${column} in ${values.map((v) => bindIfParam(v, column))}`;
-  }
-  return sql`${column} in ${bindIfParam(values, column)}`;
-}
-function notInArray(column, values) {
-  if (Array.isArray(values)) {
-    if (values.length === 0) {
-      throw new Error("notInArray requires at least one value");
-    }
-    return sql`${column} not in ${values.map((v) => bindIfParam(v, column))}`;
-  }
-  return sql`${column} not in ${bindIfParam(values, column)}`;
-}
-function isNull(value) {
-  return sql`${value} is null`;
-}
-function isNotNull(value) {
-  return sql`${value} is not null`;
-}
-function exists(subquery) {
-  return sql`exists ${subquery}`;
-}
-function notExists(subquery) {
-  return sql`not exists ${subquery}`;
-}
-function between(column, min, max) {
-  return sql`${column} between ${bindIfParam(min, column)} and ${bindIfParam(
-    max,
-    column
-  )}`;
-}
-function notBetween(column, min, max) {
-  return sql`${column} not between ${bindIfParam(
-    min,
-    column
-  )} and ${bindIfParam(max, column)}`;
-}
-function like(column, value) {
-  return sql`${column} like ${value}`;
-}
-function notLike(column, value) {
-  return sql`${column} not like ${value}`;
-}
-function ilike(column, value) {
-  return sql`${column} ilike ${value}`;
-}
-function notIlike(column, value) {
-  return sql`${column} not ilike ${value}`;
-}
-function arrayContains(column, values) {
-  if (Array.isArray(values)) {
-    if (values.length === 0) {
-      throw new Error("arrayContains requires at least one value");
-    }
-    const array = sql`${bindIfParam(values, column)}`;
-    return sql`${column} @> ${array}`;
-  }
-  return sql`${column} @> ${bindIfParam(values, column)}`;
-}
-function arrayContained(column, values) {
-  if (Array.isArray(values)) {
-    if (values.length === 0) {
-      throw new Error("arrayContained requires at least one value");
-    }
-    const array = sql`${bindIfParam(values, column)}`;
-    return sql`${column} <@ ${array}`;
-  }
-  return sql`${column} <@ ${bindIfParam(values, column)}`;
-}
-function arrayOverlaps(column, values) {
-  if (Array.isArray(values)) {
-    if (values.length === 0) {
-      throw new Error("arrayOverlaps requires at least one value");
-    }
-    const array = sql`${bindIfParam(values, column)}`;
-    return sql`${column} && ${array}`;
-  }
-  return sql`${column} && ${bindIfParam(values, column)}`;
-}
-
-//# sourceMappingURL=conditions.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/expressions/select.js
-
-function asc(column) {
-  return sql`${column} asc`;
-}
-function desc(column) {
-  return sql`${column} desc`;
-}
-
-//# sourceMappingURL=select.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/relations.js
-
-
-
-
-
-
-class Relation {
-  constructor(sourceTable, referencedTable, relationName) {
-    this.sourceTable = sourceTable;
-    this.referencedTable = referencedTable;
-    this.relationName = relationName;
-    this.referencedTableName = referencedTable[Table.Symbol.Name];
-  }
-  static [entityKind] = "Relation";
-  referencedTableName;
-  fieldName;
-}
-class Relations {
-  constructor(table, config) {
-    this.table = table;
-    this.config = config;
-  }
-  static [entityKind] = "Relations";
-}
-class One extends Relation {
-  constructor(sourceTable, referencedTable, config, isNullable) {
-    super(sourceTable, referencedTable, config?.relationName);
-    this.config = config;
-    this.isNullable = isNullable;
-  }
-  static [entityKind] = "One";
-  withFieldName(fieldName) {
-    const relation = new One(
-      this.sourceTable,
-      this.referencedTable,
-      this.config,
-      this.isNullable
-    );
-    relation.fieldName = fieldName;
-    return relation;
-  }
-}
-class Many extends Relation {
-  constructor(sourceTable, referencedTable, config) {
-    super(sourceTable, referencedTable, config?.relationName);
-    this.config = config;
-  }
-  static [entityKind] = "Many";
-  withFieldName(fieldName) {
-    const relation = new Many(
-      this.sourceTable,
-      this.referencedTable,
-      this.config
-    );
-    relation.fieldName = fieldName;
-    return relation;
-  }
-}
-function getOperators() {
-  return {
-    and: and,
-    between: between,
-    eq: eq,
-    exists: exists,
-    gt: conditions_gt,
-    gte: gte,
-    ilike: ilike,
-    inArray: inArray,
-    isNull: isNull,
-    isNotNull: isNotNull,
-    like: like,
-    lt: lt,
-    lte: lte,
-    ne: ne,
-    not: not,
-    notBetween: notBetween,
-    notExists: notExists,
-    notLike: notLike,
-    notIlike: notIlike,
-    notInArray: notInArray,
-    or: conditions_or,
-    sql: sql
-  };
-}
-function getOrderByOperators() {
-  return {
-    sql: sql,
-    asc: asc,
-    desc: desc
-  };
-}
-function extractTablesRelationalConfig(schema, configHelpers) {
-  if (Object.keys(schema).length === 1 && "default" in schema && !is(schema["default"], Table)) {
-    schema = schema["default"];
-  }
-  const tableNamesMap = {};
-  const relationsBuffer = {};
-  const tablesConfig = {};
-  for (const [key, value] of Object.entries(schema)) {
-    if (isTable(value)) {
-      const dbName = value[Table.Symbol.Name];
-      const bufferedRelations = relationsBuffer[dbName];
-      tableNamesMap[dbName] = key;
-      tablesConfig[key] = {
-        tsName: key,
-        dbName: value[Table.Symbol.Name],
-        schema: value[Table.Symbol.Schema],
-        columns: value[Table.Symbol.Columns],
-        relations: bufferedRelations?.relations ?? {},
-        primaryKey: bufferedRelations?.primaryKey ?? []
-      };
-      for (const column of Object.values(
-        value[Table.Symbol.Columns]
-      )) {
-        if (column.primary) {
-          tablesConfig[key].primaryKey.push(column);
-        }
-      }
-      const extraConfig = value[Table.Symbol.ExtraConfigBuilder]?.(value);
-      if (extraConfig) {
-        for (const configEntry of Object.values(extraConfig)) {
-          if (is(configEntry, PrimaryKeyBuilder)) {
-            tablesConfig[key].primaryKey.push(...configEntry.columns);
-          }
-        }
-      }
-    } else if (is(value, Relations)) {
-      const dbName = value.table[Table.Symbol.Name];
-      const tableName = tableNamesMap[dbName];
-      const relations2 = value.config(
-        configHelpers(value.table)
-      );
-      let primaryKey;
-      for (const [relationName, relation] of Object.entries(relations2)) {
-        if (tableName) {
-          const tableConfig = tablesConfig[tableName];
-          tableConfig.relations[relationName] = relation;
-          if (primaryKey) {
-            tableConfig.primaryKey.push(...primaryKey);
-          }
-        } else {
-          if (!(dbName in relationsBuffer)) {
-            relationsBuffer[dbName] = {
-              relations: {},
-              primaryKey
-            };
-          }
-          relationsBuffer[dbName].relations[relationName] = relation;
-        }
-      }
-    }
-  }
-  return { tables: tablesConfig, tableNamesMap };
-}
-function relations(table, relations2) {
-  return new Relations(
-    table,
-    (helpers) => Object.fromEntries(
-      Object.entries(relations2(helpers)).map(([key, value]) => [
-        key,
-        value.withFieldName(key)
-      ])
-    )
-  );
-}
-function createOne(sourceTable) {
-  return function one(table, config) {
-    return new One(
-      sourceTable,
-      table,
-      config,
-      config?.fields.reduce((res, f) => res && f.notNull, true) ?? false
-    );
-  };
-}
-function createMany(sourceTable) {
-  return function many(referencedTable, config) {
-    return new Many(sourceTable, referencedTable, config);
-  };
-}
-function normalizeRelation(schema, tableNamesMap, relation) {
-  if (is(relation, One) && relation.config) {
-    return {
-      fields: relation.config.fields,
-      references: relation.config.references
-    };
-  }
-  const referencedTableTsName = tableNamesMap[relation.referencedTable[Table.Symbol.Name]];
-  if (!referencedTableTsName) {
-    throw new Error(
-      `Table "${relation.referencedTable[Table.Symbol.Name]}" not found in schema`
-    );
-  }
-  const referencedTableConfig = schema[referencedTableTsName];
-  if (!referencedTableConfig) {
-    throw new Error(`Table "${referencedTableTsName}" not found in schema`);
-  }
-  const sourceTable = relation.sourceTable;
-  const sourceTableTsName = tableNamesMap[sourceTable[Table.Symbol.Name]];
-  if (!sourceTableTsName) {
-    throw new Error(
-      `Table "${sourceTable[Table.Symbol.Name]}" not found in schema`
-    );
-  }
-  const reverseRelations = [];
-  for (const referencedTableRelation of Object.values(
-    referencedTableConfig.relations
-  )) {
-    if (relation.relationName && relation !== referencedTableRelation && referencedTableRelation.relationName === relation.relationName || !relation.relationName && referencedTableRelation.referencedTable === relation.sourceTable) {
-      reverseRelations.push(referencedTableRelation);
-    }
-  }
-  if (reverseRelations.length > 1) {
-    throw relation.relationName ? new Error(
-      `There are multiple relations with name "${relation.relationName}" in table "${referencedTableTsName}"`
-    ) : new Error(
-      `There are multiple relations between "${referencedTableTsName}" and "${relation.sourceTable[Table.Symbol.Name]}". Please specify relation name`
-    );
-  }
-  if (reverseRelations[0] && is(reverseRelations[0], One) && reverseRelations[0].config) {
-    return {
-      fields: reverseRelations[0].config.references,
-      references: reverseRelations[0].config.fields
-    };
-  }
-  throw new Error(
-    `There is not enough information to infer relation "${sourceTableTsName}.${relation.fieldName}"`
-  );
-}
-function createTableRelationsHelpers(sourceTable) {
-  return {
-    one: createOne(sourceTable),
-    many: createMany(sourceTable)
-  };
-}
-function mapRelationalRow(tablesConfig, tableConfig, row, buildQueryResultSelection, mapColumnValue = (value) => value) {
-  const result = {};
-  for (const [
-    selectionItemIndex,
-    selectionItem
-  ] of buildQueryResultSelection.entries()) {
-    if (selectionItem.isJson) {
-      const relation = tableConfig.relations[selectionItem.tsKey];
-      const rawSubRows = row[selectionItemIndex];
-      const subRows = typeof rawSubRows === "string" ? JSON.parse(rawSubRows) : rawSubRows;
-      result[selectionItem.tsKey] = is(relation, One) ? subRows && mapRelationalRow(
-        tablesConfig,
-        tablesConfig[selectionItem.relationTableTsKey],
-        subRows,
-        selectionItem.selection,
-        mapColumnValue
-      ) : subRows.map(
-        (subRow) => mapRelationalRow(
-          tablesConfig,
-          tablesConfig[selectionItem.relationTableTsKey],
-          subRow,
-          selectionItem.selection,
-          mapColumnValue
-        )
-      );
-    } else {
-      const value = mapColumnValue(row[selectionItemIndex]);
-      const field = selectionItem.field;
-      let decoder;
-      if (is(field, Column)) {
-        decoder = field;
-      } else if (is(field, SQL)) {
-        decoder = field.decoder;
-      } else {
-        decoder = field.sql.decoder;
-      }
-      result[selectionItem.tsKey] = value === null ? null : decoder.mapFromDriverValue(value);
-    }
-  }
-  return result;
-}
-
-//# sourceMappingURL=relations.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/utils.js
-
-
-
-
-
-
-function mapResultRow(columns, row, joinsNotNullableMap) {
-  const nullifyMap = {};
-  const result = columns.reduce(
-    (result2, { path, field }, columnIndex) => {
-      let decoder;
-      if (is(field, Column)) {
-        decoder = field;
-      } else if (is(field, SQL)) {
-        decoder = field.decoder;
-      } else {
-        decoder = field.sql.decoder;
-      }
-      let node = result2;
-      for (const [pathChunkIndex, pathChunk] of path.entries()) {
-        if (pathChunkIndex < path.length - 1) {
-          if (!(pathChunk in node)) {
-            node[pathChunk] = {};
-          }
-          node = node[pathChunk];
-        } else {
-          const rawValue = row[columnIndex];
-          const value = node[pathChunk] = rawValue === null ? null : decoder.mapFromDriverValue(rawValue);
-          if (joinsNotNullableMap && is(field, Column) && path.length === 2) {
-            const objectName = path[0];
-            if (!(objectName in nullifyMap)) {
-              nullifyMap[objectName] = value === null ? getTableName(field.table) : false;
-            } else if (typeof nullifyMap[objectName] === "string" && nullifyMap[objectName] !== getTableName(field.table)) {
-              nullifyMap[objectName] = false;
-            }
-          }
-        }
-      }
-      return result2;
-    },
-    {}
-  );
-  if (joinsNotNullableMap && Object.keys(nullifyMap).length > 0) {
-    for (const [objectName, tableName] of Object.entries(nullifyMap)) {
-      if (typeof tableName === "string" && !joinsNotNullableMap[tableName]) {
-        result[objectName] = null;
-      }
-    }
-  }
-  return result;
-}
-function orderSelectedFields(fields, pathPrefix) {
-  return Object.entries(fields).reduce((result, [name, field]) => {
-    if (typeof name !== "string") {
-      return result;
-    }
-    const newPath = pathPrefix ? [...pathPrefix, name] : [name];
-    if (is(field, Column) || is(field, SQL) || is(field, SQL.Aliased)) {
-      result.push({ path: newPath, field });
-    } else if (is(field, Table)) {
-      result.push(...orderSelectedFields(field[Table.Symbol.Columns], newPath));
-    } else {
-      result.push(...orderSelectedFields(field, newPath));
-    }
-    return result;
-  }, []);
-}
-function haveSameKeys(left, right) {
-  const leftKeys = Object.keys(left);
-  const rightKeys = Object.keys(right);
-  if (leftKeys.length !== rightKeys.length) {
-    return false;
-  }
-  for (const [index, key] of leftKeys.entries()) {
-    if (key !== rightKeys[index]) {
-      return false;
-    }
-  }
-  return true;
-}
-function mapUpdateSet(table, values) {
-  const entries = Object.entries(values).filter(([, value]) => value !== void 0).map(([key, value]) => {
-    if (is(value, SQL)) {
-      return [key, value];
-    } else {
-      return [key, new Param(value, table[Table.Symbol.Columns][key])];
-    }
-  });
-  if (entries.length === 0) {
-    throw new Error("No values to set");
-  }
-  return Object.fromEntries(entries);
-}
-function applyMixins(baseClass, extendedClasses) {
-  for (const extendedClass of extendedClasses) {
-    for (const name of Object.getOwnPropertyNames(extendedClass.prototype)) {
-      if (name === "constructor")
-        continue;
-      Object.defineProperty(
-        baseClass.prototype,
-        name,
-        Object.getOwnPropertyDescriptor(extendedClass.prototype, name) || /* @__PURE__ */ Object.create(null)
-      );
-    }
-  }
-}
-function getTableColumns(table) {
-  return table[Table.Symbol.Columns];
-}
-function getTableLikeName(table) {
-  return is(table, Subquery) ? table._.alias : is(table, View) ? table[ViewBaseConfig].name : is(table, SQL) ? void 0 : table[Table.Symbol.IsAlias] ? table[Table.Symbol.Name] : table[Table.Symbol.BaseName];
-}
-
-//# sourceMappingURL=utils.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/view-base.js
-
-
-class PgViewBase extends View {
-  static [entityKind] = "PgViewBase";
-}
-
-//# sourceMappingURL=view-base.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/dialect.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class PgDialect {
-  static [entityKind] = "PgDialect";
-  async migrate(migrations, session, config) {
-    const migrationsTable = typeof config === "string" ? "__drizzle_migrations" : config.migrationsTable ?? "__drizzle_migrations";
-    const migrationsSchema = typeof config === "string" ? "drizzle" : config.migrationsSchema ?? "drizzle";
-    const migrationTableCreate = sql`
-			CREATE TABLE IF NOT EXISTS ${sql.identifier(migrationsSchema)}.${sql.identifier(migrationsTable)} (
-				id SERIAL PRIMARY KEY,
-				hash text NOT NULL,
-				created_at bigint
-			)
-		`;
-    await session.execute(sql`CREATE SCHEMA IF NOT EXISTS ${sql.identifier(migrationsSchema)}`);
-    await session.execute(migrationTableCreate);
-    const dbMigrations = await session.all(
-      sql`select id, hash, created_at from ${sql.identifier(migrationsSchema)}.${sql.identifier(migrationsTable)} order by created_at desc limit 1`
-    );
-    const lastDbMigration = dbMigrations[0];
-    await session.transaction(async (tx) => {
-      for await (const migration of migrations) {
-        if (!lastDbMigration || Number(lastDbMigration.created_at) < migration.folderMillis) {
-          for (const stmt of migration.sql) {
-            await tx.execute(sql.raw(stmt));
-          }
-          await tx.execute(
-            sql`insert into ${sql.identifier(migrationsSchema)}.${sql.identifier(migrationsTable)} ("hash", "created_at") values(${migration.hash}, ${migration.folderMillis})`
-          );
-        }
-      }
-    });
-  }
-  escapeName(name) {
-    return `"${name}"`;
-  }
-  escapeParam(num) {
-    return `$${num + 1}`;
-  }
-  escapeString(str) {
-    return `'${str.replace(/'/g, "''")}'`;
-  }
-  buildWithCTE(queries) {
-    if (!queries?.length)
-      return void 0;
-    const withSqlChunks = [sql`with `];
-    for (const [i, w] of queries.entries()) {
-      withSqlChunks.push(sql`${sql.identifier(w._.alias)} as (${w._.sql})`);
-      if (i < queries.length - 1) {
-        withSqlChunks.push(sql`, `);
-      }
-    }
-    withSqlChunks.push(sql` `);
-    return sql.join(withSqlChunks);
-  }
-  buildDeleteQuery({ table, where, returning, withList }) {
-    const withSql = this.buildWithCTE(withList);
-    const returningSql = returning ? sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
-    const whereSql = where ? sql` where ${where}` : void 0;
-    return sql`${withSql}delete from ${table}${whereSql}${returningSql}`;
-  }
-  buildUpdateSet(table, set) {
-    const tableColumns = table[Table.Symbol.Columns];
-    const columnNames = Object.keys(tableColumns).filter(
-      (colName) => set[colName] !== void 0 || tableColumns[colName]?.onUpdateFn !== void 0
-    );
-    const setSize = columnNames.length;
-    return sql.join(columnNames.flatMap((colName, i) => {
-      const col = tableColumns[colName];
-      const value = set[colName] ?? sql.param(col.onUpdateFn(), col);
-      const res = sql`${sql.identifier(col.name)} = ${value}`;
-      if (i < setSize - 1) {
-        return [res, sql.raw(", ")];
-      }
-      return [res];
-    }));
-  }
-  buildUpdateQuery({ table, set, where, returning, withList }) {
-    const withSql = this.buildWithCTE(withList);
-    const setSql = this.buildUpdateSet(table, set);
-    const returningSql = returning ? sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
-    const whereSql = where ? sql` where ${where}` : void 0;
-    return sql`${withSql}update ${table} set ${setSql}${whereSql}${returningSql}`;
-  }
-  /**
-   * Builds selection SQL with provided fields/expressions
-   *
-   * Examples:
-   *
-   * `select <selection> from`
-   *
-   * `insert ... returning <selection>`
-   *
-   * If `isSingleTable` is true, then columns won't be prefixed with table name
-   */
-  buildSelection(fields, { isSingleTable = false } = {}) {
-    const columnsLen = fields.length;
-    const chunks = fields.flatMap(({ field }, i) => {
-      const chunk = [];
-      if (is(field, SQL.Aliased) && field.isSelectionField) {
-        chunk.push(sql.identifier(field.fieldAlias));
-      } else if (is(field, SQL.Aliased) || is(field, SQL)) {
-        const query = is(field, SQL.Aliased) ? field.sql : field;
-        if (isSingleTable) {
-          chunk.push(
-            new SQL(
-              query.queryChunks.map((c) => {
-                if (is(c, PgColumn)) {
-                  return sql.identifier(c.name);
-                }
-                return c;
-              })
-            )
-          );
-        } else {
-          chunk.push(query);
-        }
-        if (is(field, SQL.Aliased)) {
-          chunk.push(sql` as ${sql.identifier(field.fieldAlias)}`);
-        }
-      } else if (is(field, Column)) {
-        if (isSingleTable) {
-          chunk.push(sql.identifier(field.name));
-        } else {
-          chunk.push(field);
-        }
-      }
-      if (i < columnsLen - 1) {
-        chunk.push(sql`, `);
-      }
-      return chunk;
-    });
-    return sql.join(chunks);
-  }
-  buildSelectQuery({
-    withList,
-    fields,
-    fieldsFlat,
-    where,
-    having,
-    table,
-    joins,
-    orderBy,
-    groupBy,
-    limit,
-    offset,
-    lockingClause,
-    distinct,
-    setOperators
-  }) {
-    const fieldsList = fieldsFlat ?? orderSelectedFields(fields);
-    for (const f of fieldsList) {
-      if (is(f.field, Column) && getTableName(f.field.table) !== (is(table, Subquery) ? table._.alias : is(table, PgViewBase) ? table[ViewBaseConfig].name : is(table, SQL) ? void 0 : getTableName(table)) && !((table2) => joins?.some(
-        ({ alias }) => alias === (table2[Table.Symbol.IsAlias] ? getTableName(table2) : table2[Table.Symbol.BaseName])
-      ))(f.field.table)) {
-        const tableName = getTableName(f.field.table);
-        throw new Error(
-          `Your "${f.path.join("->")}" field references a column "${tableName}"."${f.field.name}", but the table "${tableName}" is not part of the query! Did you forget to join it?`
-        );
-      }
-    }
-    const isSingleTable = !joins || joins.length === 0;
-    const withSql = this.buildWithCTE(withList);
-    let distinctSql;
-    if (distinct) {
-      distinctSql = distinct === true ? sql` distinct` : sql` distinct on (${sql.join(distinct.on, sql`, `)})`;
-    }
-    const selection = this.buildSelection(fieldsList, { isSingleTable });
-    const tableSql = (() => {
-      if (is(table, Table) && table[Table.Symbol.OriginalName] !== table[Table.Symbol.Name]) {
-        let fullName = sql`${sql.identifier(table[Table.Symbol.OriginalName])}`;
-        if (table[Table.Symbol.Schema]) {
-          fullName = sql`${sql.identifier(table[Table.Symbol.Schema])}.${fullName}`;
-        }
-        return sql`${fullName} ${sql.identifier(table[Table.Symbol.Name])}`;
-      }
-      return table;
-    })();
-    const joinsArray = [];
-    if (joins) {
-      for (const [index, joinMeta] of joins.entries()) {
-        if (index === 0) {
-          joinsArray.push(sql` `);
-        }
-        const table2 = joinMeta.table;
-        const lateralSql = joinMeta.lateral ? sql` lateral` : void 0;
-        if (is(table2, PgTable)) {
-          const tableName = table2[PgTable.Symbol.Name];
-          const tableSchema = table2[PgTable.Symbol.Schema];
-          const origTableName = table2[PgTable.Symbol.OriginalName];
-          const alias = tableName === origTableName ? void 0 : joinMeta.alias;
-          joinsArray.push(
-            sql`${sql.raw(joinMeta.joinType)} join${lateralSql} ${tableSchema ? sql`${sql.identifier(tableSchema)}.` : void 0}${sql.identifier(origTableName)}${alias && sql` ${sql.identifier(alias)}`} on ${joinMeta.on}`
-          );
-        } else if (is(table2, View)) {
-          const viewName = table2[ViewBaseConfig].name;
-          const viewSchema = table2[ViewBaseConfig].schema;
-          const origViewName = table2[ViewBaseConfig].originalName;
-          const alias = viewName === origViewName ? void 0 : joinMeta.alias;
-          joinsArray.push(
-            sql`${sql.raw(joinMeta.joinType)} join${lateralSql} ${viewSchema ? sql`${sql.identifier(viewSchema)}.` : void 0}${sql.identifier(origViewName)}${alias && sql` ${sql.identifier(alias)}`} on ${joinMeta.on}`
-          );
-        } else {
-          joinsArray.push(
-            sql`${sql.raw(joinMeta.joinType)} join${lateralSql} ${table2} on ${joinMeta.on}`
-          );
-        }
-        if (index < joins.length - 1) {
-          joinsArray.push(sql` `);
-        }
-      }
-    }
-    const joinsSql = sql.join(joinsArray);
-    const whereSql = where ? sql` where ${where}` : void 0;
-    const havingSql = having ? sql` having ${having}` : void 0;
-    let orderBySql;
-    if (orderBy && orderBy.length > 0) {
-      orderBySql = sql` order by ${sql.join(orderBy, sql`, `)}`;
-    }
-    let groupBySql;
-    if (groupBy && groupBy.length > 0) {
-      groupBySql = sql` group by ${sql.join(groupBy, sql`, `)}`;
-    }
-    const limitSql = limit ? sql` limit ${limit}` : void 0;
-    const offsetSql = offset ? sql` offset ${offset}` : void 0;
-    const lockingClauseSql = sql.empty();
-    if (lockingClause) {
-      const clauseSql = sql` for ${sql.raw(lockingClause.strength)}`;
-      if (lockingClause.config.of) {
-        clauseSql.append(
-          sql` of ${sql.join(
-            Array.isArray(lockingClause.config.of) ? lockingClause.config.of : [lockingClause.config.of],
-            sql`, `
-          )}`
-        );
-      }
-      if (lockingClause.config.noWait) {
-        clauseSql.append(sql` no wait`);
-      } else if (lockingClause.config.skipLocked) {
-        clauseSql.append(sql` skip locked`);
-      }
-      lockingClauseSql.append(clauseSql);
-    }
-    const finalQuery = sql`${withSql}select${distinctSql} ${selection} from ${tableSql}${joinsSql}${whereSql}${groupBySql}${havingSql}${orderBySql}${limitSql}${offsetSql}${lockingClauseSql}`;
-    if (setOperators.length > 0) {
-      return this.buildSetOperations(finalQuery, setOperators);
-    }
-    return finalQuery;
-  }
-  buildSetOperations(leftSelect, setOperators) {
-    const [setOperator, ...rest] = setOperators;
-    if (!setOperator) {
-      throw new Error("Cannot pass undefined values to any set operator");
-    }
-    if (rest.length === 0) {
-      return this.buildSetOperationQuery({ leftSelect, setOperator });
-    }
-    return this.buildSetOperations(
-      this.buildSetOperationQuery({ leftSelect, setOperator }),
-      rest
-    );
-  }
-  buildSetOperationQuery({
-    leftSelect,
-    setOperator: { type, isAll, rightSelect, limit, orderBy, offset }
-  }) {
-    const leftChunk = sql`(${leftSelect.getSQL()}) `;
-    const rightChunk = sql`(${rightSelect.getSQL()})`;
-    let orderBySql;
-    if (orderBy && orderBy.length > 0) {
-      const orderByValues = [];
-      for (const singleOrderBy of orderBy) {
-        if (is(singleOrderBy, PgColumn)) {
-          orderByValues.push(sql.identifier(singleOrderBy.name));
-        } else if (is(singleOrderBy, SQL)) {
-          for (let i = 0; i < singleOrderBy.queryChunks.length; i++) {
-            const chunk = singleOrderBy.queryChunks[i];
-            if (is(chunk, PgColumn)) {
-              singleOrderBy.queryChunks[i] = sql.identifier(chunk.name);
-            }
-          }
-          orderByValues.push(sql`${singleOrderBy}`);
-        } else {
-          orderByValues.push(sql`${singleOrderBy}`);
-        }
-      }
-      orderBySql = sql` order by ${sql.join(orderByValues, sql`, `)} `;
-    }
-    const limitSql = limit ? sql` limit ${limit}` : void 0;
-    const operatorChunk = sql.raw(`${type} ${isAll ? "all " : ""}`);
-    const offsetSql = offset ? sql` offset ${offset}` : void 0;
-    return sql`${leftChunk}${operatorChunk}${rightChunk}${orderBySql}${limitSql}${offsetSql}`;
-  }
-  buildInsertQuery({ table, values, onConflict, returning, withList }) {
-    const valuesSqlList = [];
-    const columns = table[Table.Symbol.Columns];
-    const colEntries = Object.entries(columns);
-    const insertOrder = colEntries.map(([, column]) => sql.identifier(column.name));
-    for (const [valueIndex, value] of values.entries()) {
-      const valueList = [];
-      for (const [fieldName, col] of colEntries) {
-        const colValue = value[fieldName];
-        if (colValue === void 0 || is(colValue, Param) && colValue.value === void 0) {
-          if (col.defaultFn !== void 0) {
-            const defaultFnResult = col.defaultFn();
-            const defaultValue = is(defaultFnResult, SQL) ? defaultFnResult : sql.param(defaultFnResult, col);
-            valueList.push(defaultValue);
-          } else if (!col.default && col.onUpdateFn !== void 0) {
-            const onUpdateFnResult = col.onUpdateFn();
-            const newValue = is(onUpdateFnResult, SQL) ? onUpdateFnResult : sql.param(onUpdateFnResult, col);
-            valueList.push(newValue);
-          } else {
-            valueList.push(sql`default`);
-          }
-        } else {
-          valueList.push(colValue);
-        }
-      }
-      valuesSqlList.push(valueList);
-      if (valueIndex < values.length - 1) {
-        valuesSqlList.push(sql`, `);
-      }
-    }
-    const withSql = this.buildWithCTE(withList);
-    const valuesSql = sql.join(valuesSqlList);
-    const returningSql = returning ? sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
-    const onConflictSql = onConflict ? sql` on conflict ${onConflict}` : void 0;
-    return sql`${withSql}insert into ${table} ${insertOrder} values ${valuesSql}${onConflictSql}${returningSql}`;
-  }
-  buildRefreshMaterializedViewQuery({ view, concurrently, withNoData }) {
-    const concurrentlySql = concurrently ? sql` concurrently` : void 0;
-    const withNoDataSql = withNoData ? sql` with no data` : void 0;
-    return sql`refresh materialized view${concurrentlySql} ${view}${withNoDataSql}`;
-  }
-  prepareTyping(encoder) {
-    if (is(encoder, PgJsonb) || is(encoder, PgJson)) {
-      return "json";
-    } else if (is(encoder, PgNumeric)) {
-      return "decimal";
-    } else if (is(encoder, PgTime)) {
-      return "time";
-    } else if (is(encoder, PgTimestamp) || is(encoder, PgTimestampString)) {
-      return "timestamp";
-    } else if (is(encoder, PgDate) || is(encoder, PgDateString)) {
-      return "date";
-    } else if (is(encoder, PgUUID)) {
-      return "uuid";
-    } else {
-      return "none";
-    }
-  }
-  sqlToQuery(sql2) {
-    return sql2.toQuery({
-      escapeName: this.escapeName,
-      escapeParam: this.escapeParam,
-      escapeString: this.escapeString,
-      prepareTyping: this.prepareTyping
-    });
-  }
-  // buildRelationalQueryWithPK({
-  // 	fullSchema,
-  // 	schema,
-  // 	tableNamesMap,
-  // 	table,
-  // 	tableConfig,
-  // 	queryConfig: config,
-  // 	tableAlias,
-  // 	isRoot = false,
-  // 	joinOn,
-  // }: {
-  // 	fullSchema: Record<string, unknown>;
-  // 	schema: TablesRelationalConfig;
-  // 	tableNamesMap: Record<string, string>;
-  // 	table: PgTable;
-  // 	tableConfig: TableRelationalConfig;
-  // 	queryConfig: true | DBQueryConfig<'many', true>;
-  // 	tableAlias: string;
-  // 	isRoot?: boolean;
-  // 	joinOn?: SQL;
-  // }): BuildRelationalQueryResult<PgTable, PgColumn> {
-  // 	// For { "<relation>": true }, return a table with selection of all columns
-  // 	if (config === true) {
-  // 		const selectionEntries = Object.entries(tableConfig.columns);
-  // 		const selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = selectionEntries.map((
-  // 			[key, value],
-  // 		) => ({
-  // 			dbKey: value.name,
-  // 			tsKey: key,
-  // 			field: value as PgColumn,
-  // 			relationTableTsKey: undefined,
-  // 			isJson: false,
-  // 			selection: [],
-  // 		}));
-  // 		return {
-  // 			tableTsKey: tableConfig.tsName,
-  // 			sql: table,
-  // 			selection,
-  // 		};
-  // 	}
-  // 	// let selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = [];
-  // 	// let selectionForBuild = selection;
-  // 	const aliasedColumns = Object.fromEntries(
-  // 		Object.entries(tableConfig.columns).map(([key, value]) => [key, aliasedTableColumn(value, tableAlias)]),
-  // 	);
-  // 	const aliasedRelations = Object.fromEntries(
-  // 		Object.entries(tableConfig.relations).map(([key, value]) => [key, aliasedRelation(value, tableAlias)]),
-  // 	);
-  // 	const aliasedFields = Object.assign({}, aliasedColumns, aliasedRelations);
-  // 	let where, hasUserDefinedWhere;
-  // 	if (config.where) {
-  // 		const whereSql = typeof config.where === 'function' ? config.where(aliasedFields, operators) : config.where;
-  // 		where = whereSql && mapColumnsInSQLToAlias(whereSql, tableAlias);
-  // 		hasUserDefinedWhere = !!where;
-  // 	}
-  // 	where = and(joinOn, where);
-  // 	// const fieldsSelection: { tsKey: string; value: PgColumn | SQL.Aliased; isExtra?: boolean }[] = [];
-  // 	let joins: Join[] = [];
-  // 	let selectedColumns: string[] = [];
-  // 	// Figure out which columns to select
-  // 	if (config.columns) {
-  // 		let isIncludeMode = false;
-  // 		for (const [field, value] of Object.entries(config.columns)) {
-  // 			if (value === undefined) {
-  // 				continue;
-  // 			}
-  // 			if (field in tableConfig.columns) {
-  // 				if (!isIncludeMode && value === true) {
-  // 					isIncludeMode = true;
-  // 				}
-  // 				selectedColumns.push(field);
-  // 			}
-  // 		}
-  // 		if (selectedColumns.length > 0) {
-  // 			selectedColumns = isIncludeMode
-  // 				? selectedColumns.filter((c) => config.columns?.[c] === true)
-  // 				: Object.keys(tableConfig.columns).filter((key) => !selectedColumns.includes(key));
-  // 		}
-  // 	} else {
-  // 		// Select all columns if selection is not specified
-  // 		selectedColumns = Object.keys(tableConfig.columns);
-  // 	}
-  // 	// for (const field of selectedColumns) {
-  // 	// 	const column = tableConfig.columns[field]! as PgColumn;
-  // 	// 	fieldsSelection.push({ tsKey: field, value: column });
-  // 	// }
-  // 	let initiallySelectedRelations: {
-  // 		tsKey: string;
-  // 		queryConfig: true | DBQueryConfig<'many', false>;
-  // 		relation: Relation;
-  // 	}[] = [];
-  // 	// let selectedRelations: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = [];
-  // 	// Figure out which relations to select
-  // 	if (config.with) {
-  // 		initiallySelectedRelations = Object.entries(config.with)
-  // 			.filter((entry): entry is [typeof entry[0], NonNullable<typeof entry[1]>] => !!entry[1])
-  // 			.map(([tsKey, queryConfig]) => ({ tsKey, queryConfig, relation: tableConfig.relations[tsKey]! }));
-  // 	}
-  // 	const manyRelations = initiallySelectedRelations.filter((r) =>
-  // 		is(r.relation, Many)
-  // 		&& (schema[tableNamesMap[r.relation.referencedTable[Table.Symbol.Name]]!]?.primaryKey.length ?? 0) > 0
-  // 	);
-  // 	// If this is the last Many relation (or there are no Many relations), we are on the innermost subquery level
-  // 	const isInnermostQuery = manyRelations.length < 2;
-  // 	const selectedExtras: {
-  // 		tsKey: string;
-  // 		value: SQL.Aliased;
-  // 	}[] = [];
-  // 	// Figure out which extras to select
-  // 	if (isInnermostQuery && config.extras) {
-  // 		const extras = typeof config.extras === 'function'
-  // 			? config.extras(aliasedFields, { sql })
-  // 			: config.extras;
-  // 		for (const [tsKey, value] of Object.entries(extras)) {
-  // 			selectedExtras.push({
-  // 				tsKey,
-  // 				value: mapColumnsInAliasedSQLToAlias(value, tableAlias),
-  // 			});
-  // 		}
-  // 	}
-  // 	// Transform `fieldsSelection` into `selection`
-  // 	// `fieldsSelection` shouldn't be used after this point
-  // 	// for (const { tsKey, value, isExtra } of fieldsSelection) {
-  // 	// 	selection.push({
-  // 	// 		dbKey: is(value, SQL.Aliased) ? value.fieldAlias : tableConfig.columns[tsKey]!.name,
-  // 	// 		tsKey,
-  // 	// 		field: is(value, Column) ? aliasedTableColumn(value, tableAlias) : value,
-  // 	// 		relationTableTsKey: undefined,
-  // 	// 		isJson: false,
-  // 	// 		isExtra,
-  // 	// 		selection: [],
-  // 	// 	});
-  // 	// }
-  // 	let orderByOrig = typeof config.orderBy === 'function'
-  // 		? config.orderBy(aliasedFields, orderByOperators)
-  // 		: config.orderBy ?? [];
-  // 	if (!Array.isArray(orderByOrig)) {
-  // 		orderByOrig = [orderByOrig];
-  // 	}
-  // 	const orderBy = orderByOrig.map((orderByValue) => {
-  // 		if (is(orderByValue, Column)) {
-  // 			return aliasedTableColumn(orderByValue, tableAlias) as PgColumn;
-  // 		}
-  // 		return mapColumnsInSQLToAlias(orderByValue, tableAlias);
-  // 	});
-  // 	const limit = isInnermostQuery ? config.limit : undefined;
-  // 	const offset = isInnermostQuery ? config.offset : undefined;
-  // 	// For non-root queries without additional config except columns, return a table with selection
-  // 	if (
-  // 		!isRoot
-  // 		&& initiallySelectedRelations.length === 0
-  // 		&& selectedExtras.length === 0
-  // 		&& !where
-  // 		&& orderBy.length === 0
-  // 		&& limit === undefined
-  // 		&& offset === undefined
-  // 	) {
-  // 		return {
-  // 			tableTsKey: tableConfig.tsName,
-  // 			sql: table,
-  // 			selection: selectedColumns.map((key) => ({
-  // 				dbKey: tableConfig.columns[key]!.name,
-  // 				tsKey: key,
-  // 				field: tableConfig.columns[key] as PgColumn,
-  // 				relationTableTsKey: undefined,
-  // 				isJson: false,
-  // 				selection: [],
-  // 			})),
-  // 		};
-  // 	}
-  // 	const selectedRelationsWithoutPK:
-  // 	// Process all relations without primary keys, because they need to be joined differently and will all be on the same query level
-  // 	for (
-  // 		const {
-  // 			tsKey: selectedRelationTsKey,
-  // 			queryConfig: selectedRelationConfigValue,
-  // 			relation,
-  // 		} of initiallySelectedRelations
-  // 	) {
-  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
-  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
-  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
-  // 		const relationTable = schema[relationTableTsName]!;
-  // 		if (relationTable.primaryKey.length > 0) {
-  // 			continue;
-  // 		}
-  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
-  // 		const joinOn = and(
-  // 			...normalizedRelation.fields.map((field, i) =>
-  // 				eq(
-  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
-  // 					aliasedTableColumn(field, tableAlias),
-  // 				)
-  // 			),
-  // 		);
-  // 		const builtRelation = this.buildRelationalQueryWithoutPK({
-  // 			fullSchema,
-  // 			schema,
-  // 			tableNamesMap,
-  // 			table: fullSchema[relationTableTsName] as PgTable,
-  // 			tableConfig: schema[relationTableTsName]!,
-  // 			queryConfig: selectedRelationConfigValue,
-  // 			tableAlias: relationTableAlias,
-  // 			joinOn,
-  // 			nestedQueryRelation: relation,
-  // 		});
-  // 		const field = sql`${sql.identifier(relationTableAlias)}.${sql.identifier('data')}`.as(selectedRelationTsKey);
-  // 		joins.push({
-  // 			on: sql`true`,
-  // 			table: new Subquery(builtRelation.sql as SQL, {}, relationTableAlias),
-  // 			alias: relationTableAlias,
-  // 			joinType: 'left',
-  // 			lateral: true,
-  // 		});
-  // 		selectedRelations.push({
-  // 			dbKey: selectedRelationTsKey,
-  // 			tsKey: selectedRelationTsKey,
-  // 			field,
-  // 			relationTableTsKey: relationTableTsName,
-  // 			isJson: true,
-  // 			selection: builtRelation.selection,
-  // 		});
-  // 	}
-  // 	const oneRelations = initiallySelectedRelations.filter((r): r is typeof r & { relation: One } =>
-  // 		is(r.relation, One)
-  // 	);
-  // 	// Process all One relations with PKs, because they can all be joined on the same level
-  // 	for (
-  // 		const {
-  // 			tsKey: selectedRelationTsKey,
-  // 			queryConfig: selectedRelationConfigValue,
-  // 			relation,
-  // 		} of oneRelations
-  // 	) {
-  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
-  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
-  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
-  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
-  // 		const relationTable = schema[relationTableTsName]!;
-  // 		if (relationTable.primaryKey.length === 0) {
-  // 			continue;
-  // 		}
-  // 		const joinOn = and(
-  // 			...normalizedRelation.fields.map((field, i) =>
-  // 				eq(
-  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
-  // 					aliasedTableColumn(field, tableAlias),
-  // 				)
-  // 			),
-  // 		);
-  // 		const builtRelation = this.buildRelationalQueryWithPK({
-  // 			fullSchema,
-  // 			schema,
-  // 			tableNamesMap,
-  // 			table: fullSchema[relationTableTsName] as PgTable,
-  // 			tableConfig: schema[relationTableTsName]!,
-  // 			queryConfig: selectedRelationConfigValue,
-  // 			tableAlias: relationTableAlias,
-  // 			joinOn,
-  // 		});
-  // 		const field = sql`case when ${sql.identifier(relationTableAlias)} is null then null else json_build_array(${
-  // 			sql.join(
-  // 				builtRelation.selection.map(({ field }) =>
-  // 					is(field, SQL.Aliased)
-  // 						? sql`${sql.identifier(relationTableAlias)}.${sql.identifier(field.fieldAlias)}`
-  // 						: is(field, Column)
-  // 						? aliasedTableColumn(field, relationTableAlias)
-  // 						: field
-  // 				),
-  // 				sql`, `,
-  // 			)
-  // 		}) end`.as(selectedRelationTsKey);
-  // 		const isLateralJoin = is(builtRelation.sql, SQL);
-  // 		joins.push({
-  // 			on: isLateralJoin ? sql`true` : joinOn,
-  // 			table: is(builtRelation.sql, SQL)
-  // 				? new Subquery(builtRelation.sql, {}, relationTableAlias)
-  // 				: aliasedTable(builtRelation.sql, relationTableAlias),
-  // 			alias: relationTableAlias,
-  // 			joinType: 'left',
-  // 			lateral: is(builtRelation.sql, SQL),
-  // 		});
-  // 		selectedRelations.push({
-  // 			dbKey: selectedRelationTsKey,
-  // 			tsKey: selectedRelationTsKey,
-  // 			field,
-  // 			relationTableTsKey: relationTableTsName,
-  // 			isJson: true,
-  // 			selection: builtRelation.selection,
-  // 		});
-  // 	}
-  // 	let distinct: PgSelectConfig['distinct'];
-  // 	let tableFrom: PgTable | Subquery = table;
-  // 	// Process first Many relation - each one requires a nested subquery
-  // 	const manyRelation = manyRelations[0];
-  // 	if (manyRelation) {
-  // 		const {
-  // 			tsKey: selectedRelationTsKey,
-  // 			queryConfig: selectedRelationQueryConfig,
-  // 			relation,
-  // 		} = manyRelation;
-  // 		distinct = {
-  // 			on: tableConfig.primaryKey.map((c) => aliasedTableColumn(c as PgColumn, tableAlias)),
-  // 		};
-  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
-  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
-  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
-  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
-  // 		const joinOn = and(
-  // 			...normalizedRelation.fields.map((field, i) =>
-  // 				eq(
-  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
-  // 					aliasedTableColumn(field, tableAlias),
-  // 				)
-  // 			),
-  // 		);
-  // 		const builtRelationJoin = this.buildRelationalQueryWithPK({
-  // 			fullSchema,
-  // 			schema,
-  // 			tableNamesMap,
-  // 			table: fullSchema[relationTableTsName] as PgTable,
-  // 			tableConfig: schema[relationTableTsName]!,
-  // 			queryConfig: selectedRelationQueryConfig,
-  // 			tableAlias: relationTableAlias,
-  // 			joinOn,
-  // 		});
-  // 		const builtRelationSelectionField = sql`case when ${
-  // 			sql.identifier(relationTableAlias)
-  // 		} is null then '[]' else json_agg(json_build_array(${
-  // 			sql.join(
-  // 				builtRelationJoin.selection.map(({ field }) =>
-  // 					is(field, SQL.Aliased)
-  // 						? sql`${sql.identifier(relationTableAlias)}.${sql.identifier(field.fieldAlias)}`
-  // 						: is(field, Column)
-  // 						? aliasedTableColumn(field, relationTableAlias)
-  // 						: field
-  // 				),
-  // 				sql`, `,
-  // 			)
-  // 		})) over (partition by ${sql.join(distinct.on, sql`, `)}) end`.as(selectedRelationTsKey);
-  // 		const isLateralJoin = is(builtRelationJoin.sql, SQL);
-  // 		joins.push({
-  // 			on: isLateralJoin ? sql`true` : joinOn,
-  // 			table: isLateralJoin
-  // 				? new Subquery(builtRelationJoin.sql as SQL, {}, relationTableAlias)
-  // 				: aliasedTable(builtRelationJoin.sql as PgTable, relationTableAlias),
-  // 			alias: relationTableAlias,
-  // 			joinType: 'left',
-  // 			lateral: isLateralJoin,
-  // 		});
-  // 		// Build the "from" subquery with the remaining Many relations
-  // 		const builtTableFrom = this.buildRelationalQueryWithPK({
-  // 			fullSchema,
-  // 			schema,
-  // 			tableNamesMap,
-  // 			table,
-  // 			tableConfig,
-  // 			queryConfig: {
-  // 				...config,
-  // 				where: undefined,
-  // 				orderBy: undefined,
-  // 				limit: undefined,
-  // 				offset: undefined,
-  // 				with: manyRelations.slice(1).reduce<NonNullable<typeof config['with']>>(
-  // 					(result, { tsKey, queryConfig: configValue }) => {
-  // 						result[tsKey] = configValue;
-  // 						return result;
-  // 					},
-  // 					{},
-  // 				),
-  // 			},
-  // 			tableAlias,
-  // 		});
-  // 		selectedRelations.push({
-  // 			dbKey: selectedRelationTsKey,
-  // 			tsKey: selectedRelationTsKey,
-  // 			field: builtRelationSelectionField,
-  // 			relationTableTsKey: relationTableTsName,
-  // 			isJson: true,
-  // 			selection: builtRelationJoin.selection,
-  // 		});
-  // 		// selection = builtTableFrom.selection.map((item) =>
-  // 		// 	is(item.field, SQL.Aliased)
-  // 		// 		? { ...item, field: sql`${sql.identifier(tableAlias)}.${sql.identifier(item.field.fieldAlias)}` }
-  // 		// 		: item
-  // 		// );
-  // 		// selectionForBuild = [{
-  // 		// 	dbKey: '*',
-  // 		// 	tsKey: '*',
-  // 		// 	field: sql`${sql.identifier(tableAlias)}.*`,
-  // 		// 	selection: [],
-  // 		// 	isJson: false,
-  // 		// 	relationTableTsKey: undefined,
-  // 		// }];
-  // 		// const newSelectionItem: (typeof selection)[number] = {
-  // 		// 	dbKey: selectedRelationTsKey,
-  // 		// 	tsKey: selectedRelationTsKey,
-  // 		// 	field,
-  // 		// 	relationTableTsKey: relationTableTsName,
-  // 		// 	isJson: true,
-  // 		// 	selection: builtRelationJoin.selection,
-  // 		// };
-  // 		// selection.push(newSelectionItem);
-  // 		// selectionForBuild.push(newSelectionItem);
-  // 		tableFrom = is(builtTableFrom.sql, PgTable)
-  // 			? builtTableFrom.sql
-  // 			: new Subquery(builtTableFrom.sql, {}, tableAlias);
-  // 	}
-  // 	if (selectedColumns.length === 0 && selectedRelations.length === 0 && selectedExtras.length === 0) {
-  // 		throw new DrizzleError(`No fields selected for table "${tableConfig.tsName}" ("${tableAlias}")`);
-  // 	}
-  // 	let selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'];
-  // 	function prepareSelectedColumns() {
-  // 		return selectedColumns.map((key) => ({
-  // 			dbKey: tableConfig.columns[key]!.name,
-  // 			tsKey: key,
-  // 			field: tableConfig.columns[key] as PgColumn,
-  // 			relationTableTsKey: undefined,
-  // 			isJson: false,
-  // 			selection: [],
-  // 		}));
-  // 	}
-  // 	function prepareSelectedExtras() {
-  // 		return selectedExtras.map((item) => ({
-  // 			dbKey: item.value.fieldAlias,
-  // 			tsKey: item.tsKey,
-  // 			field: item.value,
-  // 			relationTableTsKey: undefined,
-  // 			isJson: false,
-  // 			selection: [],
-  // 		}));
-  // 	}
-  // 	if (isRoot) {
-  // 		selection = [
-  // 			...prepareSelectedColumns(),
-  // 			...prepareSelectedExtras(),
-  // 		];
-  // 	}
-  // 	if (hasUserDefinedWhere || orderBy.length > 0) {
-  // 		tableFrom = new Subquery(
-  // 			this.buildSelectQuery({
-  // 				table: is(tableFrom, PgTable) ? aliasedTable(tableFrom, tableAlias) : tableFrom,
-  // 				fields: {},
-  // 				fieldsFlat: selectionForBuild.map(({ field }) => ({
-  // 					path: [],
-  // 					field: is(field, Column) ? aliasedTableColumn(field, tableAlias) : field,
-  // 				})),
-  // 				joins,
-  // 				distinct,
-  // 			}),
-  // 			{},
-  // 			tableAlias,
-  // 		);
-  // 		selectionForBuild = selection.map((item) =>
-  // 			is(item.field, SQL.Aliased)
-  // 				? { ...item, field: sql`${sql.identifier(tableAlias)}.${sql.identifier(item.field.fieldAlias)}` }
-  // 				: item
-  // 		);
-  // 		joins = [];
-  // 		distinct = undefined;
-  // 	}
-  // 	const result = this.buildSelectQuery({
-  // 		table: is(tableFrom, PgTable) ? aliasedTable(tableFrom, tableAlias) : tableFrom,
-  // 		fields: {},
-  // 		fieldsFlat: selectionForBuild.map(({ field }) => ({
-  // 			path: [],
-  // 			field: is(field, Column) ? aliasedTableColumn(field, tableAlias) : field,
-  // 		})),
-  // 		where,
-  // 		limit,
-  // 		offset,
-  // 		joins,
-  // 		orderBy,
-  // 		distinct,
-  // 	});
-  // 	return {
-  // 		tableTsKey: tableConfig.tsName,
-  // 		sql: result,
-  // 		selection,
-  // 	};
-  // }
-  buildRelationalQueryWithoutPK({
-    fullSchema,
-    schema,
-    tableNamesMap,
-    table,
-    tableConfig,
-    queryConfig: config,
-    tableAlias,
-    nestedQueryRelation,
-    joinOn
-  }) {
-    let selection = [];
-    let limit, offset, orderBy = [], where;
-    const joins = [];
-    if (config === true) {
-      const selectionEntries = Object.entries(tableConfig.columns);
-      selection = selectionEntries.map(([key, value]) => ({
-        dbKey: value.name,
-        tsKey: key,
-        field: aliasedTableColumn(value, tableAlias),
-        relationTableTsKey: void 0,
-        isJson: false,
-        selection: []
-      }));
-    } else {
-      const aliasedColumns = Object.fromEntries(
-        Object.entries(tableConfig.columns).map(([key, value]) => [key, aliasedTableColumn(value, tableAlias)])
-      );
-      if (config.where) {
-        const whereSql = typeof config.where === "function" ? config.where(aliasedColumns, getOperators()) : config.where;
-        where = whereSql && mapColumnsInSQLToAlias(whereSql, tableAlias);
-      }
-      const fieldsSelection = [];
-      let selectedColumns = [];
-      if (config.columns) {
-        let isIncludeMode = false;
-        for (const [field, value] of Object.entries(config.columns)) {
-          if (value === void 0) {
-            continue;
-          }
-          if (field in tableConfig.columns) {
-            if (!isIncludeMode && value === true) {
-              isIncludeMode = true;
-            }
-            selectedColumns.push(field);
-          }
-        }
-        if (selectedColumns.length > 0) {
-          selectedColumns = isIncludeMode ? selectedColumns.filter((c) => config.columns?.[c] === true) : Object.keys(tableConfig.columns).filter((key) => !selectedColumns.includes(key));
-        }
-      } else {
-        selectedColumns = Object.keys(tableConfig.columns);
-      }
-      for (const field of selectedColumns) {
-        const column = tableConfig.columns[field];
-        fieldsSelection.push({ tsKey: field, value: column });
-      }
-      let selectedRelations = [];
-      if (config.with) {
-        selectedRelations = Object.entries(config.with).filter((entry) => !!entry[1]).map(([tsKey, queryConfig]) => ({ tsKey, queryConfig, relation: tableConfig.relations[tsKey] }));
-      }
-      let extras;
-      if (config.extras) {
-        extras = typeof config.extras === "function" ? config.extras(aliasedColumns, { sql: sql }) : config.extras;
-        for (const [tsKey, value] of Object.entries(extras)) {
-          fieldsSelection.push({
-            tsKey,
-            value: mapColumnsInAliasedSQLToAlias(value, tableAlias)
-          });
-        }
-      }
-      for (const { tsKey, value } of fieldsSelection) {
-        selection.push({
-          dbKey: is(value, SQL.Aliased) ? value.fieldAlias : tableConfig.columns[tsKey].name,
-          tsKey,
-          field: is(value, Column) ? aliasedTableColumn(value, tableAlias) : value,
-          relationTableTsKey: void 0,
-          isJson: false,
-          selection: []
-        });
-      }
-      let orderByOrig = typeof config.orderBy === "function" ? config.orderBy(aliasedColumns, getOrderByOperators()) : config.orderBy ?? [];
-      if (!Array.isArray(orderByOrig)) {
-        orderByOrig = [orderByOrig];
-      }
-      orderBy = orderByOrig.map((orderByValue) => {
-        if (is(orderByValue, Column)) {
-          return aliasedTableColumn(orderByValue, tableAlias);
-        }
-        return mapColumnsInSQLToAlias(orderByValue, tableAlias);
-      });
-      limit = config.limit;
-      offset = config.offset;
-      for (const {
-        tsKey: selectedRelationTsKey,
-        queryConfig: selectedRelationConfigValue,
-        relation
-      } of selectedRelations) {
-        const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
-        const relationTableName = relation.referencedTable[Table.Symbol.Name];
-        const relationTableTsName = tableNamesMap[relationTableName];
-        const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
-        const joinOn2 = and(
-          ...normalizedRelation.fields.map(
-            (field2, i) => eq(
-              aliasedTableColumn(normalizedRelation.references[i], relationTableAlias),
-              aliasedTableColumn(field2, tableAlias)
-            )
-          )
-        );
-        const builtRelation = this.buildRelationalQueryWithoutPK({
-          fullSchema,
-          schema,
-          tableNamesMap,
-          table: fullSchema[relationTableTsName],
-          tableConfig: schema[relationTableTsName],
-          queryConfig: is(relation, One) ? selectedRelationConfigValue === true ? { limit: 1 } : { ...selectedRelationConfigValue, limit: 1 } : selectedRelationConfigValue,
-          tableAlias: relationTableAlias,
-          joinOn: joinOn2,
-          nestedQueryRelation: relation
-        });
-        const field = sql`${sql.identifier(relationTableAlias)}.${sql.identifier("data")}`.as(selectedRelationTsKey);
-        joins.push({
-          on: sql`true`,
-          table: new Subquery(builtRelation.sql, {}, relationTableAlias),
-          alias: relationTableAlias,
-          joinType: "left",
-          lateral: true
-        });
-        selection.push({
-          dbKey: selectedRelationTsKey,
-          tsKey: selectedRelationTsKey,
-          field,
-          relationTableTsKey: relationTableTsName,
-          isJson: true,
-          selection: builtRelation.selection
-        });
-      }
-    }
-    if (selection.length === 0) {
-      throw new DrizzleError({ message: `No fields selected for table "${tableConfig.tsName}" ("${tableAlias}")` });
-    }
-    let result;
-    where = and(joinOn, where);
-    if (nestedQueryRelation) {
-      let field = sql`json_build_array(${sql.join(
-        selection.map(
-          ({ field: field2, tsKey, isJson }) => isJson ? sql`${sql.identifier(`${tableAlias}_${tsKey}`)}.${sql.identifier("data")}` : is(field2, SQL.Aliased) ? field2.sql : field2
-        ),
-        sql`, `
-      )})`;
-      if (is(nestedQueryRelation, Many)) {
-        field = sql`coalesce(json_agg(${field}${orderBy.length > 0 ? sql` order by ${sql.join(orderBy, sql`, `)}` : void 0}), '[]'::json)`;
-      }
-      const nestedSelection = [{
-        dbKey: "data",
-        tsKey: "data",
-        field: field.as("data"),
-        isJson: true,
-        relationTableTsKey: tableConfig.tsName,
-        selection
-      }];
-      const needsSubquery = limit !== void 0 || offset !== void 0 || orderBy.length > 0;
-      if (needsSubquery) {
-        result = this.buildSelectQuery({
-          table: aliasedTable(table, tableAlias),
-          fields: {},
-          fieldsFlat: [{
-            path: [],
-            field: sql.raw("*")
-          }],
-          where,
-          limit,
-          offset,
-          orderBy,
-          setOperators: []
-        });
-        where = void 0;
-        limit = void 0;
-        offset = void 0;
-        orderBy = [];
-      } else {
-        result = aliasedTable(table, tableAlias);
-      }
-      result = this.buildSelectQuery({
-        table: is(result, PgTable) ? result : new Subquery(result, {}, tableAlias),
-        fields: {},
-        fieldsFlat: nestedSelection.map(({ field: field2 }) => ({
-          path: [],
-          field: is(field2, Column) ? aliasedTableColumn(field2, tableAlias) : field2
-        })),
-        joins,
-        where,
-        limit,
-        offset,
-        orderBy,
-        setOperators: []
-      });
-    } else {
-      result = this.buildSelectQuery({
-        table: aliasedTable(table, tableAlias),
-        fields: {},
-        fieldsFlat: selection.map(({ field }) => ({
-          path: [],
-          field: is(field, Column) ? aliasedTableColumn(field, tableAlias) : field
-        })),
-        joins,
-        where,
-        limit,
-        offset,
-        orderBy,
-        setOperators: []
-      });
-    }
-    return {
-      tableTsKey: tableConfig.tsName,
-      sql: result,
-      selection
-    };
-  }
-}
-
-//# sourceMappingURL=dialect.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/selection-proxy.js
-
-
-
-
-
-
-class SelectionProxyHandler {
-  static [entityKind] = "SelectionProxyHandler";
-  config;
-  constructor(config) {
-    this.config = { ...config };
-  }
-  get(subquery, prop) {
-    if (prop === "_") {
-      return {
-        ...subquery["_"],
-        selectedFields: new Proxy(
-          subquery._.selectedFields,
-          this
-        )
-      };
-    }
-    if (prop === ViewBaseConfig) {
-      return {
-        ...subquery[ViewBaseConfig],
-        selectedFields: new Proxy(
-          subquery[ViewBaseConfig].selectedFields,
-          this
-        )
-      };
-    }
-    if (typeof prop === "symbol") {
-      return subquery[prop];
-    }
-    const columns = is(subquery, Subquery) ? subquery._.selectedFields : is(subquery, View) ? subquery[ViewBaseConfig].selectedFields : subquery;
-    const value = columns[prop];
-    if (is(value, SQL.Aliased)) {
-      if (this.config.sqlAliasedBehavior === "sql" && !value.isSelectionField) {
-        return value.sql;
-      }
-      const newValue = value.clone();
-      newValue.isSelectionField = true;
-      return newValue;
-    }
-    if (is(value, SQL)) {
-      if (this.config.sqlBehavior === "sql") {
-        return value;
-      }
-      throw new Error(
-        `You tried to reference "${prop}" field from a subquery, which is a raw SQL field, but it doesn't have an alias declared. Please add an alias to the field using ".as('alias')" method.`
-      );
-    }
-    if (is(value, Column)) {
-      if (this.config.alias) {
-        return new Proxy(
-          value,
-          new ColumnAliasProxyHandler(
-            new Proxy(
-              value.table,
-              new TableAliasProxyHandler(this.config.alias, this.config.replaceOriginalName ?? false)
-            )
-          )
-        );
-      }
-      return value;
-    }
-    if (typeof value !== "object" || value === null) {
-      return value;
-    }
-    return new Proxy(value, new SelectionProxyHandler(this.config));
-  }
-}
-
-//# sourceMappingURL=selection-proxy.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/query-builders/query-builder.js
-
-class TypedQueryBuilder {
-  static [entityKind] = "TypedQueryBuilder";
-  /** @internal */
-  getSelectedFields() {
-    return this._.selectedFields;
-  }
-}
-
-//# sourceMappingURL=query-builder.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/query-promise.js
-
-class QueryPromise {
-  static [entityKind] = "QueryPromise";
-  [Symbol.toStringTag] = "QueryPromise";
-  catch(onRejected) {
-    return this.then(void 0, onRejected);
-  }
-  finally(onFinally) {
-    return this.then(
-      (value) => {
-        onFinally?.();
-        return value;
-      },
-      (reason) => {
-        onFinally?.();
-        throw reason;
-      }
-    );
-  }
-  then(onFulfilled, onRejected) {
-    return this.execute().then(onFulfilled, onRejected);
-  }
-}
-
-//# sourceMappingURL=query-promise.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/select.js
-
-
-
-
-
-
-
-
-
-
-
-
-class PgSelectBuilder {
-  static [entityKind] = "PgSelectBuilder";
-  fields;
-  session;
-  dialect;
-  withList = [];
-  distinct;
-  constructor(config) {
-    this.fields = config.fields;
-    this.session = config.session;
-    this.dialect = config.dialect;
-    if (config.withList) {
-      this.withList = config.withList;
-    }
-    this.distinct = config.distinct;
-  }
-  /**
-   * Specify the table, subquery, or other target that you're
-   * building a select query against.
-   *
-   * {@link https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM | Postgres from documentation}
-   */
-  from(source) {
-    const isPartialSelect = !!this.fields;
-    let fields;
-    if (this.fields) {
-      fields = this.fields;
-    } else if (is(source, Subquery)) {
-      fields = Object.fromEntries(
-        Object.keys(source._.selectedFields).map((key) => [key, source[key]])
-      );
-    } else if (is(source, PgViewBase)) {
-      fields = source[ViewBaseConfig].selectedFields;
-    } else if (is(source, SQL)) {
-      fields = {};
-    } else {
-      fields = getTableColumns(source);
-    }
-    return new PgSelectBase({
-      table: source,
-      fields,
-      isPartialSelect,
-      session: this.session,
-      dialect: this.dialect,
-      withList: this.withList,
-      distinct: this.distinct
-    });
-  }
-}
-class PgSelectQueryBuilderBase extends TypedQueryBuilder {
-  static [entityKind] = "PgSelectQueryBuilder";
-  _;
-  config;
-  joinsNotNullableMap;
-  tableName;
-  isPartialSelect;
-  session;
-  dialect;
-  constructor({ table, fields, isPartialSelect, session, dialect, withList, distinct }) {
-    super();
-    this.config = {
-      withList,
-      table,
-      fields: { ...fields },
-      distinct,
-      setOperators: []
-    };
-    this.isPartialSelect = isPartialSelect;
-    this.session = session;
-    this.dialect = dialect;
-    this._ = {
-      selectedFields: fields
-    };
-    this.tableName = getTableLikeName(table);
-    this.joinsNotNullableMap = typeof this.tableName === "string" ? { [this.tableName]: true } : {};
-  }
-  createJoin(joinType) {
-    return (table, on) => {
-      const baseTableName = this.tableName;
-      const tableName = getTableLikeName(table);
-      if (typeof tableName === "string" && this.config.joins?.some((join) => join.alias === tableName)) {
-        throw new Error(`Alias "${tableName}" is already used in this query`);
-      }
-      if (!this.isPartialSelect) {
-        if (Object.keys(this.joinsNotNullableMap).length === 1 && typeof baseTableName === "string") {
-          this.config.fields = {
-            [baseTableName]: this.config.fields
-          };
-        }
-        if (typeof tableName === "string" && !is(table, SQL)) {
-          const selection = is(table, Subquery) ? table._.selectedFields : is(table, View) ? table[ViewBaseConfig].selectedFields : table[Table.Symbol.Columns];
-          this.config.fields[tableName] = selection;
-        }
-      }
-      if (typeof on === "function") {
-        on = on(
-          new Proxy(
-            this.config.fields,
-            new SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
-          )
-        );
-      }
-      if (!this.config.joins) {
-        this.config.joins = [];
-      }
-      this.config.joins.push({ on, table, joinType, alias: tableName });
-      if (typeof tableName === "string") {
-        switch (joinType) {
-          case "left": {
-            this.joinsNotNullableMap[tableName] = false;
-            break;
-          }
-          case "right": {
-            this.joinsNotNullableMap = Object.fromEntries(
-              Object.entries(this.joinsNotNullableMap).map(([key]) => [key, false])
-            );
-            this.joinsNotNullableMap[tableName] = true;
-            break;
-          }
-          case "inner": {
-            this.joinsNotNullableMap[tableName] = true;
-            break;
-          }
-          case "full": {
-            this.joinsNotNullableMap = Object.fromEntries(
-              Object.entries(this.joinsNotNullableMap).map(([key]) => [key, false])
-            );
-            this.joinsNotNullableMap[tableName] = false;
-            break;
-          }
-        }
-      }
-      return this;
-    };
-  }
-  /**
-   * Executes a `left join` operation by adding another table to the current query.
-   *
-   * Calling this method associates each row of the table with the corresponding row from the joined table, if a match is found. If no matching row exists, it sets all columns of the joined table to null.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/joins#left-join}
-   *
-   * @param table the table to join.
-   * @param on the `on` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all users and their pets
-   * const usersWithPets: { user: User; pets: Pet | null }[] = await db.select()
-   *   .from(users)
-   *   .leftJoin(pets, eq(users.id, pets.ownerId))
-   *
-   * // Select userId and petId
-   * const usersIdsAndPetIds: { userId: number; petId: number | null }[] = await db.select({
-   *   userId: users.id,
-   *   petId: pets.id,
-   * })
-   *   .from(users)
-   *   .leftJoin(pets, eq(users.id, pets.ownerId))
-   * ```
-   */
-  leftJoin = this.createJoin("left");
-  /**
-   * Executes a `right join` operation by adding another table to the current query.
-   *
-   * Calling this method associates each row of the joined table with the corresponding row from the main table, if a match is found. If no matching row exists, it sets all columns of the main table to null.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/joins#right-join}
-   *
-   * @param table the table to join.
-   * @param on the `on` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all users and their pets
-   * const usersWithPets: { user: User | null; pets: Pet }[] = await db.select()
-   *   .from(users)
-   *   .rightJoin(pets, eq(users.id, pets.ownerId))
-   *
-   * // Select userId and petId
-   * const usersIdsAndPetIds: { userId: number | null; petId: number }[] = await db.select({
-   *   userId: users.id,
-   *   petId: pets.id,
-   * })
-   *   .from(users)
-   *   .rightJoin(pets, eq(users.id, pets.ownerId))
-   * ```
-   */
-  rightJoin = this.createJoin("right");
-  /**
-   * Executes an `inner join` operation, creating a new table by combining rows from two tables that have matching values.
-   *
-   * Calling this method retrieves rows that have corresponding entries in both joined tables. Rows without matching entries in either table are excluded, resulting in a table that includes only matching pairs.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/joins#inner-join}
-   *
-   * @param table the table to join.
-   * @param on the `on` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all users and their pets
-   * const usersWithPets: { user: User; pets: Pet }[] = await db.select()
-   *   .from(users)
-   *   .innerJoin(pets, eq(users.id, pets.ownerId))
-   *
-   * // Select userId and petId
-   * const usersIdsAndPetIds: { userId: number; petId: number }[] = await db.select({
-   *   userId: users.id,
-   *   petId: pets.id,
-   * })
-   *   .from(users)
-   *   .innerJoin(pets, eq(users.id, pets.ownerId))
-   * ```
-   */
-  innerJoin = this.createJoin("inner");
-  /**
-   * Executes a `full join` operation by combining rows from two tables into a new table.
-   *
-   * Calling this method retrieves all rows from both main and joined tables, merging rows with matching values and filling in `null` for non-matching columns.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/joins#full-join}
-   *
-   * @param table the table to join.
-   * @param on the `on` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all users and their pets
-   * const usersWithPets: { user: User | null; pets: Pet | null }[] = await db.select()
-   *   .from(users)
-   *   .fullJoin(pets, eq(users.id, pets.ownerId))
-   *
-   * // Select userId and petId
-   * const usersIdsAndPetIds: { userId: number | null; petId: number | null }[] = await db.select({
-   *   userId: users.id,
-   *   petId: pets.id,
-   * })
-   *   .from(users)
-   *   .fullJoin(pets, eq(users.id, pets.ownerId))
-   * ```
-   */
-  fullJoin = this.createJoin("full");
-  createSetOperator(type, isAll) {
-    return (rightSelection) => {
-      const rightSelect = typeof rightSelection === "function" ? rightSelection(getPgSetOperators()) : rightSelection;
-      if (!haveSameKeys(this.getSelectedFields(), rightSelect.getSelectedFields())) {
-        throw new Error(
-          "Set operator error (union / intersect / except): selected fields are not the same or are in a different order"
-        );
-      }
-      this.config.setOperators.push({ type, isAll, rightSelect });
-      return this;
-    };
-  }
-  /**
-   * Adds `union` set operator to the query.
-   *
-   * Calling this method will combine the result sets of the `select` statements and remove any duplicate rows that appear across them.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#union}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all unique names from customers and users tables
-   * await db.select({ name: users.name })
-   *   .from(users)
-   *   .union(
-   *     db.select({ name: customers.name }).from(customers)
-   *   );
-   * // or
-   * import { union } from 'drizzle-orm/pg-core'
-   *
-   * await union(
-   *   db.select({ name: users.name }).from(users),
-   *   db.select({ name: customers.name }).from(customers)
-   * );
-   * ```
-   */
-  union = this.createSetOperator("union", false);
-  /**
-   * Adds `union all` set operator to the query.
-   *
-   * Calling this method will combine the result-set of the `select` statements and keep all duplicate rows that appear across them.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#union-all}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all transaction ids from both online and in-store sales
-   * await db.select({ transaction: onlineSales.transactionId })
-   *   .from(onlineSales)
-   *   .unionAll(
-   *     db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
-   *   );
-   * // or
-   * import { unionAll } from 'drizzle-orm/pg-core'
-   *
-   * await unionAll(
-   *   db.select({ transaction: onlineSales.transactionId }).from(onlineSales),
-   *   db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
-   * );
-   * ```
-   */
-  unionAll = this.createSetOperator("union", true);
-  /**
-   * Adds `intersect` set operator to the query.
-   *
-   * Calling this method will retain only the rows that are present in both result sets and eliminate duplicates.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#intersect}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select course names that are offered in both departments A and B
-   * await db.select({ courseName: depA.courseName })
-   *   .from(depA)
-   *   .intersect(
-   *     db.select({ courseName: depB.courseName }).from(depB)
-   *   );
-   * // or
-   * import { intersect } from 'drizzle-orm/pg-core'
-   *
-   * await intersect(
-   *   db.select({ courseName: depA.courseName }).from(depA),
-   *   db.select({ courseName: depB.courseName }).from(depB)
-   * );
-   * ```
-   */
-  intersect = this.createSetOperator("intersect", false);
-  /**
-   * Adds `intersect all` set operator to the query.
-   *
-   * Calling this method will retain only the rows that are present in both result sets including all duplicates.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#intersect-all}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all products and quantities that are ordered by both regular and VIP customers
-   * await db.select({
-   *   productId: regularCustomerOrders.productId,
-   *   quantityOrdered: regularCustomerOrders.quantityOrdered
-   * })
-   * .from(regularCustomerOrders)
-   * .intersectAll(
-   *   db.select({
-   *     productId: vipCustomerOrders.productId,
-   *     quantityOrdered: vipCustomerOrders.quantityOrdered
-   *   })
-   *   .from(vipCustomerOrders)
-   * );
-   * // or
-   * import { intersectAll } from 'drizzle-orm/pg-core'
-   *
-   * await intersectAll(
-   *   db.select({
-   *     productId: regularCustomerOrders.productId,
-   *     quantityOrdered: regularCustomerOrders.quantityOrdered
-   *   })
-   *   .from(regularCustomerOrders),
-   *   db.select({
-   *     productId: vipCustomerOrders.productId,
-   *     quantityOrdered: vipCustomerOrders.quantityOrdered
-   *   })
-   *   .from(vipCustomerOrders)
-   * );
-   * ```
-   */
-  intersectAll = this.createSetOperator("intersect", true);
-  /**
-   * Adds `except` set operator to the query.
-   *
-   * Calling this method will retrieve all unique rows from the left query, except for the rows that are present in the result set of the right query.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#except}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all courses offered in department A but not in department B
-   * await db.select({ courseName: depA.courseName })
-   *   .from(depA)
-   *   .except(
-   *     db.select({ courseName: depB.courseName }).from(depB)
-   *   );
-   * // or
-   * import { except } from 'drizzle-orm/pg-core'
-   *
-   * await except(
-   *   db.select({ courseName: depA.courseName }).from(depA),
-   *   db.select({ courseName: depB.courseName }).from(depB)
-   * );
-   * ```
-   */
-  except = this.createSetOperator("except", false);
-  /**
-   * Adds `except all` set operator to the query.
-   *
-   * Calling this method will retrieve all rows from the left query, except for the rows that are present in the result set of the right query.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/set-operations#except-all}
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all products that are ordered by regular customers but not by VIP customers
-   * await db.select({
-   *   productId: regularCustomerOrders.productId,
-   *   quantityOrdered: regularCustomerOrders.quantityOrdered,
-   * })
-   * .from(regularCustomerOrders)
-   * .exceptAll(
-   *   db.select({
-   *     productId: vipCustomerOrders.productId,
-   *     quantityOrdered: vipCustomerOrders.quantityOrdered,
-   *   })
-   *   .from(vipCustomerOrders)
-   * );
-   * // or
-   * import { exceptAll } from 'drizzle-orm/pg-core'
-   *
-   * await exceptAll(
-   *   db.select({
-   *     productId: regularCustomerOrders.productId,
-   *     quantityOrdered: regularCustomerOrders.quantityOrdered
-   *   })
-   *   .from(regularCustomerOrders),
-   *   db.select({
-   *     productId: vipCustomerOrders.productId,
-   *     quantityOrdered: vipCustomerOrders.quantityOrdered
-   *   })
-   *   .from(vipCustomerOrders)
-   * );
-   * ```
-   */
-  exceptAll = this.createSetOperator("except", true);
-  /** @internal */
-  addSetOperators(setOperators) {
-    this.config.setOperators.push(...setOperators);
-    return this;
-  }
-  /**
-   * Adds a `where` clause to the query.
-   *
-   * Calling this method will select only those rows that fulfill a specified condition.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#filtering}
-   *
-   * @param where the `where` clause.
-   *
-   * @example
-   * You can use conditional operators and `sql function` to filter the rows to be selected.
-   *
-   * ```ts
-   * // Select all cars with green color
-   * await db.select().from(cars).where(eq(cars.color, 'green'));
-   * // or
-   * await db.select().from(cars).where(sql`${cars.color} = 'green'`)
-   * ```
-   *
-   * You can logically combine conditional operators with `and()` and `or()` operators:
-   *
-   * ```ts
-   * // Select all BMW cars with a green color
-   * await db.select().from(cars).where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
-   *
-   * // Select all cars with the green or blue color
-   * await db.select().from(cars).where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
-   * ```
-   */
-  where(where) {
-    if (typeof where === "function") {
-      where = where(
-        new Proxy(
-          this.config.fields,
-          new SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
-        )
-      );
-    }
-    this.config.where = where;
-    return this;
-  }
-  /**
-   * Adds a `having` clause to the query.
-   *
-   * Calling this method will select only those rows that fulfill a specified condition. It is typically used with aggregate functions to filter the aggregated data based on a specified condition.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#aggregations}
-   *
-   * @param having the `having` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Select all brands with more than one car
-   * await db.select({
-   * 	brand: cars.brand,
-   * 	count: sql<number>`cast(count(${cars.id}) as int)`,
-   * })
-   *   .from(cars)
-   *   .groupBy(cars.brand)
-   *   .having(({ count }) => gt(count, 1));
-   * ```
-   */
-  having(having) {
-    if (typeof having === "function") {
-      having = having(
-        new Proxy(
-          this.config.fields,
-          new SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
-        )
-      );
-    }
-    this.config.having = having;
-    return this;
-  }
-  groupBy(...columns) {
-    if (typeof columns[0] === "function") {
-      const groupBy = columns[0](
-        new Proxy(
-          this.config.fields,
-          new SelectionProxyHandler({ sqlAliasedBehavior: "alias", sqlBehavior: "sql" })
-        )
-      );
-      this.config.groupBy = Array.isArray(groupBy) ? groupBy : [groupBy];
-    } else {
-      this.config.groupBy = columns;
-    }
-    return this;
-  }
-  orderBy(...columns) {
-    if (typeof columns[0] === "function") {
-      const orderBy = columns[0](
-        new Proxy(
-          this.config.fields,
-          new SelectionProxyHandler({ sqlAliasedBehavior: "alias", sqlBehavior: "sql" })
-        )
-      );
-      const orderByArray = Array.isArray(orderBy) ? orderBy : [orderBy];
-      if (this.config.setOperators.length > 0) {
-        this.config.setOperators.at(-1).orderBy = orderByArray;
-      } else {
-        this.config.orderBy = orderByArray;
-      }
-    } else {
-      const orderByArray = columns;
-      if (this.config.setOperators.length > 0) {
-        this.config.setOperators.at(-1).orderBy = orderByArray;
-      } else {
-        this.config.orderBy = orderByArray;
-      }
-    }
-    return this;
-  }
-  /**
-   * Adds a `limit` clause to the query.
-   *
-   * Calling this method will set the maximum number of rows that will be returned by this query.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#limit--offset}
-   *
-   * @param limit the `limit` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Get the first 10 people from this query.
-   * await db.select().from(people).limit(10);
-   * ```
-   */
-  limit(limit) {
-    if (this.config.setOperators.length > 0) {
-      this.config.setOperators.at(-1).limit = limit;
-    } else {
-      this.config.limit = limit;
-    }
-    return this;
-  }
-  /**
-   * Adds an `offset` clause to the query.
-   *
-   * Calling this method will skip a number of rows when returning results from this query.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#limit--offset}
-   *
-   * @param offset the `offset` clause.
-   *
-   * @example
-   *
-   * ```ts
-   * // Get the 10th-20th people from this query.
-   * await db.select().from(people).offset(10).limit(10);
-   * ```
-   */
-  offset(offset) {
-    if (this.config.setOperators.length > 0) {
-      this.config.setOperators.at(-1).offset = offset;
-    } else {
-      this.config.offset = offset;
-    }
-    return this;
-  }
-  /**
-   * Adds a `for` clause to the query.
-   *
-   * Calling this method will specify a lock strength for this query that controls how strictly it acquires exclusive access to the rows being queried.
-   *
-   * See docs: {@link https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE}
-   *
-   * @param strength the lock strength.
-   * @param config the lock configuration.
-   */
-  for(strength, config = {}) {
-    this.config.lockingClause = { strength, config };
-    return this;
-  }
-  /** @internal */
-  getSQL() {
-    return this.dialect.buildSelectQuery(this.config);
-  }
-  toSQL() {
-    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
-    return rest;
-  }
-  as(alias) {
-    return new Proxy(
-      new Subquery(this.getSQL(), this.config.fields, alias),
-      new SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
-    );
-  }
-  /** @internal */
-  getSelectedFields() {
-    return new Proxy(
-      this.config.fields,
-      new SelectionProxyHandler({ alias: this.tableName, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
-    );
-  }
-  $dynamic() {
-    return this;
-  }
-}
-class PgSelectBase extends PgSelectQueryBuilderBase {
-  static [entityKind] = "PgSelect";
-  /** @internal */
-  _prepare(name) {
-    const { session, config, dialect, joinsNotNullableMap } = this;
-    if (!session) {
-      throw new Error("Cannot execute a query on a query builder. Please use a database instance instead.");
-    }
-    return tracer.startActiveSpan("drizzle.prepareQuery", () => {
-      const fieldsList = orderSelectedFields(config.fields);
-      const query = session.prepareQuery(dialect.sqlToQuery(this.getSQL()), fieldsList, name, true);
-      query.joinsNotNullableMap = joinsNotNullableMap;
-      return query;
-    });
-  }
-  /**
-   * Create a prepared statement for this query. This allows
-   * the database to remember this query for the given session
-   * and call it by name, rather than specifying the full query.
-   *
-   * {@link https://www.postgresql.org/docs/current/sql-prepare.html | Postgres prepare documentation}
-   */
-  prepare(name) {
-    return this._prepare(name);
-  }
-  execute = (placeholderValues) => {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      return this._prepare().execute(placeholderValues);
-    });
-  };
-}
-applyMixins(PgSelectBase, [QueryPromise]);
-function createSetOperator(type, isAll) {
-  return (leftSelect, rightSelect, ...restSelects) => {
-    const setOperators = [rightSelect, ...restSelects].map((select) => ({
-      type,
-      isAll,
-      rightSelect: select
-    }));
-    for (const setOperator of setOperators) {
-      if (!haveSameKeys(leftSelect.getSelectedFields(), setOperator.rightSelect.getSelectedFields())) {
-        throw new Error(
-          "Set operator error (union / intersect / except): selected fields are not the same or are in a different order"
-        );
-      }
-    }
-    return leftSelect.addSetOperators(setOperators);
-  };
-}
-const getPgSetOperators = () => ({
-  union,
-  unionAll,
-  intersect,
-  intersectAll,
-  except,
-  exceptAll
-});
-const union = createSetOperator("union", false);
-const unionAll = createSetOperator("union", true);
-const intersect = createSetOperator("intersect", false);
-const intersectAll = createSetOperator("intersect", true);
-const except = createSetOperator("except", false);
-const exceptAll = createSetOperator("except", true);
-
-//# sourceMappingURL=select.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/query-builder.js
-
-
-
-
-
-class QueryBuilder {
-  static [entityKind] = "PgQueryBuilder";
-  dialect;
-  $with(alias) {
-    const queryBuilder = this;
-    return {
-      as(qb) {
-        if (typeof qb === "function") {
-          qb = qb(queryBuilder);
-        }
-        return new Proxy(
-          new WithSubquery(qb.getSQL(), qb.getSelectedFields(), alias, true),
-          new SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
-        );
-      }
-    };
-  }
-  with(...queries) {
-    const self = this;
-    function select(fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: void 0,
-        dialect: self.getDialect(),
-        withList: queries
-      });
-    }
-    function selectDistinct(fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: void 0,
-        dialect: self.getDialect(),
-        distinct: true
-      });
-    }
-    function selectDistinctOn(on, fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: void 0,
-        dialect: self.getDialect(),
-        distinct: { on }
-      });
-    }
-    return { select, selectDistinct, selectDistinctOn };
-  }
-  select(fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: void 0,
-      dialect: this.getDialect()
-    });
-  }
-  selectDistinct(fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: void 0,
-      dialect: this.getDialect(),
-      distinct: true
-    });
-  }
-  selectDistinctOn(on, fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: void 0,
-      dialect: this.getDialect(),
-      distinct: { on }
-    });
-  }
-  // Lazy load dialect to avoid circular dependency
-  getDialect() {
-    if (!this.dialect) {
-      this.dialect = new PgDialect();
-    }
-    return this.dialect;
-  }
-}
-
-//# sourceMappingURL=query-builder.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/update.js
-
-
-
-
-class PgUpdateBuilder {
-  constructor(table, session, dialect, withList) {
-    this.table = table;
-    this.session = session;
-    this.dialect = dialect;
-    this.withList = withList;
-  }
-  static [entityKind] = "PgUpdateBuilder";
-  set(values) {
-    return new PgUpdateBase(
-      this.table,
-      mapUpdateSet(this.table, values),
-      this.session,
-      this.dialect,
-      this.withList
-    );
-  }
-}
-class PgUpdateBase extends QueryPromise {
-  constructor(table, set, session, dialect, withList) {
-    super();
-    this.session = session;
-    this.dialect = dialect;
-    this.config = { set, table, withList };
-  }
-  static [entityKind] = "PgUpdate";
-  config;
-  /**
-   * Adds a 'where' clause to the query.
-   *
-   * Calling this method will update only those rows that fulfill a specified condition.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/update}
-   *
-   * @param where the 'where' clause.
-   *
-   * @example
-   * You can use conditional operators and `sql function` to filter the rows to be updated.
-   *
-   * ```ts
-   * // Update all cars with green color
-   * await db.update(cars).set({ color: 'red' })
-   *   .where(eq(cars.color, 'green'));
-   * // or
-   * await db.update(cars).set({ color: 'red' })
-   *   .where(sql`${cars.color} = 'green'`)
-   * ```
-   *
-   * You can logically combine conditional operators with `and()` and `or()` operators:
-   *
-   * ```ts
-   * // Update all BMW cars with a green color
-   * await db.update(cars).set({ color: 'red' })
-   *   .where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
-   *
-   * // Update all cars with the green or blue color
-   * await db.update(cars).set({ color: 'red' })
-   *   .where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
-   * ```
-   */
-  where(where) {
-    this.config.where = where;
-    return this;
-  }
-  returning(fields = this.config.table[Table.Symbol.Columns]) {
-    this.config.returning = orderSelectedFields(fields);
-    return this;
-  }
-  /** @internal */
-  getSQL() {
-    return this.dialect.buildUpdateQuery(this.config);
-  }
-  toSQL() {
-    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
-    return rest;
-  }
-  /** @internal */
-  _prepare(name) {
-    return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
-  }
-  prepare(name) {
-    return this._prepare(name);
-  }
-  execute = (placeholderValues) => {
-    return this._prepare().execute(placeholderValues);
-  };
-  $dynamic() {
-    return this;
-  }
-}
-
-//# sourceMappingURL=update.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/insert.js
-
-
-
-
-
-
-class PgInsertBuilder {
-  constructor(table, session, dialect, withList) {
-    this.table = table;
-    this.session = session;
-    this.dialect = dialect;
-    this.withList = withList;
-  }
-  static [entityKind] = "PgInsertBuilder";
-  values(values) {
-    values = Array.isArray(values) ? values : [values];
-    if (values.length === 0) {
-      throw new Error("values() must be called with at least one value");
-    }
-    const mappedValues = values.map((entry) => {
-      const result = {};
-      const cols = this.table[Table.Symbol.Columns];
-      for (const colKey of Object.keys(entry)) {
-        const colValue = entry[colKey];
-        result[colKey] = is(colValue, SQL) ? colValue : new Param(colValue, cols[colKey]);
-      }
-      return result;
-    });
-    return new PgInsertBase(this.table, mappedValues, this.session, this.dialect, this.withList);
-  }
-}
-class PgInsertBase extends QueryPromise {
-  constructor(table, values, session, dialect, withList) {
-    super();
-    this.session = session;
-    this.dialect = dialect;
-    this.config = { table, values, withList };
-  }
-  static [entityKind] = "PgInsert";
-  config;
-  returning(fields = this.config.table[Table.Symbol.Columns]) {
-    this.config.returning = orderSelectedFields(fields);
-    return this;
-  }
-  /**
-   * Adds an `on conflict do nothing` clause to the query.
-   *
-   * Calling this method simply avoids inserting a row as its alternative action.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/insert#on-conflict-do-nothing}
-   *
-   * @param config The `target` and `where` clauses.
-   *
-   * @example
-   * ```ts
-   * // Insert one row and cancel the insert if there's a conflict
-   * await db.insert(cars)
-   *   .values({ id: 1, brand: 'BMW' })
-   *   .onConflictDoNothing();
-   *
-   * // Explicitly specify conflict target
-   * await db.insert(cars)
-   *   .values({ id: 1, brand: 'BMW' })
-   *   .onConflictDoNothing({ target: cars.id });
-   * ```
-   */
-  onConflictDoNothing(config = {}) {
-    if (config.target === void 0) {
-      this.config.onConflict = sql`do nothing`;
-    } else {
-      let targetColumn = "";
-      targetColumn = Array.isArray(config.target) ? config.target.map((it) => this.dialect.escapeName(it.name)).join(",") : this.dialect.escapeName(config.target.name);
-      const whereSql = config.where ? sql` where ${config.where}` : void 0;
-      this.config.onConflict = sql`(${sql.raw(targetColumn)})${whereSql} do nothing`;
-    }
-    return this;
-  }
-  /**
-   * Adds an `on conflict do update` clause to the query.
-   *
-   * Calling this method will update the existing row that conflicts with the row proposed for insertion as its alternative action.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/insert#upserts-and-conflicts}
-   *
-   * @param config The `target`, `set` and `where` clauses.
-   *
-   * @example
-   * ```ts
-   * // Update the row if there's a conflict
-   * await db.insert(cars)
-   *   .values({ id: 1, brand: 'BMW' })
-   *   .onConflictDoUpdate({
-   *     target: cars.id,
-   *     set: { brand: 'Porsche' }
-   *   });
-   *
-   * // Upsert with 'where' clause
-   * await db.insert(cars)
-   *   .values({ id: 1, brand: 'BMW' })
-   *   .onConflictDoUpdate({
-   *     target: cars.id,
-   *     set: { brand: 'newBMW' },
-   *     targetWhere: sql`${cars.createdAt} > '2023-01-01'::date`,
-   *   });
-   * ```
-   */
-  onConflictDoUpdate(config) {
-    if (config.where && (config.targetWhere || config.setWhere)) {
-      throw new Error(
-        'You cannot use both "where" and "targetWhere"/"setWhere" at the same time - "where" is deprecated, use "targetWhere" or "setWhere" instead.'
-      );
-    }
-    const whereSql = config.where ? sql` where ${config.where}` : void 0;
-    const targetWhereSql = config.targetWhere ? sql` where ${config.targetWhere}` : void 0;
-    const setWhereSql = config.setWhere ? sql` where ${config.setWhere}` : void 0;
-    const setSql = this.dialect.buildUpdateSet(this.config.table, mapUpdateSet(this.config.table, config.set));
-    let targetColumn = "";
-    targetColumn = Array.isArray(config.target) ? config.target.map((it) => this.dialect.escapeName(it.name)).join(",") : this.dialect.escapeName(config.target.name);
-    this.config.onConflict = sql`(${sql.raw(targetColumn)})${targetWhereSql} do update set ${setSql}${whereSql}${setWhereSql}`;
-    return this;
-  }
-  /** @internal */
-  getSQL() {
-    return this.dialect.buildInsertQuery(this.config);
-  }
-  toSQL() {
-    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
-    return rest;
-  }
-  /** @internal */
-  _prepare(name) {
-    return tracer.startActiveSpan("drizzle.prepareQuery", () => {
-      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
-    });
-  }
-  prepare(name) {
-    return this._prepare(name);
-  }
-  execute = (placeholderValues) => {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      return this._prepare().execute(placeholderValues);
-    });
-  };
-  $dynamic() {
-    return this;
-  }
-}
-
-//# sourceMappingURL=insert.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/delete.js
-
-
-
-
-
-class PgDeleteBase extends QueryPromise {
-  constructor(table, session, dialect, withList) {
-    super();
-    this.session = session;
-    this.dialect = dialect;
-    this.config = { table, withList };
-  }
-  static [entityKind] = "PgDelete";
-  config;
-  /**
-   * Adds a `where` clause to the query.
-   *
-   * Calling this method will delete only those rows that fulfill a specified condition.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/delete}
-   *
-   * @param where the `where` clause.
-   *
-   * @example
-   * You can use conditional operators and `sql function` to filter the rows to be deleted.
-   *
-   * ```ts
-   * // Delete all cars with green color
-   * await db.delete(cars).where(eq(cars.color, 'green'));
-   * // or
-   * await db.delete(cars).where(sql`${cars.color} = 'green'`)
-   * ```
-   *
-   * You can logically combine conditional operators with `and()` and `or()` operators:
-   *
-   * ```ts
-   * // Delete all BMW cars with a green color
-   * await db.delete(cars).where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
-   *
-   * // Delete all cars with the green or blue color
-   * await db.delete(cars).where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
-   * ```
-   */
-  where(where) {
-    this.config.where = where;
-    return this;
-  }
-  returning(fields = this.config.table[Table.Symbol.Columns]) {
-    this.config.returning = orderSelectedFields(fields);
-    return this;
-  }
-  /** @internal */
-  getSQL() {
-    return this.dialect.buildDeleteQuery(this.config);
-  }
-  toSQL() {
-    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
-    return rest;
-  }
-  /** @internal */
-  _prepare(name) {
-    return tracer.startActiveSpan("drizzle.prepareQuery", () => {
-      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
-    });
-  }
-  prepare(name) {
-    return this._prepare(name);
-  }
-  execute = (placeholderValues) => {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      return this._prepare().execute(placeholderValues);
-    });
-  };
-  $dynamic() {
-    return this;
-  }
-}
-
-//# sourceMappingURL=delete.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/query.js
-
-
-
-
-class RelationalQueryBuilder {
-  constructor(fullSchema, schema, tableNamesMap, table, tableConfig, dialect, session) {
-    this.fullSchema = fullSchema;
-    this.schema = schema;
-    this.tableNamesMap = tableNamesMap;
-    this.table = table;
-    this.tableConfig = tableConfig;
-    this.dialect = dialect;
-    this.session = session;
-  }
-  static [entityKind] = "PgRelationalQueryBuilder";
-  findMany(config) {
-    return new PgRelationalQuery(
-      this.fullSchema,
-      this.schema,
-      this.tableNamesMap,
-      this.table,
-      this.tableConfig,
-      this.dialect,
-      this.session,
-      config ? config : {},
-      "many"
-    );
-  }
-  findFirst(config) {
-    return new PgRelationalQuery(
-      this.fullSchema,
-      this.schema,
-      this.tableNamesMap,
-      this.table,
-      this.tableConfig,
-      this.dialect,
-      this.session,
-      config ? { ...config, limit: 1 } : { limit: 1 },
-      "first"
-    );
-  }
-}
-class PgRelationalQuery extends QueryPromise {
-  constructor(fullSchema, schema, tableNamesMap, table, tableConfig, dialect, session, config, mode) {
-    super();
-    this.fullSchema = fullSchema;
-    this.schema = schema;
-    this.tableNamesMap = tableNamesMap;
-    this.table = table;
-    this.tableConfig = tableConfig;
-    this.dialect = dialect;
-    this.session = session;
-    this.config = config;
-    this.mode = mode;
-  }
-  static [entityKind] = "PgRelationalQuery";
-  /** @internal */
-  _prepare(name) {
-    return tracer.startActiveSpan("drizzle.prepareQuery", () => {
-      const { query, builtQuery } = this._toSQL();
-      return this.session.prepareQuery(
-        builtQuery,
-        void 0,
-        name,
-        true,
-        (rawRows, mapColumnValue) => {
-          const rows = rawRows.map(
-            (row) => mapRelationalRow(this.schema, this.tableConfig, row, query.selection, mapColumnValue)
-          );
-          if (this.mode === "first") {
-            return rows[0];
-          }
-          return rows;
-        }
-      );
-    });
-  }
-  prepare(name) {
-    return this._prepare(name);
-  }
-  _getQuery() {
-    return this.dialect.buildRelationalQueryWithoutPK({
-      fullSchema: this.fullSchema,
-      schema: this.schema,
-      tableNamesMap: this.tableNamesMap,
-      table: this.table,
-      tableConfig: this.tableConfig,
-      queryConfig: this.config,
-      tableAlias: this.tableConfig.tsName
-    });
-  }
-  /** @internal */
-  getSQL() {
-    return this._getQuery().sql;
-  }
-  _toSQL() {
-    const query = this._getQuery();
-    const builtQuery = this.dialect.sqlToQuery(query.sql);
-    return { query, builtQuery };
-  }
-  toSQL() {
-    return this._toSQL().builtQuery;
-  }
-  execute() {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      return this._prepare().execute();
-    });
-  }
-}
-
-//# sourceMappingURL=query.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/raw.js
-
-
-class PgRaw extends QueryPromise {
-  constructor(execute, sql, query, mapBatchResult) {
-    super();
-    this.execute = execute;
-    this.sql = sql;
-    this.query = query;
-    this.mapBatchResult = mapBatchResult;
-  }
-  static [entityKind] = "PgRaw";
-  /** @internal */
-  getSQL() {
-    return this.sql;
-  }
-  getQuery() {
-    return this.query;
-  }
-  mapResult(result, isFromBatch) {
-    return isFromBatch ? this.mapBatchResult(result) : result;
-  }
-  _prepare() {
-    return this;
-  }
-  /** @internal */
-  isResponseInArrayMode() {
-    return false;
-  }
-}
-
-//# sourceMappingURL=raw.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/query-builders/refresh-materialized-view.js
-
-
-
-class PgRefreshMaterializedView extends QueryPromise {
-  constructor(view, session, dialect) {
-    super();
-    this.session = session;
-    this.dialect = dialect;
-    this.config = { view };
-  }
-  static [entityKind] = "PgRefreshMaterializedView";
-  config;
-  concurrently() {
-    if (this.config.withNoData !== void 0) {
-      throw new Error("Cannot use concurrently and withNoData together");
-    }
-    this.config.concurrently = true;
-    return this;
-  }
-  withNoData() {
-    if (this.config.concurrently !== void 0) {
-      throw new Error("Cannot use concurrently and withNoData together");
-    }
-    this.config.withNoData = true;
-    return this;
-  }
-  /** @internal */
-  getSQL() {
-    return this.dialect.buildRefreshMaterializedViewQuery(this.config);
-  }
-  toSQL() {
-    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
-    return rest;
-  }
-  /** @internal */
-  _prepare(name) {
-    return tracer.startActiveSpan("drizzle.prepareQuery", () => {
-      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), void 0, name, true);
-    });
-  }
-  prepare(name) {
-    return this._prepare(name);
-  }
-  execute = (placeholderValues) => {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      return this._prepare().execute(placeholderValues);
-    });
-  };
-}
-
-//# sourceMappingURL=refresh-materialized-view.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/db.js
-
-
-
-
-
-
-
-class PgDatabase {
-  constructor(dialect, session, schema) {
-    this.dialect = dialect;
-    this.session = session;
-    this._ = schema ? {
-      schema: schema.schema,
-      fullSchema: schema.fullSchema,
-      tableNamesMap: schema.tableNamesMap,
-      session
-    } : {
-      schema: void 0,
-      fullSchema: {},
-      tableNamesMap: {},
-      session
-    };
-    this.query = {};
-    if (this._.schema) {
-      for (const [tableName, columns] of Object.entries(this._.schema)) {
-        this.query[tableName] = new RelationalQueryBuilder(
-          schema.fullSchema,
-          this._.schema,
-          this._.tableNamesMap,
-          schema.fullSchema[tableName],
-          columns,
-          dialect,
-          session
-        );
-      }
-    }
-  }
-  static [entityKind] = "PgDatabase";
-  query;
-  /**
-   * Creates a subquery that defines a temporary named result set as a CTE.
-   *
-   * It is useful for breaking down complex queries into simpler parts and for reusing the result set in subsequent parts of the query.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#with-clause}
-   *
-   * @param alias The alias for the subquery.
-   *
-   * Failure to provide an alias will result in a DrizzleTypeError, preventing the subquery from being referenced in other queries.
-   *
-   * @example
-   *
-   * ```ts
-   * // Create a subquery with alias 'sq' and use it in the select query
-   * const sq = db.$with('sq').as(db.select().from(users).where(eq(users.id, 42)));
-   *
-   * const result = await db.with(sq).select().from(sq);
-   * ```
-   *
-   * To select arbitrary SQL values as fields in a CTE and reference them in other CTEs or in the main query, you need to add aliases to them:
-   *
-   * ```ts
-   * // Select an arbitrary SQL value as a field in a CTE and reference it in the main query
-   * const sq = db.$with('sq').as(db.select({
-   *   name: sql<string>`upper(${users.name})`.as('name'),
-   * })
-   * .from(users));
-   *
-   * const result = await db.with(sq).select({ name: sq.name }).from(sq);
-   * ```
-   */
-  $with(alias) {
-    return {
-      as(qb) {
-        if (typeof qb === "function") {
-          qb = qb(new QueryBuilder());
-        }
-        return new Proxy(
-          new WithSubquery(qb.getSQL(), qb.getSelectedFields(), alias, true),
-          new SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
-        );
-      }
-    };
-  }
-  /**
-   * Incorporates a previously defined CTE (using `$with`) into the main query.
-   *
-   * This method allows the main query to reference a temporary named result set.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/select#with-clause}
-   *
-   * @param queries The CTEs to incorporate into the main query.
-   *
-   * @example
-   *
-   * ```ts
-   * // Define a subquery 'sq' as a CTE using $with
-   * const sq = db.$with('sq').as(db.select().from(users).where(eq(users.id, 42)));
-   *
-   * // Incorporate the CTE 'sq' into the main query and select from it
-   * const result = await db.with(sq).select().from(sq);
-   * ```
-   */
-  with(...queries) {
-    const self = this;
-    function select(fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: self.session,
-        dialect: self.dialect,
-        withList: queries
-      });
-    }
-    function selectDistinct(fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: self.session,
-        dialect: self.dialect,
-        withList: queries,
-        distinct: true
-      });
-    }
-    function selectDistinctOn(on, fields) {
-      return new PgSelectBuilder({
-        fields: fields ?? void 0,
-        session: self.session,
-        dialect: self.dialect,
-        withList: queries,
-        distinct: { on }
-      });
-    }
-    function update(table) {
-      return new PgUpdateBuilder(table, self.session, self.dialect, queries);
-    }
-    function insert(table) {
-      return new PgInsertBuilder(table, self.session, self.dialect, queries);
-    }
-    function delete_(table) {
-      return new PgDeleteBase(table, self.session, self.dialect, queries);
-    }
-    return { select, selectDistinct, selectDistinctOn, update, insert, delete: delete_ };
-  }
-  select(fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: this.session,
-      dialect: this.dialect
-    });
-  }
-  selectDistinct(fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: this.session,
-      dialect: this.dialect,
-      distinct: true
-    });
-  }
-  selectDistinctOn(on, fields) {
-    return new PgSelectBuilder({
-      fields: fields ?? void 0,
-      session: this.session,
-      dialect: this.dialect,
-      distinct: { on }
-    });
-  }
-  /**
-   * Creates an update query.
-   *
-   * Calling this method without `.where()` clause will update all rows in a table. The `.where()` clause specifies which rows should be updated.
-   *
-   * Use `.set()` method to specify which values to update.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/update}
-   *
-   * @param table The table to update.
-   *
-   * @example
-   *
-   * ```ts
-   * // Update all rows in the 'cars' table
-   * await db.update(cars).set({ color: 'red' });
-   *
-   * // Update rows with filters and conditions
-   * await db.update(cars).set({ color: 'red' }).where(eq(cars.brand, 'BMW'));
-   *
-   * // Update with returning clause
-   * const updatedCar: Car[] = await db.update(cars)
-   *   .set({ color: 'red' })
-   *   .where(eq(cars.id, 1))
-   *   .returning();
-   * ```
-   */
-  update(table) {
-    return new PgUpdateBuilder(table, this.session, this.dialect);
-  }
-  /**
-   * Creates an insert query.
-   *
-   * Calling this method will create new rows in a table. Use `.values()` method to specify which values to insert.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/insert}
-   *
-   * @param table The table to insert into.
-   *
-   * @example
-   *
-   * ```ts
-   * // Insert one row
-   * await db.insert(cars).values({ brand: 'BMW' });
-   *
-   * // Insert multiple rows
-   * await db.insert(cars).values([{ brand: 'BMW' }, { brand: 'Porsche' }]);
-   *
-   * // Insert with returning clause
-   * const insertedCar: Car[] = await db.insert(cars)
-   *   .values({ brand: 'BMW' })
-   *   .returning();
-   * ```
-   */
-  insert(table) {
-    return new PgInsertBuilder(table, this.session, this.dialect);
-  }
-  /**
-   * Creates a delete query.
-   *
-   * Calling this method without `.where()` clause will delete all rows in a table. The `.where()` clause specifies which rows should be deleted.
-   *
-   * See docs: {@link https://orm.drizzle.team/docs/delete}
-   *
-   * @param table The table to delete from.
-   *
-   * @example
-   *
-   * ```ts
-   * // Delete all rows in the 'cars' table
-   * await db.delete(cars);
-   *
-   * // Delete rows with filters and conditions
-   * await db.delete(cars).where(eq(cars.color, 'green'));
-   *
-   * // Delete with returning clause
-   * const deletedCar: Car[] = await db.delete(cars)
-   *   .where(eq(cars.id, 1))
-   *   .returning();
-   * ```
-   */
-  delete(table) {
-    return new PgDeleteBase(table, this.session, this.dialect);
-  }
-  refreshMaterializedView(view) {
-    return new PgRefreshMaterializedView(view, this.session, this.dialect);
-  }
-  execute(query) {
-    const sql = query.getSQL();
-    const builtQuery = this.dialect.sqlToQuery(sql);
-    const prepared = this.session.prepareQuery(
-      builtQuery,
-      void 0,
-      void 0,
-      false
-    );
-    return new PgRaw(
-      () => prepared.execute(),
-      sql,
-      builtQuery,
-      (result) => prepared.mapResult(result, true)
-    );
-  }
-  transaction(transaction, config) {
-    return this.session.transaction(transaction, config);
-  }
-}
-const withReplicas = (primary, replicas, getReplica = () => replicas[Math.floor(Math.random() * replicas.length)]) => {
-  const select = (...args) => getReplica(replicas).select(...args);
-  const selectDistinct = (...args) => getReplica(replicas).selectDistinct(...args);
-  const selectDistinctOn = (...args) => getReplica(replicas).selectDistinctOn(...args);
-  const $with = (...args) => getReplica(replicas).with(...args);
-  const update = (...args) => primary.update(...args);
-  const insert = (...args) => primary.insert(...args);
-  const $delete = (...args) => primary.delete(...args);
-  const execute = (...args) => primary.execute(...args);
-  const transaction = (...args) => primary.transaction(...args);
-  const refreshMaterializedView = (...args) => primary.refreshMaterializedView(...args);
-  return {
-    ...primary,
-    update,
-    insert,
-    delete: $delete,
-    execute,
-    transaction,
-    refreshMaterializedView,
-    $primary: primary,
-    select,
-    selectDistinct,
-    selectDistinctOn,
-    with: $with,
-    get query() {
-      return getReplica(replicas).query;
-    }
-  };
-};
-
-//# sourceMappingURL=db.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/pg-core/session.js
-
-
-
-
-
-class PgPreparedQuery {
-  constructor(query) {
-    this.query = query;
-  }
-  getQuery() {
-    return this.query;
-  }
-  mapResult(response, _isFromBatch) {
-    return response;
-  }
-  static [entityKind] = "PgPreparedQuery";
-  /** @internal */
-  joinsNotNullableMap;
-}
-class PgSession {
-  constructor(dialect) {
-    this.dialect = dialect;
-  }
-  static [entityKind] = "PgSession";
-  execute(query) {
-    return tracer.startActiveSpan("drizzle.operation", () => {
-      const prepared = tracer.startActiveSpan("drizzle.prepareQuery", () => {
-        return this.prepareQuery(
-          this.dialect.sqlToQuery(query),
-          void 0,
-          void 0,
-          false
-        );
-      });
-      return prepared.execute();
-    });
-  }
-  all(query) {
-    return this.prepareQuery(
-      this.dialect.sqlToQuery(query),
-      void 0,
-      void 0,
-      false
-    ).all();
-  }
-}
-class session_PgTransaction extends PgDatabase {
-  constructor(dialect, session, schema, nestedIndex = 0) {
-    super(dialect, session, schema);
-    this.schema = schema;
-    this.nestedIndex = nestedIndex;
-  }
-  static [entityKind] = "PgTransaction";
-  rollback() {
-    throw new TransactionRollbackError();
-  }
-  /** @internal */
-  getTransactionConfigSQL(config) {
-    const chunks = [];
-    if (config.isolationLevel) {
-      chunks.push(`isolation level ${config.isolationLevel}`);
-    }
-    if (config.accessMode) {
-      chunks.push(config.accessMode);
-    }
-    if (typeof config.deferrable === "boolean") {
-      chunks.push(config.deferrable ? "deferrable" : "not deferrable");
-    }
-    return sql.raw(chunks.join(" "));
-  }
-  setTransaction(config) {
-    return this.session.execute(sql`set transaction ${this.getTransactionConfigSQL(config)}`);
-  }
-}
-
-//# sourceMappingURL=session.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/neon-http/session.js
-
-
-
-
-
-
-const rawQueryConfig = {
-  arrayMode: false,
-  fullResults: true
-};
-const queryConfig = {
-  arrayMode: true,
-  fullResults: true
-};
-class NeonHttpPreparedQuery extends PgPreparedQuery {
-  constructor(client, query, logger, fields, _isResponseInArrayMode, customResultMapper) {
-    super(query);
-    this.client = client;
-    this.logger = logger;
-    this.fields = fields;
-    this._isResponseInArrayMode = _isResponseInArrayMode;
-    this.customResultMapper = customResultMapper;
-  }
-  static [entityKind] = "NeonHttpPreparedQuery";
-  async execute(placeholderValues = {}) {
-    const params = fillPlaceholders(this.query.params, placeholderValues);
-    this.logger.logQuery(this.query.sql, params);
-    const { fields, client, query, customResultMapper } = this;
-    if (!fields && !customResultMapper) {
-      return client(query.sql, params, rawQueryConfig);
-    }
-    const result = await client(query.sql, params, queryConfig);
-    return this.mapResult(result);
-  }
-  mapResult(result) {
-    if (!this.fields && !this.customResultMapper) {
-      return result;
-    }
-    const rows = result.rows;
-    if (this.customResultMapper) {
-      return this.customResultMapper(rows);
-    }
-    return rows.map((row) => mapResultRow(this.fields, row, this.joinsNotNullableMap));
-  }
-  all(placeholderValues = {}) {
-    const params = fillPlaceholders(this.query.params, placeholderValues);
-    this.logger.logQuery(this.query.sql, params);
-    return this.client(this.query.sql, params, rawQueryConfig).then((result) => result.rows);
-  }
-  values(placeholderValues = {}) {
-    const params = fillPlaceholders(this.query.params, placeholderValues);
-    this.logger.logQuery(this.query.sql, params);
-    return this.client(this.query.sql, params, { arrayMode: true, fullResults: true }).then((result) => result.rows);
-  }
-  /** @internal */
-  isResponseInArrayMode() {
-    return this._isResponseInArrayMode;
-  }
-}
-class NeonHttpSession extends PgSession {
-  constructor(client, dialect, schema, options = {}) {
-    super(dialect);
-    this.client = client;
-    this.schema = schema;
-    this.options = options;
-    this.logger = options.logger ?? new NoopLogger();
-  }
-  static [entityKind] = "NeonHttpSession";
-  logger;
-  prepareQuery(query, fields, name, isResponseInArrayMode, customResultMapper) {
-    return new NeonHttpPreparedQuery(
-      this.client,
-      query,
-      this.logger,
-      fields,
-      isResponseInArrayMode,
-      customResultMapper
-    );
-  }
-  async batch(queries) {
-    const preparedQueries = [];
-    const builtQueries = [];
-    for (const query of queries) {
-      const preparedQuery = query._prepare();
-      const builtQuery = preparedQuery.getQuery();
-      preparedQueries.push(preparedQuery);
-      builtQueries.push(
-        this.client(builtQuery.sql, builtQuery.params, {
-          fullResults: true,
-          arrayMode: preparedQuery.isResponseInArrayMode()
-        })
-      );
-    }
-    const batchResults = await this.client.transaction(builtQueries, queryConfig);
-    return batchResults.map((result, i) => preparedQueries[i].mapResult(result, true));
-  }
-  // change return type to QueryRows<true>
-  async query(query, params) {
-    this.logger.logQuery(query, params);
-    const result = await this.client(query, params, { arrayMode: true, fullResults: true });
-    return result;
-  }
-  // change return type to QueryRows<false>
-  async queryObjects(query, params) {
-    return this.client(query, params, { arrayMode: false, fullResults: true });
-  }
-  async transaction(_transaction, _config = {}) {
-    throw new Error("No transactions support in neon-http driver");
-  }
-}
-class NeonTransaction extends (/* unused pure expression or super */ null && (PgTransaction)) {
-  static [entityKind] = (/* unused pure expression or super */ null && ("NeonHttpTransaction"));
-  async transaction(_transaction) {
-    throw new Error("No transactions support in neon-http driver");
-  }
-}
-
-//# sourceMappingURL=session.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/neon-http/driver.js
-
-
-
-
-
-
-
-class NeonHttpDriver {
-  constructor(client, dialect, options = {}) {
-    this.client = client;
-    this.dialect = dialect;
-    this.options = options;
-    this.initMappers();
-  }
-  static [entityKind] = "NeonDriver";
-  createSession(schema) {
-    return new NeonHttpSession(this.client, this.dialect, schema, { logger: this.options.logger });
-  }
-  initMappers() {
-    export_types.setTypeParser(export_types.builtins.TIMESTAMPTZ, (val) => val);
-    export_types.setTypeParser(export_types.builtins.TIMESTAMP, (val) => val);
-    export_types.setTypeParser(export_types.builtins.DATE, (val) => val);
-  }
-}
-class NeonHttpDatabase extends PgDatabase {
-  static [entityKind] = "NeonHttpDatabase";
-  async batch(batch) {
-    return this.session.batch(batch);
-  }
-}
-function drizzle(client, config = {}) {
-  const dialect = new PgDialect();
-  let logger;
-  if (config.logger === true) {
-    logger = new DefaultLogger();
-  } else if (config.logger !== false) {
-    logger = config.logger;
-  }
-  let schema;
-  if (config.schema) {
-    const tablesConfig = extractTablesRelationalConfig(
-      config.schema,
-      createTableRelationsHelpers
-    );
-    schema = {
-      fullSchema: config.schema,
-      schema: tablesConfig.tables,
-      tableNamesMap: tablesConfig.tableNamesMap
-    };
-  }
-  const driver = new NeonHttpDriver(client, dialect, { logger });
-  const session = driver.createSession(schema);
-  return new NeonHttpDatabase(
-    dialect,
-    session,
-    schema
-  );
-}
-
-//# sourceMappingURL=driver.js.map
-// EXTERNAL MODULE: ./node_modules/.pnpm/dotenv@16.6.1/node_modules/dotenv/lib/main.js
-var main = __nccwpck_require__(81225);
-;// CONCATENATED MODULE: ./database/drizzle/dist/db.js
-
-
-
-
-main.config();
-const connectionString = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_iwhkcVQ5xes6@ep-shiny-star-azpl17za-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
-const db_sql = Ys(connectionString);
-const db = drizzle(db_sql, { schema: schema_namespaceObject });
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/expressions/index.js
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/expressions.js
-
-//# sourceMappingURL=expressions.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/functions/aggregate.js
-
-
-
-function count(expression) {
-  return sql`count(${expression || sql.raw("*")})`.mapWith(Number);
-}
-function countDistinct(expression) {
-  return sql`count(distinct ${expression})`.mapWith(Number);
-}
-function avg(expression) {
-  return sql`avg(${expression})`.mapWith(String);
-}
-function avgDistinct(expression) {
-  return sql`avg(distinct ${expression})`.mapWith(String);
-}
-function sum(expression) {
-  return sql`sum(${expression})`.mapWith(String);
-}
-function sumDistinct(expression) {
-  return sql`sum(distinct ${expression})`.mapWith(String);
-}
-function max(expression) {
-  return sql`max(${expression})`.mapWith(is(expression, Column) ? expression : String);
-}
-function min(expression) {
-  return sql`min(${expression})`.mapWith(is(expression, Column) ? expression : String);
-}
-
-//# sourceMappingURL=aggregate.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/functions/index.js
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/sql/index.js
-
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/drizzle-orm@0.30.10_@neondatabase+serverless@0.9.5_@types+pg@8.20.4_@types+react@18.3.31_pg@8.22.0_react@18.3.1/node_modules/drizzle-orm/index.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./database/drizzle/dist/index.js
-
-
-
 
 
 /***/ }),
@@ -86616,6 +81046,120 @@ exports.AppModule = AppModule = __decorate([
 
 /***/ }),
 
+/***/ 42018:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.db = void 0;
+const neon_http_1 = __nccwpck_require__(63927);
+const serverless_1 = __nccwpck_require__(31644);
+const schema = __nccwpck_require__(37504);
+const dotenv = __nccwpck_require__(81225);
+dotenv.config();
+const connectionString = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_iwhkcVQ5xes6@ep-shiny-star-azpl17za-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
+const sql = (0, serverless_1.neon)(connectionString);
+exports.db = (0, neon_http_1.drizzle)(sql, { schema });
+
+
+/***/ }),
+
+/***/ 41499:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(37504), exports);
+__exportStar(__nccwpck_require__(42018), exports);
+__exportStar(__nccwpck_require__(45063), exports);
+
+
+/***/ }),
+
+/***/ 37504:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sharedItems = exports.workspaceTools = exports.savedWorkspaces = exports.toolHistory = exports.favorites = exports.tools = exports.users = void 0;
+const pg_core_1 = __nccwpck_require__(83615);
+exports.users = (0, pg_core_1.pgTable)('users', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    email: (0, pg_core_1.text)('email').notNull().unique(),
+    name: (0, pg_core_1.text)('name'),
+    passwordHash: (0, pg_core_1.text)('password_hash'),
+    provider: (0, pg_core_1.text)('provider').default('email').notNull(),
+    providerId: (0, pg_core_1.text)('provider_id'),
+    avatarUrl: (0, pg_core_1.text)('avatar_url'),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+    updatedAt: (0, pg_core_1.timestamp)('updated_at').defaultNow().notNull(),
+});
+exports.tools = (0, pg_core_1.pgTable)('tools', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    slug: (0, pg_core_1.text)('slug').notNull().unique(),
+    name: (0, pg_core_1.text)('name').notNull(),
+    category: (0, pg_core_1.text)('category').notNull(),
+    description: (0, pg_core_1.text)('description').notNull(),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+});
+exports.favorites = (0, pg_core_1.pgTable)('favorites', {
+    userId: (0, pg_core_1.text)('user_id').notNull().references(() => exports.users.id, { onDelete: 'cascade' }),
+    toolSlug: (0, pg_core_1.text)('tool_slug').notNull(),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+}, (table) => ({
+    pk: (0, pg_core_1.primaryKey)({ columns: [table.userId, table.toolSlug] }),
+}));
+exports.toolHistory = (0, pg_core_1.pgTable)('tool_history', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    userId: (0, pg_core_1.text)('user_id').notNull().references(() => exports.users.id, { onDelete: 'cascade' }),
+    toolSlug: (0, pg_core_1.text)('tool_slug').notNull(),
+    inputSummary: (0, pg_core_1.text)('input_summary'),
+    isSensitive: (0, pg_core_1.boolean)('is_sensitive').default(false).notNull(),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+});
+exports.savedWorkspaces = (0, pg_core_1.pgTable)('saved_workspaces', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    userId: (0, pg_core_1.text)('user_id').notNull().references(() => exports.users.id, { onDelete: 'cascade' }),
+    name: (0, pg_core_1.text)('name').notNull(),
+    description: (0, pg_core_1.text)('description'),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+    updatedAt: (0, pg_core_1.timestamp)('updated_at').defaultNow().notNull(),
+});
+exports.workspaceTools = (0, pg_core_1.pgTable)('workspace_tools', {
+    workspaceId: (0, pg_core_1.text)('workspace_id').notNull().references(() => exports.savedWorkspaces.id, { onDelete: 'cascade' }),
+    toolSlug: (0, pg_core_1.text)('tool_slug').notNull(),
+}, (table) => ({
+    pk: (0, pg_core_1.primaryKey)({ columns: [table.workspaceId, table.toolSlug] }),
+}));
+exports.sharedItems = (0, pg_core_1.pgTable)('shared_items', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    userId: (0, pg_core_1.text)('user_id').references(() => exports.users.id, { onDelete: 'set null' }),
+    toolSlug: (0, pg_core_1.text)('tool_slug').notNull(),
+    title: (0, pg_core_1.text)('title').notNull(),
+    configuration: (0, pg_core_1.jsonb)('configuration').notNull(),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+});
+
+
+/***/ }),
+
 /***/ 20950:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -86636,7 +81180,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthController = void 0;
 const common_1 = __nccwpck_require__(49626);
-const database_1 = __nccwpck_require__(79944);
+const database_1 = __nccwpck_require__(41499);
 const bcrypt = __nccwpck_require__(34231);
 const jwt = __nccwpck_require__(78374);
 const JWT_SECRET = process.env.JWT_SECRET || 'devkit_super_secret_jwt_key_development_2026';
@@ -86955,7 +81499,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.FavoritesController = void 0;
 const common_1 = __nccwpck_require__(49626);
-const database_1 = __nccwpck_require__(79944);
+const database_1 = __nccwpck_require__(41499);
 const jwt = __nccwpck_require__(78374);
 const JWT_SECRET = process.env.JWT_SECRET || 'devkit_super_secret_jwt_key_development_2026';
 function verifyToken(authHeader) {
@@ -87057,7 +81601,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SharingController = void 0;
 const common_1 = __nccwpck_require__(49626);
-const database_1 = __nccwpck_require__(79944);
+const database_1 = __nccwpck_require__(41499);
 let SharingController = class SharingController {
     async createShare(body) {
         const id = Math.random().toString(36).substring(2, 8);
@@ -97120,6 +91664,9199 @@ var Reflect;
 
 /***/ }),
 
+/***/ 55035:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var alias_exports = {};
+__export(alias_exports, {
+  ColumnAliasProxyHandler: () => ColumnAliasProxyHandler,
+  RelationTableAliasProxyHandler: () => RelationTableAliasProxyHandler,
+  TableAliasProxyHandler: () => TableAliasProxyHandler,
+  aliasedRelation: () => aliasedRelation,
+  aliasedTable: () => aliasedTable,
+  aliasedTableColumn: () => aliasedTableColumn,
+  mapColumnsInAliasedSQLToAlias: () => mapColumnsInAliasedSQLToAlias,
+  mapColumnsInSQLToAlias: () => mapColumnsInSQLToAlias
+});
+module.exports = __toCommonJS(alias_exports);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+var import_table = __nccwpck_require__(54419);
+var import_view_common = __nccwpck_require__(93212);
+class ColumnAliasProxyHandler {
+  constructor(table) {
+    this.table = table;
+  }
+  static [import_entity.entityKind] = "ColumnAliasProxyHandler";
+  get(columnObj, prop) {
+    if (prop === "table") {
+      return this.table;
+    }
+    return columnObj[prop];
+  }
+}
+class TableAliasProxyHandler {
+  constructor(alias, replaceOriginalName) {
+    this.alias = alias;
+    this.replaceOriginalName = replaceOriginalName;
+  }
+  static [import_entity.entityKind] = "TableAliasProxyHandler";
+  get(target, prop) {
+    if (prop === import_table.Table.Symbol.IsAlias) {
+      return true;
+    }
+    if (prop === import_table.Table.Symbol.Name) {
+      return this.alias;
+    }
+    if (this.replaceOriginalName && prop === import_table.Table.Symbol.OriginalName) {
+      return this.alias;
+    }
+    if (prop === import_view_common.ViewBaseConfig) {
+      return {
+        ...target[import_view_common.ViewBaseConfig],
+        name: this.alias,
+        isAlias: true
+      };
+    }
+    if (prop === import_table.Table.Symbol.Columns) {
+      const columns = target[import_table.Table.Symbol.Columns];
+      if (!columns) {
+        return columns;
+      }
+      const proxiedColumns = {};
+      Object.keys(columns).map((key) => {
+        proxiedColumns[key] = new Proxy(
+          columns[key],
+          new ColumnAliasProxyHandler(new Proxy(target, this))
+        );
+      });
+      return proxiedColumns;
+    }
+    const value = target[prop];
+    if ((0, import_entity.is)(value, import_column.Column)) {
+      return new Proxy(value, new ColumnAliasProxyHandler(new Proxy(target, this)));
+    }
+    return value;
+  }
+}
+class RelationTableAliasProxyHandler {
+  constructor(alias) {
+    this.alias = alias;
+  }
+  static [import_entity.entityKind] = "RelationTableAliasProxyHandler";
+  get(target, prop) {
+    if (prop === "sourceTable") {
+      return aliasedTable(target.sourceTable, this.alias);
+    }
+    return target[prop];
+  }
+}
+function aliasedTable(table, tableAlias) {
+  return new Proxy(table, new TableAliasProxyHandler(tableAlias, false));
+}
+function aliasedRelation(relation, tableAlias) {
+  return new Proxy(relation, new RelationTableAliasProxyHandler(tableAlias));
+}
+function aliasedTableColumn(column, tableAlias) {
+  return new Proxy(
+    column,
+    new ColumnAliasProxyHandler(new Proxy(column.table, new TableAliasProxyHandler(tableAlias, false)))
+  );
+}
+function mapColumnsInAliasedSQLToAlias(query, alias) {
+  return new import_sql.SQL.Aliased(mapColumnsInSQLToAlias(query.sql, alias), query.fieldAlias);
+}
+function mapColumnsInSQLToAlias(query, alias) {
+  return import_sql.sql.join(query.queryChunks.map((c) => {
+    if ((0, import_entity.is)(c, import_column.Column)) {
+      return aliasedTableColumn(c, alias);
+    }
+    if ((0, import_entity.is)(c, import_sql.SQL)) {
+      return mapColumnsInSQLToAlias(c, alias);
+    }
+    if ((0, import_entity.is)(c, import_sql.SQL.Aliased)) {
+      return mapColumnsInAliasedSQLToAlias(c, alias);
+    }
+    return c;
+  }));
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=alias.cjs.map
+
+/***/ }),
+
+/***/ 90485:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var column_builder_exports = {};
+__export(column_builder_exports, {
+  ColumnBuilder: () => ColumnBuilder
+});
+module.exports = __toCommonJS(column_builder_exports);
+var import_entity = __nccwpck_require__(40336);
+class ColumnBuilder {
+  static [import_entity.entityKind] = "ColumnBuilder";
+  config;
+  constructor(name, dataType, columnType) {
+    this.config = {
+      name,
+      notNull: false,
+      default: void 0,
+      hasDefault: false,
+      primaryKey: false,
+      isUnique: false,
+      uniqueName: void 0,
+      uniqueType: void 0,
+      dataType,
+      columnType
+    };
+  }
+  /**
+   * Changes the data type of the column. Commonly used with `json` columns. Also, useful for branded types.
+   *
+   * @example
+   * ```ts
+   * const users = pgTable('users', {
+   * 	id: integer('id').$type<UserId>().primaryKey(),
+   * 	details: json('details').$type<UserDetails>().notNull(),
+   * });
+   * ```
+   */
+  $type() {
+    return this;
+  }
+  /**
+   * Adds a `not null` clause to the column definition.
+   *
+   * Affects the `select` model of the table - columns *without* `not null` will be nullable on select.
+   */
+  notNull() {
+    this.config.notNull = true;
+    return this;
+  }
+  /**
+   * Adds a `default <value>` clause to the column definition.
+   *
+   * Affects the `insert` model of the table - columns *with* `default` are optional on insert.
+   *
+   * If you need to set a dynamic default value, use {@link $defaultFn} instead.
+   */
+  default(value) {
+    this.config.default = value;
+    this.config.hasDefault = true;
+    return this;
+  }
+  /**
+   * Adds a dynamic default value to the column.
+   * The function will be called when the row is inserted, and the returned value will be used as the column value.
+   *
+   * **Note:** This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`.
+   */
+  $defaultFn(fn) {
+    this.config.defaultFn = fn;
+    this.config.hasDefault = true;
+    return this;
+  }
+  /**
+   * Alias for {@link $defaultFn}.
+   */
+  $default = this.$defaultFn;
+  /**
+   * Adds a dynamic update value to the column.
+   * The function will be called when the row is updated, and the returned value will be used as the column value if none is provided.
+   * If no `default` (or `$defaultFn`) value is provided, the function will be called when the row is inserted as well, and the returned value will be used as the column value.
+   *
+   * **Note:** This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`.
+   */
+  $onUpdateFn(fn) {
+    this.config.onUpdateFn = fn;
+    this.config.hasDefault = true;
+    return this;
+  }
+  /**
+   * Alias for {@link $onUpdateFn}.
+   */
+  $onUpdate = this.$onUpdateFn;
+  /**
+   * Adds a `primary key` clause to the column definition. This implicitly makes the column `not null`.
+   *
+   * In SQLite, `integer primary key` implicitly makes the column auto-incrementing.
+   */
+  primaryKey() {
+    this.config.primaryKey = true;
+    this.config.notNull = true;
+    return this;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=column-builder.cjs.map
+
+/***/ }),
+
+/***/ 31327:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var column_exports = {};
+__export(column_exports, {
+  Column: () => Column
+});
+module.exports = __toCommonJS(column_exports);
+var import_entity = __nccwpck_require__(40336);
+class Column {
+  constructor(table, config) {
+    this.table = table;
+    this.config = config;
+    this.name = config.name;
+    this.notNull = config.notNull;
+    this.default = config.default;
+    this.defaultFn = config.defaultFn;
+    this.onUpdateFn = config.onUpdateFn;
+    this.hasDefault = config.hasDefault;
+    this.primary = config.primaryKey;
+    this.isUnique = config.isUnique;
+    this.uniqueName = config.uniqueName;
+    this.uniqueType = config.uniqueType;
+    this.dataType = config.dataType;
+    this.columnType = config.columnType;
+  }
+  static [import_entity.entityKind] = "Column";
+  name;
+  primary;
+  notNull;
+  default;
+  defaultFn;
+  onUpdateFn;
+  hasDefault;
+  isUnique;
+  uniqueName;
+  uniqueType;
+  dataType;
+  columnType;
+  enumValues = void 0;
+  config;
+  mapFromDriverValue(value) {
+    return value;
+  }
+  mapToDriverValue(value) {
+    return value;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=column.cjs.map
+
+/***/ }),
+
+/***/ 40336:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var entity_exports = {};
+__export(entity_exports, {
+  entityKind: () => entityKind,
+  hasOwnEntityKind: () => hasOwnEntityKind,
+  is: () => is
+});
+module.exports = __toCommonJS(entity_exports);
+const entityKind = Symbol.for("drizzle:entityKind");
+const hasOwnEntityKind = Symbol.for("drizzle:hasOwnEntityKind");
+function is(value, type) {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  if (value instanceof type) {
+    return true;
+  }
+  if (!Object.prototype.hasOwnProperty.call(type, entityKind)) {
+    throw new Error(
+      `Class "${type.name ?? "<unknown>"}" doesn't look like a Drizzle entity. If this is incorrect and the class is provided by Drizzle, please report this as a bug.`
+    );
+  }
+  let cls = value.constructor;
+  if (cls) {
+    while (cls) {
+      if (entityKind in cls && cls[entityKind] === type[entityKind]) {
+        return true;
+      }
+      cls = Object.getPrototypeOf(cls);
+    }
+  }
+  return false;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=entity.cjs.map
+
+/***/ }),
+
+/***/ 9740:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var errors_exports = {};
+__export(errors_exports, {
+  DrizzleError: () => DrizzleError,
+  TransactionRollbackError: () => TransactionRollbackError
+});
+module.exports = __toCommonJS(errors_exports);
+var import_entity = __nccwpck_require__(40336);
+class DrizzleError extends Error {
+  static [import_entity.entityKind] = "DrizzleError";
+  constructor({ message, cause }) {
+    super(message);
+    this.name = "DrizzleError";
+    this.cause = cause;
+  }
+}
+class TransactionRollbackError extends DrizzleError {
+  static [import_entity.entityKind] = "TransactionRollbackError";
+  constructor() {
+    super({ message: "Rollback" });
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=errors.cjs.map
+
+/***/ }),
+
+/***/ 88570:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var expressions_exports = {};
+module.exports = __toCommonJS(expressions_exports);
+__reExport(expressions_exports, __nccwpck_require__(6330), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=expressions.cjs.map
+
+/***/ }),
+
+/***/ 45063:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var src_exports = {};
+module.exports = __toCommonJS(src_exports);
+__reExport(src_exports, __nccwpck_require__(55035), module.exports);
+__reExport(src_exports, __nccwpck_require__(90485), module.exports);
+__reExport(src_exports, __nccwpck_require__(31327), module.exports);
+__reExport(src_exports, __nccwpck_require__(40336), module.exports);
+__reExport(src_exports, __nccwpck_require__(9740), module.exports);
+__reExport(src_exports, __nccwpck_require__(88570), module.exports);
+__reExport(src_exports, __nccwpck_require__(94509), module.exports);
+__reExport(src_exports, __nccwpck_require__(5135), module.exports);
+__reExport(src_exports, __nccwpck_require__(18499), module.exports);
+__reExport(src_exports, __nccwpck_require__(11516), module.exports);
+__reExport(src_exports, __nccwpck_require__(85866), module.exports);
+__reExport(src_exports, __nccwpck_require__(24211), module.exports);
+__reExport(src_exports, __nccwpck_require__(54419), module.exports);
+__reExport(src_exports, __nccwpck_require__(26656), module.exports);
+__reExport(src_exports, __nccwpck_require__(93212), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 94509:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var logger_exports = {};
+__export(logger_exports, {
+  ConsoleLogWriter: () => ConsoleLogWriter,
+  DefaultLogger: () => DefaultLogger,
+  NoopLogger: () => NoopLogger
+});
+module.exports = __toCommonJS(logger_exports);
+var import_entity = __nccwpck_require__(40336);
+class ConsoleLogWriter {
+  static [import_entity.entityKind] = "ConsoleLogWriter";
+  write(message) {
+    console.log(message);
+  }
+}
+class DefaultLogger {
+  static [import_entity.entityKind] = "DefaultLogger";
+  writer;
+  constructor(config) {
+    this.writer = config?.writer ?? new ConsoleLogWriter();
+  }
+  logQuery(query, params) {
+    const stringifiedParams = params.map((p) => {
+      try {
+        return JSON.stringify(p);
+      } catch {
+        return String(p);
+      }
+    });
+    const paramsStr = stringifiedParams.length ? ` -- params: [${stringifiedParams.join(", ")}]` : "";
+    this.writer.write(`Query: ${query}${paramsStr}`);
+  }
+}
+class NoopLogger {
+  static [import_entity.entityKind] = "NoopLogger";
+  logQuery() {
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=logger.cjs.map
+
+/***/ }),
+
+/***/ 21271:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var driver_exports = {};
+__export(driver_exports, {
+  NeonHttpDatabase: () => NeonHttpDatabase,
+  NeonHttpDriver: () => NeonHttpDriver,
+  drizzle: () => drizzle
+});
+module.exports = __toCommonJS(driver_exports);
+var import_serverless = __nccwpck_require__(31644);
+var import_entity = __nccwpck_require__(40336);
+var import_logger = __nccwpck_require__(94509);
+var import_db = __nccwpck_require__(82627);
+var import_dialect = __nccwpck_require__(3245);
+var import_relations = __nccwpck_require__(11516);
+var import_session = __nccwpck_require__(25387);
+class NeonHttpDriver {
+  constructor(client, dialect, options = {}) {
+    this.client = client;
+    this.dialect = dialect;
+    this.options = options;
+    this.initMappers();
+  }
+  static [import_entity.entityKind] = "NeonDriver";
+  createSession(schema) {
+    return new import_session.NeonHttpSession(this.client, this.dialect, schema, { logger: this.options.logger });
+  }
+  initMappers() {
+    import_serverless.types.setTypeParser(import_serverless.types.builtins.TIMESTAMPTZ, (val) => val);
+    import_serverless.types.setTypeParser(import_serverless.types.builtins.TIMESTAMP, (val) => val);
+    import_serverless.types.setTypeParser(import_serverless.types.builtins.DATE, (val) => val);
+  }
+}
+class NeonHttpDatabase extends import_db.PgDatabase {
+  static [import_entity.entityKind] = "NeonHttpDatabase";
+  async batch(batch) {
+    return this.session.batch(batch);
+  }
+}
+function drizzle(client, config = {}) {
+  const dialect = new import_dialect.PgDialect();
+  let logger;
+  if (config.logger === true) {
+    logger = new import_logger.DefaultLogger();
+  } else if (config.logger !== false) {
+    logger = config.logger;
+  }
+  let schema;
+  if (config.schema) {
+    const tablesConfig = (0, import_relations.extractTablesRelationalConfig)(
+      config.schema,
+      import_relations.createTableRelationsHelpers
+    );
+    schema = {
+      fullSchema: config.schema,
+      schema: tablesConfig.tables,
+      tableNamesMap: tablesConfig.tableNamesMap
+    };
+  }
+  const driver = new NeonHttpDriver(client, dialect, { logger });
+  const session = driver.createSession(schema);
+  return new NeonHttpDatabase(
+    dialect,
+    session,
+    schema
+  );
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=driver.cjs.map
+
+/***/ }),
+
+/***/ 63927:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var neon_http_exports = {};
+module.exports = __toCommonJS(neon_http_exports);
+__reExport(neon_http_exports, __nccwpck_require__(21271), module.exports);
+__reExport(neon_http_exports, __nccwpck_require__(25387), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 25387:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var session_exports = {};
+__export(session_exports, {
+  NeonHttpPreparedQuery: () => NeonHttpPreparedQuery,
+  NeonHttpSession: () => NeonHttpSession,
+  NeonTransaction: () => NeonTransaction
+});
+module.exports = __toCommonJS(session_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_logger = __nccwpck_require__(94509);
+var import_pg_core = __nccwpck_require__(83615);
+var import_session = __nccwpck_require__(3219);
+var import_sql = __nccwpck_require__(23954);
+var import_utils = __nccwpck_require__(26656);
+const rawQueryConfig = {
+  arrayMode: false,
+  fullResults: true
+};
+const queryConfig = {
+  arrayMode: true,
+  fullResults: true
+};
+class NeonHttpPreparedQuery extends import_session.PgPreparedQuery {
+  constructor(client, query, logger, fields, _isResponseInArrayMode, customResultMapper) {
+    super(query);
+    this.client = client;
+    this.logger = logger;
+    this.fields = fields;
+    this._isResponseInArrayMode = _isResponseInArrayMode;
+    this.customResultMapper = customResultMapper;
+  }
+  static [import_entity.entityKind] = "NeonHttpPreparedQuery";
+  async execute(placeholderValues = {}) {
+    const params = (0, import_sql.fillPlaceholders)(this.query.params, placeholderValues);
+    this.logger.logQuery(this.query.sql, params);
+    const { fields, client, query, customResultMapper } = this;
+    if (!fields && !customResultMapper) {
+      return client(query.sql, params, rawQueryConfig);
+    }
+    const result = await client(query.sql, params, queryConfig);
+    return this.mapResult(result);
+  }
+  mapResult(result) {
+    if (!this.fields && !this.customResultMapper) {
+      return result;
+    }
+    const rows = result.rows;
+    if (this.customResultMapper) {
+      return this.customResultMapper(rows);
+    }
+    return rows.map((row) => (0, import_utils.mapResultRow)(this.fields, row, this.joinsNotNullableMap));
+  }
+  all(placeholderValues = {}) {
+    const params = (0, import_sql.fillPlaceholders)(this.query.params, placeholderValues);
+    this.logger.logQuery(this.query.sql, params);
+    return this.client(this.query.sql, params, rawQueryConfig).then((result) => result.rows);
+  }
+  values(placeholderValues = {}) {
+    const params = (0, import_sql.fillPlaceholders)(this.query.params, placeholderValues);
+    this.logger.logQuery(this.query.sql, params);
+    return this.client(this.query.sql, params, { arrayMode: true, fullResults: true }).then((result) => result.rows);
+  }
+  /** @internal */
+  isResponseInArrayMode() {
+    return this._isResponseInArrayMode;
+  }
+}
+class NeonHttpSession extends import_session.PgSession {
+  constructor(client, dialect, schema, options = {}) {
+    super(dialect);
+    this.client = client;
+    this.schema = schema;
+    this.options = options;
+    this.logger = options.logger ?? new import_logger.NoopLogger();
+  }
+  static [import_entity.entityKind] = "NeonHttpSession";
+  logger;
+  prepareQuery(query, fields, name, isResponseInArrayMode, customResultMapper) {
+    return new NeonHttpPreparedQuery(
+      this.client,
+      query,
+      this.logger,
+      fields,
+      isResponseInArrayMode,
+      customResultMapper
+    );
+  }
+  async batch(queries) {
+    const preparedQueries = [];
+    const builtQueries = [];
+    for (const query of queries) {
+      const preparedQuery = query._prepare();
+      const builtQuery = preparedQuery.getQuery();
+      preparedQueries.push(preparedQuery);
+      builtQueries.push(
+        this.client(builtQuery.sql, builtQuery.params, {
+          fullResults: true,
+          arrayMode: preparedQuery.isResponseInArrayMode()
+        })
+      );
+    }
+    const batchResults = await this.client.transaction(builtQueries, queryConfig);
+    return batchResults.map((result, i) => preparedQueries[i].mapResult(result, true));
+  }
+  // change return type to QueryRows<true>
+  async query(query, params) {
+    this.logger.logQuery(query, params);
+    const result = await this.client(query, params, { arrayMode: true, fullResults: true });
+    return result;
+  }
+  // change return type to QueryRows<false>
+  async queryObjects(query, params) {
+    return this.client(query, params, { arrayMode: false, fullResults: true });
+  }
+  async transaction(_transaction, _config = {}) {
+    throw new Error("No transactions support in neon-http driver");
+  }
+}
+class NeonTransaction extends import_pg_core.PgTransaction {
+  static [import_entity.entityKind] = "NeonHttpTransaction";
+  async transaction(_transaction) {
+    throw new Error("No transactions support in neon-http driver");
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=session.cjs.map
+
+/***/ }),
+
+/***/ 5135:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var operations_exports = {};
+module.exports = __toCommonJS(operations_exports);
+//# sourceMappingURL=operations.cjs.map
+
+/***/ }),
+
+/***/ 9987:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var alias_exports = {};
+__export(alias_exports, {
+  alias: () => alias
+});
+module.exports = __toCommonJS(alias_exports);
+var import_alias = __nccwpck_require__(55035);
+function alias(table, alias2) {
+  return new Proxy(table, new import_alias.TableAliasProxyHandler(alias2, false));
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=alias.cjs.map
+
+/***/ }),
+
+/***/ 97810:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var checks_exports = {};
+__export(checks_exports, {
+  Check: () => Check,
+  CheckBuilder: () => CheckBuilder,
+  check: () => check
+});
+module.exports = __toCommonJS(checks_exports);
+var import_entity = __nccwpck_require__(40336);
+class CheckBuilder {
+  constructor(name, value) {
+    this.name = name;
+    this.value = value;
+  }
+  static [import_entity.entityKind] = "PgCheckBuilder";
+  brand;
+  /** @internal */
+  build(table) {
+    return new Check(table, this);
+  }
+}
+class Check {
+  constructor(table, builder) {
+    this.table = table;
+    this.name = builder.name;
+    this.value = builder.value;
+  }
+  static [import_entity.entityKind] = "PgCheck";
+  name;
+  value;
+}
+function check(name, value) {
+  return new CheckBuilder(name, value);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=checks.cjs.map
+
+/***/ }),
+
+/***/ 45688:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var bigint_exports = {};
+__export(bigint_exports, {
+  PgBigInt53: () => PgBigInt53,
+  PgBigInt53Builder: () => PgBigInt53Builder,
+  PgBigInt64: () => PgBigInt64,
+  PgBigInt64Builder: () => PgBigInt64Builder,
+  bigint: () => bigint
+});
+module.exports = __toCommonJS(bigint_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgBigInt53Builder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgBigInt53Builder";
+  constructor(name) {
+    super(name, "number", "PgBigInt53");
+  }
+  /** @internal */
+  build(table) {
+    return new PgBigInt53(table, this.config);
+  }
+}
+class PgBigInt53 extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgBigInt53";
+  getSQLType() {
+    return "bigint";
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "number") {
+      return value;
+    }
+    return Number(value);
+  }
+}
+class PgBigInt64Builder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgBigInt64Builder";
+  constructor(name) {
+    super(name, "bigint", "PgBigInt64");
+  }
+  /** @internal */
+  build(table) {
+    return new PgBigInt64(
+      table,
+      this.config
+    );
+  }
+}
+class PgBigInt64 extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgBigInt64";
+  getSQLType() {
+    return "bigint";
+  }
+  // eslint-disable-next-line unicorn/prefer-native-coercion-functions
+  mapFromDriverValue(value) {
+    return BigInt(value);
+  }
+}
+function bigint(name, config) {
+  if (config.mode === "number") {
+    return new PgBigInt53Builder(name);
+  }
+  return new PgBigInt64Builder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=bigint.cjs.map
+
+/***/ }),
+
+/***/ 12145:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var bigserial_exports = {};
+__export(bigserial_exports, {
+  PgBigSerial53: () => PgBigSerial53,
+  PgBigSerial53Builder: () => PgBigSerial53Builder,
+  PgBigSerial64: () => PgBigSerial64,
+  PgBigSerial64Builder: () => PgBigSerial64Builder,
+  bigserial: () => bigserial
+});
+module.exports = __toCommonJS(bigserial_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgBigSerial53Builder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgBigSerial53Builder";
+  constructor(name) {
+    super(name, "number", "PgBigSerial53");
+    this.config.hasDefault = true;
+    this.config.notNull = true;
+  }
+  /** @internal */
+  build(table) {
+    return new PgBigSerial53(
+      table,
+      this.config
+    );
+  }
+}
+class PgBigSerial53 extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgBigSerial53";
+  getSQLType() {
+    return "bigserial";
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "number") {
+      return value;
+    }
+    return Number(value);
+  }
+}
+class PgBigSerial64Builder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgBigSerial64Builder";
+  constructor(name) {
+    super(name, "bigint", "PgBigSerial64");
+    this.config.hasDefault = true;
+  }
+  /** @internal */
+  build(table) {
+    return new PgBigSerial64(
+      table,
+      this.config
+    );
+  }
+}
+class PgBigSerial64 extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgBigSerial64";
+  getSQLType() {
+    return "bigserial";
+  }
+  // eslint-disable-next-line unicorn/prefer-native-coercion-functions
+  mapFromDriverValue(value) {
+    return BigInt(value);
+  }
+}
+function bigserial(name, { mode }) {
+  if (mode === "number") {
+    return new PgBigSerial53Builder(name);
+  }
+  return new PgBigSerial64Builder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=bigserial.cjs.map
+
+/***/ }),
+
+/***/ 30455:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var boolean_exports = {};
+__export(boolean_exports, {
+  PgBoolean: () => PgBoolean,
+  PgBooleanBuilder: () => PgBooleanBuilder,
+  boolean: () => boolean
+});
+module.exports = __toCommonJS(boolean_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgBooleanBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgBooleanBuilder";
+  constructor(name) {
+    super(name, "boolean", "PgBoolean");
+  }
+  /** @internal */
+  build(table) {
+    return new PgBoolean(table, this.config);
+  }
+}
+class PgBoolean extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgBoolean";
+  getSQLType() {
+    return "boolean";
+  }
+}
+function boolean(name) {
+  return new PgBooleanBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=boolean.cjs.map
+
+/***/ }),
+
+/***/ 23325:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var char_exports = {};
+__export(char_exports, {
+  PgChar: () => PgChar,
+  PgCharBuilder: () => PgCharBuilder,
+  char: () => char
+});
+module.exports = __toCommonJS(char_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgCharBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgCharBuilder";
+  constructor(name, config) {
+    super(name, "string", "PgChar");
+    this.config.length = config.length;
+    this.config.enumValues = config.enum;
+  }
+  /** @internal */
+  build(table) {
+    return new PgChar(table, this.config);
+  }
+}
+class PgChar extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgChar";
+  length = this.config.length;
+  enumValues = this.config.enumValues;
+  getSQLType() {
+    return this.length === void 0 ? `char` : `char(${this.length})`;
+  }
+}
+function char(name, config = {}) {
+  return new PgCharBuilder(name, config);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=char.cjs.map
+
+/***/ }),
+
+/***/ 73531:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var cidr_exports = {};
+__export(cidr_exports, {
+  PgCidr: () => PgCidr,
+  PgCidrBuilder: () => PgCidrBuilder,
+  cidr: () => cidr
+});
+module.exports = __toCommonJS(cidr_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgCidrBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgCidrBuilder";
+  constructor(name) {
+    super(name, "string", "PgCidr");
+  }
+  /** @internal */
+  build(table) {
+    return new PgCidr(table, this.config);
+  }
+}
+class PgCidr extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgCidr";
+  getSQLType() {
+    return "cidr";
+  }
+}
+function cidr(name) {
+  return new PgCidrBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=cidr.cjs.map
+
+/***/ }),
+
+/***/ 87138:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var common_exports = {};
+__export(common_exports, {
+  PgArray: () => PgArray,
+  PgArrayBuilder: () => PgArrayBuilder,
+  PgColumn: () => PgColumn,
+  PgColumnBuilder: () => PgColumnBuilder
+});
+module.exports = __toCommonJS(common_exports);
+var import_column_builder = __nccwpck_require__(90485);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_foreign_keys = __nccwpck_require__(58100);
+var import_tracing_utils = __nccwpck_require__(40593);
+var import_unique_constraint = __nccwpck_require__(61952);
+var import_array = __nccwpck_require__(36450);
+class PgColumnBuilder extends import_column_builder.ColumnBuilder {
+  foreignKeyConfigs = [];
+  static [import_entity.entityKind] = "PgColumnBuilder";
+  array(size) {
+    return new PgArrayBuilder(this.config.name, this, size);
+  }
+  references(ref, actions = {}) {
+    this.foreignKeyConfigs.push({ ref, actions });
+    return this;
+  }
+  unique(name, config) {
+    this.config.isUnique = true;
+    this.config.uniqueName = name;
+    this.config.uniqueType = config?.nulls;
+    return this;
+  }
+  /** @internal */
+  buildForeignKeys(column, table) {
+    return this.foreignKeyConfigs.map(({ ref, actions }) => {
+      return (0, import_tracing_utils.iife)(
+        (ref2, actions2) => {
+          const builder = new import_foreign_keys.ForeignKeyBuilder(() => {
+            const foreignColumn = ref2();
+            return { columns: [column], foreignColumns: [foreignColumn] };
+          });
+          if (actions2.onUpdate) {
+            builder.onUpdate(actions2.onUpdate);
+          }
+          if (actions2.onDelete) {
+            builder.onDelete(actions2.onDelete);
+          }
+          return builder.build(table);
+        },
+        ref,
+        actions
+      );
+    });
+  }
+}
+class PgColumn extends import_column.Column {
+  constructor(table, config) {
+    if (!config.uniqueName) {
+      config.uniqueName = (0, import_unique_constraint.uniqueKeyName)(table, [config.name]);
+    }
+    super(table, config);
+    this.table = table;
+  }
+  static [import_entity.entityKind] = "PgColumn";
+}
+class PgArrayBuilder extends PgColumnBuilder {
+  static [import_entity.entityKind] = "PgArrayBuilder";
+  constructor(name, baseBuilder, size) {
+    super(name, "array", "PgArray");
+    this.config.baseBuilder = baseBuilder;
+    this.config.size = size;
+  }
+  /** @internal */
+  build(table) {
+    const baseColumn = this.config.baseBuilder.build(table);
+    return new PgArray(
+      table,
+      this.config,
+      baseColumn
+    );
+  }
+}
+class PgArray extends PgColumn {
+  constructor(table, config, baseColumn, range) {
+    super(table, config);
+    this.baseColumn = baseColumn;
+    this.range = range;
+    this.size = config.size;
+  }
+  size;
+  static [import_entity.entityKind] = "PgArray";
+  getSQLType() {
+    return `${this.baseColumn.getSQLType()}[${typeof this.size === "number" ? this.size : ""}]`;
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "string") {
+      value = (0, import_array.parsePgArray)(value);
+    }
+    return value.map((v) => this.baseColumn.mapFromDriverValue(v));
+  }
+  mapToDriverValue(value, isNestedArray = false) {
+    const a = value.map(
+      (v) => v === null ? null : (0, import_entity.is)(this.baseColumn, PgArray) ? this.baseColumn.mapToDriverValue(v, true) : this.baseColumn.mapToDriverValue(v)
+    );
+    if (isNestedArray)
+      return a;
+    return (0, import_array.makePgArray)(a);
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=common.cjs.map
+
+/***/ }),
+
+/***/ 22860:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var custom_exports = {};
+__export(custom_exports, {
+  PgCustomColumn: () => PgCustomColumn,
+  PgCustomColumnBuilder: () => PgCustomColumnBuilder,
+  customType: () => customType
+});
+module.exports = __toCommonJS(custom_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgCustomColumnBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgCustomColumnBuilder";
+  constructor(name, fieldConfig, customTypeParams) {
+    super(name, "custom", "PgCustomColumn");
+    this.config.fieldConfig = fieldConfig;
+    this.config.customTypeParams = customTypeParams;
+  }
+  /** @internal */
+  build(table) {
+    return new PgCustomColumn(
+      table,
+      this.config
+    );
+  }
+}
+class PgCustomColumn extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgCustomColumn";
+  sqlName;
+  mapTo;
+  mapFrom;
+  constructor(table, config) {
+    super(table, config);
+    this.sqlName = config.customTypeParams.dataType(config.fieldConfig);
+    this.mapTo = config.customTypeParams.toDriver;
+    this.mapFrom = config.customTypeParams.fromDriver;
+  }
+  getSQLType() {
+    return this.sqlName;
+  }
+  mapFromDriverValue(value) {
+    return typeof this.mapFrom === "function" ? this.mapFrom(value) : value;
+  }
+  mapToDriverValue(value) {
+    return typeof this.mapTo === "function" ? this.mapTo(value) : value;
+  }
+}
+function customType(customTypeParams) {
+  return (dbName, fieldConfig) => {
+    return new PgCustomColumnBuilder(dbName, fieldConfig, customTypeParams);
+  };
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=custom.cjs.map
+
+/***/ }),
+
+/***/ 30289:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var date_exports = {};
+__export(date_exports, {
+  PgDate: () => PgDate,
+  PgDateBuilder: () => PgDateBuilder,
+  PgDateString: () => PgDateString,
+  PgDateStringBuilder: () => PgDateStringBuilder,
+  date: () => date
+});
+module.exports = __toCommonJS(date_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+var import_date_common = __nccwpck_require__(69778);
+class PgDateBuilder extends import_date_common.PgDateColumnBaseBuilder {
+  static [import_entity.entityKind] = "PgDateBuilder";
+  constructor(name) {
+    super(name, "date", "PgDate");
+  }
+  /** @internal */
+  build(table) {
+    return new PgDate(table, this.config);
+  }
+}
+class PgDate extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgDate";
+  getSQLType() {
+    return "date";
+  }
+  mapFromDriverValue(value) {
+    return new Date(value);
+  }
+  mapToDriverValue(value) {
+    return value.toISOString();
+  }
+}
+class PgDateStringBuilder extends import_date_common.PgDateColumnBaseBuilder {
+  static [import_entity.entityKind] = "PgDateStringBuilder";
+  constructor(name) {
+    super(name, "string", "PgDateString");
+  }
+  /** @internal */
+  build(table) {
+    return new PgDateString(
+      table,
+      this.config
+    );
+  }
+}
+class PgDateString extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgDateString";
+  getSQLType() {
+    return "date";
+  }
+}
+function date(name, config) {
+  if (config?.mode === "date") {
+    return new PgDateBuilder(name);
+  }
+  return new PgDateStringBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=date.cjs.map
+
+/***/ }),
+
+/***/ 69778:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var date_common_exports = {};
+__export(date_common_exports, {
+  PgDateColumnBaseBuilder: () => PgDateColumnBaseBuilder
+});
+module.exports = __toCommonJS(date_common_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+var import_common = __nccwpck_require__(87138);
+class PgDateColumnBaseBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgDateColumnBaseBuilder";
+  defaultNow() {
+    return this.default(import_sql.sql`now()`);
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=date.common.cjs.map
+
+/***/ }),
+
+/***/ 34389:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var double_precision_exports = {};
+__export(double_precision_exports, {
+  PgDoublePrecision: () => PgDoublePrecision,
+  PgDoublePrecisionBuilder: () => PgDoublePrecisionBuilder,
+  doublePrecision: () => doublePrecision
+});
+module.exports = __toCommonJS(double_precision_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgDoublePrecisionBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgDoublePrecisionBuilder";
+  constructor(name) {
+    super(name, "number", "PgDoublePrecision");
+  }
+  /** @internal */
+  build(table) {
+    return new PgDoublePrecision(
+      table,
+      this.config
+    );
+  }
+}
+class PgDoublePrecision extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgDoublePrecision";
+  getSQLType() {
+    return "double precision";
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "string") {
+      return Number.parseFloat(value);
+    }
+    return value;
+  }
+}
+function doublePrecision(name) {
+  return new PgDoublePrecisionBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=double-precision.cjs.map
+
+/***/ }),
+
+/***/ 12290:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var enum_exports = {};
+__export(enum_exports, {
+  PgEnumColumn: () => PgEnumColumn,
+  PgEnumColumnBuilder: () => PgEnumColumnBuilder,
+  isPgEnum: () => isPgEnum,
+  pgEnum: () => pgEnum,
+  pgEnumWithSchema: () => pgEnumWithSchema
+});
+module.exports = __toCommonJS(enum_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+const isPgEnumSym = Symbol.for("drizzle:isPgEnum");
+function isPgEnum(obj) {
+  return !!obj && typeof obj === "function" && isPgEnumSym in obj && obj[isPgEnumSym] === true;
+}
+class PgEnumColumnBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgEnumColumnBuilder";
+  constructor(name, enumInstance) {
+    super(name, "string", "PgEnumColumn");
+    this.config.enum = enumInstance;
+  }
+  /** @internal */
+  build(table) {
+    return new PgEnumColumn(
+      table,
+      this.config
+    );
+  }
+}
+class PgEnumColumn extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgEnumColumn";
+  enum = this.config.enum;
+  enumValues = this.config.enum.enumValues;
+  constructor(table, config) {
+    super(table, config);
+    this.enum = config.enum;
+  }
+  getSQLType() {
+    return this.enum.enumName;
+  }
+}
+function pgEnum(enumName, values) {
+  return pgEnumWithSchema(enumName, values, void 0);
+}
+function pgEnumWithSchema(enumName, values, schema) {
+  const enumInstance = Object.assign(
+    (name) => new PgEnumColumnBuilder(name, enumInstance),
+    {
+      enumName,
+      enumValues: values,
+      schema,
+      [isPgEnumSym]: true
+    }
+  );
+  return enumInstance;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=enum.cjs.map
+
+/***/ }),
+
+/***/ 98127:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var columns_exports = {};
+module.exports = __toCommonJS(columns_exports);
+__reExport(columns_exports, __nccwpck_require__(45688), module.exports);
+__reExport(columns_exports, __nccwpck_require__(12145), module.exports);
+__reExport(columns_exports, __nccwpck_require__(30455), module.exports);
+__reExport(columns_exports, __nccwpck_require__(23325), module.exports);
+__reExport(columns_exports, __nccwpck_require__(73531), module.exports);
+__reExport(columns_exports, __nccwpck_require__(87138), module.exports);
+__reExport(columns_exports, __nccwpck_require__(22860), module.exports);
+__reExport(columns_exports, __nccwpck_require__(30289), module.exports);
+__reExport(columns_exports, __nccwpck_require__(34389), module.exports);
+__reExport(columns_exports, __nccwpck_require__(12290), module.exports);
+__reExport(columns_exports, __nccwpck_require__(15439), module.exports);
+__reExport(columns_exports, __nccwpck_require__(73173), module.exports);
+__reExport(columns_exports, __nccwpck_require__(45738), module.exports);
+__reExport(columns_exports, __nccwpck_require__(55767), module.exports);
+__reExport(columns_exports, __nccwpck_require__(77287), module.exports);
+__reExport(columns_exports, __nccwpck_require__(48763), module.exports);
+__reExport(columns_exports, __nccwpck_require__(65537), module.exports);
+__reExport(columns_exports, __nccwpck_require__(41214), module.exports);
+__reExport(columns_exports, __nccwpck_require__(95281), module.exports);
+__reExport(columns_exports, __nccwpck_require__(15465), module.exports);
+__reExport(columns_exports, __nccwpck_require__(7717), module.exports);
+__reExport(columns_exports, __nccwpck_require__(78366), module.exports);
+__reExport(columns_exports, __nccwpck_require__(96872), module.exports);
+__reExport(columns_exports, __nccwpck_require__(30202), module.exports);
+__reExport(columns_exports, __nccwpck_require__(52007), module.exports);
+__reExport(columns_exports, __nccwpck_require__(8820), module.exports);
+__reExport(columns_exports, __nccwpck_require__(18880), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 15439:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var inet_exports = {};
+__export(inet_exports, {
+  PgInet: () => PgInet,
+  PgInetBuilder: () => PgInetBuilder,
+  inet: () => inet
+});
+module.exports = __toCommonJS(inet_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgInetBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgInetBuilder";
+  constructor(name) {
+    super(name, "string", "PgInet");
+  }
+  /** @internal */
+  build(table) {
+    return new PgInet(table, this.config);
+  }
+}
+class PgInet extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgInet";
+  getSQLType() {
+    return "inet";
+  }
+}
+function inet(name) {
+  return new PgInetBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=inet.cjs.map
+
+/***/ }),
+
+/***/ 73173:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var integer_exports = {};
+__export(integer_exports, {
+  PgInteger: () => PgInteger,
+  PgIntegerBuilder: () => PgIntegerBuilder,
+  integer: () => integer
+});
+module.exports = __toCommonJS(integer_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgIntegerBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgIntegerBuilder";
+  constructor(name) {
+    super(name, "number", "PgInteger");
+  }
+  /** @internal */
+  build(table) {
+    return new PgInteger(table, this.config);
+  }
+}
+class PgInteger extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgInteger";
+  getSQLType() {
+    return "integer";
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "string") {
+      return Number.parseInt(value);
+    }
+    return value;
+  }
+}
+function integer(name) {
+  return new PgIntegerBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=integer.cjs.map
+
+/***/ }),
+
+/***/ 45738:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var interval_exports = {};
+__export(interval_exports, {
+  PgInterval: () => PgInterval,
+  PgIntervalBuilder: () => PgIntervalBuilder,
+  interval: () => interval
+});
+module.exports = __toCommonJS(interval_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgIntervalBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgIntervalBuilder";
+  constructor(name, intervalConfig) {
+    super(name, "string", "PgInterval");
+    this.config.intervalConfig = intervalConfig;
+  }
+  /** @internal */
+  build(table) {
+    return new PgInterval(table, this.config);
+  }
+}
+class PgInterval extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgInterval";
+  fields = this.config.intervalConfig.fields;
+  precision = this.config.intervalConfig.precision;
+  getSQLType() {
+    const fields = this.fields ? ` ${this.fields}` : "";
+    const precision = this.precision ? `(${this.precision})` : "";
+    return `interval${fields}${precision}`;
+  }
+}
+function interval(name, config = {}) {
+  return new PgIntervalBuilder(name, config);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=interval.cjs.map
+
+/***/ }),
+
+/***/ 55767:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var json_exports = {};
+__export(json_exports, {
+  PgJson: () => PgJson,
+  PgJsonBuilder: () => PgJsonBuilder,
+  json: () => json
+});
+module.exports = __toCommonJS(json_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgJsonBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgJsonBuilder";
+  constructor(name) {
+    super(name, "json", "PgJson");
+  }
+  /** @internal */
+  build(table) {
+    return new PgJson(table, this.config);
+  }
+}
+class PgJson extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgJson";
+  constructor(table, config) {
+    super(table, config);
+  }
+  getSQLType() {
+    return "json";
+  }
+  mapToDriverValue(value) {
+    return JSON.stringify(value);
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "string") {
+      try {
+        return JSON.parse(value);
+      } catch {
+        return value;
+      }
+    }
+    return value;
+  }
+}
+function json(name) {
+  return new PgJsonBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=json.cjs.map
+
+/***/ }),
+
+/***/ 77287:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var jsonb_exports = {};
+__export(jsonb_exports, {
+  PgJsonb: () => PgJsonb,
+  PgJsonbBuilder: () => PgJsonbBuilder,
+  jsonb: () => jsonb
+});
+module.exports = __toCommonJS(jsonb_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgJsonbBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgJsonbBuilder";
+  constructor(name) {
+    super(name, "json", "PgJsonb");
+  }
+  /** @internal */
+  build(table) {
+    return new PgJsonb(table, this.config);
+  }
+}
+class PgJsonb extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgJsonb";
+  constructor(table, config) {
+    super(table, config);
+  }
+  getSQLType() {
+    return "jsonb";
+  }
+  mapToDriverValue(value) {
+    return JSON.stringify(value);
+  }
+  mapFromDriverValue(value) {
+    if (typeof value === "string") {
+      try {
+        return JSON.parse(value);
+      } catch {
+        return value;
+      }
+    }
+    return value;
+  }
+}
+function jsonb(name) {
+  return new PgJsonbBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=jsonb.cjs.map
+
+/***/ }),
+
+/***/ 48763:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var macaddr_exports = {};
+__export(macaddr_exports, {
+  PgMacaddr: () => PgMacaddr,
+  PgMacaddrBuilder: () => PgMacaddrBuilder,
+  macaddr: () => macaddr
+});
+module.exports = __toCommonJS(macaddr_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgMacaddrBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgMacaddrBuilder";
+  constructor(name) {
+    super(name, "string", "PgMacaddr");
+  }
+  /** @internal */
+  build(table) {
+    return new PgMacaddr(table, this.config);
+  }
+}
+class PgMacaddr extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgMacaddr";
+  getSQLType() {
+    return "macaddr";
+  }
+}
+function macaddr(name) {
+  return new PgMacaddrBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=macaddr.cjs.map
+
+/***/ }),
+
+/***/ 65537:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var macaddr8_exports = {};
+__export(macaddr8_exports, {
+  PgMacaddr8: () => PgMacaddr8,
+  PgMacaddr8Builder: () => PgMacaddr8Builder,
+  macaddr8: () => macaddr8
+});
+module.exports = __toCommonJS(macaddr8_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgMacaddr8Builder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgMacaddr8Builder";
+  constructor(name) {
+    super(name, "string", "PgMacaddr8");
+  }
+  /** @internal */
+  build(table) {
+    return new PgMacaddr8(table, this.config);
+  }
+}
+class PgMacaddr8 extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgMacaddr8";
+  getSQLType() {
+    return "macaddr8";
+  }
+}
+function macaddr8(name) {
+  return new PgMacaddr8Builder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=macaddr8.cjs.map
+
+/***/ }),
+
+/***/ 41214:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var numeric_exports = {};
+__export(numeric_exports, {
+  PgNumeric: () => PgNumeric,
+  PgNumericBuilder: () => PgNumericBuilder,
+  decimal: () => decimal,
+  numeric: () => numeric
+});
+module.exports = __toCommonJS(numeric_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgNumericBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgNumericBuilder";
+  constructor(name, precision, scale) {
+    super(name, "string", "PgNumeric");
+    this.config.precision = precision;
+    this.config.scale = scale;
+  }
+  /** @internal */
+  build(table) {
+    return new PgNumeric(table, this.config);
+  }
+}
+class PgNumeric extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgNumeric";
+  precision;
+  scale;
+  constructor(table, config) {
+    super(table, config);
+    this.precision = config.precision;
+    this.scale = config.scale;
+  }
+  getSQLType() {
+    if (this.precision !== void 0 && this.scale !== void 0) {
+      return `numeric(${this.precision}, ${this.scale})`;
+    } else if (this.precision === void 0) {
+      return "numeric";
+    } else {
+      return `numeric(${this.precision})`;
+    }
+  }
+}
+function numeric(name, config) {
+  return new PgNumericBuilder(name, config?.precision, config?.scale);
+}
+const decimal = numeric;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=numeric.cjs.map
+
+/***/ }),
+
+/***/ 95281:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var real_exports = {};
+__export(real_exports, {
+  PgReal: () => PgReal,
+  PgRealBuilder: () => PgRealBuilder,
+  real: () => real
+});
+module.exports = __toCommonJS(real_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgRealBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgRealBuilder";
+  constructor(name, length) {
+    super(name, "number", "PgReal");
+    this.config.length = length;
+  }
+  /** @internal */
+  build(table) {
+    return new PgReal(table, this.config);
+  }
+}
+class PgReal extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgReal";
+  constructor(table, config) {
+    super(table, config);
+  }
+  getSQLType() {
+    return "real";
+  }
+  mapFromDriverValue = (value) => {
+    if (typeof value === "string") {
+      return Number.parseFloat(value);
+    }
+    return value;
+  };
+}
+function real(name) {
+  return new PgRealBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=real.cjs.map
+
+/***/ }),
+
+/***/ 15465:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var serial_exports = {};
+__export(serial_exports, {
+  PgSerial: () => PgSerial,
+  PgSerialBuilder: () => PgSerialBuilder,
+  serial: () => serial
+});
+module.exports = __toCommonJS(serial_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgSerialBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgSerialBuilder";
+  constructor(name) {
+    super(name, "number", "PgSerial");
+    this.config.hasDefault = true;
+    this.config.notNull = true;
+  }
+  /** @internal */
+  build(table) {
+    return new PgSerial(table, this.config);
+  }
+}
+class PgSerial extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgSerial";
+  getSQLType() {
+    return "serial";
+  }
+}
+function serial(name) {
+  return new PgSerialBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=serial.cjs.map
+
+/***/ }),
+
+/***/ 7717:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var smallint_exports = {};
+__export(smallint_exports, {
+  PgSmallInt: () => PgSmallInt,
+  PgSmallIntBuilder: () => PgSmallIntBuilder,
+  smallint: () => smallint
+});
+module.exports = __toCommonJS(smallint_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgSmallIntBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgSmallIntBuilder";
+  constructor(name) {
+    super(name, "number", "PgSmallInt");
+  }
+  /** @internal */
+  build(table) {
+    return new PgSmallInt(table, this.config);
+  }
+}
+class PgSmallInt extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgSmallInt";
+  getSQLType() {
+    return "smallint";
+  }
+  mapFromDriverValue = (value) => {
+    if (typeof value === "string") {
+      return Number(value);
+    }
+    return value;
+  };
+}
+function smallint(name) {
+  return new PgSmallIntBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=smallint.cjs.map
+
+/***/ }),
+
+/***/ 78366:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var smallserial_exports = {};
+__export(smallserial_exports, {
+  PgSmallSerial: () => PgSmallSerial,
+  PgSmallSerialBuilder: () => PgSmallSerialBuilder,
+  smallserial: () => smallserial
+});
+module.exports = __toCommonJS(smallserial_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgSmallSerialBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgSmallSerialBuilder";
+  constructor(name) {
+    super(name, "number", "PgSmallSerial");
+    this.config.hasDefault = true;
+    this.config.notNull = true;
+  }
+  /** @internal */
+  build(table) {
+    return new PgSmallSerial(
+      table,
+      this.config
+    );
+  }
+}
+class PgSmallSerial extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgSmallSerial";
+  getSQLType() {
+    return "smallserial";
+  }
+}
+function smallserial(name) {
+  return new PgSmallSerialBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=smallserial.cjs.map
+
+/***/ }),
+
+/***/ 96872:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var text_exports = {};
+__export(text_exports, {
+  PgText: () => PgText,
+  PgTextBuilder: () => PgTextBuilder,
+  text: () => text
+});
+module.exports = __toCommonJS(text_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgTextBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgTextBuilder";
+  constructor(name, config) {
+    super(name, "string", "PgText");
+    this.config.enumValues = config.enum;
+  }
+  /** @internal */
+  build(table) {
+    return new PgText(table, this.config);
+  }
+}
+class PgText extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgText";
+  enumValues = this.config.enumValues;
+  getSQLType() {
+    return "text";
+  }
+}
+function text(name, config = {}) {
+  return new PgTextBuilder(name, config);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=text.cjs.map
+
+/***/ }),
+
+/***/ 30202:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var time_exports = {};
+__export(time_exports, {
+  PgTime: () => PgTime,
+  PgTimeBuilder: () => PgTimeBuilder,
+  time: () => time
+});
+module.exports = __toCommonJS(time_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+var import_date_common = __nccwpck_require__(69778);
+class PgTimeBuilder extends import_date_common.PgDateColumnBaseBuilder {
+  constructor(name, withTimezone, precision) {
+    super(name, "string", "PgTime");
+    this.withTimezone = withTimezone;
+    this.precision = precision;
+    this.config.withTimezone = withTimezone;
+    this.config.precision = precision;
+  }
+  static [import_entity.entityKind] = "PgTimeBuilder";
+  /** @internal */
+  build(table) {
+    return new PgTime(table, this.config);
+  }
+}
+class PgTime extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgTime";
+  withTimezone;
+  precision;
+  constructor(table, config) {
+    super(table, config);
+    this.withTimezone = config.withTimezone;
+    this.precision = config.precision;
+  }
+  getSQLType() {
+    const precision = this.precision === void 0 ? "" : `(${this.precision})`;
+    return `time${precision}${this.withTimezone ? " with time zone" : ""}`;
+  }
+}
+function time(name, config = {}) {
+  return new PgTimeBuilder(name, config.withTimezone ?? false, config.precision);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=time.cjs.map
+
+/***/ }),
+
+/***/ 52007:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var timestamp_exports = {};
+__export(timestamp_exports, {
+  PgTimestamp: () => PgTimestamp,
+  PgTimestampBuilder: () => PgTimestampBuilder,
+  PgTimestampString: () => PgTimestampString,
+  PgTimestampStringBuilder: () => PgTimestampStringBuilder,
+  timestamp: () => timestamp
+});
+module.exports = __toCommonJS(timestamp_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+var import_date_common = __nccwpck_require__(69778);
+class PgTimestampBuilder extends import_date_common.PgDateColumnBaseBuilder {
+  static [import_entity.entityKind] = "PgTimestampBuilder";
+  constructor(name, withTimezone, precision) {
+    super(name, "date", "PgTimestamp");
+    this.config.withTimezone = withTimezone;
+    this.config.precision = precision;
+  }
+  /** @internal */
+  build(table) {
+    return new PgTimestamp(table, this.config);
+  }
+}
+class PgTimestamp extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgTimestamp";
+  withTimezone;
+  precision;
+  constructor(table, config) {
+    super(table, config);
+    this.withTimezone = config.withTimezone;
+    this.precision = config.precision;
+  }
+  getSQLType() {
+    const precision = this.precision === void 0 ? "" : ` (${this.precision})`;
+    return `timestamp${precision}${this.withTimezone ? " with time zone" : ""}`;
+  }
+  mapFromDriverValue = (value) => {
+    return new Date(this.withTimezone ? value : value + "+0000");
+  };
+  mapToDriverValue = (value) => {
+    return value.toISOString();
+  };
+}
+class PgTimestampStringBuilder extends import_date_common.PgDateColumnBaseBuilder {
+  static [import_entity.entityKind] = "PgTimestampStringBuilder";
+  constructor(name, withTimezone, precision) {
+    super(name, "string", "PgTimestampString");
+    this.config.withTimezone = withTimezone;
+    this.config.precision = precision;
+  }
+  /** @internal */
+  build(table) {
+    return new PgTimestampString(
+      table,
+      this.config
+    );
+  }
+}
+class PgTimestampString extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgTimestampString";
+  withTimezone;
+  precision;
+  constructor(table, config) {
+    super(table, config);
+    this.withTimezone = config.withTimezone;
+    this.precision = config.precision;
+  }
+  getSQLType() {
+    const precision = this.precision === void 0 ? "" : `(${this.precision})`;
+    return `timestamp${precision}${this.withTimezone ? " with time zone" : ""}`;
+  }
+}
+function timestamp(name, config = {}) {
+  if (config.mode === "string") {
+    return new PgTimestampStringBuilder(name, config.withTimezone ?? false, config.precision);
+  }
+  return new PgTimestampBuilder(name, config.withTimezone ?? false, config.precision);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=timestamp.cjs.map
+
+/***/ }),
+
+/***/ 8820:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var uuid_exports = {};
+__export(uuid_exports, {
+  PgUUID: () => PgUUID,
+  PgUUIDBuilder: () => PgUUIDBuilder,
+  uuid: () => uuid
+});
+module.exports = __toCommonJS(uuid_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+var import_common = __nccwpck_require__(87138);
+class PgUUIDBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgUUIDBuilder";
+  constructor(name) {
+    super(name, "string", "PgUUID");
+  }
+  /**
+   * Adds `default gen_random_uuid()` to the column definition.
+   */
+  defaultRandom() {
+    return this.default(import_sql.sql`gen_random_uuid()`);
+  }
+  /** @internal */
+  build(table) {
+    return new PgUUID(table, this.config);
+  }
+}
+class PgUUID extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgUUID";
+  getSQLType() {
+    return "uuid";
+  }
+}
+function uuid(name) {
+  return new PgUUIDBuilder(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=uuid.cjs.map
+
+/***/ }),
+
+/***/ 18880:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var varchar_exports = {};
+__export(varchar_exports, {
+  PgVarchar: () => PgVarchar,
+  PgVarcharBuilder: () => PgVarcharBuilder,
+  varchar: () => varchar
+});
+module.exports = __toCommonJS(varchar_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_common = __nccwpck_require__(87138);
+class PgVarcharBuilder extends import_common.PgColumnBuilder {
+  static [import_entity.entityKind] = "PgVarcharBuilder";
+  constructor(name, config) {
+    super(name, "string", "PgVarchar");
+    this.config.length = config.length;
+    this.config.enumValues = config.enum;
+  }
+  /** @internal */
+  build(table) {
+    return new PgVarchar(table, this.config);
+  }
+}
+class PgVarchar extends import_common.PgColumn {
+  static [import_entity.entityKind] = "PgVarchar";
+  length = this.config.length;
+  enumValues = this.config.enumValues;
+  getSQLType() {
+    return this.length === void 0 ? `varchar` : `varchar(${this.length})`;
+  }
+}
+function varchar(name, config = {}) {
+  return new PgVarcharBuilder(name, config);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=varchar.cjs.map
+
+/***/ }),
+
+/***/ 82627:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var db_exports = {};
+__export(db_exports, {
+  PgDatabase: () => PgDatabase,
+  withReplicas: () => withReplicas
+});
+module.exports = __toCommonJS(db_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_builders = __nccwpck_require__(71725);
+var import_selection_proxy = __nccwpck_require__(25922);
+var import_subquery = __nccwpck_require__(24211);
+var import_query = __nccwpck_require__(37453);
+var import_raw = __nccwpck_require__(83735);
+var import_refresh_materialized_view = __nccwpck_require__(51818);
+class PgDatabase {
+  constructor(dialect, session, schema) {
+    this.dialect = dialect;
+    this.session = session;
+    this._ = schema ? {
+      schema: schema.schema,
+      fullSchema: schema.fullSchema,
+      tableNamesMap: schema.tableNamesMap,
+      session
+    } : {
+      schema: void 0,
+      fullSchema: {},
+      tableNamesMap: {},
+      session
+    };
+    this.query = {};
+    if (this._.schema) {
+      for (const [tableName, columns] of Object.entries(this._.schema)) {
+        this.query[tableName] = new import_query.RelationalQueryBuilder(
+          schema.fullSchema,
+          this._.schema,
+          this._.tableNamesMap,
+          schema.fullSchema[tableName],
+          columns,
+          dialect,
+          session
+        );
+      }
+    }
+  }
+  static [import_entity.entityKind] = "PgDatabase";
+  query;
+  /**
+   * Creates a subquery that defines a temporary named result set as a CTE.
+   *
+   * It is useful for breaking down complex queries into simpler parts and for reusing the result set in subsequent parts of the query.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#with-clause}
+   *
+   * @param alias The alias for the subquery.
+   *
+   * Failure to provide an alias will result in a DrizzleTypeError, preventing the subquery from being referenced in other queries.
+   *
+   * @example
+   *
+   * ```ts
+   * // Create a subquery with alias 'sq' and use it in the select query
+   * const sq = db.$with('sq').as(db.select().from(users).where(eq(users.id, 42)));
+   *
+   * const result = await db.with(sq).select().from(sq);
+   * ```
+   *
+   * To select arbitrary SQL values as fields in a CTE and reference them in other CTEs or in the main query, you need to add aliases to them:
+   *
+   * ```ts
+   * // Select an arbitrary SQL value as a field in a CTE and reference it in the main query
+   * const sq = db.$with('sq').as(db.select({
+   *   name: sql<string>`upper(${users.name})`.as('name'),
+   * })
+   * .from(users));
+   *
+   * const result = await db.with(sq).select({ name: sq.name }).from(sq);
+   * ```
+   */
+  $with(alias) {
+    return {
+      as(qb) {
+        if (typeof qb === "function") {
+          qb = qb(new import_query_builders.QueryBuilder());
+        }
+        return new Proxy(
+          new import_subquery.WithSubquery(qb.getSQL(), qb.getSelectedFields(), alias, true),
+          new import_selection_proxy.SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
+        );
+      }
+    };
+  }
+  /**
+   * Incorporates a previously defined CTE (using `$with`) into the main query.
+   *
+   * This method allows the main query to reference a temporary named result set.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#with-clause}
+   *
+   * @param queries The CTEs to incorporate into the main query.
+   *
+   * @example
+   *
+   * ```ts
+   * // Define a subquery 'sq' as a CTE using $with
+   * const sq = db.$with('sq').as(db.select().from(users).where(eq(users.id, 42)));
+   *
+   * // Incorporate the CTE 'sq' into the main query and select from it
+   * const result = await db.with(sq).select().from(sq);
+   * ```
+   */
+  with(...queries) {
+    const self = this;
+    function select(fields) {
+      return new import_query_builders.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: self.session,
+        dialect: self.dialect,
+        withList: queries
+      });
+    }
+    function selectDistinct(fields) {
+      return new import_query_builders.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: self.session,
+        dialect: self.dialect,
+        withList: queries,
+        distinct: true
+      });
+    }
+    function selectDistinctOn(on, fields) {
+      return new import_query_builders.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: self.session,
+        dialect: self.dialect,
+        withList: queries,
+        distinct: { on }
+      });
+    }
+    function update(table) {
+      return new import_query_builders.PgUpdateBuilder(table, self.session, self.dialect, queries);
+    }
+    function insert(table) {
+      return new import_query_builders.PgInsertBuilder(table, self.session, self.dialect, queries);
+    }
+    function delete_(table) {
+      return new import_query_builders.PgDeleteBase(table, self.session, self.dialect, queries);
+    }
+    return { select, selectDistinct, selectDistinctOn, update, insert, delete: delete_ };
+  }
+  select(fields) {
+    return new import_query_builders.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: this.session,
+      dialect: this.dialect
+    });
+  }
+  selectDistinct(fields) {
+    return new import_query_builders.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: this.session,
+      dialect: this.dialect,
+      distinct: true
+    });
+  }
+  selectDistinctOn(on, fields) {
+    return new import_query_builders.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: this.session,
+      dialect: this.dialect,
+      distinct: { on }
+    });
+  }
+  /**
+   * Creates an update query.
+   *
+   * Calling this method without `.where()` clause will update all rows in a table. The `.where()` clause specifies which rows should be updated.
+   *
+   * Use `.set()` method to specify which values to update.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/update}
+   *
+   * @param table The table to update.
+   *
+   * @example
+   *
+   * ```ts
+   * // Update all rows in the 'cars' table
+   * await db.update(cars).set({ color: 'red' });
+   *
+   * // Update rows with filters and conditions
+   * await db.update(cars).set({ color: 'red' }).where(eq(cars.brand, 'BMW'));
+   *
+   * // Update with returning clause
+   * const updatedCar: Car[] = await db.update(cars)
+   *   .set({ color: 'red' })
+   *   .where(eq(cars.id, 1))
+   *   .returning();
+   * ```
+   */
+  update(table) {
+    return new import_query_builders.PgUpdateBuilder(table, this.session, this.dialect);
+  }
+  /**
+   * Creates an insert query.
+   *
+   * Calling this method will create new rows in a table. Use `.values()` method to specify which values to insert.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/insert}
+   *
+   * @param table The table to insert into.
+   *
+   * @example
+   *
+   * ```ts
+   * // Insert one row
+   * await db.insert(cars).values({ brand: 'BMW' });
+   *
+   * // Insert multiple rows
+   * await db.insert(cars).values([{ brand: 'BMW' }, { brand: 'Porsche' }]);
+   *
+   * // Insert with returning clause
+   * const insertedCar: Car[] = await db.insert(cars)
+   *   .values({ brand: 'BMW' })
+   *   .returning();
+   * ```
+   */
+  insert(table) {
+    return new import_query_builders.PgInsertBuilder(table, this.session, this.dialect);
+  }
+  /**
+   * Creates a delete query.
+   *
+   * Calling this method without `.where()` clause will delete all rows in a table. The `.where()` clause specifies which rows should be deleted.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/delete}
+   *
+   * @param table The table to delete from.
+   *
+   * @example
+   *
+   * ```ts
+   * // Delete all rows in the 'cars' table
+   * await db.delete(cars);
+   *
+   * // Delete rows with filters and conditions
+   * await db.delete(cars).where(eq(cars.color, 'green'));
+   *
+   * // Delete with returning clause
+   * const deletedCar: Car[] = await db.delete(cars)
+   *   .where(eq(cars.id, 1))
+   *   .returning();
+   * ```
+   */
+  delete(table) {
+    return new import_query_builders.PgDeleteBase(table, this.session, this.dialect);
+  }
+  refreshMaterializedView(view) {
+    return new import_refresh_materialized_view.PgRefreshMaterializedView(view, this.session, this.dialect);
+  }
+  execute(query) {
+    const sql = query.getSQL();
+    const builtQuery = this.dialect.sqlToQuery(sql);
+    const prepared = this.session.prepareQuery(
+      builtQuery,
+      void 0,
+      void 0,
+      false
+    );
+    return new import_raw.PgRaw(
+      () => prepared.execute(),
+      sql,
+      builtQuery,
+      (result) => prepared.mapResult(result, true)
+    );
+  }
+  transaction(transaction, config) {
+    return this.session.transaction(transaction, config);
+  }
+}
+const withReplicas = (primary, replicas, getReplica = () => replicas[Math.floor(Math.random() * replicas.length)]) => {
+  const select = (...args) => getReplica(replicas).select(...args);
+  const selectDistinct = (...args) => getReplica(replicas).selectDistinct(...args);
+  const selectDistinctOn = (...args) => getReplica(replicas).selectDistinctOn(...args);
+  const $with = (...args) => getReplica(replicas).with(...args);
+  const update = (...args) => primary.update(...args);
+  const insert = (...args) => primary.insert(...args);
+  const $delete = (...args) => primary.delete(...args);
+  const execute = (...args) => primary.execute(...args);
+  const transaction = (...args) => primary.transaction(...args);
+  const refreshMaterializedView = (...args) => primary.refreshMaterializedView(...args);
+  return {
+    ...primary,
+    update,
+    insert,
+    delete: $delete,
+    execute,
+    transaction,
+    refreshMaterializedView,
+    $primary: primary,
+    select,
+    selectDistinct,
+    selectDistinctOn,
+    with: $with,
+    get query() {
+      return getReplica(replicas).query;
+    }
+  };
+};
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=db.cjs.map
+
+/***/ }),
+
+/***/ 3245:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var dialect_exports = {};
+__export(dialect_exports, {
+  PgDialect: () => PgDialect
+});
+module.exports = __toCommonJS(dialect_exports);
+var import_alias = __nccwpck_require__(55035);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_errors = __nccwpck_require__(9740);
+var import_columns = __nccwpck_require__(98127);
+var import_table = __nccwpck_require__(61195);
+var import_relations = __nccwpck_require__(11516);
+var import_sql = __nccwpck_require__(85866);
+var import_sql2 = __nccwpck_require__(23954);
+var import_subquery = __nccwpck_require__(24211);
+var import_table2 = __nccwpck_require__(54419);
+var import_utils = __nccwpck_require__(26656);
+var import_view_common = __nccwpck_require__(93212);
+var import_view_base = __nccwpck_require__(51432);
+class PgDialect {
+  static [import_entity.entityKind] = "PgDialect";
+  async migrate(migrations, session, config) {
+    const migrationsTable = typeof config === "string" ? "__drizzle_migrations" : config.migrationsTable ?? "__drizzle_migrations";
+    const migrationsSchema = typeof config === "string" ? "drizzle" : config.migrationsSchema ?? "drizzle";
+    const migrationTableCreate = import_sql2.sql`
+			CREATE TABLE IF NOT EXISTS ${import_sql2.sql.identifier(migrationsSchema)}.${import_sql2.sql.identifier(migrationsTable)} (
+				id SERIAL PRIMARY KEY,
+				hash text NOT NULL,
+				created_at bigint
+			)
+		`;
+    await session.execute(import_sql2.sql`CREATE SCHEMA IF NOT EXISTS ${import_sql2.sql.identifier(migrationsSchema)}`);
+    await session.execute(migrationTableCreate);
+    const dbMigrations = await session.all(
+      import_sql2.sql`select id, hash, created_at from ${import_sql2.sql.identifier(migrationsSchema)}.${import_sql2.sql.identifier(migrationsTable)} order by created_at desc limit 1`
+    );
+    const lastDbMigration = dbMigrations[0];
+    await session.transaction(async (tx) => {
+      for await (const migration of migrations) {
+        if (!lastDbMigration || Number(lastDbMigration.created_at) < migration.folderMillis) {
+          for (const stmt of migration.sql) {
+            await tx.execute(import_sql2.sql.raw(stmt));
+          }
+          await tx.execute(
+            import_sql2.sql`insert into ${import_sql2.sql.identifier(migrationsSchema)}.${import_sql2.sql.identifier(migrationsTable)} ("hash", "created_at") values(${migration.hash}, ${migration.folderMillis})`
+          );
+        }
+      }
+    });
+  }
+  escapeName(name) {
+    return `"${name}"`;
+  }
+  escapeParam(num) {
+    return `$${num + 1}`;
+  }
+  escapeString(str) {
+    return `'${str.replace(/'/g, "''")}'`;
+  }
+  buildWithCTE(queries) {
+    if (!queries?.length)
+      return void 0;
+    const withSqlChunks = [import_sql2.sql`with `];
+    for (const [i, w] of queries.entries()) {
+      withSqlChunks.push(import_sql2.sql`${import_sql2.sql.identifier(w._.alias)} as (${w._.sql})`);
+      if (i < queries.length - 1) {
+        withSqlChunks.push(import_sql2.sql`, `);
+      }
+    }
+    withSqlChunks.push(import_sql2.sql` `);
+    return import_sql2.sql.join(withSqlChunks);
+  }
+  buildDeleteQuery({ table, where, returning, withList }) {
+    const withSql = this.buildWithCTE(withList);
+    const returningSql = returning ? import_sql2.sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
+    const whereSql = where ? import_sql2.sql` where ${where}` : void 0;
+    return import_sql2.sql`${withSql}delete from ${table}${whereSql}${returningSql}`;
+  }
+  buildUpdateSet(table, set) {
+    const tableColumns = table[import_table2.Table.Symbol.Columns];
+    const columnNames = Object.keys(tableColumns).filter(
+      (colName) => set[colName] !== void 0 || tableColumns[colName]?.onUpdateFn !== void 0
+    );
+    const setSize = columnNames.length;
+    return import_sql2.sql.join(columnNames.flatMap((colName, i) => {
+      const col = tableColumns[colName];
+      const value = set[colName] ?? import_sql2.sql.param(col.onUpdateFn(), col);
+      const res = import_sql2.sql`${import_sql2.sql.identifier(col.name)} = ${value}`;
+      if (i < setSize - 1) {
+        return [res, import_sql2.sql.raw(", ")];
+      }
+      return [res];
+    }));
+  }
+  buildUpdateQuery({ table, set, where, returning, withList }) {
+    const withSql = this.buildWithCTE(withList);
+    const setSql = this.buildUpdateSet(table, set);
+    const returningSql = returning ? import_sql2.sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
+    const whereSql = where ? import_sql2.sql` where ${where}` : void 0;
+    return import_sql2.sql`${withSql}update ${table} set ${setSql}${whereSql}${returningSql}`;
+  }
+  /**
+   * Builds selection SQL with provided fields/expressions
+   *
+   * Examples:
+   *
+   * `select <selection> from`
+   *
+   * `insert ... returning <selection>`
+   *
+   * If `isSingleTable` is true, then columns won't be prefixed with table name
+   */
+  buildSelection(fields, { isSingleTable = false } = {}) {
+    const columnsLen = fields.length;
+    const chunks = fields.flatMap(({ field }, i) => {
+      const chunk = [];
+      if ((0, import_entity.is)(field, import_sql2.SQL.Aliased) && field.isSelectionField) {
+        chunk.push(import_sql2.sql.identifier(field.fieldAlias));
+      } else if ((0, import_entity.is)(field, import_sql2.SQL.Aliased) || (0, import_entity.is)(field, import_sql2.SQL)) {
+        const query = (0, import_entity.is)(field, import_sql2.SQL.Aliased) ? field.sql : field;
+        if (isSingleTable) {
+          chunk.push(
+            new import_sql2.SQL(
+              query.queryChunks.map((c) => {
+                if ((0, import_entity.is)(c, import_columns.PgColumn)) {
+                  return import_sql2.sql.identifier(c.name);
+                }
+                return c;
+              })
+            )
+          );
+        } else {
+          chunk.push(query);
+        }
+        if ((0, import_entity.is)(field, import_sql2.SQL.Aliased)) {
+          chunk.push(import_sql2.sql` as ${import_sql2.sql.identifier(field.fieldAlias)}`);
+        }
+      } else if ((0, import_entity.is)(field, import_column.Column)) {
+        if (isSingleTable) {
+          chunk.push(import_sql2.sql.identifier(field.name));
+        } else {
+          chunk.push(field);
+        }
+      }
+      if (i < columnsLen - 1) {
+        chunk.push(import_sql2.sql`, `);
+      }
+      return chunk;
+    });
+    return import_sql2.sql.join(chunks);
+  }
+  buildSelectQuery({
+    withList,
+    fields,
+    fieldsFlat,
+    where,
+    having,
+    table,
+    joins,
+    orderBy,
+    groupBy,
+    limit,
+    offset,
+    lockingClause,
+    distinct,
+    setOperators
+  }) {
+    const fieldsList = fieldsFlat ?? (0, import_utils.orderSelectedFields)(fields);
+    for (const f of fieldsList) {
+      if ((0, import_entity.is)(f.field, import_column.Column) && (0, import_table2.getTableName)(f.field.table) !== ((0, import_entity.is)(table, import_subquery.Subquery) ? table._.alias : (0, import_entity.is)(table, import_view_base.PgViewBase) ? table[import_view_common.ViewBaseConfig].name : (0, import_entity.is)(table, import_sql2.SQL) ? void 0 : (0, import_table2.getTableName)(table)) && !((table2) => joins?.some(
+        ({ alias }) => alias === (table2[import_table2.Table.Symbol.IsAlias] ? (0, import_table2.getTableName)(table2) : table2[import_table2.Table.Symbol.BaseName])
+      ))(f.field.table)) {
+        const tableName = (0, import_table2.getTableName)(f.field.table);
+        throw new Error(
+          `Your "${f.path.join("->")}" field references a column "${tableName}"."${f.field.name}", but the table "${tableName}" is not part of the query! Did you forget to join it?`
+        );
+      }
+    }
+    const isSingleTable = !joins || joins.length === 0;
+    const withSql = this.buildWithCTE(withList);
+    let distinctSql;
+    if (distinct) {
+      distinctSql = distinct === true ? import_sql2.sql` distinct` : import_sql2.sql` distinct on (${import_sql2.sql.join(distinct.on, import_sql2.sql`, `)})`;
+    }
+    const selection = this.buildSelection(fieldsList, { isSingleTable });
+    const tableSql = (() => {
+      if ((0, import_entity.is)(table, import_table2.Table) && table[import_table2.Table.Symbol.OriginalName] !== table[import_table2.Table.Symbol.Name]) {
+        let fullName = import_sql2.sql`${import_sql2.sql.identifier(table[import_table2.Table.Symbol.OriginalName])}`;
+        if (table[import_table2.Table.Symbol.Schema]) {
+          fullName = import_sql2.sql`${import_sql2.sql.identifier(table[import_table2.Table.Symbol.Schema])}.${fullName}`;
+        }
+        return import_sql2.sql`${fullName} ${import_sql2.sql.identifier(table[import_table2.Table.Symbol.Name])}`;
+      }
+      return table;
+    })();
+    const joinsArray = [];
+    if (joins) {
+      for (const [index, joinMeta] of joins.entries()) {
+        if (index === 0) {
+          joinsArray.push(import_sql2.sql` `);
+        }
+        const table2 = joinMeta.table;
+        const lateralSql = joinMeta.lateral ? import_sql2.sql` lateral` : void 0;
+        if ((0, import_entity.is)(table2, import_table.PgTable)) {
+          const tableName = table2[import_table.PgTable.Symbol.Name];
+          const tableSchema = table2[import_table.PgTable.Symbol.Schema];
+          const origTableName = table2[import_table.PgTable.Symbol.OriginalName];
+          const alias = tableName === origTableName ? void 0 : joinMeta.alias;
+          joinsArray.push(
+            import_sql2.sql`${import_sql2.sql.raw(joinMeta.joinType)} join${lateralSql} ${tableSchema ? import_sql2.sql`${import_sql2.sql.identifier(tableSchema)}.` : void 0}${import_sql2.sql.identifier(origTableName)}${alias && import_sql2.sql` ${import_sql2.sql.identifier(alias)}`} on ${joinMeta.on}`
+          );
+        } else if ((0, import_entity.is)(table2, import_sql.View)) {
+          const viewName = table2[import_view_common.ViewBaseConfig].name;
+          const viewSchema = table2[import_view_common.ViewBaseConfig].schema;
+          const origViewName = table2[import_view_common.ViewBaseConfig].originalName;
+          const alias = viewName === origViewName ? void 0 : joinMeta.alias;
+          joinsArray.push(
+            import_sql2.sql`${import_sql2.sql.raw(joinMeta.joinType)} join${lateralSql} ${viewSchema ? import_sql2.sql`${import_sql2.sql.identifier(viewSchema)}.` : void 0}${import_sql2.sql.identifier(origViewName)}${alias && import_sql2.sql` ${import_sql2.sql.identifier(alias)}`} on ${joinMeta.on}`
+          );
+        } else {
+          joinsArray.push(
+            import_sql2.sql`${import_sql2.sql.raw(joinMeta.joinType)} join${lateralSql} ${table2} on ${joinMeta.on}`
+          );
+        }
+        if (index < joins.length - 1) {
+          joinsArray.push(import_sql2.sql` `);
+        }
+      }
+    }
+    const joinsSql = import_sql2.sql.join(joinsArray);
+    const whereSql = where ? import_sql2.sql` where ${where}` : void 0;
+    const havingSql = having ? import_sql2.sql` having ${having}` : void 0;
+    let orderBySql;
+    if (orderBy && orderBy.length > 0) {
+      orderBySql = import_sql2.sql` order by ${import_sql2.sql.join(orderBy, import_sql2.sql`, `)}`;
+    }
+    let groupBySql;
+    if (groupBy && groupBy.length > 0) {
+      groupBySql = import_sql2.sql` group by ${import_sql2.sql.join(groupBy, import_sql2.sql`, `)}`;
+    }
+    const limitSql = limit ? import_sql2.sql` limit ${limit}` : void 0;
+    const offsetSql = offset ? import_sql2.sql` offset ${offset}` : void 0;
+    const lockingClauseSql = import_sql2.sql.empty();
+    if (lockingClause) {
+      const clauseSql = import_sql2.sql` for ${import_sql2.sql.raw(lockingClause.strength)}`;
+      if (lockingClause.config.of) {
+        clauseSql.append(
+          import_sql2.sql` of ${import_sql2.sql.join(
+            Array.isArray(lockingClause.config.of) ? lockingClause.config.of : [lockingClause.config.of],
+            import_sql2.sql`, `
+          )}`
+        );
+      }
+      if (lockingClause.config.noWait) {
+        clauseSql.append(import_sql2.sql` no wait`);
+      } else if (lockingClause.config.skipLocked) {
+        clauseSql.append(import_sql2.sql` skip locked`);
+      }
+      lockingClauseSql.append(clauseSql);
+    }
+    const finalQuery = import_sql2.sql`${withSql}select${distinctSql} ${selection} from ${tableSql}${joinsSql}${whereSql}${groupBySql}${havingSql}${orderBySql}${limitSql}${offsetSql}${lockingClauseSql}`;
+    if (setOperators.length > 0) {
+      return this.buildSetOperations(finalQuery, setOperators);
+    }
+    return finalQuery;
+  }
+  buildSetOperations(leftSelect, setOperators) {
+    const [setOperator, ...rest] = setOperators;
+    if (!setOperator) {
+      throw new Error("Cannot pass undefined values to any set operator");
+    }
+    if (rest.length === 0) {
+      return this.buildSetOperationQuery({ leftSelect, setOperator });
+    }
+    return this.buildSetOperations(
+      this.buildSetOperationQuery({ leftSelect, setOperator }),
+      rest
+    );
+  }
+  buildSetOperationQuery({
+    leftSelect,
+    setOperator: { type, isAll, rightSelect, limit, orderBy, offset }
+  }) {
+    const leftChunk = import_sql2.sql`(${leftSelect.getSQL()}) `;
+    const rightChunk = import_sql2.sql`(${rightSelect.getSQL()})`;
+    let orderBySql;
+    if (orderBy && orderBy.length > 0) {
+      const orderByValues = [];
+      for (const singleOrderBy of orderBy) {
+        if ((0, import_entity.is)(singleOrderBy, import_columns.PgColumn)) {
+          orderByValues.push(import_sql2.sql.identifier(singleOrderBy.name));
+        } else if ((0, import_entity.is)(singleOrderBy, import_sql2.SQL)) {
+          for (let i = 0; i < singleOrderBy.queryChunks.length; i++) {
+            const chunk = singleOrderBy.queryChunks[i];
+            if ((0, import_entity.is)(chunk, import_columns.PgColumn)) {
+              singleOrderBy.queryChunks[i] = import_sql2.sql.identifier(chunk.name);
+            }
+          }
+          orderByValues.push(import_sql2.sql`${singleOrderBy}`);
+        } else {
+          orderByValues.push(import_sql2.sql`${singleOrderBy}`);
+        }
+      }
+      orderBySql = import_sql2.sql` order by ${import_sql2.sql.join(orderByValues, import_sql2.sql`, `)} `;
+    }
+    const limitSql = limit ? import_sql2.sql` limit ${limit}` : void 0;
+    const operatorChunk = import_sql2.sql.raw(`${type} ${isAll ? "all " : ""}`);
+    const offsetSql = offset ? import_sql2.sql` offset ${offset}` : void 0;
+    return import_sql2.sql`${leftChunk}${operatorChunk}${rightChunk}${orderBySql}${limitSql}${offsetSql}`;
+  }
+  buildInsertQuery({ table, values, onConflict, returning, withList }) {
+    const valuesSqlList = [];
+    const columns = table[import_table2.Table.Symbol.Columns];
+    const colEntries = Object.entries(columns);
+    const insertOrder = colEntries.map(([, column]) => import_sql2.sql.identifier(column.name));
+    for (const [valueIndex, value] of values.entries()) {
+      const valueList = [];
+      for (const [fieldName, col] of colEntries) {
+        const colValue = value[fieldName];
+        if (colValue === void 0 || (0, import_entity.is)(colValue, import_sql2.Param) && colValue.value === void 0) {
+          if (col.defaultFn !== void 0) {
+            const defaultFnResult = col.defaultFn();
+            const defaultValue = (0, import_entity.is)(defaultFnResult, import_sql2.SQL) ? defaultFnResult : import_sql2.sql.param(defaultFnResult, col);
+            valueList.push(defaultValue);
+          } else if (!col.default && col.onUpdateFn !== void 0) {
+            const onUpdateFnResult = col.onUpdateFn();
+            const newValue = (0, import_entity.is)(onUpdateFnResult, import_sql2.SQL) ? onUpdateFnResult : import_sql2.sql.param(onUpdateFnResult, col);
+            valueList.push(newValue);
+          } else {
+            valueList.push(import_sql2.sql`default`);
+          }
+        } else {
+          valueList.push(colValue);
+        }
+      }
+      valuesSqlList.push(valueList);
+      if (valueIndex < values.length - 1) {
+        valuesSqlList.push(import_sql2.sql`, `);
+      }
+    }
+    const withSql = this.buildWithCTE(withList);
+    const valuesSql = import_sql2.sql.join(valuesSqlList);
+    const returningSql = returning ? import_sql2.sql` returning ${this.buildSelection(returning, { isSingleTable: true })}` : void 0;
+    const onConflictSql = onConflict ? import_sql2.sql` on conflict ${onConflict}` : void 0;
+    return import_sql2.sql`${withSql}insert into ${table} ${insertOrder} values ${valuesSql}${onConflictSql}${returningSql}`;
+  }
+  buildRefreshMaterializedViewQuery({ view, concurrently, withNoData }) {
+    const concurrentlySql = concurrently ? import_sql2.sql` concurrently` : void 0;
+    const withNoDataSql = withNoData ? import_sql2.sql` with no data` : void 0;
+    return import_sql2.sql`refresh materialized view${concurrentlySql} ${view}${withNoDataSql}`;
+  }
+  prepareTyping(encoder) {
+    if ((0, import_entity.is)(encoder, import_columns.PgJsonb) || (0, import_entity.is)(encoder, import_columns.PgJson)) {
+      return "json";
+    } else if ((0, import_entity.is)(encoder, import_columns.PgNumeric)) {
+      return "decimal";
+    } else if ((0, import_entity.is)(encoder, import_columns.PgTime)) {
+      return "time";
+    } else if ((0, import_entity.is)(encoder, import_columns.PgTimestamp) || (0, import_entity.is)(encoder, import_columns.PgTimestampString)) {
+      return "timestamp";
+    } else if ((0, import_entity.is)(encoder, import_columns.PgDate) || (0, import_entity.is)(encoder, import_columns.PgDateString)) {
+      return "date";
+    } else if ((0, import_entity.is)(encoder, import_columns.PgUUID)) {
+      return "uuid";
+    } else {
+      return "none";
+    }
+  }
+  sqlToQuery(sql2) {
+    return sql2.toQuery({
+      escapeName: this.escapeName,
+      escapeParam: this.escapeParam,
+      escapeString: this.escapeString,
+      prepareTyping: this.prepareTyping
+    });
+  }
+  // buildRelationalQueryWithPK({
+  // 	fullSchema,
+  // 	schema,
+  // 	tableNamesMap,
+  // 	table,
+  // 	tableConfig,
+  // 	queryConfig: config,
+  // 	tableAlias,
+  // 	isRoot = false,
+  // 	joinOn,
+  // }: {
+  // 	fullSchema: Record<string, unknown>;
+  // 	schema: TablesRelationalConfig;
+  // 	tableNamesMap: Record<string, string>;
+  // 	table: PgTable;
+  // 	tableConfig: TableRelationalConfig;
+  // 	queryConfig: true | DBQueryConfig<'many', true>;
+  // 	tableAlias: string;
+  // 	isRoot?: boolean;
+  // 	joinOn?: SQL;
+  // }): BuildRelationalQueryResult<PgTable, PgColumn> {
+  // 	// For { "<relation>": true }, return a table with selection of all columns
+  // 	if (config === true) {
+  // 		const selectionEntries = Object.entries(tableConfig.columns);
+  // 		const selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = selectionEntries.map((
+  // 			[key, value],
+  // 		) => ({
+  // 			dbKey: value.name,
+  // 			tsKey: key,
+  // 			field: value as PgColumn,
+  // 			relationTableTsKey: undefined,
+  // 			isJson: false,
+  // 			selection: [],
+  // 		}));
+  // 		return {
+  // 			tableTsKey: tableConfig.tsName,
+  // 			sql: table,
+  // 			selection,
+  // 		};
+  // 	}
+  // 	// let selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = [];
+  // 	// let selectionForBuild = selection;
+  // 	const aliasedColumns = Object.fromEntries(
+  // 		Object.entries(tableConfig.columns).map(([key, value]) => [key, aliasedTableColumn(value, tableAlias)]),
+  // 	);
+  // 	const aliasedRelations = Object.fromEntries(
+  // 		Object.entries(tableConfig.relations).map(([key, value]) => [key, aliasedRelation(value, tableAlias)]),
+  // 	);
+  // 	const aliasedFields = Object.assign({}, aliasedColumns, aliasedRelations);
+  // 	let where, hasUserDefinedWhere;
+  // 	if (config.where) {
+  // 		const whereSql = typeof config.where === 'function' ? config.where(aliasedFields, operators) : config.where;
+  // 		where = whereSql && mapColumnsInSQLToAlias(whereSql, tableAlias);
+  // 		hasUserDefinedWhere = !!where;
+  // 	}
+  // 	where = and(joinOn, where);
+  // 	// const fieldsSelection: { tsKey: string; value: PgColumn | SQL.Aliased; isExtra?: boolean }[] = [];
+  // 	let joins: Join[] = [];
+  // 	let selectedColumns: string[] = [];
+  // 	// Figure out which columns to select
+  // 	if (config.columns) {
+  // 		let isIncludeMode = false;
+  // 		for (const [field, value] of Object.entries(config.columns)) {
+  // 			if (value === undefined) {
+  // 				continue;
+  // 			}
+  // 			if (field in tableConfig.columns) {
+  // 				if (!isIncludeMode && value === true) {
+  // 					isIncludeMode = true;
+  // 				}
+  // 				selectedColumns.push(field);
+  // 			}
+  // 		}
+  // 		if (selectedColumns.length > 0) {
+  // 			selectedColumns = isIncludeMode
+  // 				? selectedColumns.filter((c) => config.columns?.[c] === true)
+  // 				: Object.keys(tableConfig.columns).filter((key) => !selectedColumns.includes(key));
+  // 		}
+  // 	} else {
+  // 		// Select all columns if selection is not specified
+  // 		selectedColumns = Object.keys(tableConfig.columns);
+  // 	}
+  // 	// for (const field of selectedColumns) {
+  // 	// 	const column = tableConfig.columns[field]! as PgColumn;
+  // 	// 	fieldsSelection.push({ tsKey: field, value: column });
+  // 	// }
+  // 	let initiallySelectedRelations: {
+  // 		tsKey: string;
+  // 		queryConfig: true | DBQueryConfig<'many', false>;
+  // 		relation: Relation;
+  // 	}[] = [];
+  // 	// let selectedRelations: BuildRelationalQueryResult<PgTable, PgColumn>['selection'] = [];
+  // 	// Figure out which relations to select
+  // 	if (config.with) {
+  // 		initiallySelectedRelations = Object.entries(config.with)
+  // 			.filter((entry): entry is [typeof entry[0], NonNullable<typeof entry[1]>] => !!entry[1])
+  // 			.map(([tsKey, queryConfig]) => ({ tsKey, queryConfig, relation: tableConfig.relations[tsKey]! }));
+  // 	}
+  // 	const manyRelations = initiallySelectedRelations.filter((r) =>
+  // 		is(r.relation, Many)
+  // 		&& (schema[tableNamesMap[r.relation.referencedTable[Table.Symbol.Name]]!]?.primaryKey.length ?? 0) > 0
+  // 	);
+  // 	// If this is the last Many relation (or there are no Many relations), we are on the innermost subquery level
+  // 	const isInnermostQuery = manyRelations.length < 2;
+  // 	const selectedExtras: {
+  // 		tsKey: string;
+  // 		value: SQL.Aliased;
+  // 	}[] = [];
+  // 	// Figure out which extras to select
+  // 	if (isInnermostQuery && config.extras) {
+  // 		const extras = typeof config.extras === 'function'
+  // 			? config.extras(aliasedFields, { sql })
+  // 			: config.extras;
+  // 		for (const [tsKey, value] of Object.entries(extras)) {
+  // 			selectedExtras.push({
+  // 				tsKey,
+  // 				value: mapColumnsInAliasedSQLToAlias(value, tableAlias),
+  // 			});
+  // 		}
+  // 	}
+  // 	// Transform `fieldsSelection` into `selection`
+  // 	// `fieldsSelection` shouldn't be used after this point
+  // 	// for (const { tsKey, value, isExtra } of fieldsSelection) {
+  // 	// 	selection.push({
+  // 	// 		dbKey: is(value, SQL.Aliased) ? value.fieldAlias : tableConfig.columns[tsKey]!.name,
+  // 	// 		tsKey,
+  // 	// 		field: is(value, Column) ? aliasedTableColumn(value, tableAlias) : value,
+  // 	// 		relationTableTsKey: undefined,
+  // 	// 		isJson: false,
+  // 	// 		isExtra,
+  // 	// 		selection: [],
+  // 	// 	});
+  // 	// }
+  // 	let orderByOrig = typeof config.orderBy === 'function'
+  // 		? config.orderBy(aliasedFields, orderByOperators)
+  // 		: config.orderBy ?? [];
+  // 	if (!Array.isArray(orderByOrig)) {
+  // 		orderByOrig = [orderByOrig];
+  // 	}
+  // 	const orderBy = orderByOrig.map((orderByValue) => {
+  // 		if (is(orderByValue, Column)) {
+  // 			return aliasedTableColumn(orderByValue, tableAlias) as PgColumn;
+  // 		}
+  // 		return mapColumnsInSQLToAlias(orderByValue, tableAlias);
+  // 	});
+  // 	const limit = isInnermostQuery ? config.limit : undefined;
+  // 	const offset = isInnermostQuery ? config.offset : undefined;
+  // 	// For non-root queries without additional config except columns, return a table with selection
+  // 	if (
+  // 		!isRoot
+  // 		&& initiallySelectedRelations.length === 0
+  // 		&& selectedExtras.length === 0
+  // 		&& !where
+  // 		&& orderBy.length === 0
+  // 		&& limit === undefined
+  // 		&& offset === undefined
+  // 	) {
+  // 		return {
+  // 			tableTsKey: tableConfig.tsName,
+  // 			sql: table,
+  // 			selection: selectedColumns.map((key) => ({
+  // 				dbKey: tableConfig.columns[key]!.name,
+  // 				tsKey: key,
+  // 				field: tableConfig.columns[key] as PgColumn,
+  // 				relationTableTsKey: undefined,
+  // 				isJson: false,
+  // 				selection: [],
+  // 			})),
+  // 		};
+  // 	}
+  // 	const selectedRelationsWithoutPK:
+  // 	// Process all relations without primary keys, because they need to be joined differently and will all be on the same query level
+  // 	for (
+  // 		const {
+  // 			tsKey: selectedRelationTsKey,
+  // 			queryConfig: selectedRelationConfigValue,
+  // 			relation,
+  // 		} of initiallySelectedRelations
+  // 	) {
+  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
+  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
+  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
+  // 		const relationTable = schema[relationTableTsName]!;
+  // 		if (relationTable.primaryKey.length > 0) {
+  // 			continue;
+  // 		}
+  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
+  // 		const joinOn = and(
+  // 			...normalizedRelation.fields.map((field, i) =>
+  // 				eq(
+  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
+  // 					aliasedTableColumn(field, tableAlias),
+  // 				)
+  // 			),
+  // 		);
+  // 		const builtRelation = this.buildRelationalQueryWithoutPK({
+  // 			fullSchema,
+  // 			schema,
+  // 			tableNamesMap,
+  // 			table: fullSchema[relationTableTsName] as PgTable,
+  // 			tableConfig: schema[relationTableTsName]!,
+  // 			queryConfig: selectedRelationConfigValue,
+  // 			tableAlias: relationTableAlias,
+  // 			joinOn,
+  // 			nestedQueryRelation: relation,
+  // 		});
+  // 		const field = sql`${sql.identifier(relationTableAlias)}.${sql.identifier('data')}`.as(selectedRelationTsKey);
+  // 		joins.push({
+  // 			on: sql`true`,
+  // 			table: new Subquery(builtRelation.sql as SQL, {}, relationTableAlias),
+  // 			alias: relationTableAlias,
+  // 			joinType: 'left',
+  // 			lateral: true,
+  // 		});
+  // 		selectedRelations.push({
+  // 			dbKey: selectedRelationTsKey,
+  // 			tsKey: selectedRelationTsKey,
+  // 			field,
+  // 			relationTableTsKey: relationTableTsName,
+  // 			isJson: true,
+  // 			selection: builtRelation.selection,
+  // 		});
+  // 	}
+  // 	const oneRelations = initiallySelectedRelations.filter((r): r is typeof r & { relation: One } =>
+  // 		is(r.relation, One)
+  // 	);
+  // 	// Process all One relations with PKs, because they can all be joined on the same level
+  // 	for (
+  // 		const {
+  // 			tsKey: selectedRelationTsKey,
+  // 			queryConfig: selectedRelationConfigValue,
+  // 			relation,
+  // 		} of oneRelations
+  // 	) {
+  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
+  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
+  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
+  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
+  // 		const relationTable = schema[relationTableTsName]!;
+  // 		if (relationTable.primaryKey.length === 0) {
+  // 			continue;
+  // 		}
+  // 		const joinOn = and(
+  // 			...normalizedRelation.fields.map((field, i) =>
+  // 				eq(
+  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
+  // 					aliasedTableColumn(field, tableAlias),
+  // 				)
+  // 			),
+  // 		);
+  // 		const builtRelation = this.buildRelationalQueryWithPK({
+  // 			fullSchema,
+  // 			schema,
+  // 			tableNamesMap,
+  // 			table: fullSchema[relationTableTsName] as PgTable,
+  // 			tableConfig: schema[relationTableTsName]!,
+  // 			queryConfig: selectedRelationConfigValue,
+  // 			tableAlias: relationTableAlias,
+  // 			joinOn,
+  // 		});
+  // 		const field = sql`case when ${sql.identifier(relationTableAlias)} is null then null else json_build_array(${
+  // 			sql.join(
+  // 				builtRelation.selection.map(({ field }) =>
+  // 					is(field, SQL.Aliased)
+  // 						? sql`${sql.identifier(relationTableAlias)}.${sql.identifier(field.fieldAlias)}`
+  // 						: is(field, Column)
+  // 						? aliasedTableColumn(field, relationTableAlias)
+  // 						: field
+  // 				),
+  // 				sql`, `,
+  // 			)
+  // 		}) end`.as(selectedRelationTsKey);
+  // 		const isLateralJoin = is(builtRelation.sql, SQL);
+  // 		joins.push({
+  // 			on: isLateralJoin ? sql`true` : joinOn,
+  // 			table: is(builtRelation.sql, SQL)
+  // 				? new Subquery(builtRelation.sql, {}, relationTableAlias)
+  // 				: aliasedTable(builtRelation.sql, relationTableAlias),
+  // 			alias: relationTableAlias,
+  // 			joinType: 'left',
+  // 			lateral: is(builtRelation.sql, SQL),
+  // 		});
+  // 		selectedRelations.push({
+  // 			dbKey: selectedRelationTsKey,
+  // 			tsKey: selectedRelationTsKey,
+  // 			field,
+  // 			relationTableTsKey: relationTableTsName,
+  // 			isJson: true,
+  // 			selection: builtRelation.selection,
+  // 		});
+  // 	}
+  // 	let distinct: PgSelectConfig['distinct'];
+  // 	let tableFrom: PgTable | Subquery = table;
+  // 	// Process first Many relation - each one requires a nested subquery
+  // 	const manyRelation = manyRelations[0];
+  // 	if (manyRelation) {
+  // 		const {
+  // 			tsKey: selectedRelationTsKey,
+  // 			queryConfig: selectedRelationQueryConfig,
+  // 			relation,
+  // 		} = manyRelation;
+  // 		distinct = {
+  // 			on: tableConfig.primaryKey.map((c) => aliasedTableColumn(c as PgColumn, tableAlias)),
+  // 		};
+  // 		const normalizedRelation = normalizeRelation(schema, tableNamesMap, relation);
+  // 		const relationTableName = relation.referencedTable[Table.Symbol.Name];
+  // 		const relationTableTsName = tableNamesMap[relationTableName]!;
+  // 		const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
+  // 		const joinOn = and(
+  // 			...normalizedRelation.fields.map((field, i) =>
+  // 				eq(
+  // 					aliasedTableColumn(normalizedRelation.references[i]!, relationTableAlias),
+  // 					aliasedTableColumn(field, tableAlias),
+  // 				)
+  // 			),
+  // 		);
+  // 		const builtRelationJoin = this.buildRelationalQueryWithPK({
+  // 			fullSchema,
+  // 			schema,
+  // 			tableNamesMap,
+  // 			table: fullSchema[relationTableTsName] as PgTable,
+  // 			tableConfig: schema[relationTableTsName]!,
+  // 			queryConfig: selectedRelationQueryConfig,
+  // 			tableAlias: relationTableAlias,
+  // 			joinOn,
+  // 		});
+  // 		const builtRelationSelectionField = sql`case when ${
+  // 			sql.identifier(relationTableAlias)
+  // 		} is null then '[]' else json_agg(json_build_array(${
+  // 			sql.join(
+  // 				builtRelationJoin.selection.map(({ field }) =>
+  // 					is(field, SQL.Aliased)
+  // 						? sql`${sql.identifier(relationTableAlias)}.${sql.identifier(field.fieldAlias)}`
+  // 						: is(field, Column)
+  // 						? aliasedTableColumn(field, relationTableAlias)
+  // 						: field
+  // 				),
+  // 				sql`, `,
+  // 			)
+  // 		})) over (partition by ${sql.join(distinct.on, sql`, `)}) end`.as(selectedRelationTsKey);
+  // 		const isLateralJoin = is(builtRelationJoin.sql, SQL);
+  // 		joins.push({
+  // 			on: isLateralJoin ? sql`true` : joinOn,
+  // 			table: isLateralJoin
+  // 				? new Subquery(builtRelationJoin.sql as SQL, {}, relationTableAlias)
+  // 				: aliasedTable(builtRelationJoin.sql as PgTable, relationTableAlias),
+  // 			alias: relationTableAlias,
+  // 			joinType: 'left',
+  // 			lateral: isLateralJoin,
+  // 		});
+  // 		// Build the "from" subquery with the remaining Many relations
+  // 		const builtTableFrom = this.buildRelationalQueryWithPK({
+  // 			fullSchema,
+  // 			schema,
+  // 			tableNamesMap,
+  // 			table,
+  // 			tableConfig,
+  // 			queryConfig: {
+  // 				...config,
+  // 				where: undefined,
+  // 				orderBy: undefined,
+  // 				limit: undefined,
+  // 				offset: undefined,
+  // 				with: manyRelations.slice(1).reduce<NonNullable<typeof config['with']>>(
+  // 					(result, { tsKey, queryConfig: configValue }) => {
+  // 						result[tsKey] = configValue;
+  // 						return result;
+  // 					},
+  // 					{},
+  // 				),
+  // 			},
+  // 			tableAlias,
+  // 		});
+  // 		selectedRelations.push({
+  // 			dbKey: selectedRelationTsKey,
+  // 			tsKey: selectedRelationTsKey,
+  // 			field: builtRelationSelectionField,
+  // 			relationTableTsKey: relationTableTsName,
+  // 			isJson: true,
+  // 			selection: builtRelationJoin.selection,
+  // 		});
+  // 		// selection = builtTableFrom.selection.map((item) =>
+  // 		// 	is(item.field, SQL.Aliased)
+  // 		// 		? { ...item, field: sql`${sql.identifier(tableAlias)}.${sql.identifier(item.field.fieldAlias)}` }
+  // 		// 		: item
+  // 		// );
+  // 		// selectionForBuild = [{
+  // 		// 	dbKey: '*',
+  // 		// 	tsKey: '*',
+  // 		// 	field: sql`${sql.identifier(tableAlias)}.*`,
+  // 		// 	selection: [],
+  // 		// 	isJson: false,
+  // 		// 	relationTableTsKey: undefined,
+  // 		// }];
+  // 		// const newSelectionItem: (typeof selection)[number] = {
+  // 		// 	dbKey: selectedRelationTsKey,
+  // 		// 	tsKey: selectedRelationTsKey,
+  // 		// 	field,
+  // 		// 	relationTableTsKey: relationTableTsName,
+  // 		// 	isJson: true,
+  // 		// 	selection: builtRelationJoin.selection,
+  // 		// };
+  // 		// selection.push(newSelectionItem);
+  // 		// selectionForBuild.push(newSelectionItem);
+  // 		tableFrom = is(builtTableFrom.sql, PgTable)
+  // 			? builtTableFrom.sql
+  // 			: new Subquery(builtTableFrom.sql, {}, tableAlias);
+  // 	}
+  // 	if (selectedColumns.length === 0 && selectedRelations.length === 0 && selectedExtras.length === 0) {
+  // 		throw new DrizzleError(`No fields selected for table "${tableConfig.tsName}" ("${tableAlias}")`);
+  // 	}
+  // 	let selection: BuildRelationalQueryResult<PgTable, PgColumn>['selection'];
+  // 	function prepareSelectedColumns() {
+  // 		return selectedColumns.map((key) => ({
+  // 			dbKey: tableConfig.columns[key]!.name,
+  // 			tsKey: key,
+  // 			field: tableConfig.columns[key] as PgColumn,
+  // 			relationTableTsKey: undefined,
+  // 			isJson: false,
+  // 			selection: [],
+  // 		}));
+  // 	}
+  // 	function prepareSelectedExtras() {
+  // 		return selectedExtras.map((item) => ({
+  // 			dbKey: item.value.fieldAlias,
+  // 			tsKey: item.tsKey,
+  // 			field: item.value,
+  // 			relationTableTsKey: undefined,
+  // 			isJson: false,
+  // 			selection: [],
+  // 		}));
+  // 	}
+  // 	if (isRoot) {
+  // 		selection = [
+  // 			...prepareSelectedColumns(),
+  // 			...prepareSelectedExtras(),
+  // 		];
+  // 	}
+  // 	if (hasUserDefinedWhere || orderBy.length > 0) {
+  // 		tableFrom = new Subquery(
+  // 			this.buildSelectQuery({
+  // 				table: is(tableFrom, PgTable) ? aliasedTable(tableFrom, tableAlias) : tableFrom,
+  // 				fields: {},
+  // 				fieldsFlat: selectionForBuild.map(({ field }) => ({
+  // 					path: [],
+  // 					field: is(field, Column) ? aliasedTableColumn(field, tableAlias) : field,
+  // 				})),
+  // 				joins,
+  // 				distinct,
+  // 			}),
+  // 			{},
+  // 			tableAlias,
+  // 		);
+  // 		selectionForBuild = selection.map((item) =>
+  // 			is(item.field, SQL.Aliased)
+  // 				? { ...item, field: sql`${sql.identifier(tableAlias)}.${sql.identifier(item.field.fieldAlias)}` }
+  // 				: item
+  // 		);
+  // 		joins = [];
+  // 		distinct = undefined;
+  // 	}
+  // 	const result = this.buildSelectQuery({
+  // 		table: is(tableFrom, PgTable) ? aliasedTable(tableFrom, tableAlias) : tableFrom,
+  // 		fields: {},
+  // 		fieldsFlat: selectionForBuild.map(({ field }) => ({
+  // 			path: [],
+  // 			field: is(field, Column) ? aliasedTableColumn(field, tableAlias) : field,
+  // 		})),
+  // 		where,
+  // 		limit,
+  // 		offset,
+  // 		joins,
+  // 		orderBy,
+  // 		distinct,
+  // 	});
+  // 	return {
+  // 		tableTsKey: tableConfig.tsName,
+  // 		sql: result,
+  // 		selection,
+  // 	};
+  // }
+  buildRelationalQueryWithoutPK({
+    fullSchema,
+    schema,
+    tableNamesMap,
+    table,
+    tableConfig,
+    queryConfig: config,
+    tableAlias,
+    nestedQueryRelation,
+    joinOn
+  }) {
+    let selection = [];
+    let limit, offset, orderBy = [], where;
+    const joins = [];
+    if (config === true) {
+      const selectionEntries = Object.entries(tableConfig.columns);
+      selection = selectionEntries.map(([key, value]) => ({
+        dbKey: value.name,
+        tsKey: key,
+        field: (0, import_alias.aliasedTableColumn)(value, tableAlias),
+        relationTableTsKey: void 0,
+        isJson: false,
+        selection: []
+      }));
+    } else {
+      const aliasedColumns = Object.fromEntries(
+        Object.entries(tableConfig.columns).map(([key, value]) => [key, (0, import_alias.aliasedTableColumn)(value, tableAlias)])
+      );
+      if (config.where) {
+        const whereSql = typeof config.where === "function" ? config.where(aliasedColumns, (0, import_relations.getOperators)()) : config.where;
+        where = whereSql && (0, import_alias.mapColumnsInSQLToAlias)(whereSql, tableAlias);
+      }
+      const fieldsSelection = [];
+      let selectedColumns = [];
+      if (config.columns) {
+        let isIncludeMode = false;
+        for (const [field, value] of Object.entries(config.columns)) {
+          if (value === void 0) {
+            continue;
+          }
+          if (field in tableConfig.columns) {
+            if (!isIncludeMode && value === true) {
+              isIncludeMode = true;
+            }
+            selectedColumns.push(field);
+          }
+        }
+        if (selectedColumns.length > 0) {
+          selectedColumns = isIncludeMode ? selectedColumns.filter((c) => config.columns?.[c] === true) : Object.keys(tableConfig.columns).filter((key) => !selectedColumns.includes(key));
+        }
+      } else {
+        selectedColumns = Object.keys(tableConfig.columns);
+      }
+      for (const field of selectedColumns) {
+        const column = tableConfig.columns[field];
+        fieldsSelection.push({ tsKey: field, value: column });
+      }
+      let selectedRelations = [];
+      if (config.with) {
+        selectedRelations = Object.entries(config.with).filter((entry) => !!entry[1]).map(([tsKey, queryConfig]) => ({ tsKey, queryConfig, relation: tableConfig.relations[tsKey] }));
+      }
+      let extras;
+      if (config.extras) {
+        extras = typeof config.extras === "function" ? config.extras(aliasedColumns, { sql: import_sql2.sql }) : config.extras;
+        for (const [tsKey, value] of Object.entries(extras)) {
+          fieldsSelection.push({
+            tsKey,
+            value: (0, import_alias.mapColumnsInAliasedSQLToAlias)(value, tableAlias)
+          });
+        }
+      }
+      for (const { tsKey, value } of fieldsSelection) {
+        selection.push({
+          dbKey: (0, import_entity.is)(value, import_sql2.SQL.Aliased) ? value.fieldAlias : tableConfig.columns[tsKey].name,
+          tsKey,
+          field: (0, import_entity.is)(value, import_column.Column) ? (0, import_alias.aliasedTableColumn)(value, tableAlias) : value,
+          relationTableTsKey: void 0,
+          isJson: false,
+          selection: []
+        });
+      }
+      let orderByOrig = typeof config.orderBy === "function" ? config.orderBy(aliasedColumns, (0, import_relations.getOrderByOperators)()) : config.orderBy ?? [];
+      if (!Array.isArray(orderByOrig)) {
+        orderByOrig = [orderByOrig];
+      }
+      orderBy = orderByOrig.map((orderByValue) => {
+        if ((0, import_entity.is)(orderByValue, import_column.Column)) {
+          return (0, import_alias.aliasedTableColumn)(orderByValue, tableAlias);
+        }
+        return (0, import_alias.mapColumnsInSQLToAlias)(orderByValue, tableAlias);
+      });
+      limit = config.limit;
+      offset = config.offset;
+      for (const {
+        tsKey: selectedRelationTsKey,
+        queryConfig: selectedRelationConfigValue,
+        relation
+      } of selectedRelations) {
+        const normalizedRelation = (0, import_relations.normalizeRelation)(schema, tableNamesMap, relation);
+        const relationTableName = relation.referencedTable[import_table2.Table.Symbol.Name];
+        const relationTableTsName = tableNamesMap[relationTableName];
+        const relationTableAlias = `${tableAlias}_${selectedRelationTsKey}`;
+        const joinOn2 = (0, import_sql.and)(
+          ...normalizedRelation.fields.map(
+            (field2, i) => (0, import_sql.eq)(
+              (0, import_alias.aliasedTableColumn)(normalizedRelation.references[i], relationTableAlias),
+              (0, import_alias.aliasedTableColumn)(field2, tableAlias)
+            )
+          )
+        );
+        const builtRelation = this.buildRelationalQueryWithoutPK({
+          fullSchema,
+          schema,
+          tableNamesMap,
+          table: fullSchema[relationTableTsName],
+          tableConfig: schema[relationTableTsName],
+          queryConfig: (0, import_entity.is)(relation, import_relations.One) ? selectedRelationConfigValue === true ? { limit: 1 } : { ...selectedRelationConfigValue, limit: 1 } : selectedRelationConfigValue,
+          tableAlias: relationTableAlias,
+          joinOn: joinOn2,
+          nestedQueryRelation: relation
+        });
+        const field = import_sql2.sql`${import_sql2.sql.identifier(relationTableAlias)}.${import_sql2.sql.identifier("data")}`.as(selectedRelationTsKey);
+        joins.push({
+          on: import_sql2.sql`true`,
+          table: new import_subquery.Subquery(builtRelation.sql, {}, relationTableAlias),
+          alias: relationTableAlias,
+          joinType: "left",
+          lateral: true
+        });
+        selection.push({
+          dbKey: selectedRelationTsKey,
+          tsKey: selectedRelationTsKey,
+          field,
+          relationTableTsKey: relationTableTsName,
+          isJson: true,
+          selection: builtRelation.selection
+        });
+      }
+    }
+    if (selection.length === 0) {
+      throw new import_errors.DrizzleError({ message: `No fields selected for table "${tableConfig.tsName}" ("${tableAlias}")` });
+    }
+    let result;
+    where = (0, import_sql.and)(joinOn, where);
+    if (nestedQueryRelation) {
+      let field = import_sql2.sql`json_build_array(${import_sql2.sql.join(
+        selection.map(
+          ({ field: field2, tsKey, isJson }) => isJson ? import_sql2.sql`${import_sql2.sql.identifier(`${tableAlias}_${tsKey}`)}.${import_sql2.sql.identifier("data")}` : (0, import_entity.is)(field2, import_sql2.SQL.Aliased) ? field2.sql : field2
+        ),
+        import_sql2.sql`, `
+      )})`;
+      if ((0, import_entity.is)(nestedQueryRelation, import_relations.Many)) {
+        field = import_sql2.sql`coalesce(json_agg(${field}${orderBy.length > 0 ? import_sql2.sql` order by ${import_sql2.sql.join(orderBy, import_sql2.sql`, `)}` : void 0}), '[]'::json)`;
+      }
+      const nestedSelection = [{
+        dbKey: "data",
+        tsKey: "data",
+        field: field.as("data"),
+        isJson: true,
+        relationTableTsKey: tableConfig.tsName,
+        selection
+      }];
+      const needsSubquery = limit !== void 0 || offset !== void 0 || orderBy.length > 0;
+      if (needsSubquery) {
+        result = this.buildSelectQuery({
+          table: (0, import_alias.aliasedTable)(table, tableAlias),
+          fields: {},
+          fieldsFlat: [{
+            path: [],
+            field: import_sql2.sql.raw("*")
+          }],
+          where,
+          limit,
+          offset,
+          orderBy,
+          setOperators: []
+        });
+        where = void 0;
+        limit = void 0;
+        offset = void 0;
+        orderBy = [];
+      } else {
+        result = (0, import_alias.aliasedTable)(table, tableAlias);
+      }
+      result = this.buildSelectQuery({
+        table: (0, import_entity.is)(result, import_table.PgTable) ? result : new import_subquery.Subquery(result, {}, tableAlias),
+        fields: {},
+        fieldsFlat: nestedSelection.map(({ field: field2 }) => ({
+          path: [],
+          field: (0, import_entity.is)(field2, import_column.Column) ? (0, import_alias.aliasedTableColumn)(field2, tableAlias) : field2
+        })),
+        joins,
+        where,
+        limit,
+        offset,
+        orderBy,
+        setOperators: []
+      });
+    } else {
+      result = this.buildSelectQuery({
+        table: (0, import_alias.aliasedTable)(table, tableAlias),
+        fields: {},
+        fieldsFlat: selection.map(({ field }) => ({
+          path: [],
+          field: (0, import_entity.is)(field, import_column.Column) ? (0, import_alias.aliasedTableColumn)(field, tableAlias) : field
+        })),
+        joins,
+        where,
+        limit,
+        offset,
+        orderBy,
+        setOperators: []
+      });
+    }
+    return {
+      tableTsKey: tableConfig.tsName,
+      sql: result,
+      selection
+    };
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=dialect.cjs.map
+
+/***/ }),
+
+/***/ 58100:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var foreign_keys_exports = {};
+__export(foreign_keys_exports, {
+  ForeignKey: () => ForeignKey,
+  ForeignKeyBuilder: () => ForeignKeyBuilder,
+  foreignKey: () => foreignKey
+});
+module.exports = __toCommonJS(foreign_keys_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(61195);
+class ForeignKeyBuilder {
+  static [import_entity.entityKind] = "PgForeignKeyBuilder";
+  /** @internal */
+  reference;
+  /** @internal */
+  _onUpdate = "no action";
+  /** @internal */
+  _onDelete = "no action";
+  constructor(config, actions) {
+    this.reference = () => {
+      const { name, columns, foreignColumns } = config();
+      return { name, columns, foreignTable: foreignColumns[0].table, foreignColumns };
+    };
+    if (actions) {
+      this._onUpdate = actions.onUpdate;
+      this._onDelete = actions.onDelete;
+    }
+  }
+  onUpdate(action) {
+    this._onUpdate = action === void 0 ? "no action" : action;
+    return this;
+  }
+  onDelete(action) {
+    this._onDelete = action === void 0 ? "no action" : action;
+    return this;
+  }
+  /** @internal */
+  build(table) {
+    return new ForeignKey(table, this);
+  }
+}
+class ForeignKey {
+  constructor(table, builder) {
+    this.table = table;
+    this.reference = builder.reference;
+    this.onUpdate = builder._onUpdate;
+    this.onDelete = builder._onDelete;
+  }
+  static [import_entity.entityKind] = "PgForeignKey";
+  reference;
+  onUpdate;
+  onDelete;
+  getName() {
+    const { name, columns, foreignColumns } = this.reference();
+    const columnNames = columns.map((column) => column.name);
+    const foreignColumnNames = foreignColumns.map((column) => column.name);
+    const chunks = [
+      this.table[import_table.PgTable.Symbol.Name],
+      ...columnNames,
+      foreignColumns[0].table[import_table.PgTable.Symbol.Name],
+      ...foreignColumnNames
+    ];
+    return name ?? `${chunks.join("_")}_fk`;
+  }
+}
+function foreignKey(config) {
+  function mappedConfig() {
+    const { name, columns, foreignColumns } = config;
+    return {
+      name,
+      columns,
+      foreignColumns
+    };
+  }
+  return new ForeignKeyBuilder(mappedConfig);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=foreign-keys.cjs.map
+
+/***/ }),
+
+/***/ 83615:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var pg_core_exports = {};
+module.exports = __toCommonJS(pg_core_exports);
+__reExport(pg_core_exports, __nccwpck_require__(9987), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(97810), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(98127), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(82627), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(3245), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(58100), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(2163), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(78694), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(71725), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(44384), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(3219), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(62043), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(61195), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(61952), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(84680), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(56257), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(84916), module.exports);
+__reExport(pg_core_exports, __nccwpck_require__(51830), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 2163:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var indexes_exports = {};
+__export(indexes_exports, {
+  Index: () => Index,
+  IndexBuilder: () => IndexBuilder,
+  IndexBuilderOn: () => IndexBuilderOn,
+  index: () => index,
+  uniqueIndex: () => uniqueIndex
+});
+module.exports = __toCommonJS(indexes_exports);
+var import_entity = __nccwpck_require__(40336);
+class IndexBuilderOn {
+  constructor(unique, name) {
+    this.unique = unique;
+    this.name = name;
+  }
+  static [import_entity.entityKind] = "PgIndexBuilderOn";
+  on(...columns) {
+    return new IndexBuilder(columns, this.unique, false, this.name);
+  }
+  onOnly(...columns) {
+    return new IndexBuilder(columns, this.unique, true, this.name);
+  }
+}
+class IndexBuilder {
+  static [import_entity.entityKind] = "PgIndexBuilder";
+  /** @internal */
+  config;
+  constructor(columns, unique, only, name) {
+    this.config = {
+      name,
+      columns,
+      unique,
+      only
+    };
+  }
+  concurrently() {
+    this.config.concurrently = true;
+    return this;
+  }
+  using(method) {
+    this.config.using = method;
+    return this;
+  }
+  asc() {
+    this.config.order = "asc";
+    return this;
+  }
+  desc() {
+    this.config.order = "desc";
+    return this;
+  }
+  nullsFirst() {
+    this.config.nulls = "first";
+    return this;
+  }
+  nullsLast() {
+    this.config.nulls = "last";
+    return this;
+  }
+  where(condition) {
+    this.config.where = condition;
+    return this;
+  }
+  /** @internal */
+  build(table) {
+    return new Index(this.config, table);
+  }
+}
+class Index {
+  static [import_entity.entityKind] = "PgIndex";
+  config;
+  constructor(config, table) {
+    this.config = { ...config, table };
+  }
+}
+function index(name) {
+  return new IndexBuilderOn(false, name);
+}
+function uniqueIndex(name) {
+  return new IndexBuilderOn(true, name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=indexes.cjs.map
+
+/***/ }),
+
+/***/ 78694:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var primary_keys_exports = {};
+__export(primary_keys_exports, {
+  PrimaryKey: () => PrimaryKey,
+  PrimaryKeyBuilder: () => PrimaryKeyBuilder,
+  primaryKey: () => primaryKey
+});
+module.exports = __toCommonJS(primary_keys_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(61195);
+function primaryKey(...config) {
+  if (config[0].columns) {
+    return new PrimaryKeyBuilder(config[0].columns, config[0].name);
+  }
+  return new PrimaryKeyBuilder(config);
+}
+class PrimaryKeyBuilder {
+  static [import_entity.entityKind] = "PgPrimaryKeyBuilder";
+  /** @internal */
+  columns;
+  /** @internal */
+  name;
+  constructor(columns, name) {
+    this.columns = columns;
+    this.name = name;
+  }
+  /** @internal */
+  build(table) {
+    return new PrimaryKey(table, this.columns, this.name);
+  }
+}
+class PrimaryKey {
+  constructor(table, columns, name) {
+    this.table = table;
+    this.columns = columns;
+    this.name = name;
+  }
+  static [import_entity.entityKind] = "PgPrimaryKey";
+  columns;
+  name;
+  getName() {
+    return this.name ?? `${this.table[import_table.PgTable.Symbol.Name]}_${this.columns.map((column) => column.name).join("_")}_pk`;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=primary-keys.cjs.map
+
+/***/ }),
+
+/***/ 47186:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var delete_exports = {};
+__export(delete_exports, {
+  PgDeleteBase: () => PgDeleteBase
+});
+module.exports = __toCommonJS(delete_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+var import_table = __nccwpck_require__(54419);
+var import_tracing = __nccwpck_require__(93789);
+var import_utils = __nccwpck_require__(26656);
+class PgDeleteBase extends import_query_promise.QueryPromise {
+  constructor(table, session, dialect, withList) {
+    super();
+    this.session = session;
+    this.dialect = dialect;
+    this.config = { table, withList };
+  }
+  static [import_entity.entityKind] = "PgDelete";
+  config;
+  /**
+   * Adds a `where` clause to the query.
+   *
+   * Calling this method will delete only those rows that fulfill a specified condition.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/delete}
+   *
+   * @param where the `where` clause.
+   *
+   * @example
+   * You can use conditional operators and `sql function` to filter the rows to be deleted.
+   *
+   * ```ts
+   * // Delete all cars with green color
+   * await db.delete(cars).where(eq(cars.color, 'green'));
+   * // or
+   * await db.delete(cars).where(sql`${cars.color} = 'green'`)
+   * ```
+   *
+   * You can logically combine conditional operators with `and()` and `or()` operators:
+   *
+   * ```ts
+   * // Delete all BMW cars with a green color
+   * await db.delete(cars).where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
+   *
+   * // Delete all cars with the green or blue color
+   * await db.delete(cars).where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
+   * ```
+   */
+  where(where) {
+    this.config.where = where;
+    return this;
+  }
+  returning(fields = this.config.table[import_table.Table.Symbol.Columns]) {
+    this.config.returning = (0, import_utils.orderSelectedFields)(fields);
+    return this;
+  }
+  /** @internal */
+  getSQL() {
+    return this.dialect.buildDeleteQuery(this.config);
+  }
+  toSQL() {
+    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
+    return rest;
+  }
+  /** @internal */
+  _prepare(name) {
+    return import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
+    });
+  }
+  prepare(name) {
+    return this._prepare(name);
+  }
+  execute = (placeholderValues) => {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      return this._prepare().execute(placeholderValues);
+    });
+  };
+  $dynamic() {
+    return this;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=delete.cjs.map
+
+/***/ }),
+
+/***/ 71725:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var query_builders_exports = {};
+module.exports = __toCommonJS(query_builders_exports);
+__reExport(query_builders_exports, __nccwpck_require__(47186), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(21308), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(69547), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(51818), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(16627), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(52486), module.exports);
+__reExport(query_builders_exports, __nccwpck_require__(54064), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 21308:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var insert_exports = {};
+__export(insert_exports, {
+  PgInsertBase: () => PgInsertBase,
+  PgInsertBuilder: () => PgInsertBuilder
+});
+module.exports = __toCommonJS(insert_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+var import_sql = __nccwpck_require__(23954);
+var import_table = __nccwpck_require__(54419);
+var import_tracing = __nccwpck_require__(93789);
+var import_utils = __nccwpck_require__(26656);
+class PgInsertBuilder {
+  constructor(table, session, dialect, withList) {
+    this.table = table;
+    this.session = session;
+    this.dialect = dialect;
+    this.withList = withList;
+  }
+  static [import_entity.entityKind] = "PgInsertBuilder";
+  values(values) {
+    values = Array.isArray(values) ? values : [values];
+    if (values.length === 0) {
+      throw new Error("values() must be called with at least one value");
+    }
+    const mappedValues = values.map((entry) => {
+      const result = {};
+      const cols = this.table[import_table.Table.Symbol.Columns];
+      for (const colKey of Object.keys(entry)) {
+        const colValue = entry[colKey];
+        result[colKey] = (0, import_entity.is)(colValue, import_sql.SQL) ? colValue : new import_sql.Param(colValue, cols[colKey]);
+      }
+      return result;
+    });
+    return new PgInsertBase(this.table, mappedValues, this.session, this.dialect, this.withList);
+  }
+}
+class PgInsertBase extends import_query_promise.QueryPromise {
+  constructor(table, values, session, dialect, withList) {
+    super();
+    this.session = session;
+    this.dialect = dialect;
+    this.config = { table, values, withList };
+  }
+  static [import_entity.entityKind] = "PgInsert";
+  config;
+  returning(fields = this.config.table[import_table.Table.Symbol.Columns]) {
+    this.config.returning = (0, import_utils.orderSelectedFields)(fields);
+    return this;
+  }
+  /**
+   * Adds an `on conflict do nothing` clause to the query.
+   *
+   * Calling this method simply avoids inserting a row as its alternative action.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/insert#on-conflict-do-nothing}
+   *
+   * @param config The `target` and `where` clauses.
+   *
+   * @example
+   * ```ts
+   * // Insert one row and cancel the insert if there's a conflict
+   * await db.insert(cars)
+   *   .values({ id: 1, brand: 'BMW' })
+   *   .onConflictDoNothing();
+   *
+   * // Explicitly specify conflict target
+   * await db.insert(cars)
+   *   .values({ id: 1, brand: 'BMW' })
+   *   .onConflictDoNothing({ target: cars.id });
+   * ```
+   */
+  onConflictDoNothing(config = {}) {
+    if (config.target === void 0) {
+      this.config.onConflict = import_sql.sql`do nothing`;
+    } else {
+      let targetColumn = "";
+      targetColumn = Array.isArray(config.target) ? config.target.map((it) => this.dialect.escapeName(it.name)).join(",") : this.dialect.escapeName(config.target.name);
+      const whereSql = config.where ? import_sql.sql` where ${config.where}` : void 0;
+      this.config.onConflict = import_sql.sql`(${import_sql.sql.raw(targetColumn)})${whereSql} do nothing`;
+    }
+    return this;
+  }
+  /**
+   * Adds an `on conflict do update` clause to the query.
+   *
+   * Calling this method will update the existing row that conflicts with the row proposed for insertion as its alternative action.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/insert#upserts-and-conflicts}
+   *
+   * @param config The `target`, `set` and `where` clauses.
+   *
+   * @example
+   * ```ts
+   * // Update the row if there's a conflict
+   * await db.insert(cars)
+   *   .values({ id: 1, brand: 'BMW' })
+   *   .onConflictDoUpdate({
+   *     target: cars.id,
+   *     set: { brand: 'Porsche' }
+   *   });
+   *
+   * // Upsert with 'where' clause
+   * await db.insert(cars)
+   *   .values({ id: 1, brand: 'BMW' })
+   *   .onConflictDoUpdate({
+   *     target: cars.id,
+   *     set: { brand: 'newBMW' },
+   *     targetWhere: sql`${cars.createdAt} > '2023-01-01'::date`,
+   *   });
+   * ```
+   */
+  onConflictDoUpdate(config) {
+    if (config.where && (config.targetWhere || config.setWhere)) {
+      throw new Error(
+        'You cannot use both "where" and "targetWhere"/"setWhere" at the same time - "where" is deprecated, use "targetWhere" or "setWhere" instead.'
+      );
+    }
+    const whereSql = config.where ? import_sql.sql` where ${config.where}` : void 0;
+    const targetWhereSql = config.targetWhere ? import_sql.sql` where ${config.targetWhere}` : void 0;
+    const setWhereSql = config.setWhere ? import_sql.sql` where ${config.setWhere}` : void 0;
+    const setSql = this.dialect.buildUpdateSet(this.config.table, (0, import_utils.mapUpdateSet)(this.config.table, config.set));
+    let targetColumn = "";
+    targetColumn = Array.isArray(config.target) ? config.target.map((it) => this.dialect.escapeName(it.name)).join(",") : this.dialect.escapeName(config.target.name);
+    this.config.onConflict = import_sql.sql`(${import_sql.sql.raw(targetColumn)})${targetWhereSql} do update set ${setSql}${whereSql}${setWhereSql}`;
+    return this;
+  }
+  /** @internal */
+  getSQL() {
+    return this.dialect.buildInsertQuery(this.config);
+  }
+  toSQL() {
+    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
+    return rest;
+  }
+  /** @internal */
+  _prepare(name) {
+    return import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
+    });
+  }
+  prepare(name) {
+    return this._prepare(name);
+  }
+  execute = (placeholderValues) => {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      return this._prepare().execute(placeholderValues);
+    });
+  };
+  $dynamic() {
+    return this;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=insert.cjs.map
+
+/***/ }),
+
+/***/ 69547:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var query_builder_exports = {};
+__export(query_builder_exports, {
+  QueryBuilder: () => QueryBuilder
+});
+module.exports = __toCommonJS(query_builder_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_dialect = __nccwpck_require__(3245);
+var import_selection_proxy = __nccwpck_require__(25922);
+var import_subquery = __nccwpck_require__(24211);
+var import_select = __nccwpck_require__(16627);
+class QueryBuilder {
+  static [import_entity.entityKind] = "PgQueryBuilder";
+  dialect;
+  $with(alias) {
+    const queryBuilder = this;
+    return {
+      as(qb) {
+        if (typeof qb === "function") {
+          qb = qb(queryBuilder);
+        }
+        return new Proxy(
+          new import_subquery.WithSubquery(qb.getSQL(), qb.getSelectedFields(), alias, true),
+          new import_selection_proxy.SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
+        );
+      }
+    };
+  }
+  with(...queries) {
+    const self = this;
+    function select(fields) {
+      return new import_select.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: void 0,
+        dialect: self.getDialect(),
+        withList: queries
+      });
+    }
+    function selectDistinct(fields) {
+      return new import_select.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: void 0,
+        dialect: self.getDialect(),
+        distinct: true
+      });
+    }
+    function selectDistinctOn(on, fields) {
+      return new import_select.PgSelectBuilder({
+        fields: fields ?? void 0,
+        session: void 0,
+        dialect: self.getDialect(),
+        distinct: { on }
+      });
+    }
+    return { select, selectDistinct, selectDistinctOn };
+  }
+  select(fields) {
+    return new import_select.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: void 0,
+      dialect: this.getDialect()
+    });
+  }
+  selectDistinct(fields) {
+    return new import_select.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: void 0,
+      dialect: this.getDialect(),
+      distinct: true
+    });
+  }
+  selectDistinctOn(on, fields) {
+    return new import_select.PgSelectBuilder({
+      fields: fields ?? void 0,
+      session: void 0,
+      dialect: this.getDialect(),
+      distinct: { on }
+    });
+  }
+  // Lazy load dialect to avoid circular dependency
+  getDialect() {
+    if (!this.dialect) {
+      this.dialect = new import_dialect.PgDialect();
+    }
+    return this.dialect;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=query-builder.cjs.map
+
+/***/ }),
+
+/***/ 37453:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var query_exports = {};
+__export(query_exports, {
+  PgRelationalQuery: () => PgRelationalQuery,
+  RelationalQueryBuilder: () => RelationalQueryBuilder
+});
+module.exports = __toCommonJS(query_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+var import_relations = __nccwpck_require__(11516);
+var import_tracing = __nccwpck_require__(93789);
+class RelationalQueryBuilder {
+  constructor(fullSchema, schema, tableNamesMap, table, tableConfig, dialect, session) {
+    this.fullSchema = fullSchema;
+    this.schema = schema;
+    this.tableNamesMap = tableNamesMap;
+    this.table = table;
+    this.tableConfig = tableConfig;
+    this.dialect = dialect;
+    this.session = session;
+  }
+  static [import_entity.entityKind] = "PgRelationalQueryBuilder";
+  findMany(config) {
+    return new PgRelationalQuery(
+      this.fullSchema,
+      this.schema,
+      this.tableNamesMap,
+      this.table,
+      this.tableConfig,
+      this.dialect,
+      this.session,
+      config ? config : {},
+      "many"
+    );
+  }
+  findFirst(config) {
+    return new PgRelationalQuery(
+      this.fullSchema,
+      this.schema,
+      this.tableNamesMap,
+      this.table,
+      this.tableConfig,
+      this.dialect,
+      this.session,
+      config ? { ...config, limit: 1 } : { limit: 1 },
+      "first"
+    );
+  }
+}
+class PgRelationalQuery extends import_query_promise.QueryPromise {
+  constructor(fullSchema, schema, tableNamesMap, table, tableConfig, dialect, session, config, mode) {
+    super();
+    this.fullSchema = fullSchema;
+    this.schema = schema;
+    this.tableNamesMap = tableNamesMap;
+    this.table = table;
+    this.tableConfig = tableConfig;
+    this.dialect = dialect;
+    this.session = session;
+    this.config = config;
+    this.mode = mode;
+  }
+  static [import_entity.entityKind] = "PgRelationalQuery";
+  /** @internal */
+  _prepare(name) {
+    return import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+      const { query, builtQuery } = this._toSQL();
+      return this.session.prepareQuery(
+        builtQuery,
+        void 0,
+        name,
+        true,
+        (rawRows, mapColumnValue) => {
+          const rows = rawRows.map(
+            (row) => (0, import_relations.mapRelationalRow)(this.schema, this.tableConfig, row, query.selection, mapColumnValue)
+          );
+          if (this.mode === "first") {
+            return rows[0];
+          }
+          return rows;
+        }
+      );
+    });
+  }
+  prepare(name) {
+    return this._prepare(name);
+  }
+  _getQuery() {
+    return this.dialect.buildRelationalQueryWithoutPK({
+      fullSchema: this.fullSchema,
+      schema: this.schema,
+      tableNamesMap: this.tableNamesMap,
+      table: this.table,
+      tableConfig: this.tableConfig,
+      queryConfig: this.config,
+      tableAlias: this.tableConfig.tsName
+    });
+  }
+  /** @internal */
+  getSQL() {
+    return this._getQuery().sql;
+  }
+  _toSQL() {
+    const query = this._getQuery();
+    const builtQuery = this.dialect.sqlToQuery(query.sql);
+    return { query, builtQuery };
+  }
+  toSQL() {
+    return this._toSQL().builtQuery;
+  }
+  execute() {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      return this._prepare().execute();
+    });
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=query.cjs.map
+
+/***/ }),
+
+/***/ 83735:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var raw_exports = {};
+__export(raw_exports, {
+  PgRaw: () => PgRaw
+});
+module.exports = __toCommonJS(raw_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+class PgRaw extends import_query_promise.QueryPromise {
+  constructor(execute, sql, query, mapBatchResult) {
+    super();
+    this.execute = execute;
+    this.sql = sql;
+    this.query = query;
+    this.mapBatchResult = mapBatchResult;
+  }
+  static [import_entity.entityKind] = "PgRaw";
+  /** @internal */
+  getSQL() {
+    return this.sql;
+  }
+  getQuery() {
+    return this.query;
+  }
+  mapResult(result, isFromBatch) {
+    return isFromBatch ? this.mapBatchResult(result) : result;
+  }
+  _prepare() {
+    return this;
+  }
+  /** @internal */
+  isResponseInArrayMode() {
+    return false;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=raw.cjs.map
+
+/***/ }),
+
+/***/ 51818:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var refresh_materialized_view_exports = {};
+__export(refresh_materialized_view_exports, {
+  PgRefreshMaterializedView: () => PgRefreshMaterializedView
+});
+module.exports = __toCommonJS(refresh_materialized_view_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+var import_tracing = __nccwpck_require__(93789);
+class PgRefreshMaterializedView extends import_query_promise.QueryPromise {
+  constructor(view, session, dialect) {
+    super();
+    this.session = session;
+    this.dialect = dialect;
+    this.config = { view };
+  }
+  static [import_entity.entityKind] = "PgRefreshMaterializedView";
+  config;
+  concurrently() {
+    if (this.config.withNoData !== void 0) {
+      throw new Error("Cannot use concurrently and withNoData together");
+    }
+    this.config.concurrently = true;
+    return this;
+  }
+  withNoData() {
+    if (this.config.concurrently !== void 0) {
+      throw new Error("Cannot use concurrently and withNoData together");
+    }
+    this.config.withNoData = true;
+    return this;
+  }
+  /** @internal */
+  getSQL() {
+    return this.dialect.buildRefreshMaterializedViewQuery(this.config);
+  }
+  toSQL() {
+    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
+    return rest;
+  }
+  /** @internal */
+  _prepare(name) {
+    return import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+      return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), void 0, name, true);
+    });
+  }
+  prepare(name) {
+    return this._prepare(name);
+  }
+  execute = (placeholderValues) => {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      return this._prepare().execute(placeholderValues);
+    });
+  };
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=refresh-materialized-view.cjs.map
+
+/***/ }),
+
+/***/ 16627:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except2, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except2)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var select_exports = {};
+__export(select_exports, {
+  PgSelectBase: () => PgSelectBase,
+  PgSelectBuilder: () => PgSelectBuilder,
+  PgSelectQueryBuilderBase: () => PgSelectQueryBuilderBase,
+  except: () => except,
+  exceptAll: () => exceptAll,
+  intersect: () => intersect,
+  intersectAll: () => intersectAll,
+  union: () => union,
+  unionAll: () => unionAll
+});
+module.exports = __toCommonJS(select_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_view_base = __nccwpck_require__(51432);
+var import_query_builder = __nccwpck_require__(3267);
+var import_query_promise = __nccwpck_require__(18499);
+var import_selection_proxy = __nccwpck_require__(25922);
+var import_sql = __nccwpck_require__(23954);
+var import_subquery = __nccwpck_require__(24211);
+var import_table = __nccwpck_require__(54419);
+var import_tracing = __nccwpck_require__(93789);
+var import_utils = __nccwpck_require__(26656);
+var import_utils2 = __nccwpck_require__(26656);
+var import_view_common = __nccwpck_require__(93212);
+class PgSelectBuilder {
+  static [import_entity.entityKind] = "PgSelectBuilder";
+  fields;
+  session;
+  dialect;
+  withList = [];
+  distinct;
+  constructor(config) {
+    this.fields = config.fields;
+    this.session = config.session;
+    this.dialect = config.dialect;
+    if (config.withList) {
+      this.withList = config.withList;
+    }
+    this.distinct = config.distinct;
+  }
+  /**
+   * Specify the table, subquery, or other target that you're
+   * building a select query against.
+   *
+   * {@link https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM | Postgres from documentation}
+   */
+  from(source) {
+    const isPartialSelect = !!this.fields;
+    let fields;
+    if (this.fields) {
+      fields = this.fields;
+    } else if ((0, import_entity.is)(source, import_subquery.Subquery)) {
+      fields = Object.fromEntries(
+        Object.keys(source._.selectedFields).map((key) => [key, source[key]])
+      );
+    } else if ((0, import_entity.is)(source, import_view_base.PgViewBase)) {
+      fields = source[import_view_common.ViewBaseConfig].selectedFields;
+    } else if ((0, import_entity.is)(source, import_sql.SQL)) {
+      fields = {};
+    } else {
+      fields = (0, import_utils.getTableColumns)(source);
+    }
+    return new PgSelectBase({
+      table: source,
+      fields,
+      isPartialSelect,
+      session: this.session,
+      dialect: this.dialect,
+      withList: this.withList,
+      distinct: this.distinct
+    });
+  }
+}
+class PgSelectQueryBuilderBase extends import_query_builder.TypedQueryBuilder {
+  static [import_entity.entityKind] = "PgSelectQueryBuilder";
+  _;
+  config;
+  joinsNotNullableMap;
+  tableName;
+  isPartialSelect;
+  session;
+  dialect;
+  constructor({ table, fields, isPartialSelect, session, dialect, withList, distinct }) {
+    super();
+    this.config = {
+      withList,
+      table,
+      fields: { ...fields },
+      distinct,
+      setOperators: []
+    };
+    this.isPartialSelect = isPartialSelect;
+    this.session = session;
+    this.dialect = dialect;
+    this._ = {
+      selectedFields: fields
+    };
+    this.tableName = (0, import_utils.getTableLikeName)(table);
+    this.joinsNotNullableMap = typeof this.tableName === "string" ? { [this.tableName]: true } : {};
+  }
+  createJoin(joinType) {
+    return (table, on) => {
+      const baseTableName = this.tableName;
+      const tableName = (0, import_utils.getTableLikeName)(table);
+      if (typeof tableName === "string" && this.config.joins?.some((join) => join.alias === tableName)) {
+        throw new Error(`Alias "${tableName}" is already used in this query`);
+      }
+      if (!this.isPartialSelect) {
+        if (Object.keys(this.joinsNotNullableMap).length === 1 && typeof baseTableName === "string") {
+          this.config.fields = {
+            [baseTableName]: this.config.fields
+          };
+        }
+        if (typeof tableName === "string" && !(0, import_entity.is)(table, import_sql.SQL)) {
+          const selection = (0, import_entity.is)(table, import_subquery.Subquery) ? table._.selectedFields : (0, import_entity.is)(table, import_sql.View) ? table[import_view_common.ViewBaseConfig].selectedFields : table[import_table.Table.Symbol.Columns];
+          this.config.fields[tableName] = selection;
+        }
+      }
+      if (typeof on === "function") {
+        on = on(
+          new Proxy(
+            this.config.fields,
+            new import_selection_proxy.SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
+          )
+        );
+      }
+      if (!this.config.joins) {
+        this.config.joins = [];
+      }
+      this.config.joins.push({ on, table, joinType, alias: tableName });
+      if (typeof tableName === "string") {
+        switch (joinType) {
+          case "left": {
+            this.joinsNotNullableMap[tableName] = false;
+            break;
+          }
+          case "right": {
+            this.joinsNotNullableMap = Object.fromEntries(
+              Object.entries(this.joinsNotNullableMap).map(([key]) => [key, false])
+            );
+            this.joinsNotNullableMap[tableName] = true;
+            break;
+          }
+          case "inner": {
+            this.joinsNotNullableMap[tableName] = true;
+            break;
+          }
+          case "full": {
+            this.joinsNotNullableMap = Object.fromEntries(
+              Object.entries(this.joinsNotNullableMap).map(([key]) => [key, false])
+            );
+            this.joinsNotNullableMap[tableName] = false;
+            break;
+          }
+        }
+      }
+      return this;
+    };
+  }
+  /**
+   * Executes a `left join` operation by adding another table to the current query.
+   *
+   * Calling this method associates each row of the table with the corresponding row from the joined table, if a match is found. If no matching row exists, it sets all columns of the joined table to null.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/joins#left-join}
+   *
+   * @param table the table to join.
+   * @param on the `on` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all users and their pets
+   * const usersWithPets: { user: User; pets: Pet | null }[] = await db.select()
+   *   .from(users)
+   *   .leftJoin(pets, eq(users.id, pets.ownerId))
+   *
+   * // Select userId and petId
+   * const usersIdsAndPetIds: { userId: number; petId: number | null }[] = await db.select({
+   *   userId: users.id,
+   *   petId: pets.id,
+   * })
+   *   .from(users)
+   *   .leftJoin(pets, eq(users.id, pets.ownerId))
+   * ```
+   */
+  leftJoin = this.createJoin("left");
+  /**
+   * Executes a `right join` operation by adding another table to the current query.
+   *
+   * Calling this method associates each row of the joined table with the corresponding row from the main table, if a match is found. If no matching row exists, it sets all columns of the main table to null.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/joins#right-join}
+   *
+   * @param table the table to join.
+   * @param on the `on` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all users and their pets
+   * const usersWithPets: { user: User | null; pets: Pet }[] = await db.select()
+   *   .from(users)
+   *   .rightJoin(pets, eq(users.id, pets.ownerId))
+   *
+   * // Select userId and petId
+   * const usersIdsAndPetIds: { userId: number | null; petId: number }[] = await db.select({
+   *   userId: users.id,
+   *   petId: pets.id,
+   * })
+   *   .from(users)
+   *   .rightJoin(pets, eq(users.id, pets.ownerId))
+   * ```
+   */
+  rightJoin = this.createJoin("right");
+  /**
+   * Executes an `inner join` operation, creating a new table by combining rows from two tables that have matching values.
+   *
+   * Calling this method retrieves rows that have corresponding entries in both joined tables. Rows without matching entries in either table are excluded, resulting in a table that includes only matching pairs.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/joins#inner-join}
+   *
+   * @param table the table to join.
+   * @param on the `on` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all users and their pets
+   * const usersWithPets: { user: User; pets: Pet }[] = await db.select()
+   *   .from(users)
+   *   .innerJoin(pets, eq(users.id, pets.ownerId))
+   *
+   * // Select userId and petId
+   * const usersIdsAndPetIds: { userId: number; petId: number }[] = await db.select({
+   *   userId: users.id,
+   *   petId: pets.id,
+   * })
+   *   .from(users)
+   *   .innerJoin(pets, eq(users.id, pets.ownerId))
+   * ```
+   */
+  innerJoin = this.createJoin("inner");
+  /**
+   * Executes a `full join` operation by combining rows from two tables into a new table.
+   *
+   * Calling this method retrieves all rows from both main and joined tables, merging rows with matching values and filling in `null` for non-matching columns.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/joins#full-join}
+   *
+   * @param table the table to join.
+   * @param on the `on` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all users and their pets
+   * const usersWithPets: { user: User | null; pets: Pet | null }[] = await db.select()
+   *   .from(users)
+   *   .fullJoin(pets, eq(users.id, pets.ownerId))
+   *
+   * // Select userId and petId
+   * const usersIdsAndPetIds: { userId: number | null; petId: number | null }[] = await db.select({
+   *   userId: users.id,
+   *   petId: pets.id,
+   * })
+   *   .from(users)
+   *   .fullJoin(pets, eq(users.id, pets.ownerId))
+   * ```
+   */
+  fullJoin = this.createJoin("full");
+  createSetOperator(type, isAll) {
+    return (rightSelection) => {
+      const rightSelect = typeof rightSelection === "function" ? rightSelection(getPgSetOperators()) : rightSelection;
+      if (!(0, import_utils.haveSameKeys)(this.getSelectedFields(), rightSelect.getSelectedFields())) {
+        throw new Error(
+          "Set operator error (union / intersect / except): selected fields are not the same or are in a different order"
+        );
+      }
+      this.config.setOperators.push({ type, isAll, rightSelect });
+      return this;
+    };
+  }
+  /**
+   * Adds `union` set operator to the query.
+   *
+   * Calling this method will combine the result sets of the `select` statements and remove any duplicate rows that appear across them.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#union}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all unique names from customers and users tables
+   * await db.select({ name: users.name })
+   *   .from(users)
+   *   .union(
+   *     db.select({ name: customers.name }).from(customers)
+   *   );
+   * // or
+   * import { union } from 'drizzle-orm/pg-core'
+   *
+   * await union(
+   *   db.select({ name: users.name }).from(users),
+   *   db.select({ name: customers.name }).from(customers)
+   * );
+   * ```
+   */
+  union = this.createSetOperator("union", false);
+  /**
+   * Adds `union all` set operator to the query.
+   *
+   * Calling this method will combine the result-set of the `select` statements and keep all duplicate rows that appear across them.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#union-all}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all transaction ids from both online and in-store sales
+   * await db.select({ transaction: onlineSales.transactionId })
+   *   .from(onlineSales)
+   *   .unionAll(
+   *     db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
+   *   );
+   * // or
+   * import { unionAll } from 'drizzle-orm/pg-core'
+   *
+   * await unionAll(
+   *   db.select({ transaction: onlineSales.transactionId }).from(onlineSales),
+   *   db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
+   * );
+   * ```
+   */
+  unionAll = this.createSetOperator("union", true);
+  /**
+   * Adds `intersect` set operator to the query.
+   *
+   * Calling this method will retain only the rows that are present in both result sets and eliminate duplicates.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#intersect}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select course names that are offered in both departments A and B
+   * await db.select({ courseName: depA.courseName })
+   *   .from(depA)
+   *   .intersect(
+   *     db.select({ courseName: depB.courseName }).from(depB)
+   *   );
+   * // or
+   * import { intersect } from 'drizzle-orm/pg-core'
+   *
+   * await intersect(
+   *   db.select({ courseName: depA.courseName }).from(depA),
+   *   db.select({ courseName: depB.courseName }).from(depB)
+   * );
+   * ```
+   */
+  intersect = this.createSetOperator("intersect", false);
+  /**
+   * Adds `intersect all` set operator to the query.
+   *
+   * Calling this method will retain only the rows that are present in both result sets including all duplicates.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#intersect-all}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all products and quantities that are ordered by both regular and VIP customers
+   * await db.select({
+   *   productId: regularCustomerOrders.productId,
+   *   quantityOrdered: regularCustomerOrders.quantityOrdered
+   * })
+   * .from(regularCustomerOrders)
+   * .intersectAll(
+   *   db.select({
+   *     productId: vipCustomerOrders.productId,
+   *     quantityOrdered: vipCustomerOrders.quantityOrdered
+   *   })
+   *   .from(vipCustomerOrders)
+   * );
+   * // or
+   * import { intersectAll } from 'drizzle-orm/pg-core'
+   *
+   * await intersectAll(
+   *   db.select({
+   *     productId: regularCustomerOrders.productId,
+   *     quantityOrdered: regularCustomerOrders.quantityOrdered
+   *   })
+   *   .from(regularCustomerOrders),
+   *   db.select({
+   *     productId: vipCustomerOrders.productId,
+   *     quantityOrdered: vipCustomerOrders.quantityOrdered
+   *   })
+   *   .from(vipCustomerOrders)
+   * );
+   * ```
+   */
+  intersectAll = this.createSetOperator("intersect", true);
+  /**
+   * Adds `except` set operator to the query.
+   *
+   * Calling this method will retrieve all unique rows from the left query, except for the rows that are present in the result set of the right query.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#except}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all courses offered in department A but not in department B
+   * await db.select({ courseName: depA.courseName })
+   *   .from(depA)
+   *   .except(
+   *     db.select({ courseName: depB.courseName }).from(depB)
+   *   );
+   * // or
+   * import { except } from 'drizzle-orm/pg-core'
+   *
+   * await except(
+   *   db.select({ courseName: depA.courseName }).from(depA),
+   *   db.select({ courseName: depB.courseName }).from(depB)
+   * );
+   * ```
+   */
+  except = this.createSetOperator("except", false);
+  /**
+   * Adds `except all` set operator to the query.
+   *
+   * Calling this method will retrieve all rows from the left query, except for the rows that are present in the result set of the right query.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/set-operations#except-all}
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all products that are ordered by regular customers but not by VIP customers
+   * await db.select({
+   *   productId: regularCustomerOrders.productId,
+   *   quantityOrdered: regularCustomerOrders.quantityOrdered,
+   * })
+   * .from(regularCustomerOrders)
+   * .exceptAll(
+   *   db.select({
+   *     productId: vipCustomerOrders.productId,
+   *     quantityOrdered: vipCustomerOrders.quantityOrdered,
+   *   })
+   *   .from(vipCustomerOrders)
+   * );
+   * // or
+   * import { exceptAll } from 'drizzle-orm/pg-core'
+   *
+   * await exceptAll(
+   *   db.select({
+   *     productId: regularCustomerOrders.productId,
+   *     quantityOrdered: regularCustomerOrders.quantityOrdered
+   *   })
+   *   .from(regularCustomerOrders),
+   *   db.select({
+   *     productId: vipCustomerOrders.productId,
+   *     quantityOrdered: vipCustomerOrders.quantityOrdered
+   *   })
+   *   .from(vipCustomerOrders)
+   * );
+   * ```
+   */
+  exceptAll = this.createSetOperator("except", true);
+  /** @internal */
+  addSetOperators(setOperators) {
+    this.config.setOperators.push(...setOperators);
+    return this;
+  }
+  /**
+   * Adds a `where` clause to the query.
+   *
+   * Calling this method will select only those rows that fulfill a specified condition.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#filtering}
+   *
+   * @param where the `where` clause.
+   *
+   * @example
+   * You can use conditional operators and `sql function` to filter the rows to be selected.
+   *
+   * ```ts
+   * // Select all cars with green color
+   * await db.select().from(cars).where(eq(cars.color, 'green'));
+   * // or
+   * await db.select().from(cars).where(sql`${cars.color} = 'green'`)
+   * ```
+   *
+   * You can logically combine conditional operators with `and()` and `or()` operators:
+   *
+   * ```ts
+   * // Select all BMW cars with a green color
+   * await db.select().from(cars).where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
+   *
+   * // Select all cars with the green or blue color
+   * await db.select().from(cars).where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
+   * ```
+   */
+  where(where) {
+    if (typeof where === "function") {
+      where = where(
+        new Proxy(
+          this.config.fields,
+          new import_selection_proxy.SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
+        )
+      );
+    }
+    this.config.where = where;
+    return this;
+  }
+  /**
+   * Adds a `having` clause to the query.
+   *
+   * Calling this method will select only those rows that fulfill a specified condition. It is typically used with aggregate functions to filter the aggregated data based on a specified condition.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#aggregations}
+   *
+   * @param having the `having` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Select all brands with more than one car
+   * await db.select({
+   * 	brand: cars.brand,
+   * 	count: sql<number>`cast(count(${cars.id}) as int)`,
+   * })
+   *   .from(cars)
+   *   .groupBy(cars.brand)
+   *   .having(({ count }) => gt(count, 1));
+   * ```
+   */
+  having(having) {
+    if (typeof having === "function") {
+      having = having(
+        new Proxy(
+          this.config.fields,
+          new import_selection_proxy.SelectionProxyHandler({ sqlAliasedBehavior: "sql", sqlBehavior: "sql" })
+        )
+      );
+    }
+    this.config.having = having;
+    return this;
+  }
+  groupBy(...columns) {
+    if (typeof columns[0] === "function") {
+      const groupBy = columns[0](
+        new Proxy(
+          this.config.fields,
+          new import_selection_proxy.SelectionProxyHandler({ sqlAliasedBehavior: "alias", sqlBehavior: "sql" })
+        )
+      );
+      this.config.groupBy = Array.isArray(groupBy) ? groupBy : [groupBy];
+    } else {
+      this.config.groupBy = columns;
+    }
+    return this;
+  }
+  orderBy(...columns) {
+    if (typeof columns[0] === "function") {
+      const orderBy = columns[0](
+        new Proxy(
+          this.config.fields,
+          new import_selection_proxy.SelectionProxyHandler({ sqlAliasedBehavior: "alias", sqlBehavior: "sql" })
+        )
+      );
+      const orderByArray = Array.isArray(orderBy) ? orderBy : [orderBy];
+      if (this.config.setOperators.length > 0) {
+        this.config.setOperators.at(-1).orderBy = orderByArray;
+      } else {
+        this.config.orderBy = orderByArray;
+      }
+    } else {
+      const orderByArray = columns;
+      if (this.config.setOperators.length > 0) {
+        this.config.setOperators.at(-1).orderBy = orderByArray;
+      } else {
+        this.config.orderBy = orderByArray;
+      }
+    }
+    return this;
+  }
+  /**
+   * Adds a `limit` clause to the query.
+   *
+   * Calling this method will set the maximum number of rows that will be returned by this query.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#limit--offset}
+   *
+   * @param limit the `limit` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Get the first 10 people from this query.
+   * await db.select().from(people).limit(10);
+   * ```
+   */
+  limit(limit) {
+    if (this.config.setOperators.length > 0) {
+      this.config.setOperators.at(-1).limit = limit;
+    } else {
+      this.config.limit = limit;
+    }
+    return this;
+  }
+  /**
+   * Adds an `offset` clause to the query.
+   *
+   * Calling this method will skip a number of rows when returning results from this query.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/select#limit--offset}
+   *
+   * @param offset the `offset` clause.
+   *
+   * @example
+   *
+   * ```ts
+   * // Get the 10th-20th people from this query.
+   * await db.select().from(people).offset(10).limit(10);
+   * ```
+   */
+  offset(offset) {
+    if (this.config.setOperators.length > 0) {
+      this.config.setOperators.at(-1).offset = offset;
+    } else {
+      this.config.offset = offset;
+    }
+    return this;
+  }
+  /**
+   * Adds a `for` clause to the query.
+   *
+   * Calling this method will specify a lock strength for this query that controls how strictly it acquires exclusive access to the rows being queried.
+   *
+   * See docs: {@link https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE}
+   *
+   * @param strength the lock strength.
+   * @param config the lock configuration.
+   */
+  for(strength, config = {}) {
+    this.config.lockingClause = { strength, config };
+    return this;
+  }
+  /** @internal */
+  getSQL() {
+    return this.dialect.buildSelectQuery(this.config);
+  }
+  toSQL() {
+    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
+    return rest;
+  }
+  as(alias) {
+    return new Proxy(
+      new import_subquery.Subquery(this.getSQL(), this.config.fields, alias),
+      new import_selection_proxy.SelectionProxyHandler({ alias, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
+    );
+  }
+  /** @internal */
+  getSelectedFields() {
+    return new Proxy(
+      this.config.fields,
+      new import_selection_proxy.SelectionProxyHandler({ alias: this.tableName, sqlAliasedBehavior: "alias", sqlBehavior: "error" })
+    );
+  }
+  $dynamic() {
+    return this;
+  }
+}
+class PgSelectBase extends PgSelectQueryBuilderBase {
+  static [import_entity.entityKind] = "PgSelect";
+  /** @internal */
+  _prepare(name) {
+    const { session, config, dialect, joinsNotNullableMap } = this;
+    if (!session) {
+      throw new Error("Cannot execute a query on a query builder. Please use a database instance instead.");
+    }
+    return import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+      const fieldsList = (0, import_utils2.orderSelectedFields)(config.fields);
+      const query = session.prepareQuery(dialect.sqlToQuery(this.getSQL()), fieldsList, name, true);
+      query.joinsNotNullableMap = joinsNotNullableMap;
+      return query;
+    });
+  }
+  /**
+   * Create a prepared statement for this query. This allows
+   * the database to remember this query for the given session
+   * and call it by name, rather than specifying the full query.
+   *
+   * {@link https://www.postgresql.org/docs/current/sql-prepare.html | Postgres prepare documentation}
+   */
+  prepare(name) {
+    return this._prepare(name);
+  }
+  execute = (placeholderValues) => {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      return this._prepare().execute(placeholderValues);
+    });
+  };
+}
+(0, import_utils.applyMixins)(PgSelectBase, [import_query_promise.QueryPromise]);
+function createSetOperator(type, isAll) {
+  return (leftSelect, rightSelect, ...restSelects) => {
+    const setOperators = [rightSelect, ...restSelects].map((select) => ({
+      type,
+      isAll,
+      rightSelect: select
+    }));
+    for (const setOperator of setOperators) {
+      if (!(0, import_utils.haveSameKeys)(leftSelect.getSelectedFields(), setOperator.rightSelect.getSelectedFields())) {
+        throw new Error(
+          "Set operator error (union / intersect / except): selected fields are not the same or are in a different order"
+        );
+      }
+    }
+    return leftSelect.addSetOperators(setOperators);
+  };
+}
+const getPgSetOperators = () => ({
+  union,
+  unionAll,
+  intersect,
+  intersectAll,
+  except,
+  exceptAll
+});
+const union = createSetOperator("union", false);
+const unionAll = createSetOperator("union", true);
+const intersect = createSetOperator("intersect", false);
+const intersectAll = createSetOperator("intersect", true);
+const except = createSetOperator("except", false);
+const exceptAll = createSetOperator("except", true);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=select.cjs.map
+
+/***/ }),
+
+/***/ 52486:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var select_types_exports = {};
+module.exports = __toCommonJS(select_types_exports);
+//# sourceMappingURL=select.types.cjs.map
+
+/***/ }),
+
+/***/ 54064:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var update_exports = {};
+__export(update_exports, {
+  PgUpdateBase: () => PgUpdateBase,
+  PgUpdateBuilder: () => PgUpdateBuilder
+});
+module.exports = __toCommonJS(update_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_query_promise = __nccwpck_require__(18499);
+var import_table = __nccwpck_require__(54419);
+var import_utils = __nccwpck_require__(26656);
+class PgUpdateBuilder {
+  constructor(table, session, dialect, withList) {
+    this.table = table;
+    this.session = session;
+    this.dialect = dialect;
+    this.withList = withList;
+  }
+  static [import_entity.entityKind] = "PgUpdateBuilder";
+  set(values) {
+    return new PgUpdateBase(
+      this.table,
+      (0, import_utils.mapUpdateSet)(this.table, values),
+      this.session,
+      this.dialect,
+      this.withList
+    );
+  }
+}
+class PgUpdateBase extends import_query_promise.QueryPromise {
+  constructor(table, set, session, dialect, withList) {
+    super();
+    this.session = session;
+    this.dialect = dialect;
+    this.config = { set, table, withList };
+  }
+  static [import_entity.entityKind] = "PgUpdate";
+  config;
+  /**
+   * Adds a 'where' clause to the query.
+   *
+   * Calling this method will update only those rows that fulfill a specified condition.
+   *
+   * See docs: {@link https://orm.drizzle.team/docs/update}
+   *
+   * @param where the 'where' clause.
+   *
+   * @example
+   * You can use conditional operators and `sql function` to filter the rows to be updated.
+   *
+   * ```ts
+   * // Update all cars with green color
+   * await db.update(cars).set({ color: 'red' })
+   *   .where(eq(cars.color, 'green'));
+   * // or
+   * await db.update(cars).set({ color: 'red' })
+   *   .where(sql`${cars.color} = 'green'`)
+   * ```
+   *
+   * You can logically combine conditional operators with `and()` and `or()` operators:
+   *
+   * ```ts
+   * // Update all BMW cars with a green color
+   * await db.update(cars).set({ color: 'red' })
+   *   .where(and(eq(cars.color, 'green'), eq(cars.brand, 'BMW')));
+   *
+   * // Update all cars with the green or blue color
+   * await db.update(cars).set({ color: 'red' })
+   *   .where(or(eq(cars.color, 'green'), eq(cars.color, 'blue')));
+   * ```
+   */
+  where(where) {
+    this.config.where = where;
+    return this;
+  }
+  returning(fields = this.config.table[import_table.Table.Symbol.Columns]) {
+    this.config.returning = (0, import_utils.orderSelectedFields)(fields);
+    return this;
+  }
+  /** @internal */
+  getSQL() {
+    return this.dialect.buildUpdateQuery(this.config);
+  }
+  toSQL() {
+    const { typings: _typings, ...rest } = this.dialect.sqlToQuery(this.getSQL());
+    return rest;
+  }
+  /** @internal */
+  _prepare(name) {
+    return this.session.prepareQuery(this.dialect.sqlToQuery(this.getSQL()), this.config.returning, name, true);
+  }
+  prepare(name) {
+    return this._prepare(name);
+  }
+  execute = (placeholderValues) => {
+    return this._prepare().execute(placeholderValues);
+  };
+  $dynamic() {
+    return this;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=update.cjs.map
+
+/***/ }),
+
+/***/ 44384:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var schema_exports = {};
+__export(schema_exports, {
+  PgSchema: () => PgSchema,
+  isPgSchema: () => isPgSchema,
+  pgSchema: () => pgSchema
+});
+module.exports = __toCommonJS(schema_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_enum = __nccwpck_require__(12290);
+var import_table = __nccwpck_require__(61195);
+var import_view = __nccwpck_require__(51830);
+class PgSchema {
+  constructor(schemaName) {
+    this.schemaName = schemaName;
+  }
+  static [import_entity.entityKind] = "PgSchema";
+  table = (name, columns, extraConfig) => {
+    return (0, import_table.pgTableWithSchema)(name, columns, extraConfig, this.schemaName);
+  };
+  view = (name, columns) => {
+    return (0, import_view.pgViewWithSchema)(name, columns, this.schemaName);
+  };
+  materializedView = (name, columns) => {
+    return (0, import_view.pgMaterializedViewWithSchema)(name, columns, this.schemaName);
+  };
+  enum = (name, values) => {
+    return (0, import_enum.pgEnumWithSchema)(name, values, this.schemaName);
+  };
+}
+function isPgSchema(obj) {
+  return (0, import_entity.is)(obj, PgSchema);
+}
+function pgSchema(name) {
+  if (name === "public") {
+    throw new Error(
+      `You can't specify 'public' as schema name. Postgres is using public schema by default. If you want to use 'public' schema, just use pgTable() instead of creating a schema`
+    );
+  }
+  return new PgSchema(name);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=schema.cjs.map
+
+/***/ }),
+
+/***/ 3219:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var session_exports = {};
+__export(session_exports, {
+  PgPreparedQuery: () => PgPreparedQuery,
+  PgSession: () => PgSession,
+  PgTransaction: () => PgTransaction
+});
+module.exports = __toCommonJS(session_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_errors = __nccwpck_require__(9740);
+var import_sql = __nccwpck_require__(85866);
+var import_tracing = __nccwpck_require__(93789);
+var import_db = __nccwpck_require__(82627);
+class PgPreparedQuery {
+  constructor(query) {
+    this.query = query;
+  }
+  getQuery() {
+    return this.query;
+  }
+  mapResult(response, _isFromBatch) {
+    return response;
+  }
+  static [import_entity.entityKind] = "PgPreparedQuery";
+  /** @internal */
+  joinsNotNullableMap;
+}
+class PgSession {
+  constructor(dialect) {
+    this.dialect = dialect;
+  }
+  static [import_entity.entityKind] = "PgSession";
+  execute(query) {
+    return import_tracing.tracer.startActiveSpan("drizzle.operation", () => {
+      const prepared = import_tracing.tracer.startActiveSpan("drizzle.prepareQuery", () => {
+        return this.prepareQuery(
+          this.dialect.sqlToQuery(query),
+          void 0,
+          void 0,
+          false
+        );
+      });
+      return prepared.execute();
+    });
+  }
+  all(query) {
+    return this.prepareQuery(
+      this.dialect.sqlToQuery(query),
+      void 0,
+      void 0,
+      false
+    ).all();
+  }
+}
+class PgTransaction extends import_db.PgDatabase {
+  constructor(dialect, session, schema, nestedIndex = 0) {
+    super(dialect, session, schema);
+    this.schema = schema;
+    this.nestedIndex = nestedIndex;
+  }
+  static [import_entity.entityKind] = "PgTransaction";
+  rollback() {
+    throw new import_errors.TransactionRollbackError();
+  }
+  /** @internal */
+  getTransactionConfigSQL(config) {
+    const chunks = [];
+    if (config.isolationLevel) {
+      chunks.push(`isolation level ${config.isolationLevel}`);
+    }
+    if (config.accessMode) {
+      chunks.push(config.accessMode);
+    }
+    if (typeof config.deferrable === "boolean") {
+      chunks.push(config.deferrable ? "deferrable" : "not deferrable");
+    }
+    return import_sql.sql.raw(chunks.join(" "));
+  }
+  setTransaction(config) {
+    return this.session.execute(import_sql.sql`set transaction ${this.getTransactionConfigSQL(config)}`);
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=session.cjs.map
+
+/***/ }),
+
+/***/ 62043:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var subquery_exports = {};
+module.exports = __toCommonJS(subquery_exports);
+//# sourceMappingURL=subquery.cjs.map
+
+/***/ }),
+
+/***/ 61195:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var table_exports = {};
+__export(table_exports, {
+  InlineForeignKeys: () => InlineForeignKeys,
+  PgTable: () => PgTable,
+  pgTable: () => pgTable,
+  pgTableCreator: () => pgTableCreator,
+  pgTableWithSchema: () => pgTableWithSchema
+});
+module.exports = __toCommonJS(table_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(54419);
+const InlineForeignKeys = Symbol.for("drizzle:PgInlineForeignKeys");
+class PgTable extends import_table.Table {
+  static [import_entity.entityKind] = "PgTable";
+  /** @internal */
+  static Symbol = Object.assign({}, import_table.Table.Symbol, {
+    InlineForeignKeys
+  });
+  /**@internal */
+  [InlineForeignKeys] = [];
+  /** @internal */
+  [import_table.Table.Symbol.ExtraConfigBuilder] = void 0;
+}
+function pgTableWithSchema(name, columns, extraConfig, schema, baseName = name) {
+  const rawTable = new PgTable(name, schema, baseName);
+  const builtColumns = Object.fromEntries(
+    Object.entries(columns).map(([name2, colBuilderBase]) => {
+      const colBuilder = colBuilderBase;
+      const column = colBuilder.build(rawTable);
+      rawTable[InlineForeignKeys].push(...colBuilder.buildForeignKeys(column, rawTable));
+      return [name2, column];
+    })
+  );
+  const table = Object.assign(rawTable, builtColumns);
+  table[import_table.Table.Symbol.Columns] = builtColumns;
+  if (extraConfig) {
+    table[PgTable.Symbol.ExtraConfigBuilder] = extraConfig;
+  }
+  return table;
+}
+const pgTable = (name, columns, extraConfig) => {
+  return pgTableWithSchema(name, columns, extraConfig, void 0);
+};
+function pgTableCreator(customizeTableName) {
+  return (name, columns, extraConfig) => {
+    return pgTableWithSchema(customizeTableName(name), columns, extraConfig, void 0, name);
+  };
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=table.cjs.map
+
+/***/ }),
+
+/***/ 61952:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var unique_constraint_exports = {};
+__export(unique_constraint_exports, {
+  UniqueConstraint: () => UniqueConstraint,
+  UniqueConstraintBuilder: () => UniqueConstraintBuilder,
+  UniqueOnConstraintBuilder: () => UniqueOnConstraintBuilder,
+  unique: () => unique,
+  uniqueKeyName: () => uniqueKeyName
+});
+module.exports = __toCommonJS(unique_constraint_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(61195);
+function unique(name) {
+  return new UniqueOnConstraintBuilder(name);
+}
+function uniqueKeyName(table, columns) {
+  return `${table[import_table.PgTable.Symbol.Name]}_${columns.join("_")}_unique`;
+}
+class UniqueConstraintBuilder {
+  constructor(columns, name) {
+    this.name = name;
+    this.columns = columns;
+  }
+  static [import_entity.entityKind] = "PgUniqueConstraintBuilder";
+  /** @internal */
+  columns;
+  /** @internal */
+  nullsNotDistinctConfig = false;
+  nullsNotDistinct() {
+    this.nullsNotDistinctConfig = true;
+    return this;
+  }
+  /** @internal */
+  build(table) {
+    return new UniqueConstraint(table, this.columns, this.nullsNotDistinctConfig, this.name);
+  }
+}
+class UniqueOnConstraintBuilder {
+  static [import_entity.entityKind] = "PgUniqueOnConstraintBuilder";
+  /** @internal */
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  on(...columns) {
+    return new UniqueConstraintBuilder(columns, this.name);
+  }
+}
+class UniqueConstraint {
+  constructor(table, columns, nullsNotDistinct, name) {
+    this.table = table;
+    this.columns = columns;
+    this.name = name ?? uniqueKeyName(this.table, this.columns.map((column) => column.name));
+    this.nullsNotDistinct = nullsNotDistinct;
+  }
+  static [import_entity.entityKind] = "PgUniqueConstraint";
+  columns;
+  name;
+  nullsNotDistinct = false;
+  getName() {
+    return this.name;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=unique-constraint.cjs.map
+
+/***/ }),
+
+/***/ 84680:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var utils_exports = {};
+__export(utils_exports, {
+  getMaterializedViewConfig: () => getMaterializedViewConfig,
+  getTableConfig: () => getTableConfig,
+  getViewConfig: () => getViewConfig
+});
+module.exports = __toCommonJS(utils_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(61195);
+var import_table2 = __nccwpck_require__(54419);
+var import_view_common = __nccwpck_require__(93212);
+var import_checks = __nccwpck_require__(97810);
+var import_foreign_keys = __nccwpck_require__(58100);
+var import_indexes = __nccwpck_require__(2163);
+var import_primary_keys = __nccwpck_require__(78694);
+var import_unique_constraint = __nccwpck_require__(61952);
+var import_view_common2 = __nccwpck_require__(84916);
+var import_view = __nccwpck_require__(51830);
+function getTableConfig(table) {
+  const columns = Object.values(table[import_table2.Table.Symbol.Columns]);
+  const indexes = [];
+  const checks = [];
+  const primaryKeys = [];
+  const foreignKeys = Object.values(table[import_table.PgTable.Symbol.InlineForeignKeys]);
+  const uniqueConstraints = [];
+  const name = table[import_table2.Table.Symbol.Name];
+  const schema = table[import_table2.Table.Symbol.Schema];
+  const extraConfigBuilder = table[import_table.PgTable.Symbol.ExtraConfigBuilder];
+  if (extraConfigBuilder !== void 0) {
+    const extraConfig = extraConfigBuilder(table[import_table2.Table.Symbol.Columns]);
+    for (const builder of Object.values(extraConfig)) {
+      if ((0, import_entity.is)(builder, import_indexes.IndexBuilder)) {
+        indexes.push(builder.build(table));
+      } else if ((0, import_entity.is)(builder, import_checks.CheckBuilder)) {
+        checks.push(builder.build(table));
+      } else if ((0, import_entity.is)(builder, import_unique_constraint.UniqueConstraintBuilder)) {
+        uniqueConstraints.push(builder.build(table));
+      } else if ((0, import_entity.is)(builder, import_primary_keys.PrimaryKeyBuilder)) {
+        primaryKeys.push(builder.build(table));
+      } else if ((0, import_entity.is)(builder, import_foreign_keys.ForeignKeyBuilder)) {
+        foreignKeys.push(builder.build(table));
+      }
+    }
+  }
+  return {
+    columns,
+    indexes,
+    foreignKeys,
+    checks,
+    primaryKeys,
+    uniqueConstraints,
+    name,
+    schema
+  };
+}
+function getViewConfig(view) {
+  return {
+    ...view[import_view_common.ViewBaseConfig],
+    ...view[import_view_common2.PgViewConfig]
+  };
+}
+function getMaterializedViewConfig(view) {
+  return {
+    ...view[import_view_common.ViewBaseConfig],
+    ...view[import_view.PgMaterializedViewConfig]
+  };
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=utils.cjs.map
+
+/***/ }),
+
+/***/ 36450:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var array_exports = {};
+__export(array_exports, {
+  makePgArray: () => makePgArray,
+  parsePgArray: () => parsePgArray,
+  parsePgNestedArray: () => parsePgNestedArray
+});
+module.exports = __toCommonJS(array_exports);
+function parsePgArrayValue(arrayString, startFrom, inQuotes) {
+  for (let i = startFrom; i < arrayString.length; i++) {
+    const char = arrayString[i];
+    if (char === "\\") {
+      i++;
+      continue;
+    }
+    if (char === '"') {
+      return [arrayString.slice(startFrom, i).replace(/\\/g, ""), i + 1];
+    }
+    if (inQuotes) {
+      continue;
+    }
+    if (char === "," || char === "}") {
+      return [arrayString.slice(startFrom, i).replace(/\\/g, ""), i];
+    }
+  }
+  return [arrayString.slice(startFrom).replace(/\\/g, ""), arrayString.length];
+}
+function parsePgNestedArray(arrayString, startFrom = 0) {
+  const result = [];
+  let i = startFrom;
+  let lastCharIsComma = false;
+  while (i < arrayString.length) {
+    const char = arrayString[i];
+    if (char === ",") {
+      if (lastCharIsComma || i === startFrom) {
+        result.push("");
+      }
+      lastCharIsComma = true;
+      i++;
+      continue;
+    }
+    lastCharIsComma = false;
+    if (char === "\\") {
+      i += 2;
+      continue;
+    }
+    if (char === '"') {
+      const [value2, startFrom2] = parsePgArrayValue(arrayString, i + 1, true);
+      result.push(value2);
+      i = startFrom2;
+      continue;
+    }
+    if (char === "}") {
+      return [result, i + 1];
+    }
+    if (char === "{") {
+      const [value2, startFrom2] = parsePgNestedArray(arrayString, i + 1);
+      result.push(value2);
+      i = startFrom2;
+      continue;
+    }
+    const [value, newStartFrom] = parsePgArrayValue(arrayString, i, false);
+    result.push(value);
+    i = newStartFrom;
+  }
+  return [result, i];
+}
+function parsePgArray(arrayString) {
+  const [result] = parsePgNestedArray(arrayString, 1);
+  return result;
+}
+function makePgArray(array) {
+  return `{${array.map((item) => {
+    if (Array.isArray(item)) {
+      return makePgArray(item);
+    }
+    if (typeof item === "string") {
+      return `"${item.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+    }
+    return `${item}`;
+  }).join(",")}}`;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=array.cjs.map
+
+/***/ }),
+
+/***/ 56257:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var utils_exports = {};
+module.exports = __toCommonJS(utils_exports);
+__reExport(utils_exports, __nccwpck_require__(36450), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 51432:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var view_base_exports = {};
+__export(view_base_exports, {
+  PgViewBase: () => PgViewBase
+});
+module.exports = __toCommonJS(view_base_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+class PgViewBase extends import_sql.View {
+  static [import_entity.entityKind] = "PgViewBase";
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=view-base.cjs.map
+
+/***/ }),
+
+/***/ 84916:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var view_common_exports = {};
+__export(view_common_exports, {
+  PgViewConfig: () => PgViewConfig
+});
+module.exports = __toCommonJS(view_common_exports);
+const PgViewConfig = Symbol.for("drizzle:PgViewConfig");
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=view-common.cjs.map
+
+/***/ }),
+
+/***/ 51830:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var view_exports = {};
+__export(view_exports, {
+  DefaultViewBuilderCore: () => DefaultViewBuilderCore,
+  ManualMaterializedViewBuilder: () => ManualMaterializedViewBuilder,
+  ManualViewBuilder: () => ManualViewBuilder,
+  MaterializedViewBuilder: () => MaterializedViewBuilder,
+  MaterializedViewBuilderCore: () => MaterializedViewBuilderCore,
+  PgMaterializedView: () => PgMaterializedView,
+  PgMaterializedViewConfig: () => PgMaterializedViewConfig,
+  PgView: () => PgView,
+  ViewBuilder: () => ViewBuilder,
+  pgMaterializedView: () => pgMaterializedView,
+  pgMaterializedViewWithSchema: () => pgMaterializedViewWithSchema,
+  pgView: () => pgView,
+  pgViewWithSchema: () => pgViewWithSchema
+});
+module.exports = __toCommonJS(view_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_selection_proxy = __nccwpck_require__(25922);
+var import_utils = __nccwpck_require__(26656);
+var import_query_builder = __nccwpck_require__(69547);
+var import_table = __nccwpck_require__(61195);
+var import_view_base = __nccwpck_require__(51432);
+var import_view_common = __nccwpck_require__(84916);
+class DefaultViewBuilderCore {
+  constructor(name, schema) {
+    this.name = name;
+    this.schema = schema;
+  }
+  static [import_entity.entityKind] = "PgDefaultViewBuilderCore";
+  config = {};
+  with(config) {
+    this.config.with = config;
+    return this;
+  }
+}
+class ViewBuilder extends DefaultViewBuilderCore {
+  static [import_entity.entityKind] = "PgViewBuilder";
+  as(qb) {
+    if (typeof qb === "function") {
+      qb = qb(new import_query_builder.QueryBuilder());
+    }
+    const selectionProxy = new import_selection_proxy.SelectionProxyHandler({
+      alias: this.name,
+      sqlBehavior: "error",
+      sqlAliasedBehavior: "alias",
+      replaceOriginalName: true
+    });
+    const aliasedSelection = new Proxy(qb.getSelectedFields(), selectionProxy);
+    return new Proxy(
+      new PgView({
+        pgConfig: this.config,
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: aliasedSelection,
+          query: qb.getSQL().inlineParams()
+        }
+      }),
+      selectionProxy
+    );
+  }
+}
+class ManualViewBuilder extends DefaultViewBuilderCore {
+  static [import_entity.entityKind] = "PgManualViewBuilder";
+  columns;
+  constructor(name, columns, schema) {
+    super(name, schema);
+    this.columns = (0, import_utils.getTableColumns)((0, import_table.pgTable)(name, columns));
+  }
+  existing() {
+    return new Proxy(
+      new PgView({
+        pgConfig: void 0,
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: this.columns,
+          query: void 0
+        }
+      }),
+      new import_selection_proxy.SelectionProxyHandler({
+        alias: this.name,
+        sqlBehavior: "error",
+        sqlAliasedBehavior: "alias",
+        replaceOriginalName: true
+      })
+    );
+  }
+  as(query) {
+    return new Proxy(
+      new PgView({
+        pgConfig: this.config,
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: this.columns,
+          query: query.inlineParams()
+        }
+      }),
+      new import_selection_proxy.SelectionProxyHandler({
+        alias: this.name,
+        sqlBehavior: "error",
+        sqlAliasedBehavior: "alias",
+        replaceOriginalName: true
+      })
+    );
+  }
+}
+class MaterializedViewBuilderCore {
+  constructor(name, schema) {
+    this.name = name;
+    this.schema = schema;
+  }
+  static [import_entity.entityKind] = "PgMaterializedViewBuilderCore";
+  config = {};
+  using(using) {
+    this.config.using = using;
+    return this;
+  }
+  with(config) {
+    this.config.with = config;
+    return this;
+  }
+  tablespace(tablespace) {
+    this.config.tablespace = tablespace;
+    return this;
+  }
+  withNoData() {
+    this.config.withNoData = true;
+    return this;
+  }
+}
+class MaterializedViewBuilder extends MaterializedViewBuilderCore {
+  static [import_entity.entityKind] = "PgMaterializedViewBuilder";
+  as(qb) {
+    if (typeof qb === "function") {
+      qb = qb(new import_query_builder.QueryBuilder());
+    }
+    const selectionProxy = new import_selection_proxy.SelectionProxyHandler({
+      alias: this.name,
+      sqlBehavior: "error",
+      sqlAliasedBehavior: "alias",
+      replaceOriginalName: true
+    });
+    const aliasedSelection = new Proxy(qb.getSelectedFields(), selectionProxy);
+    return new Proxy(
+      new PgMaterializedView({
+        pgConfig: {
+          with: this.config.with,
+          using: this.config.using,
+          tablespace: this.config.tablespace,
+          withNoData: this.config.withNoData
+        },
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: aliasedSelection,
+          query: qb.getSQL().inlineParams()
+        }
+      }),
+      selectionProxy
+    );
+  }
+}
+class ManualMaterializedViewBuilder extends MaterializedViewBuilderCore {
+  static [import_entity.entityKind] = "PgManualMaterializedViewBuilder";
+  columns;
+  constructor(name, columns, schema) {
+    super(name, schema);
+    this.columns = (0, import_utils.getTableColumns)((0, import_table.pgTable)(name, columns));
+  }
+  existing() {
+    return new Proxy(
+      new PgMaterializedView({
+        pgConfig: void 0,
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: this.columns,
+          query: void 0
+        }
+      }),
+      new import_selection_proxy.SelectionProxyHandler({
+        alias: this.name,
+        sqlBehavior: "error",
+        sqlAliasedBehavior: "alias",
+        replaceOriginalName: true
+      })
+    );
+  }
+  as(query) {
+    return new Proxy(
+      new PgMaterializedView({
+        pgConfig: void 0,
+        config: {
+          name: this.name,
+          schema: this.schema,
+          selectedFields: this.columns,
+          query: query.inlineParams()
+        }
+      }),
+      new import_selection_proxy.SelectionProxyHandler({
+        alias: this.name,
+        sqlBehavior: "error",
+        sqlAliasedBehavior: "alias",
+        replaceOriginalName: true
+      })
+    );
+  }
+}
+class PgView extends import_view_base.PgViewBase {
+  static [import_entity.entityKind] = "PgView";
+  [import_view_common.PgViewConfig];
+  constructor({ pgConfig, config }) {
+    super(config);
+    if (pgConfig) {
+      this[import_view_common.PgViewConfig] = {
+        with: pgConfig.with
+      };
+    }
+  }
+}
+const PgMaterializedViewConfig = Symbol.for("drizzle:PgMaterializedViewConfig");
+class PgMaterializedView extends import_view_base.PgViewBase {
+  static [import_entity.entityKind] = "PgMaterializedView";
+  [PgMaterializedViewConfig];
+  constructor({ pgConfig, config }) {
+    super(config);
+    this[PgMaterializedViewConfig] = {
+      with: pgConfig?.with,
+      using: pgConfig?.using,
+      tablespace: pgConfig?.tablespace,
+      withNoData: pgConfig?.withNoData
+    };
+  }
+}
+function pgViewWithSchema(name, selection, schema) {
+  if (selection) {
+    return new ManualViewBuilder(name, selection, schema);
+  }
+  return new ViewBuilder(name, schema);
+}
+function pgMaterializedViewWithSchema(name, selection, schema) {
+  if (selection) {
+    return new ManualMaterializedViewBuilder(name, selection, schema);
+  }
+  return new MaterializedViewBuilder(name, schema);
+}
+function pgView(name, columns) {
+  return pgViewWithSchema(name, columns, void 0);
+}
+function pgMaterializedView(name, columns) {
+  return pgMaterializedViewWithSchema(name, columns, void 0);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=view.cjs.map
+
+/***/ }),
+
+/***/ 3267:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var query_builder_exports = {};
+__export(query_builder_exports, {
+  TypedQueryBuilder: () => TypedQueryBuilder
+});
+module.exports = __toCommonJS(query_builder_exports);
+var import_entity = __nccwpck_require__(40336);
+class TypedQueryBuilder {
+  static [import_entity.entityKind] = "TypedQueryBuilder";
+  /** @internal */
+  getSelectedFields() {
+    return this._.selectedFields;
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=query-builder.cjs.map
+
+/***/ }),
+
+/***/ 18499:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var query_promise_exports = {};
+__export(query_promise_exports, {
+  QueryPromise: () => QueryPromise
+});
+module.exports = __toCommonJS(query_promise_exports);
+var import_entity = __nccwpck_require__(40336);
+class QueryPromise {
+  static [import_entity.entityKind] = "QueryPromise";
+  [Symbol.toStringTag] = "QueryPromise";
+  catch(onRejected) {
+    return this.then(void 0, onRejected);
+  }
+  finally(onFinally) {
+    return this.then(
+      (value) => {
+        onFinally?.();
+        return value;
+      },
+      (reason) => {
+        onFinally?.();
+        throw reason;
+      }
+    );
+  }
+  then(onFulfilled, onRejected) {
+    return this.execute().then(onFulfilled, onRejected);
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=query-promise.cjs.map
+
+/***/ }),
+
+/***/ 11516:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc2) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc2 = __getOwnPropDesc(from, key)) || desc2.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var relations_exports = {};
+__export(relations_exports, {
+  Many: () => Many,
+  One: () => One,
+  Relation: () => Relation,
+  Relations: () => Relations,
+  createMany: () => createMany,
+  createOne: () => createOne,
+  createTableRelationsHelpers: () => createTableRelationsHelpers,
+  extractTablesRelationalConfig: () => extractTablesRelationalConfig,
+  getOperators: () => getOperators,
+  getOrderByOperators: () => getOrderByOperators,
+  mapRelationalRow: () => mapRelationalRow,
+  normalizeRelation: () => normalizeRelation,
+  relations: () => relations
+});
+module.exports = __toCommonJS(relations_exports);
+var import_table = __nccwpck_require__(54419);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_primary_keys = __nccwpck_require__(78694);
+var import_expressions = __nccwpck_require__(6330);
+var import_sql = __nccwpck_require__(23954);
+class Relation {
+  constructor(sourceTable, referencedTable, relationName) {
+    this.sourceTable = sourceTable;
+    this.referencedTable = referencedTable;
+    this.relationName = relationName;
+    this.referencedTableName = referencedTable[import_table.Table.Symbol.Name];
+  }
+  static [import_entity.entityKind] = "Relation";
+  referencedTableName;
+  fieldName;
+}
+class Relations {
+  constructor(table, config) {
+    this.table = table;
+    this.config = config;
+  }
+  static [import_entity.entityKind] = "Relations";
+}
+class One extends Relation {
+  constructor(sourceTable, referencedTable, config, isNullable) {
+    super(sourceTable, referencedTable, config?.relationName);
+    this.config = config;
+    this.isNullable = isNullable;
+  }
+  static [import_entity.entityKind] = "One";
+  withFieldName(fieldName) {
+    const relation = new One(
+      this.sourceTable,
+      this.referencedTable,
+      this.config,
+      this.isNullable
+    );
+    relation.fieldName = fieldName;
+    return relation;
+  }
+}
+class Many extends Relation {
+  constructor(sourceTable, referencedTable, config) {
+    super(sourceTable, referencedTable, config?.relationName);
+    this.config = config;
+  }
+  static [import_entity.entityKind] = "Many";
+  withFieldName(fieldName) {
+    const relation = new Many(
+      this.sourceTable,
+      this.referencedTable,
+      this.config
+    );
+    relation.fieldName = fieldName;
+    return relation;
+  }
+}
+function getOperators() {
+  return {
+    and: import_expressions.and,
+    between: import_expressions.between,
+    eq: import_expressions.eq,
+    exists: import_expressions.exists,
+    gt: import_expressions.gt,
+    gte: import_expressions.gte,
+    ilike: import_expressions.ilike,
+    inArray: import_expressions.inArray,
+    isNull: import_expressions.isNull,
+    isNotNull: import_expressions.isNotNull,
+    like: import_expressions.like,
+    lt: import_expressions.lt,
+    lte: import_expressions.lte,
+    ne: import_expressions.ne,
+    not: import_expressions.not,
+    notBetween: import_expressions.notBetween,
+    notExists: import_expressions.notExists,
+    notLike: import_expressions.notLike,
+    notIlike: import_expressions.notIlike,
+    notInArray: import_expressions.notInArray,
+    or: import_expressions.or,
+    sql: import_sql.sql
+  };
+}
+function getOrderByOperators() {
+  return {
+    sql: import_sql.sql,
+    asc: import_expressions.asc,
+    desc: import_expressions.desc
+  };
+}
+function extractTablesRelationalConfig(schema, configHelpers) {
+  if (Object.keys(schema).length === 1 && "default" in schema && !(0, import_entity.is)(schema["default"], import_table.Table)) {
+    schema = schema["default"];
+  }
+  const tableNamesMap = {};
+  const relationsBuffer = {};
+  const tablesConfig = {};
+  for (const [key, value] of Object.entries(schema)) {
+    if ((0, import_table.isTable)(value)) {
+      const dbName = value[import_table.Table.Symbol.Name];
+      const bufferedRelations = relationsBuffer[dbName];
+      tableNamesMap[dbName] = key;
+      tablesConfig[key] = {
+        tsName: key,
+        dbName: value[import_table.Table.Symbol.Name],
+        schema: value[import_table.Table.Symbol.Schema],
+        columns: value[import_table.Table.Symbol.Columns],
+        relations: bufferedRelations?.relations ?? {},
+        primaryKey: bufferedRelations?.primaryKey ?? []
+      };
+      for (const column of Object.values(
+        value[import_table.Table.Symbol.Columns]
+      )) {
+        if (column.primary) {
+          tablesConfig[key].primaryKey.push(column);
+        }
+      }
+      const extraConfig = value[import_table.Table.Symbol.ExtraConfigBuilder]?.(value);
+      if (extraConfig) {
+        for (const configEntry of Object.values(extraConfig)) {
+          if ((0, import_entity.is)(configEntry, import_primary_keys.PrimaryKeyBuilder)) {
+            tablesConfig[key].primaryKey.push(...configEntry.columns);
+          }
+        }
+      }
+    } else if ((0, import_entity.is)(value, Relations)) {
+      const dbName = value.table[import_table.Table.Symbol.Name];
+      const tableName = tableNamesMap[dbName];
+      const relations2 = value.config(
+        configHelpers(value.table)
+      );
+      let primaryKey;
+      for (const [relationName, relation] of Object.entries(relations2)) {
+        if (tableName) {
+          const tableConfig = tablesConfig[tableName];
+          tableConfig.relations[relationName] = relation;
+          if (primaryKey) {
+            tableConfig.primaryKey.push(...primaryKey);
+          }
+        } else {
+          if (!(dbName in relationsBuffer)) {
+            relationsBuffer[dbName] = {
+              relations: {},
+              primaryKey
+            };
+          }
+          relationsBuffer[dbName].relations[relationName] = relation;
+        }
+      }
+    }
+  }
+  return { tables: tablesConfig, tableNamesMap };
+}
+function relations(table, relations2) {
+  return new Relations(
+    table,
+    (helpers) => Object.fromEntries(
+      Object.entries(relations2(helpers)).map(([key, value]) => [
+        key,
+        value.withFieldName(key)
+      ])
+    )
+  );
+}
+function createOne(sourceTable) {
+  return function one(table, config) {
+    return new One(
+      sourceTable,
+      table,
+      config,
+      config?.fields.reduce((res, f) => res && f.notNull, true) ?? false
+    );
+  };
+}
+function createMany(sourceTable) {
+  return function many(referencedTable, config) {
+    return new Many(sourceTable, referencedTable, config);
+  };
+}
+function normalizeRelation(schema, tableNamesMap, relation) {
+  if ((0, import_entity.is)(relation, One) && relation.config) {
+    return {
+      fields: relation.config.fields,
+      references: relation.config.references
+    };
+  }
+  const referencedTableTsName = tableNamesMap[relation.referencedTable[import_table.Table.Symbol.Name]];
+  if (!referencedTableTsName) {
+    throw new Error(
+      `Table "${relation.referencedTable[import_table.Table.Symbol.Name]}" not found in schema`
+    );
+  }
+  const referencedTableConfig = schema[referencedTableTsName];
+  if (!referencedTableConfig) {
+    throw new Error(`Table "${referencedTableTsName}" not found in schema`);
+  }
+  const sourceTable = relation.sourceTable;
+  const sourceTableTsName = tableNamesMap[sourceTable[import_table.Table.Symbol.Name]];
+  if (!sourceTableTsName) {
+    throw new Error(
+      `Table "${sourceTable[import_table.Table.Symbol.Name]}" not found in schema`
+    );
+  }
+  const reverseRelations = [];
+  for (const referencedTableRelation of Object.values(
+    referencedTableConfig.relations
+  )) {
+    if (relation.relationName && relation !== referencedTableRelation && referencedTableRelation.relationName === relation.relationName || !relation.relationName && referencedTableRelation.referencedTable === relation.sourceTable) {
+      reverseRelations.push(referencedTableRelation);
+    }
+  }
+  if (reverseRelations.length > 1) {
+    throw relation.relationName ? new Error(
+      `There are multiple relations with name "${relation.relationName}" in table "${referencedTableTsName}"`
+    ) : new Error(
+      `There are multiple relations between "${referencedTableTsName}" and "${relation.sourceTable[import_table.Table.Symbol.Name]}". Please specify relation name`
+    );
+  }
+  if (reverseRelations[0] && (0, import_entity.is)(reverseRelations[0], One) && reverseRelations[0].config) {
+    return {
+      fields: reverseRelations[0].config.references,
+      references: reverseRelations[0].config.fields
+    };
+  }
+  throw new Error(
+    `There is not enough information to infer relation "${sourceTableTsName}.${relation.fieldName}"`
+  );
+}
+function createTableRelationsHelpers(sourceTable) {
+  return {
+    one: createOne(sourceTable),
+    many: createMany(sourceTable)
+  };
+}
+function mapRelationalRow(tablesConfig, tableConfig, row, buildQueryResultSelection, mapColumnValue = (value) => value) {
+  const result = {};
+  for (const [
+    selectionItemIndex,
+    selectionItem
+  ] of buildQueryResultSelection.entries()) {
+    if (selectionItem.isJson) {
+      const relation = tableConfig.relations[selectionItem.tsKey];
+      const rawSubRows = row[selectionItemIndex];
+      const subRows = typeof rawSubRows === "string" ? JSON.parse(rawSubRows) : rawSubRows;
+      result[selectionItem.tsKey] = (0, import_entity.is)(relation, One) ? subRows && mapRelationalRow(
+        tablesConfig,
+        tablesConfig[selectionItem.relationTableTsKey],
+        subRows,
+        selectionItem.selection,
+        mapColumnValue
+      ) : subRows.map(
+        (subRow) => mapRelationalRow(
+          tablesConfig,
+          tablesConfig[selectionItem.relationTableTsKey],
+          subRow,
+          selectionItem.selection,
+          mapColumnValue
+        )
+      );
+    } else {
+      const value = mapColumnValue(row[selectionItemIndex]);
+      const field = selectionItem.field;
+      let decoder;
+      if ((0, import_entity.is)(field, import_column.Column)) {
+        decoder = field;
+      } else if ((0, import_entity.is)(field, import_sql.SQL)) {
+        decoder = field.decoder;
+      } else {
+        decoder = field.sql.decoder;
+      }
+      result[selectionItem.tsKey] = value === null ? null : decoder.mapFromDriverValue(value);
+    }
+  }
+  return result;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=relations.cjs.map
+
+/***/ }),
+
+/***/ 25922:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var selection_proxy_exports = {};
+__export(selection_proxy_exports, {
+  SelectionProxyHandler: () => SelectionProxyHandler
+});
+module.exports = __toCommonJS(selection_proxy_exports);
+var import_alias = __nccwpck_require__(55035);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+var import_subquery = __nccwpck_require__(24211);
+var import_view_common = __nccwpck_require__(93212);
+class SelectionProxyHandler {
+  static [import_entity.entityKind] = "SelectionProxyHandler";
+  config;
+  constructor(config) {
+    this.config = { ...config };
+  }
+  get(subquery, prop) {
+    if (prop === "_") {
+      return {
+        ...subquery["_"],
+        selectedFields: new Proxy(
+          subquery._.selectedFields,
+          this
+        )
+      };
+    }
+    if (prop === import_view_common.ViewBaseConfig) {
+      return {
+        ...subquery[import_view_common.ViewBaseConfig],
+        selectedFields: new Proxy(
+          subquery[import_view_common.ViewBaseConfig].selectedFields,
+          this
+        )
+      };
+    }
+    if (typeof prop === "symbol") {
+      return subquery[prop];
+    }
+    const columns = (0, import_entity.is)(subquery, import_subquery.Subquery) ? subquery._.selectedFields : (0, import_entity.is)(subquery, import_sql.View) ? subquery[import_view_common.ViewBaseConfig].selectedFields : subquery;
+    const value = columns[prop];
+    if ((0, import_entity.is)(value, import_sql.SQL.Aliased)) {
+      if (this.config.sqlAliasedBehavior === "sql" && !value.isSelectionField) {
+        return value.sql;
+      }
+      const newValue = value.clone();
+      newValue.isSelectionField = true;
+      return newValue;
+    }
+    if ((0, import_entity.is)(value, import_sql.SQL)) {
+      if (this.config.sqlBehavior === "sql") {
+        return value;
+      }
+      throw new Error(
+        `You tried to reference "${prop}" field from a subquery, which is a raw SQL field, but it doesn't have an alias declared. Please add an alias to the field using ".as('alias')" method.`
+      );
+    }
+    if ((0, import_entity.is)(value, import_column.Column)) {
+      if (this.config.alias) {
+        return new Proxy(
+          value,
+          new import_alias.ColumnAliasProxyHandler(
+            new Proxy(
+              value.table,
+              new import_alias.TableAliasProxyHandler(this.config.alias, this.config.replaceOriginalName ?? false)
+            )
+          )
+        );
+      }
+      return value;
+    }
+    if (typeof value !== "object" || value === null) {
+      return value;
+    }
+    return new Proxy(value, new SelectionProxyHandler(this.config));
+  }
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=selection-proxy.cjs.map
+
+/***/ }),
+
+/***/ 32228:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var conditions_exports = {};
+__export(conditions_exports, {
+  and: () => and,
+  arrayContained: () => arrayContained,
+  arrayContains: () => arrayContains,
+  arrayOverlaps: () => arrayOverlaps,
+  between: () => between,
+  bindIfParam: () => bindIfParam,
+  eq: () => eq,
+  exists: () => exists,
+  gt: () => gt,
+  gte: () => gte,
+  ilike: () => ilike,
+  inArray: () => inArray,
+  isNotNull: () => isNotNull,
+  isNull: () => isNull,
+  like: () => like,
+  lt: () => lt,
+  lte: () => lte,
+  ne: () => ne,
+  not: () => not,
+  notBetween: () => notBetween,
+  notExists: () => notExists,
+  notIlike: () => notIlike,
+  notInArray: () => notInArray,
+  notLike: () => notLike,
+  or: () => or
+});
+module.exports = __toCommonJS(conditions_exports);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_table = __nccwpck_require__(54419);
+var import_sql = __nccwpck_require__(23954);
+function bindIfParam(value, column) {
+  if ((0, import_sql.isDriverValueEncoder)(column) && !(0, import_sql.isSQLWrapper)(value) && !(0, import_entity.is)(value, import_sql.Param) && !(0, import_entity.is)(value, import_sql.Placeholder) && !(0, import_entity.is)(value, import_column.Column) && !(0, import_entity.is)(value, import_table.Table) && !(0, import_entity.is)(value, import_sql.View)) {
+    return new import_sql.Param(value, column);
+  }
+  return value;
+}
+const eq = (left, right) => {
+  return import_sql.sql`${left} = ${bindIfParam(right, left)}`;
+};
+const ne = (left, right) => {
+  return import_sql.sql`${left} <> ${bindIfParam(right, left)}`;
+};
+function and(...unfilteredConditions) {
+  const conditions = unfilteredConditions.filter(
+    (c) => c !== void 0
+  );
+  if (conditions.length === 0) {
+    return void 0;
+  }
+  if (conditions.length === 1) {
+    return new import_sql.SQL(conditions);
+  }
+  return new import_sql.SQL([
+    new import_sql.StringChunk("("),
+    import_sql.sql.join(conditions, new import_sql.StringChunk(" and ")),
+    new import_sql.StringChunk(")")
+  ]);
+}
+function or(...unfilteredConditions) {
+  const conditions = unfilteredConditions.filter(
+    (c) => c !== void 0
+  );
+  if (conditions.length === 0) {
+    return void 0;
+  }
+  if (conditions.length === 1) {
+    return new import_sql.SQL(conditions);
+  }
+  return new import_sql.SQL([
+    new import_sql.StringChunk("("),
+    import_sql.sql.join(conditions, new import_sql.StringChunk(" or ")),
+    new import_sql.StringChunk(")")
+  ]);
+}
+function not(condition) {
+  return import_sql.sql`not ${condition}`;
+}
+const gt = (left, right) => {
+  return import_sql.sql`${left} > ${bindIfParam(right, left)}`;
+};
+const gte = (left, right) => {
+  return import_sql.sql`${left} >= ${bindIfParam(right, left)}`;
+};
+const lt = (left, right) => {
+  return import_sql.sql`${left} < ${bindIfParam(right, left)}`;
+};
+const lte = (left, right) => {
+  return import_sql.sql`${left} <= ${bindIfParam(right, left)}`;
+};
+function inArray(column, values) {
+  if (Array.isArray(values)) {
+    if (values.length === 0) {
+      throw new Error("inArray requires at least one value");
+    }
+    return import_sql.sql`${column} in ${values.map((v) => bindIfParam(v, column))}`;
+  }
+  return import_sql.sql`${column} in ${bindIfParam(values, column)}`;
+}
+function notInArray(column, values) {
+  if (Array.isArray(values)) {
+    if (values.length === 0) {
+      throw new Error("notInArray requires at least one value");
+    }
+    return import_sql.sql`${column} not in ${values.map((v) => bindIfParam(v, column))}`;
+  }
+  return import_sql.sql`${column} not in ${bindIfParam(values, column)}`;
+}
+function isNull(value) {
+  return import_sql.sql`${value} is null`;
+}
+function isNotNull(value) {
+  return import_sql.sql`${value} is not null`;
+}
+function exists(subquery) {
+  return import_sql.sql`exists ${subquery}`;
+}
+function notExists(subquery) {
+  return import_sql.sql`not exists ${subquery}`;
+}
+function between(column, min, max) {
+  return import_sql.sql`${column} between ${bindIfParam(min, column)} and ${bindIfParam(
+    max,
+    column
+  )}`;
+}
+function notBetween(column, min, max) {
+  return import_sql.sql`${column} not between ${bindIfParam(
+    min,
+    column
+  )} and ${bindIfParam(max, column)}`;
+}
+function like(column, value) {
+  return import_sql.sql`${column} like ${value}`;
+}
+function notLike(column, value) {
+  return import_sql.sql`${column} not like ${value}`;
+}
+function ilike(column, value) {
+  return import_sql.sql`${column} ilike ${value}`;
+}
+function notIlike(column, value) {
+  return import_sql.sql`${column} not ilike ${value}`;
+}
+function arrayContains(column, values) {
+  if (Array.isArray(values)) {
+    if (values.length === 0) {
+      throw new Error("arrayContains requires at least one value");
+    }
+    const array = import_sql.sql`${bindIfParam(values, column)}`;
+    return import_sql.sql`${column} @> ${array}`;
+  }
+  return import_sql.sql`${column} @> ${bindIfParam(values, column)}`;
+}
+function arrayContained(column, values) {
+  if (Array.isArray(values)) {
+    if (values.length === 0) {
+      throw new Error("arrayContained requires at least one value");
+    }
+    const array = import_sql.sql`${bindIfParam(values, column)}`;
+    return import_sql.sql`${column} <@ ${array}`;
+  }
+  return import_sql.sql`${column} <@ ${bindIfParam(values, column)}`;
+}
+function arrayOverlaps(column, values) {
+  if (Array.isArray(values)) {
+    if (values.length === 0) {
+      throw new Error("arrayOverlaps requires at least one value");
+    }
+    const array = import_sql.sql`${bindIfParam(values, column)}`;
+    return import_sql.sql`${column} && ${array}`;
+  }
+  return import_sql.sql`${column} && ${bindIfParam(values, column)}`;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=conditions.cjs.map
+
+/***/ }),
+
+/***/ 6330:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var expressions_exports = {};
+module.exports = __toCommonJS(expressions_exports);
+__reExport(expressions_exports, __nccwpck_require__(32228), module.exports);
+__reExport(expressions_exports, __nccwpck_require__(78830), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 78830:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc2) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc2 = __getOwnPropDesc(from, key)) || desc2.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var select_exports = {};
+__export(select_exports, {
+  asc: () => asc,
+  desc: () => desc
+});
+module.exports = __toCommonJS(select_exports);
+var import_sql = __nccwpck_require__(23954);
+function asc(column) {
+  return import_sql.sql`${column} asc`;
+}
+function desc(column) {
+  return import_sql.sql`${column} desc`;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=select.cjs.map
+
+/***/ }),
+
+/***/ 17393:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var aggregate_exports = {};
+__export(aggregate_exports, {
+  avg: () => avg,
+  avgDistinct: () => avgDistinct,
+  count: () => count,
+  countDistinct: () => countDistinct,
+  max: () => max,
+  min: () => min,
+  sum: () => sum,
+  sumDistinct: () => sumDistinct
+});
+module.exports = __toCommonJS(aggregate_exports);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+function count(expression) {
+  return import_sql.sql`count(${expression || import_sql.sql.raw("*")})`.mapWith(Number);
+}
+function countDistinct(expression) {
+  return import_sql.sql`count(distinct ${expression})`.mapWith(Number);
+}
+function avg(expression) {
+  return import_sql.sql`avg(${expression})`.mapWith(String);
+}
+function avgDistinct(expression) {
+  return import_sql.sql`avg(distinct ${expression})`.mapWith(String);
+}
+function sum(expression) {
+  return import_sql.sql`sum(${expression})`.mapWith(String);
+}
+function sumDistinct(expression) {
+  return import_sql.sql`sum(distinct ${expression})`.mapWith(String);
+}
+function max(expression) {
+  return import_sql.sql`max(${expression})`.mapWith((0, import_entity.is)(expression, import_column.Column) ? expression : String);
+}
+function min(expression) {
+  return import_sql.sql`min(${expression})`.mapWith((0, import_entity.is)(expression, import_column.Column) ? expression : String);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=aggregate.cjs.map
+
+/***/ }),
+
+/***/ 7860:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var functions_exports = {};
+module.exports = __toCommonJS(functions_exports);
+__reExport(functions_exports, __nccwpck_require__(17393), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 85866:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var sql_exports = {};
+module.exports = __toCommonJS(sql_exports);
+__reExport(sql_exports, __nccwpck_require__(6330), module.exports);
+__reExport(sql_exports, __nccwpck_require__(7860), module.exports);
+__reExport(sql_exports, __nccwpck_require__(23954), module.exports);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.cjs.map
+
+/***/ }),
+
+/***/ 23954:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name2 in all)
+    __defProp(target, name2, { get: all[name2], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var sql_exports = {};
+__export(sql_exports, {
+  FakePrimitiveParam: () => FakePrimitiveParam,
+  Name: () => Name,
+  Param: () => Param,
+  Placeholder: () => Placeholder,
+  SQL: () => SQL,
+  StringChunk: () => StringChunk,
+  View: () => View,
+  fillPlaceholders: () => fillPlaceholders,
+  isDriverValueEncoder: () => isDriverValueEncoder,
+  isSQLWrapper: () => isSQLWrapper,
+  name: () => name,
+  noopDecoder: () => noopDecoder,
+  noopEncoder: () => noopEncoder,
+  noopMapper: () => noopMapper,
+  param: () => param,
+  placeholder: () => placeholder,
+  sql: () => sql
+});
+module.exports = __toCommonJS(sql_exports);
+var import_entity = __nccwpck_require__(40336);
+var import_enum = __nccwpck_require__(12290);
+var import_subquery = __nccwpck_require__(24211);
+var import_tracing = __nccwpck_require__(93789);
+var import_view_common = __nccwpck_require__(93212);
+var import_column = __nccwpck_require__(31327);
+var import_table = __nccwpck_require__(54419);
+class FakePrimitiveParam {
+  static [import_entity.entityKind] = "FakePrimitiveParam";
+}
+function isSQLWrapper(value) {
+  return value !== null && value !== void 0 && typeof value.getSQL === "function";
+}
+function mergeQueries(queries) {
+  const result = { sql: "", params: [] };
+  for (const query of queries) {
+    result.sql += query.sql;
+    result.params.push(...query.params);
+    if (query.typings?.length) {
+      if (!result.typings) {
+        result.typings = [];
+      }
+      result.typings.push(...query.typings);
+    }
+  }
+  return result;
+}
+class StringChunk {
+  static [import_entity.entityKind] = "StringChunk";
+  value;
+  constructor(value) {
+    this.value = Array.isArray(value) ? value : [value];
+  }
+  getSQL() {
+    return new SQL([this]);
+  }
+}
+class SQL {
+  constructor(queryChunks) {
+    this.queryChunks = queryChunks;
+  }
+  static [import_entity.entityKind] = "SQL";
+  /** @internal */
+  decoder = noopDecoder;
+  shouldInlineParams = false;
+  append(query) {
+    this.queryChunks.push(...query.queryChunks);
+    return this;
+  }
+  toQuery(config) {
+    return import_tracing.tracer.startActiveSpan("drizzle.buildSQL", (span) => {
+      const query = this.buildQueryFromSourceParams(this.queryChunks, config);
+      span?.setAttributes({
+        "drizzle.query.text": query.sql,
+        "drizzle.query.params": JSON.stringify(query.params)
+      });
+      return query;
+    });
+  }
+  buildQueryFromSourceParams(chunks, _config) {
+    const config = Object.assign({}, _config, {
+      inlineParams: _config.inlineParams || this.shouldInlineParams,
+      paramStartIndex: _config.paramStartIndex || { value: 0 }
+    });
+    const {
+      escapeName,
+      escapeParam,
+      prepareTyping,
+      inlineParams,
+      paramStartIndex
+    } = config;
+    return mergeQueries(chunks.map((chunk) => {
+      if ((0, import_entity.is)(chunk, StringChunk)) {
+        return { sql: chunk.value.join(""), params: [] };
+      }
+      if ((0, import_entity.is)(chunk, Name)) {
+        return { sql: escapeName(chunk.value), params: [] };
+      }
+      if (chunk === void 0) {
+        return { sql: "", params: [] };
+      }
+      if (Array.isArray(chunk)) {
+        const result = [new StringChunk("(")];
+        for (const [i, p] of chunk.entries()) {
+          result.push(p);
+          if (i < chunk.length - 1) {
+            result.push(new StringChunk(", "));
+          }
+        }
+        result.push(new StringChunk(")"));
+        return this.buildQueryFromSourceParams(result, config);
+      }
+      if ((0, import_entity.is)(chunk, SQL)) {
+        return this.buildQueryFromSourceParams(chunk.queryChunks, {
+          ...config,
+          inlineParams: inlineParams || chunk.shouldInlineParams
+        });
+      }
+      if ((0, import_entity.is)(chunk, import_table.Table)) {
+        const schemaName = chunk[import_table.Table.Symbol.Schema];
+        const tableName = chunk[import_table.Table.Symbol.Name];
+        return {
+          sql: schemaName === void 0 ? escapeName(tableName) : escapeName(schemaName) + "." + escapeName(tableName),
+          params: []
+        };
+      }
+      if ((0, import_entity.is)(chunk, import_column.Column)) {
+        return { sql: escapeName(chunk.table[import_table.Table.Symbol.Name]) + "." + escapeName(chunk.name), params: [] };
+      }
+      if ((0, import_entity.is)(chunk, View)) {
+        const schemaName = chunk[import_view_common.ViewBaseConfig].schema;
+        const viewName = chunk[import_view_common.ViewBaseConfig].name;
+        return {
+          sql: schemaName === void 0 ? escapeName(viewName) : escapeName(schemaName) + "." + escapeName(viewName),
+          params: []
+        };
+      }
+      if ((0, import_entity.is)(chunk, Param)) {
+        const mappedValue = chunk.value === null ? null : chunk.encoder.mapToDriverValue(chunk.value);
+        if ((0, import_entity.is)(mappedValue, SQL)) {
+          return this.buildQueryFromSourceParams([mappedValue], config);
+        }
+        if (inlineParams) {
+          return { sql: this.mapInlineParam(mappedValue, config), params: [] };
+        }
+        let typings;
+        if (prepareTyping !== void 0) {
+          typings = [prepareTyping(chunk.encoder)];
+        }
+        return { sql: escapeParam(paramStartIndex.value++, mappedValue), params: [mappedValue], typings };
+      }
+      if ((0, import_entity.is)(chunk, Placeholder)) {
+        return { sql: escapeParam(paramStartIndex.value++, chunk), params: [chunk] };
+      }
+      if ((0, import_entity.is)(chunk, SQL.Aliased) && chunk.fieldAlias !== void 0) {
+        return { sql: escapeName(chunk.fieldAlias), params: [] };
+      }
+      if ((0, import_entity.is)(chunk, import_subquery.Subquery)) {
+        if (chunk._.isWith) {
+          return { sql: escapeName(chunk._.alias), params: [] };
+        }
+        return this.buildQueryFromSourceParams([
+          new StringChunk("("),
+          chunk._.sql,
+          new StringChunk(") "),
+          new Name(chunk._.alias)
+        ], config);
+      }
+      if ((0, import_enum.isPgEnum)(chunk)) {
+        if (chunk.schema) {
+          return { sql: escapeName(chunk.schema) + "." + escapeName(chunk.enumName), params: [] };
+        }
+        return { sql: escapeName(chunk.enumName), params: [] };
+      }
+      if (isSQLWrapper(chunk)) {
+        return this.buildQueryFromSourceParams([
+          new StringChunk("("),
+          chunk.getSQL(),
+          new StringChunk(")")
+        ], config);
+      }
+      if (inlineParams) {
+        return { sql: this.mapInlineParam(chunk, config), params: [] };
+      }
+      return { sql: escapeParam(paramStartIndex.value++, chunk), params: [chunk] };
+    }));
+  }
+  mapInlineParam(chunk, { escapeString }) {
+    if (chunk === null) {
+      return "null";
+    }
+    if (typeof chunk === "number" || typeof chunk === "boolean") {
+      return chunk.toString();
+    }
+    if (typeof chunk === "string") {
+      return escapeString(chunk);
+    }
+    if (typeof chunk === "object") {
+      const mappedValueAsString = chunk.toString();
+      if (mappedValueAsString === "[object Object]") {
+        return escapeString(JSON.stringify(chunk));
+      }
+      return escapeString(mappedValueAsString);
+    }
+    throw new Error("Unexpected param value: " + chunk);
+  }
+  getSQL() {
+    return this;
+  }
+  as(alias) {
+    if (alias === void 0) {
+      return this;
+    }
+    return new SQL.Aliased(this, alias);
+  }
+  mapWith(decoder) {
+    this.decoder = typeof decoder === "function" ? { mapFromDriverValue: decoder } : decoder;
+    return this;
+  }
+  inlineParams() {
+    this.shouldInlineParams = true;
+    return this;
+  }
+  /**
+   * This method is used to conditionally include a part of the query.
+   *
+   * @param condition - Condition to check
+   * @returns itself if the condition is `true`, otherwise `undefined`
+   */
+  if(condition) {
+    return condition ? this : void 0;
+  }
+}
+class Name {
+  constructor(value) {
+    this.value = value;
+  }
+  static [import_entity.entityKind] = "Name";
+  brand;
+  getSQL() {
+    return new SQL([this]);
+  }
+}
+function name(value) {
+  return new Name(value);
+}
+function isDriverValueEncoder(value) {
+  return typeof value === "object" && value !== null && "mapToDriverValue" in value && typeof value.mapToDriverValue === "function";
+}
+const noopDecoder = {
+  mapFromDriverValue: (value) => value
+};
+const noopEncoder = {
+  mapToDriverValue: (value) => value
+};
+const noopMapper = {
+  ...noopDecoder,
+  ...noopEncoder
+};
+class Param {
+  /**
+   * @param value - Parameter value
+   * @param encoder - Encoder to convert the value to a driver parameter
+   */
+  constructor(value, encoder = noopEncoder) {
+    this.value = value;
+    this.encoder = encoder;
+  }
+  static [import_entity.entityKind] = "Param";
+  brand;
+  getSQL() {
+    return new SQL([this]);
+  }
+}
+function param(value, encoder) {
+  return new Param(value, encoder);
+}
+function sql(strings, ...params) {
+  const queryChunks = [];
+  if (params.length > 0 || strings.length > 0 && strings[0] !== "") {
+    queryChunks.push(new StringChunk(strings[0]));
+  }
+  for (const [paramIndex, param2] of params.entries()) {
+    queryChunks.push(param2, new StringChunk(strings[paramIndex + 1]));
+  }
+  return new SQL(queryChunks);
+}
+((sql2) => {
+  function empty() {
+    return new SQL([]);
+  }
+  sql2.empty = empty;
+  function fromList(list) {
+    return new SQL(list);
+  }
+  sql2.fromList = fromList;
+  function raw(str) {
+    return new SQL([new StringChunk(str)]);
+  }
+  sql2.raw = raw;
+  function join(chunks, separator) {
+    const result = [];
+    for (const [i, chunk] of chunks.entries()) {
+      if (i > 0 && separator !== void 0) {
+        result.push(separator);
+      }
+      result.push(chunk);
+    }
+    return new SQL(result);
+  }
+  sql2.join = join;
+  function identifier(value) {
+    return new Name(value);
+  }
+  sql2.identifier = identifier;
+  function placeholder2(name2) {
+    return new Placeholder(name2);
+  }
+  sql2.placeholder = placeholder2;
+  function param2(value, encoder) {
+    return new Param(value, encoder);
+  }
+  sql2.param = param2;
+})(sql || (sql = {}));
+((SQL2) => {
+  class Aliased {
+    constructor(sql2, fieldAlias) {
+      this.sql = sql2;
+      this.fieldAlias = fieldAlias;
+    }
+    static [import_entity.entityKind] = "SQL.Aliased";
+    /** @internal */
+    isSelectionField = false;
+    getSQL() {
+      return this.sql;
+    }
+    /** @internal */
+    clone() {
+      return new Aliased(this.sql, this.fieldAlias);
+    }
+  }
+  SQL2.Aliased = Aliased;
+})(SQL || (SQL = {}));
+class Placeholder {
+  constructor(name2) {
+    this.name = name2;
+  }
+  static [import_entity.entityKind] = "Placeholder";
+  getSQL() {
+    return new SQL([this]);
+  }
+}
+function placeholder(name2) {
+  return new Placeholder(name2);
+}
+function fillPlaceholders(params, values) {
+  return params.map((p) => {
+    if ((0, import_entity.is)(p, Placeholder)) {
+      if (!(p.name in values)) {
+        throw new Error(`No value for placeholder "${p.name}" was provided`);
+      }
+      return values[p.name];
+    }
+    return p;
+  });
+}
+class View {
+  static [import_entity.entityKind] = "View";
+  /** @internal */
+  [import_view_common.ViewBaseConfig];
+  constructor({ name: name2, schema, selectedFields, query }) {
+    this[import_view_common.ViewBaseConfig] = {
+      name: name2,
+      originalName: name2,
+      schema,
+      selectedFields,
+      query,
+      isExisting: !query,
+      isAlias: false
+    };
+  }
+  getSQL() {
+    return new SQL([this]);
+  }
+}
+import_column.Column.prototype.getSQL = function() {
+  return new SQL([this]);
+};
+import_table.Table.prototype.getSQL = function() {
+  return new SQL([this]);
+};
+import_subquery.Subquery.prototype.getSQL = function() {
+  return new SQL([this]);
+};
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=sql.cjs.map
+
+/***/ }),
+
+/***/ 24211:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var subquery_exports = {};
+__export(subquery_exports, {
+  Subquery: () => Subquery,
+  WithSubquery: () => WithSubquery
+});
+module.exports = __toCommonJS(subquery_exports);
+var import_entity = __nccwpck_require__(40336);
+class Subquery {
+  static [import_entity.entityKind] = "Subquery";
+  constructor(sql, selection, alias, isWith = false) {
+    this._ = {
+      brand: "Subquery",
+      sql,
+      selectedFields: selection,
+      alias,
+      isWith
+    };
+  }
+  // getSQL(): SQL<unknown> {
+  // 	return new SQL([this]);
+  // }
+}
+class WithSubquery extends Subquery {
+  static [import_entity.entityKind] = "WithSubquery";
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=subquery.cjs.map
+
+/***/ }),
+
+/***/ 54419:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var table_exports = {};
+__export(table_exports, {
+  BaseName: () => BaseName,
+  Columns: () => Columns,
+  ExtraConfigBuilder: () => ExtraConfigBuilder,
+  IsAlias: () => IsAlias,
+  OriginalName: () => OriginalName,
+  Schema: () => Schema,
+  Table: () => Table,
+  TableName: () => TableName,
+  getTableName: () => getTableName,
+  isTable: () => isTable
+});
+module.exports = __toCommonJS(table_exports);
+var import_entity = __nccwpck_require__(40336);
+const TableName = Symbol.for("drizzle:Name");
+const Schema = Symbol.for("drizzle:Schema");
+const Columns = Symbol.for("drizzle:Columns");
+const OriginalName = Symbol.for("drizzle:OriginalName");
+const BaseName = Symbol.for("drizzle:BaseName");
+const IsAlias = Symbol.for("drizzle:IsAlias");
+const ExtraConfigBuilder = Symbol.for("drizzle:ExtraConfigBuilder");
+const IsDrizzleTable = Symbol.for("drizzle:IsDrizzleTable");
+class Table {
+  static [import_entity.entityKind] = "Table";
+  /** @internal */
+  static Symbol = {
+    Name: TableName,
+    Schema,
+    OriginalName,
+    Columns,
+    BaseName,
+    IsAlias,
+    ExtraConfigBuilder
+  };
+  /**
+   * @internal
+   * Can be changed if the table is aliased.
+   */
+  [TableName];
+  /**
+   * @internal
+   * Used to store the original name of the table, before any aliasing.
+   */
+  [OriginalName];
+  /** @internal */
+  [Schema];
+  /** @internal */
+  [Columns];
+  /**
+   *  @internal
+   * Used to store the table name before the transformation via the `tableCreator` functions.
+   */
+  [BaseName];
+  /** @internal */
+  [IsAlias] = false;
+  /** @internal */
+  [ExtraConfigBuilder] = void 0;
+  [IsDrizzleTable] = true;
+  constructor(name, schema, baseName) {
+    this[TableName] = this[OriginalName] = name;
+    this[Schema] = schema;
+    this[BaseName] = baseName;
+  }
+}
+function isTable(table) {
+  return typeof table === "object" && table !== null && IsDrizzleTable in table;
+}
+function getTableName(table) {
+  return table[TableName];
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=table.cjs.map
+
+/***/ }),
+
+/***/ 40593:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var tracing_utils_exports = {};
+__export(tracing_utils_exports, {
+  iife: () => iife
+});
+module.exports = __toCommonJS(tracing_utils_exports);
+function iife(fn, ...args) {
+  return fn(...args);
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=tracing-utils.cjs.map
+
+/***/ }),
+
+/***/ 93789:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var tracing_exports = {};
+__export(tracing_exports, {
+  tracer: () => tracer
+});
+module.exports = __toCommonJS(tracing_exports);
+var import_tracing_utils = __nccwpck_require__(40593);
+var import_version = __nccwpck_require__(20771);
+let otel;
+let rawTracer;
+const tracer = {
+  startActiveSpan(name, fn) {
+    if (!otel) {
+      return fn();
+    }
+    if (!rawTracer) {
+      rawTracer = otel.trace.getTracer("drizzle-orm", import_version.npmVersion);
+    }
+    return (0, import_tracing_utils.iife)(
+      (otel2, rawTracer2) => rawTracer2.startActiveSpan(
+        name,
+        (span) => {
+          try {
+            return fn(span);
+          } catch (e) {
+            span.setStatus({
+              code: otel2.SpanStatusCode.ERROR,
+              message: e instanceof Error ? e.message : "Unknown error"
+              // eslint-disable-line no-instanceof/no-instanceof
+            });
+            throw e;
+          } finally {
+            span.end();
+          }
+        }
+      ),
+      otel,
+      rawTracer
+    );
+  }
+};
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=tracing.cjs.map
+
+/***/ }),
+
+/***/ 26656:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var utils_exports = {};
+__export(utils_exports, {
+  applyMixins: () => applyMixins,
+  getTableColumns: () => getTableColumns,
+  getTableLikeName: () => getTableLikeName,
+  haveSameKeys: () => haveSameKeys,
+  mapResultRow: () => mapResultRow,
+  mapUpdateSet: () => mapUpdateSet,
+  orderSelectedFields: () => orderSelectedFields
+});
+module.exports = __toCommonJS(utils_exports);
+var import_column = __nccwpck_require__(31327);
+var import_entity = __nccwpck_require__(40336);
+var import_sql = __nccwpck_require__(23954);
+var import_subquery = __nccwpck_require__(24211);
+var import_table = __nccwpck_require__(54419);
+var import_view_common = __nccwpck_require__(93212);
+function mapResultRow(columns, row, joinsNotNullableMap) {
+  const nullifyMap = {};
+  const result = columns.reduce(
+    (result2, { path, field }, columnIndex) => {
+      let decoder;
+      if ((0, import_entity.is)(field, import_column.Column)) {
+        decoder = field;
+      } else if ((0, import_entity.is)(field, import_sql.SQL)) {
+        decoder = field.decoder;
+      } else {
+        decoder = field.sql.decoder;
+      }
+      let node = result2;
+      for (const [pathChunkIndex, pathChunk] of path.entries()) {
+        if (pathChunkIndex < path.length - 1) {
+          if (!(pathChunk in node)) {
+            node[pathChunk] = {};
+          }
+          node = node[pathChunk];
+        } else {
+          const rawValue = row[columnIndex];
+          const value = node[pathChunk] = rawValue === null ? null : decoder.mapFromDriverValue(rawValue);
+          if (joinsNotNullableMap && (0, import_entity.is)(field, import_column.Column) && path.length === 2) {
+            const objectName = path[0];
+            if (!(objectName in nullifyMap)) {
+              nullifyMap[objectName] = value === null ? (0, import_table.getTableName)(field.table) : false;
+            } else if (typeof nullifyMap[objectName] === "string" && nullifyMap[objectName] !== (0, import_table.getTableName)(field.table)) {
+              nullifyMap[objectName] = false;
+            }
+          }
+        }
+      }
+      return result2;
+    },
+    {}
+  );
+  if (joinsNotNullableMap && Object.keys(nullifyMap).length > 0) {
+    for (const [objectName, tableName] of Object.entries(nullifyMap)) {
+      if (typeof tableName === "string" && !joinsNotNullableMap[tableName]) {
+        result[objectName] = null;
+      }
+    }
+  }
+  return result;
+}
+function orderSelectedFields(fields, pathPrefix) {
+  return Object.entries(fields).reduce((result, [name, field]) => {
+    if (typeof name !== "string") {
+      return result;
+    }
+    const newPath = pathPrefix ? [...pathPrefix, name] : [name];
+    if ((0, import_entity.is)(field, import_column.Column) || (0, import_entity.is)(field, import_sql.SQL) || (0, import_entity.is)(field, import_sql.SQL.Aliased)) {
+      result.push({ path: newPath, field });
+    } else if ((0, import_entity.is)(field, import_table.Table)) {
+      result.push(...orderSelectedFields(field[import_table.Table.Symbol.Columns], newPath));
+    } else {
+      result.push(...orderSelectedFields(field, newPath));
+    }
+    return result;
+  }, []);
+}
+function haveSameKeys(left, right) {
+  const leftKeys = Object.keys(left);
+  const rightKeys = Object.keys(right);
+  if (leftKeys.length !== rightKeys.length) {
+    return false;
+  }
+  for (const [index, key] of leftKeys.entries()) {
+    if (key !== rightKeys[index]) {
+      return false;
+    }
+  }
+  return true;
+}
+function mapUpdateSet(table, values) {
+  const entries = Object.entries(values).filter(([, value]) => value !== void 0).map(([key, value]) => {
+    if ((0, import_entity.is)(value, import_sql.SQL)) {
+      return [key, value];
+    } else {
+      return [key, new import_sql.Param(value, table[import_table.Table.Symbol.Columns][key])];
+    }
+  });
+  if (entries.length === 0) {
+    throw new Error("No values to set");
+  }
+  return Object.fromEntries(entries);
+}
+function applyMixins(baseClass, extendedClasses) {
+  for (const extendedClass of extendedClasses) {
+    for (const name of Object.getOwnPropertyNames(extendedClass.prototype)) {
+      if (name === "constructor")
+        continue;
+      Object.defineProperty(
+        baseClass.prototype,
+        name,
+        Object.getOwnPropertyDescriptor(extendedClass.prototype, name) || /* @__PURE__ */ Object.create(null)
+      );
+    }
+  }
+}
+function getTableColumns(table) {
+  return table[import_table.Table.Symbol.Columns];
+}
+function getTableLikeName(table) {
+  return (0, import_entity.is)(table, import_subquery.Subquery) ? table._.alias : (0, import_entity.is)(table, import_sql.View) ? table[import_view_common.ViewBaseConfig].name : (0, import_entity.is)(table, import_sql.SQL) ? void 0 : table[import_table.Table.Symbol.IsAlias] ? table[import_table.Table.Symbol.Name] : table[import_table.Table.Symbol.BaseName];
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=utils.cjs.map
+
+/***/ }),
+
+/***/ 20771:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/version.ts
+var version_exports = {};
+__export(version_exports, {
+  compatibilityVersion: () => compatibilityVersion,
+  npmVersion: () => version
+});
+module.exports = __toCommonJS(version_exports);
+
+// package.json
+var version = "0.30.10";
+
+// src/version.ts
+var compatibilityVersion = 6;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+
+
+/***/ }),
+
+/***/ 93212:
+/***/ ((module) => {
+
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var view_common_exports = {};
+__export(view_common_exports, {
+  ViewBaseConfig: () => ViewBaseConfig
+});
+module.exports = __toCommonJS(view_common_exports);
+const ViewBaseConfig = Symbol.for("drizzle:ViewBaseConfig");
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=view-common.cjs.map
+
+/***/ }),
+
 /***/ 18147:
 /***/ ((module, exports, __nccwpck_require__) => {
 
@@ -97446,34 +101183,6 @@ module.exports = /*#__PURE__*/JSON.parse('{"100":"Continue","101":"Switching Pro
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__nccwpck_require__.nmd = (module) => {

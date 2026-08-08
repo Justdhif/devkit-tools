@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
-import { db, sharedItems, eq } from '@devkit/database';
+import { db, sharedItems, eq } from '../../database';
 
 @Controller('share')
 export class SharingController {

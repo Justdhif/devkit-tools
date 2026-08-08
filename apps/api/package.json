@@ -4,7 +4,7 @@
   "private": true,
   "main": "api/index.js",
   "scripts": {
-    "build": "cd ../.. && pnpm build --filter=@devkit/database... --filter=@devkit/tool-core... --filter=@devkit/shared... && npx @vercel/ncc build apps/api/src/serverless.ts -o apps/api/api && node -e \"fs.rmSync('apps/api/api/apps', {recursive: true, force: true}); fs.rmSync('apps/api/api/packages', {recursive: true, force: true});\"",
+    "build": "cd ../.. && pnpm build --filter=@devkit/tool-core... --filter=@devkit/shared... && npx @vercel/ncc build apps/api/src/serverless.ts -o apps/api/api && node -e \"fs.rmSync('apps/api/api/apps', {recursive: true, force: true}); fs.rmSync('apps/api/api/packages', {recursive: true, force: true});\"",
     "vercel-build": "pnpm build",
     "dev": "nest start --watch",
     "start": "node api/index.js",

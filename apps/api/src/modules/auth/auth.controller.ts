@@ -7,7 +7,7 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
-import { db, users, eq } from '@devkit/database';
+import { db, users, eq } from '../../database';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
