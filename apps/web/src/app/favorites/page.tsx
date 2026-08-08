@@ -21,7 +21,7 @@ export default function FavoritesPage() {
 
   return (
     <AuthGuard title="Starred Favorites" description="Sign in to sync your starred developer utilities across your browsers and devices.">
-      <div className="p-4 sm:p-8 max-w-6xl mx-auto space-y-6">
+      <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
         <div className="flex items-center space-x-3">
           <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
             <Star className="w-5 h-5 fill-amber-400" />

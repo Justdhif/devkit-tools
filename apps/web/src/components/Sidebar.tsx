@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Wrench, Star, History, LayoutGrid, Settings, Heart } from 'lucide-react';
+import { Home, Wrench, Star, History, LayoutGrid, Heart } from 'lucide-react';
 import { CORE_TOOLS } from '@devkit/tool-core';
 
 export function Sidebar() {
@@ -14,7 +14,6 @@ export function Sidebar() {
     { label: 'Favorites', href: '/favorites', icon: Star },
     { label: 'History', href: '/history', icon: History },
     { label: 'Workspaces', href: '/workspaces', icon: LayoutGrid },
-    { label: 'Settings', href: '/settings', icon: Settings },
   ];
 
   return (

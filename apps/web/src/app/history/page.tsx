@@ -12,7 +12,7 @@ export default function HistoryPage() {
 
   return (
     <AuthGuard title="Tool History Cloud Sync" description="Sign in to view, save, and synchronize your local privacy-aware tool operation history.">
-      <div className="p-4 sm:p-8 max-w-6xl mx-auto space-y-6">
+      <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -38,7 +38,7 @@ export default function HistoryPage() {
         <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-3 text-xs text-emerald-300 flex items-center space-x-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>
-            <strong>Privacy Safeguard:</strong> Secrets and sensitive tokens (such as JWTs) are automatically redacted and never persisted in history unless specifically enabled in Settings.
+            <strong>Privacy Safeguard:</strong> Secrets and sensitive tokens (such as JWTs) are automatically redacted and never persisted in history.
           </span>
         </div>
 

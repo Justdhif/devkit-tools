@@ -24,7 +24,7 @@ export default function WorkspacesPage() {
 
   return (
     <AuthGuard title="Saved Workspaces" description="Sign in to create, save, and synchronize curated tool collections for your developer projects.">
-      <div className="p-4 sm:p-8 max-w-6xl mx-auto space-y-6">
+      <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -45,7 +45,7 @@ export default function WorkspacesPage() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {workspaces.map((ws) => (
             <div
               key={ws.id}
