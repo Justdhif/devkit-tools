@@ -126,8 +126,8 @@ export const useDevKitStore = create<DevKitStoreState>()(
           name: 'My Backend Toolkit',
           description: 'Essential utilities for REST API development',
           toolSlugs: ['jwt-decoder', 'json-formatter', 'hash-generator', 'uuid-generator'],
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
+          createdAt: '2026-01-01T00:00:00.000Z',
+          updatedAt: '2026-01-01T00:00:00.000Z',
         },
       ],
       addWorkspace: (name, toolSlugs, description) =>

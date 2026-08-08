@@ -60,7 +60,14 @@ export function CronBuilderTool() {
     return explanation;
   };
 
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const getNextExecutionDates = (): string[] => {
+    if (!mounted) return [];
     const dates: string[] = [];
     const now = new Date();
     for (let i = 1; i <= 5; i++) {

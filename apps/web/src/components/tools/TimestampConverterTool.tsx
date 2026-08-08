@@ -6,10 +6,16 @@ import { parseTimestamp, TimestampParseResult } from '@devkit/crypto-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
 
 export function TimestampConverterTool() {
-  const [input, setInput] = useState<string>(Math.floor(Date.now() / 1000).toString());
-  const [parsed, setParsed] = useState<TimestampParseResult | null>(() => parseTimestamp(Math.floor(Date.now() / 1000)));
+  const [input, setInput] = useState<string>('1716239022');
+  const [parsed, setParsed] = useState<TimestampParseResult | null>(() => parseTimestamp('1716239022'));
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const { addHistoryItem } = useDevKitStore();
+
+  React.useEffect(() => {
+    const nowSec = Math.floor(Date.now() / 1000).toString();
+    setInput(nowSec);
+    setParsed(parseTimestamp(nowSec));
+  }, []);
 
   const handleNow = () => {
     const nowSec = Math.floor(Date.now() / 1000).toString();
