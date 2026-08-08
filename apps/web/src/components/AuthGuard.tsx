@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { Lock, LogIn, ShieldCheck } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
+import { useDevKitStore } from '../store/useDevKitStore';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -17,6 +17,7 @@ export function AuthGuard({
   description = 'Sign in with GitHub or Google to synchronize your favorites, tool history, and personal workspaces.',
 }: AuthGuardProps) {
   const { isAuthenticated } = useAuthStore();
+  const { toggleProfileDrawer } = useDevKitStore();
 
   if (isAuthenticated) {
     return <>{children}</>;
@@ -40,13 +41,13 @@ export function AuthGuard({
         </div>
 
         <div className="flex items-center justify-center pt-2">
-          <Link
-            href="/login"
+          <button
+            onClick={toggleProfileDrawer}
             className="w-full sm:w-auto px-6 py-2.5 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg flex items-center justify-center space-x-2 shadow-xs transition-colors"
           >
             <LogIn className="w-4 h-4" />
             <span>Sign In with OAuth</span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

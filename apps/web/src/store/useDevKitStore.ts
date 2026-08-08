@@ -14,6 +14,10 @@ interface DevKitStoreState {
   setCommandPaletteOpen: (open: boolean) => void;
   toggleCommandPalette: () => void;
 
+  isProfileDrawerOpen: boolean;
+  setProfileDrawerOpen: (open: boolean) => void;
+  toggleProfileDrawer: () => void;
+
   favorites: string[];
   fetchFavoritesFromDB: () => Promise<void>;
   toggleFavorite: (slug: string) => Promise<void>;
@@ -41,6 +45,10 @@ export const useDevKitStore = create<DevKitStoreState>()(
       setCommandPaletteOpen: (open) => set({ isCommandPaletteOpen: open }),
       toggleCommandPalette: () => set((state) => ({ isCommandPaletteOpen: !state.isCommandPaletteOpen })),
 
+      isProfileDrawerOpen: false,
+      setProfileDrawerOpen: (open) => set({ isProfileDrawerOpen: open }),
+      toggleProfileDrawer: () => set((state) => ({ isProfileDrawerOpen: !state.isProfileDrawerOpen })),
+
       favorites: [],
 
       fetchFavoritesFromDB: async () => {
@@ -63,9 +71,7 @@ export const useDevKitStore = create<DevKitStoreState>()(
       toggleFavorite: async (slug: string) => {
         const { token, isAuthenticated } = useAuthStore.getState();
         if (!isAuthenticated || !token) {
-          if (typeof window !== 'undefined') {
-            window.location.href = '/login';
-          }
+          set({ isProfileDrawerOpen: true });
           return;
         }
 

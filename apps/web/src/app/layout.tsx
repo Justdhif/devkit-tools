@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar';
 import { CommandPalette } from '../components/CommandPalette';
+import { ProfileDrawer } from '../components/ProfileDrawer';
 
 export const metadata: Metadata = {
   title: "DevKit — The developer's everyday toolbox",
@@ -32,6 +33,7 @@ export default function RootLayout({
             </main>
           </div>
           <CommandPalette />
+          <ProfileDrawer />
         </ThemeProvider>
       </body>
     </html>
