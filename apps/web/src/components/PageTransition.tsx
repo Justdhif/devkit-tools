@@ -15,14 +15,14 @@ export function PageTransition({ children }: PageTransitionProps) {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0, y: 10, scale: 0.995 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: -6, scale: 0.995 }}
+        initial={{ opacity: 0, scale: 0.995 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.995 }}
         transition={{
-          duration: 0.28,
-          ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier spring curve for ultra-smooth entrance
+          duration: 0.2,
+          ease: 'easeOut',
         }}
-        className="h-full flex-1 flex flex-col"
+        className="w-full h-full flex-1 flex flex-col min-h-0"
       >
         {children}
       </motion.div>

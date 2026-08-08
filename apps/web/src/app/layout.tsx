@@ -24,7 +24,7 @@ export default function RootLayout({
           <Header />
           <div className="flex flex-1">
             <Sidebar />
-            <main className="flex-1 pb-16 md:pb-0 overflow-y-auto flex flex-col">
+            <main className="flex-1 pb-16 md:pb-0 overflow-y-auto flex flex-col min-h-0">
               <PageTransition>{children}</PageTransition>
             </main>
           </div>
