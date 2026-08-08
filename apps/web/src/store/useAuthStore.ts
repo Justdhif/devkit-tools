@@ -134,7 +134,11 @@ export const useAuthStore = create<AuthStoreState>()(
           });
           const data = await res.json();
           if (res.ok && data.success) {
-            set({ user: data.user, isAuthenticated: true });
+            set({
+              user: data.user,
+              token: data.token || token,
+              isAuthenticated: true,
+            });
           } else {
             set({ user: null, token: null, isAuthenticated: false });
           }

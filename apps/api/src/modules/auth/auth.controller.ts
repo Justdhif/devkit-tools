@@ -330,8 +330,13 @@ export class AuthController {
       }
 
       const user = records[0];
+      const renewedToken = jwt.sign({ sub: user.id, email: user.email }, JWT_SECRET, {
+        expiresIn: '7d',
+      });
+
       return {
         success: true,
+        token: renewedToken,
         user: {
           id: user.id,
           email: user.email,
