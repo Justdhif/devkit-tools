@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { QrCode, Download, Copy, Check, SlidersHorizontal } from 'lucide-react';
+import { ColorPicker } from '../ui/color-picker';
 
 export function QrGeneratorTool() {
   const [text, setText] = useState('https://devkit-tools.vercel.app');
@@ -81,38 +82,12 @@ export function QrGeneratorTool() {
           <div className="grid grid-cols-2 gap-3 pt-2 border-t border-border">
             <div>
               <label className="text-xs font-medium text-devText-muted block mb-1">Foreground Color</label>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="color"
-                  value={fgColor}
-                  onChange={(e) => setFgColor(e.target.value)}
-                  className="w-8 h-8 rounded border border-border cursor-pointer bg-transparent"
-                />
-                <input
-                  type="text"
-                  value={fgColor}
-                  onChange={(e) => setFgColor(e.target.value)}
-                  className="w-full bg-background border border-border rounded px-2.5 py-1 text-xs font-mono text-devText-primary"
-                />
-              </div>
+              <ColorPicker color={fgColor} onChange={setFgColor} label="Foreground Color" />
             </div>
 
             <div>
               <label className="text-xs font-medium text-devText-muted block mb-1">Background Color</label>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="color"
-                  value={bgColor}
-                  onChange={(e) => setBgColor(e.target.value)}
-                  className="w-8 h-8 rounded border border-border cursor-pointer bg-transparent"
-                />
-                <input
-                  type="text"
-                  value={bgColor}
-                  onChange={(e) => setBgColor(e.target.value)}
-                  className="w-full bg-background border border-border rounded px-2.5 py-1 text-xs font-mono text-devText-primary"
-                />
-              </div>
+              <ColorPicker color={bgColor} onChange={setBgColor} label="Background Color" />
             </div>
           </div>
 

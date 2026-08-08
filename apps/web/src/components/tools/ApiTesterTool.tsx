@@ -14,6 +14,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { ApiProxyResponse } from '@devkit/shared';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
@@ -173,17 +174,18 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
       {/* Request Bar */}
       <div className="flex flex-wrap items-center gap-2 bg-surface p-3 rounded-xl border border-border">
-        <select
-          value={method}
-          onChange={(e: any) => setMethod(e.target.value)}
-          className="bg-background border border-border text-accent font-mono font-bold text-xs rounded-lg px-3 py-2 focus:outline-none"
-        >
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="PATCH">PATCH</option>
-          <option value="DELETE">DELETE</option>
-        </select>
+        <Select value={method} onValueChange={(val: any) => setMethod(val)}>
+          <SelectTrigger className="w-24 font-mono font-bold text-accent">
+            <SelectValue placeholder="Method" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="GET">GET</SelectItem>
+            <SelectItem value="POST">POST</SelectItem>
+            <SelectItem value="PUT">PUT</SelectItem>
+            <SelectItem value="PATCH">PATCH</SelectItem>
+            <SelectItem value="DELETE">DELETE</SelectItem>
+          </SelectContent>
+        </Select>
 
         <input
           type="text"

@@ -21,6 +21,7 @@ import {
   AiConvertJsonResponse,
   AiExplainCodeResponse,
 } from '@devkit/shared';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 type AiTab = 'regex' | 'sql' | 'error' | 'code' | 'json';
 
@@ -197,27 +198,29 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
             <span>INPUT PROMPT & CONTEXT</span>
             {activeTab === 'sql' && (
-              <select
-                value={sqlDialect}
-                onChange={(e: any) => setSqlDialect(e.target.value)}
-                className="bg-background text-devText-primary border border-border text-[11px] rounded px-2 py-0.5 focus:outline-none"
-              >
-                <option value="postgres">PostgreSQL</option>
-                <option value="mysql">MySQL</option>
-                <option value="sqlite">SQLite</option>
-              </select>
+              <Select value={sqlDialect} onValueChange={(val: any) => setSqlDialect(val)}>
+                <SelectTrigger className="w-32 h-7 text-[11px]">
+                  <SelectValue placeholder="Select Dialect" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="postgres">PostgreSQL</SelectItem>
+                  <SelectItem value="mysql">MySQL</SelectItem>
+                  <SelectItem value="sqlite">SQLite</SelectItem>
+                </SelectContent>
+              </Select>
             )}
             {activeTab === 'json' && (
-              <select
-                value={targetLang}
-                onChange={(e: any) => setTargetLang(e.target.value)}
-                className="bg-background text-devText-primary border border-border text-[11px] rounded px-2 py-0.5 focus:outline-none"
-              >
-                <option value="typescript">TypeScript Interface</option>
-                <option value="zod">Zod Schema</option>
-                <option value="go">Go Struct</option>
-                <option value="python">Python Dataclass</option>
-              </select>
+              <Select value={targetLang} onValueChange={(val: any) => setTargetLang(val)}>
+                <SelectTrigger className="w-44 h-7 text-[11px]">
+                  <SelectValue placeholder="Select Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="typescript">TypeScript Interface</SelectItem>
+                  <SelectItem value="zod">Zod Schema</SelectItem>
+                  <SelectItem value="go">Go Struct</SelectItem>
+                  <SelectItem value="python">Python Dataclass</SelectItem>
+                </SelectContent>
+              </Select>
             )}
           </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { CalendarClock, Copy, Check, Sparkles, HelpCircle } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 export function CronBuilderTool() {
   const [minute, setMinute] = useState('*/5');
@@ -86,16 +87,18 @@ export function CronBuilderTool() {
 
         <div className="flex items-center space-x-2">
           <span className="text-xs text-devText-muted">Presets:</span>
-          <select
-            onChange={(e) => applyPreset(e.target.value)}
-            className="bg-background border border-border text-devText-primary text-xs rounded px-2.5 py-1.5 focus:outline-none"
-          >
-            <option value="every-5-min">Every 5 Minutes (*/5 * * * *)</option>
-            <option value="every-hour">Every Hour (0 * * * *)</option>
-            <option value="daily-midnight">Daily at Midnight (0 0 * * *)</option>
-            <option value="weekly-monday">Weekly on Monday 09:00 (0 9 * * 1)</option>
-            <option value="monthly-first">Monthly on 1st (0 0 1 * *)</option>
-          </select>
+          <Select onValueChange={(val) => applyPreset(val)}>
+            <SelectTrigger className="w-56 text-xs">
+              <SelectValue placeholder="Choose Preset..." />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="every-5-min">Every 5 Minutes (*/5 * * * *)</SelectItem>
+              <SelectItem value="every-hour">Every Hour (0 * * * *)</SelectItem>
+              <SelectItem value="daily-midnight">Daily at Midnight (0 0 * * *)</SelectItem>
+              <SelectItem value="weekly-monday">Weekly on Monday 09:00 (0 9 * * 1)</SelectItem>
+              <SelectItem value="monthly-first">Monthly on 1st (0 0 1 * *)</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 

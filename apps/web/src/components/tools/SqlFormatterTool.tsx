@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Database, Copy, Check, Sparkles, Loader2 } from 'lucide-react';
 import { aiService } from '../../services/aiService';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 const SAMPLE_SQL = `SELECT u.id, u.username, u.email, count(o.id) as total_orders FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE u.created_at >= '2026-01-01' GROUP BY u.id, u.username, u.email HAVING count(o.id) > 5 ORDER BY total_orders DESC;`;
 
@@ -69,15 +70,16 @@ export function SqlFormatterTool() {
             AI Assistant: Describe the SQL query you need...
           </label>
           <div className="flex items-center space-x-2">
-            <select
-              value={aiDialect}
-              onChange={(e: any) => setAiDialect(e.target.value)}
-              className="bg-background text-devText-primary border border-border text-[11px] rounded px-2 py-0.5 focus:outline-none"
-            >
-              <option value="postgres">PostgreSQL</option>
-              <option value="mysql">MySQL</option>
-              <option value="sqlite">SQLite</option>
-            </select>
+            <Select value={aiDialect} onValueChange={(val: any) => setAiDialect(val)}>
+              <SelectTrigger className="w-28 h-6 text-[11px]">
+                <SelectValue placeholder="Dialect" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="postgres">PostgreSQL</SelectItem>
+                <SelectItem value="mysql">MySQL</SelectItem>
+                <SelectItem value="sqlite">SQLite</SelectItem>
+              </SelectContent>
+            </Select>
             <span className="text-[10px] text-devText-muted font-mono">Groq LLM</span>
           </div>
         </div>

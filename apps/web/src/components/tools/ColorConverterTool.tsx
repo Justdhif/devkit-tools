@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Palette, Copy, Check, Sparkles, ShieldCheck } from 'lucide-react';
+import { ColorPicker } from '../ui/color-picker';
 
 export function ColorConverterTool() {
   const [hex, setHex] = useState('#6366f1');
@@ -70,18 +71,7 @@ export function ColorConverterTool() {
         </div>
 
         <div className="flex items-center space-x-2">
-          <input
-            type="color"
-            value={hex}
-            onChange={(e) => setHex(e.target.value)}
-            className="w-9 h-9 rounded border border-border cursor-pointer bg-transparent"
-          />
-          <input
-            type="text"
-            value={hex}
-            onChange={(e) => setHex(e.target.value)}
-            className="bg-background border border-border font-mono text-xs font-bold text-devText-primary rounded-lg px-3 py-2 focus:outline-none focus:border-accent"
-          />
+          <ColorPicker color={hex} onChange={setHex} label="Pick Base Color" />
         </div>
       </div>
 

@@ -6,6 +6,8 @@ import { formatJson, minifyJson, validateJson } from '@devkit/json-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { aiService } from '../../services/aiService';
 import { AiExplainErrorResponse } from '@devkit/shared';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Checkbox } from '../ui/checkbox';
 
 const SAMPLE_JSON = `{\n  "name": "DevKit",\n  "type": "Developer Productivity Platform",\n  "features": ["JSON Formatter", "JWT Decoder", "UUID Generator"],\n  "privacyFirst": true,\n  "stats": {\n    "speedMs": 0,\n    "version": "1.0.0"\n  }\n}`;
 
@@ -88,23 +90,22 @@ export function JsonFormatterTool() {
           <SlidersHorizontal className="w-4 h-4 text-accent" />
           <div className="flex items-center space-x-2">
             <label className="text-devText-muted">Indent:</label>
-            <select
-              value={indent}
-              onChange={(e) => setIndent(Number(e.target.value))}
-              className="bg-background border border-border text-devText-primary rounded px-2 py-1 focus:outline-none"
-            >
-              <option value={2}>2 Spaces</option>
-              <option value={4}>4 Spaces</option>
-              <option value={8}>8 Spaces</option>
-            </select>
+            <Select value={String(indent)} onValueChange={(val) => setIndent(Number(val))}>
+              <SelectTrigger className="w-28 text-xs">
+                <SelectValue placeholder="Indent" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="2">2 Spaces</SelectItem>
+                <SelectItem value="4">4 Spaces</SelectItem>
+                <SelectItem value="8">8 Spaces</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <label className="flex items-center space-x-1.5 cursor-pointer text-devText-secondary hover:text-devText-primary">
-            <input
-              type="checkbox"
+          <label className="flex items-center space-x-2 cursor-pointer text-devText-secondary hover:text-devText-primary">
+            <Checkbox
               checked={sortKeys}
-              onChange={(e) => setSortKeys(e.target.checked)}
-              className="rounded accent-accent"
+              onCheckedChange={(checked) => setSortKeys(Boolean(checked))}
             />
             <span>Sort Keys Alphabetically</span>
           </label>
