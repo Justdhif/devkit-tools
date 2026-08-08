@@ -6,14 +6,29 @@ import * as path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
+import * as express from 'express';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api', { exclude: ['/'] });
+  
+  // Security: Payload size limits to prevent Memory Exhaustion & Layer-7 DDoS
+  app.use(express.json({ limit: '2mb' }));
+  app.use(express.urlencoded({ limit: '2mb', extended: true }));
+
   app.enableCors({
     origin: true,
     credentials: true,
   });
-  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+
+  // Security: Strict DTO validation & whitelist filtering against Parameter Pollution / XSS Injection
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: false,
+    })
+  );
 
   const port = process.env.PORT || 4000;
   await app.listen(port);
