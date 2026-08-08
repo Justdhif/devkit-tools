@@ -63,7 +63,7 @@ export default function HomePage() {
               placeholder="Search developer tools... ⌘K"
               value={filterQuery}
               onChange={(e) => setFilterQuery(e.target.value)}
-              className="w-full h-12 pl-12 pr-20 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
+              className="w-full h-12 pl-12 pr-14 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
             />
             <button
               onClick={toggleCommandPalette}
