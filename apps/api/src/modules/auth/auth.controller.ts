@@ -149,7 +149,22 @@ export class AuthController {
 
     let user;
     if (records && records.length > 0) {
-      user = records[0];
+      user = {
+        ...records[0],
+        name: providerName,
+        avatarUrl: providerAvatar,
+        provider: provider,
+        providerId: pId,
+      };
+      await db
+        .update(users)
+        .set({
+          name: providerName,
+          avatarUrl: providerAvatar,
+          provider: provider,
+          providerId: pId,
+        })
+        .where(eq(users.id, records[0].id));
     } else {
       const userId = `usr_${provider}_${Math.random().toString(36).substring(2, 8)}`;
       const newUser = {
