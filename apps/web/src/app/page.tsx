@@ -37,7 +37,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
+    <div className="p-4 sm:p-6 space-y-8 w-full">
       <motion.section
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           {tools.map((tool) => {
             const favorited = isFavorite(tool.slug);
