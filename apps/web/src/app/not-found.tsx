@@ -22,7 +22,7 @@ export default function NotFound() {
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-2xl bg-surface border border-border/80 rounded-2xl p-6 sm:p-10 space-y-8 shadow-2xl text-center relative overflow-hidden"
+        className="w-full max-w-2xl space-y-8 shadow-2xl text-center relative overflow-hidden"
       >
         {/* Glow Effects */}
         <div className="absolute -top-24 -left-24 w-48 h-48 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
