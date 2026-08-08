@@ -164,25 +164,27 @@ export function ProfileDrawer() {
                     </div>
                   )}
 
-                  <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2 pt-2">
                     <button
                       type="button"
                       disabled={isLoading}
                       onClick={() => handleOAuthClick('github')}
-                      className="w-full py-3 px-4 bg-background border border-border rounded-xl text-xs font-semibold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-3 transition-colors shadow-xs disabled:opacity-50 group"
+                      className="flex-1 py-3 px-3 bg-background border border-border hover:border-accent/50 rounded-xl text-xs font-semibold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-2 transition-all shadow-xs disabled:opacity-50 group"
                     >
-                      <Github className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      <span>Continue with GitHub</span>
+                      <Github className="w-4 h-4 group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="truncate">GitHub</span>
                     </button>
+
+                    <span className="text-xs font-medium text-devText-muted px-1 lowercase">or</span>
 
                     <button
                       type="button"
                       disabled={isLoading}
                       onClick={() => handleOAuthClick('google')}
-                      className="w-full py-3 px-4 bg-background border border-border rounded-xl text-xs font-semibold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-3 transition-colors shadow-xs disabled:opacity-50 group"
+                      className="flex-1 py-3 px-3 bg-background border border-border hover:border-accent/50 rounded-xl text-xs font-semibold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-2 transition-all shadow-xs disabled:opacity-50 group"
                     >
-                      <Chrome className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-                      <span>Continue with Google</span>
+                      <Chrome className="w-4 h-4 text-accent group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="truncate">Google</span>
                     </button>
                   </div>
                 </div>
