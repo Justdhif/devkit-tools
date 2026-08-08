@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { ToolHistoryItem, UserWorkspace, UserSettings } from '@devkit/shared';
+import { redactSensitiveData } from '@devkit/tool-core';
 import { useAuthStore } from './useAuthStore';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
@@ -106,14 +107,18 @@ export const useDevKitStore = create<DevKitStoreState>()(
       addHistoryItem: (toolSlug, inputSummary, isSensitive = false) => {
         const { settings, history } = get();
         if (!settings.privacy.saveHistory) return;
-        if (isSensitive && settings.privacy.donotSaveSensitive) return;
+
+        const redacted = redactSensitiveData(inputSummary || '');
+        const finalSensitive = isSensitive || redacted.isSensitive;
+
+        if (finalSensitive && settings.privacy.donotSaveSensitive) return;
 
         const newItem: ToolHistoryItem = {
           id: Math.random().toString(36).slice(2, 9),
           toolSlug,
           timestamp: Date.now(),
-          inputSummary: isSensitive ? '[REDACTED]' : inputSummary?.slice(0, 80),
-          isSensitive,
+          inputSummary: finalSensitive ? '[REDACTED_SECRET]' : redacted.redactedText.slice(0, 80),
+          isSensitive: finalSensitive,
         };
 
         set({ history: [newItem, ...history.slice(0, 49)] });

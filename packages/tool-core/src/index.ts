@@ -469,3 +469,48 @@ export async function executePipeline(
     finalOutput: currentData,
   };
 }
+
+// -------------------------------------------------------------------------
+// SECURITY & PRIVACY REDACTION ENGINE (PRD Section 27)
+// -------------------------------------------------------------------------
+
+export function redactSensitiveData(text: string): { redactedText: string; isSensitive: boolean } {
+  if (!text) return { redactedText: text, isSensitive: false };
+
+  let isSensitive = false;
+  let redacted = text;
+
+  // 1. JWT Tokens
+  const jwtPattern = /eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*/g;
+  if (jwtPattern.test(redacted)) {
+    isSensitive = true;
+    redacted = redacted.replace(jwtPattern, '[REDACTED_JWT_TOKEN]');
+  }
+
+  // 2. OpenAI / Anthropic / GitHub API Keys
+  const apiKeyPattern = /(?:sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16})/g;
+  if (apiKeyPattern.test(redacted)) {
+    isSensitive = true;
+    redacted = redacted.replace(apiKeyPattern, '[REDACTED_API_KEY]');
+  }
+
+  // 3. RSA / SSH Private Keys
+  const privateKeyPattern = /-----BEGIN[A-Z\s]+PRIVATE KEY-----[[\s\S]*?-----END[A-Z\s]+PRIVATE KEY-----/g;
+  if (privateKeyPattern.test(redacted)) {
+    isSensitive = true;
+    redacted = redacted.replace(privateKeyPattern, '[REDACTED_PRIVATE_KEY]');
+  }
+
+  // 4. Authorization Bearer Headers
+  const authHeaderPattern = /(Authorization:\s*Bearer\s+)[^\s\n]+/gi;
+  if (authHeaderPattern.test(redacted)) {
+    isSensitive = true;
+    redacted = redacted.replace(authHeaderPattern, '$1[REDACTED_SECRET]');
+  }
+
+  return {
+    redactedText: redacted,
+    isSensitive,
+  };
+}
+

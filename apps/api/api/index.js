@@ -82447,6 +82447,7 @@ exports.searchTools = searchTools;
 exports.detectSmartContext = detectSmartContext;
 exports.validatePipeline = validatePipeline;
 exports.executePipeline = executePipeline;
+exports.redactSensitiveData = redactSensitiveData;
 const json_tools_1 = __nccwpck_require__(84634);
 const jwt_tools_1 = __nccwpck_require__(31395);
 exports.CORE_TOOLS = [
@@ -82864,6 +82865,36 @@ async function executePipeline(steps, initialInput) {
         success: true,
         results,
         finalOutput: currentData,
+    };
+}
+function redactSensitiveData(text) {
+    if (!text)
+        return { redactedText: text, isSensitive: false };
+    let isSensitive = false;
+    let redacted = text;
+    const jwtPattern = /eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*/g;
+    if (jwtPattern.test(redacted)) {
+        isSensitive = true;
+        redacted = redacted.replace(jwtPattern, '[REDACTED_JWT_TOKEN]');
+    }
+    const apiKeyPattern = /(?:sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16})/g;
+    if (apiKeyPattern.test(redacted)) {
+        isSensitive = true;
+        redacted = redacted.replace(apiKeyPattern, '[REDACTED_API_KEY]');
+    }
+    const privateKeyPattern = /-----BEGIN[A-Z\s]+PRIVATE KEY-----[[\s\S]*?-----END[A-Z\s]+PRIVATE KEY-----/g;
+    if (privateKeyPattern.test(redacted)) {
+        isSensitive = true;
+        redacted = redacted.replace(privateKeyPattern, '[REDACTED_PRIVATE_KEY]');
+    }
+    const authHeaderPattern = /(Authorization:\s*Bearer\s+)[^\s\n]+/gi;
+    if (authHeaderPattern.test(redacted)) {
+        isSensitive = true;
+        redacted = redacted.replace(authHeaderPattern, '$1[REDACTED_SECRET]');
+    }
+    return {
+        redactedText: redacted,
+        isSensitive,
     };
 }
 
