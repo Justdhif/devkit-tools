@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
 import { CORE_TOOLS, searchTools } from '@devkit/tool-core';
 import { useDevKitStore } from '../store/useDevKitStore';
+import { SmartContextPanel } from '../components/SmartContextPanel';
 
 export default function HomePage() {
   const router = useRouter();
@@ -74,6 +75,8 @@ export default function HomePage() {
               <span>K</span>
             </button>
           </div>
+
+          <SmartContextPanel input={filterQuery} className="mt-3 text-left" />
         </div>
       </motion.section>
 

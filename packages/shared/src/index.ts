@@ -10,7 +10,66 @@ export type ToolCategory =
   | 'Generators'
   | 'Utilities'
   | 'Date & Color'
-  | 'AI';
+  | 'AI'
+  | 'Workflows';
+
+export type LogicalType =
+  | 'string'
+  | 'json'
+  | 'jwt'
+  | 'url'
+  | 'base64'
+  | 'uuid'
+  | 'timestamp'
+  | 'regex'
+  | 'sql'
+  | 'http-request'
+  | 'http-response'
+  | 'error'
+  | 'typescript'
+  | 'zod-schema';
+
+export interface SmartRecommendation {
+  id: string;
+  label: string;
+  targetToolSlug: string;
+  actionType: 'navigate' | 'transform' | 'ai';
+  params?: Record<string, unknown>;
+}
+
+export interface SmartDetectionResult {
+  detectedType: LogicalType;
+  confidence: number; // 0 to 100
+  secondaryDetections?: { type: LogicalType; confidence: number }[];
+  recommendations: SmartRecommendation[];
+  summary: string;
+}
+
+export interface PipelineStep {
+  id: string;
+  toolSlug: string;
+  toolName: string;
+  inputType: LogicalType;
+  outputType: LogicalType;
+  config?: Record<string, unknown>;
+  output?: string;
+  status?: 'idle' | 'running' | 'success' | 'error';
+  error?: string;
+}
+
+export interface ToolPipeline {
+  id: string;
+  name: string;
+  description?: string;
+  steps: PipelineStep[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PipelineValidationResult {
+  valid: boolean;
+  errors: string[];
+}
 
 export interface AiExplainErrorRequest {
   errorText: string;
@@ -92,6 +151,8 @@ export interface ToolMetadata {
   iconName: string;
   isPopular?: boolean;
   isNew?: boolean;
+  inputType?: LogicalType;
+  outputType?: LogicalType;
 }
 
 export interface ToolHistoryItem {

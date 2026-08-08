@@ -82056,8 +82056,387 @@ exports.ToolsController = ToolsController = __decorate([
 
 /***/ }),
 
-/***/ 29558:
+/***/ 84634:
 /***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.formatJson = formatJson;
+exports.minifyJson = minifyJson;
+exports.validateJson = validateJson;
+exports.jsonToTypescript = jsonToTypescript;
+exports.jsonToZod = jsonToZod;
+exports.jsonToGoStruct = jsonToGoStruct;
+exports.jsonToPythonDataclass = jsonToPythonDataclass;
+function sortObjectKeys(obj) {
+    if (Array.isArray(obj)) {
+        return obj.map(sortObjectKeys);
+    }
+    else if (obj !== null && typeof obj === 'object') {
+        return Object.keys(obj)
+            .sort()
+            .reduce((acc, key) => {
+            acc[key] = sortObjectKeys(obj[key]);
+            return acc;
+        }, {});
+    }
+    return obj;
+}
+function formatJson(input, options = {}) {
+    const { indent = 2, sortKeys = false } = options;
+    if (!input.trim()) {
+        return { success: true, result: '' };
+    }
+    try {
+        let parsed = JSON.parse(input);
+        if (sortKeys) {
+            parsed = sortObjectKeys(parsed);
+        }
+        const result = JSON.stringify(parsed, null, indent);
+        return { success: true, result };
+    }
+    catch (err) {
+        return {
+            success: false,
+            result: input,
+            error: err?.message || 'Invalid JSON syntax',
+        };
+    }
+}
+function minifyJson(input) {
+    if (!input.trim()) {
+        return { success: true, result: '' };
+    }
+    try {
+        const parsed = JSON.parse(input);
+        const result = JSON.stringify(parsed);
+        return { success: true, result };
+    }
+    catch (err) {
+        return {
+            success: false,
+            result: input,
+            error: err?.message || 'Invalid JSON syntax',
+        };
+    }
+}
+function validateJson(input) {
+    if (!input.trim()) {
+        return { valid: true };
+    }
+    try {
+        JSON.parse(input);
+        return { valid: true };
+    }
+    catch (err) {
+        return { valid: false, error: err?.message || 'Invalid JSON' };
+    }
+}
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+function jsonToTypescript(input, rootName = 'RootObject') {
+    if (!input.trim())
+        return { success: true, result: '' };
+    try {
+        const parsed = JSON.parse(input);
+        const interfaces = [];
+        const getType = (val, name) => {
+            if (val === null)
+                return 'any';
+            const t = typeof val;
+            if (t === 'string' || t === 'number' || t === 'boolean') {
+                return t;
+            }
+            if (Array.isArray(val)) {
+                if (val.length === 0)
+                    return 'any[]';
+                const itemType = getType(val[0], name + 'Item');
+                return `${itemType}[]`;
+            }
+            if (t === 'object') {
+                const interfaceName = capitalize(name);
+                generateInterface(val, interfaceName);
+                return interfaceName;
+            }
+            return 'any';
+        };
+        const generateInterface = (obj, interfaceName) => {
+            const lines = [`export interface ${interfaceName} {`];
+            for (const [key, val] of Object.entries(obj)) {
+                const typeStr = getType(val, key);
+                lines.push(`  ${key}: ${typeStr};`);
+            }
+            lines.push('}');
+            interfaces.push(lines.join('\n'));
+        };
+        if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+            generateInterface(parsed, rootName);
+        }
+        else if (Array.isArray(parsed)) {
+            if (parsed.length > 0 && typeof parsed[0] === 'object') {
+                generateInterface(parsed[0], rootName + 'Item');
+                interfaces.push(`export type ${rootName} = ${rootName}Item[];`);
+            }
+            else {
+                interfaces.push(`export type ${rootName} = any[];`);
+            }
+        }
+        else {
+            interfaces.push(`export type ${rootName} = ${typeof parsed};`);
+        }
+        return { success: true, result: interfaces.reverse().join('\n\n') };
+    }
+    catch (err) {
+        return { success: false, result: '', error: err?.message || 'Invalid JSON input' };
+    }
+}
+function jsonToZod(input, rootName = 'rootSchema') {
+    if (!input.trim())
+        return { success: true, result: '' };
+    try {
+        const parsed = JSON.parse(input);
+        const generateZod = (val) => {
+            if (val === null)
+                return 'z.any()';
+            const t = typeof val;
+            if (t === 'string')
+                return 'z.string()';
+            if (t === 'number')
+                return 'z.number()';
+            if (t === 'boolean')
+                return 'z.boolean()';
+            if (Array.isArray(val)) {
+                if (val.length === 0)
+                    return 'z.array(z.any())';
+                return `z.array(${generateZod(val[0])})`;
+            }
+            if (t === 'object') {
+                const fields = Object.entries(val)
+                    .map(([k, v]) => `  ${k}: ${generateZod(v)},`)
+                    .join('\n');
+                return `z.object({\n${fields}\n})`;
+            }
+            return 'z.any()';
+        };
+        const schema = `import { z } from 'zod';\n\nexport const ${rootName} = ${generateZod(parsed)};\n\nexport type ${rootName.charAt(0).toUpperCase() + rootName.slice(1)} = z.infer<typeof ${rootName}>;`;
+        return { success: true, result: schema };
+    }
+    catch (err) {
+        return { success: false, result: '', error: err?.message || 'Invalid JSON input' };
+    }
+}
+function jsonToGoStruct(input, rootName = 'AutoGenerated') {
+    if (!input.trim())
+        return { success: true, result: '' };
+    try {
+        const parsed = JSON.parse(input);
+        const structs = [];
+        const getGoType = (val, name) => {
+            if (val === null)
+                return 'interface{}';
+            const t = typeof val;
+            if (t === 'string')
+                return 'string';
+            if (t === 'number')
+                return Number.isInteger(val) ? 'int' : 'float64';
+            if (t === 'boolean')
+                return 'bool';
+            if (Array.isArray(val)) {
+                if (val.length === 0)
+                    return '[]interface{}';
+                return `[]${getGoType(val[0], name + 'Item')}`;
+            }
+            if (t === 'object') {
+                const structName = capitalize(name);
+                generateStruct(val, structName);
+                return structName;
+            }
+            return 'interface{}';
+        };
+        const generateStruct = (obj, structName) => {
+            const lines = [`type ${structName} struct {`];
+            for (const [key, val] of Object.entries(obj)) {
+                const fieldName = capitalize(key);
+                const goType = getGoType(val, key);
+                lines.push(`\t${fieldName} ${goType} \`json:"${key}"\``);
+            }
+            lines.push('}');
+            structs.push(lines.join('\n'));
+        };
+        if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+            generateStruct(parsed, rootName);
+        }
+        return { success: true, result: structs.reverse().join('\n\n') };
+    }
+    catch (err) {
+        return { success: false, result: '', error: err?.message || 'Invalid JSON input' };
+    }
+}
+function jsonToPythonDataclass(input, rootName = 'Root') {
+    if (!input.trim())
+        return { success: true, result: '' };
+    try {
+        const parsed = JSON.parse(input);
+        const classes = [];
+        const getPyType = (val, name) => {
+            if (val === null)
+                return 'Any';
+            const t = typeof val;
+            if (t === 'string')
+                return 'str';
+            if (t === 'number')
+                return Number.isInteger(val) ? 'int' : 'float';
+            if (t === 'boolean')
+                return 'bool';
+            if (Array.isArray(val)) {
+                if (val.length === 0)
+                    return 'List[Any]';
+                return `List[${getPyType(val[0], name + 'Item')}]`;
+            }
+            if (t === 'object') {
+                const className = capitalize(name);
+                generateClass(val, className);
+                return className;
+            }
+            return 'Any';
+        };
+        const generateClass = (obj, className) => {
+            const lines = ['@dataclass', `class ${className}:`];
+            const entries = Object.entries(obj);
+            if (entries.length === 0) {
+                lines.push('    pass');
+            }
+            else {
+                for (const [key, val] of entries) {
+                    const pyType = getPyType(val, key);
+                    lines.push(`    ${key}: ${pyType}`);
+                }
+            }
+            classes.push(lines.join('\n'));
+        };
+        if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+            generateClass(parsed, rootName);
+        }
+        const header = 'from dataclasses import dataclass\nfrom typing import List, Any\n\n';
+        return { success: true, result: header + classes.reverse().join('\n\n') };
+    }
+    catch (err) {
+        return { success: false, result: '', error: err?.message || 'Invalid JSON input' };
+    }
+}
+
+
+/***/ }),
+
+/***/ 31395:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.decodeJwt = decodeJwt;
+function base64UrlDecode(str) {
+    let output = str.replace(/-/g, '+').replace(/_/g, '/');
+    switch (output.length % 4) {
+        case 0:
+            break;
+        case 2:
+            output += '==';
+            break;
+        case 3:
+            output += '=';
+            break;
+        default:
+            throw new Error('Illegal base64url string!');
+    }
+    return decodeURIComponent(atob(output)
+        .split('')
+        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join(''));
+}
+function decodeJwt(token) {
+    const cleanToken = token.trim().replace(/^Bearer\s+/i, '');
+    if (!cleanToken) {
+        return { success: false, error: 'Token string is empty.' };
+    }
+    const parts = cleanToken.split('.');
+    if (parts.length !== 3) {
+        return {
+            success: false,
+            error: `Invalid JWT format. Expected 3 dot-separated parts, found ${parts.length}.`,
+        };
+    }
+    try {
+        const headerJson = base64UrlDecode(parts[0]);
+        const payloadJson = base64UrlDecode(parts[1]);
+        const signature = parts[2];
+        const header = JSON.parse(headerJson);
+        const payload = JSON.parse(payloadJson);
+        let isExpired;
+        let expiresAt;
+        let timeRemaining;
+        let issuedAt;
+        if (payload.iat && typeof payload.iat === 'number') {
+            issuedAt = new Date(payload.iat * 1000).toISOString();
+        }
+        if (payload.exp && typeof payload.exp === 'number') {
+            const expMs = payload.exp * 1000;
+            const nowMs = Date.now();
+            expiresAt = new Date(expMs).toISOString();
+            isExpired = nowMs >= expMs;
+            const diffSec = Math.floor((expMs - nowMs) / 1000);
+            if (isExpired) {
+                const pastSec = Math.abs(diffSec);
+                const mins = Math.floor(pastSec / 60);
+                const hours = Math.floor(mins / 60);
+                const days = Math.floor(hours / 24);
+                if (days > 0)
+                    timeRemaining = `Expired ${days} day(s) ago`;
+                else if (hours > 0)
+                    timeRemaining = `Expired ${hours} hour(s) ago`;
+                else if (mins > 0)
+                    timeRemaining = `Expired ${mins} minute(s) ago`;
+                else
+                    timeRemaining = `Expired ${pastSec} second(s) ago`;
+            }
+            else {
+                const mins = Math.floor(diffSec / 60);
+                const hours = Math.floor(mins / 60);
+                const days = Math.floor(hours / 24);
+                if (days > 0)
+                    timeRemaining = `${days} day(s) remaining`;
+                else if (hours > 0)
+                    timeRemaining = `${hours} hour(s) remaining`;
+                else if (mins > 0)
+                    timeRemaining = `${mins} minute(s) remaining`;
+                else
+                    timeRemaining = `${diffSec} second(s) remaining`;
+            }
+        }
+        return {
+            success: true,
+            header,
+            payload,
+            signature,
+            isExpired,
+            issuedAt,
+            expiresAt,
+            timeRemaining,
+        };
+    }
+    catch (err) {
+        return {
+            success: false,
+            error: err?.message || 'Failed to decode base64 JWT parts.',
+        };
+    }
+}
+
+
+/***/ }),
+
+/***/ 29558:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -82065,6 +82444,11 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CORE_TOOLS = void 0;
 exports.getToolBySlug = getToolBySlug;
 exports.searchTools = searchTools;
+exports.detectSmartContext = detectSmartContext;
+exports.validatePipeline = validatePipeline;
+exports.executePipeline = executePipeline;
+const json_tools_1 = __nccwpck_require__(84634);
+const jwt_tools_1 = __nccwpck_require__(31395);
 exports.CORE_TOOLS = [
     {
         id: 'json-formatter',
@@ -82075,6 +82459,8 @@ exports.CORE_TOOLS = [
         keywords: ['json', 'format', 'minify', 'validate', 'pretty', 'sort', 'lint'],
         iconName: 'Braces',
         isPopular: true,
+        inputType: 'json',
+        outputType: 'json',
     },
     {
         id: 'json-to-typescript',
@@ -82085,6 +82471,8 @@ exports.CORE_TOOLS = [
         keywords: ['json', 'typescript', 'zod', 'go', 'python', 'schema', 'type', 'interface'],
         iconName: 'Code2',
         isPopular: true,
+        inputType: 'json',
+        outputType: 'typescript',
     },
     {
         id: 'jwt-decoder',
@@ -82095,6 +82483,8 @@ exports.CORE_TOOLS = [
         keywords: ['jwt', 'token', 'decode', 'bearer', 'security', 'auth', 'expiration'],
         iconName: 'ShieldCheck',
         isPopular: true,
+        inputType: 'jwt',
+        outputType: 'json',
     },
     {
         id: 'uuid-generator',
@@ -82105,6 +82495,8 @@ exports.CORE_TOOLS = [
         keywords: ['uuid', 'guid', 'v4', 'v7', 'generator', 'random', 'id'],
         iconName: 'Fingerprint',
         isPopular: true,
+        inputType: 'string',
+        outputType: 'uuid',
     },
     {
         id: 'base64-encoder',
@@ -82115,6 +82507,8 @@ exports.CORE_TOOLS = [
         keywords: ['base64', 'encode', 'decode', 'string', 'binary', 'urlsafe'],
         iconName: 'Binary',
         isPopular: true,
+        inputType: 'string',
+        outputType: 'base64',
     },
     {
         id: 'url-encoder',
@@ -82125,6 +82519,8 @@ exports.CORE_TOOLS = [
         keywords: ['url', 'uri', 'percent', 'query', 'encode', 'decode', 'parser'],
         iconName: 'Link',
         isPopular: true,
+        inputType: 'string',
+        outputType: 'url',
     },
     {
         id: 'timestamp-converter',
@@ -82135,6 +82531,8 @@ exports.CORE_TOOLS = [
         keywords: ['timestamp', 'epoch', 'date', 'unix', 'time', 'iso8601', 'converter'],
         iconName: 'Clock',
         isPopular: true,
+        inputType: 'timestamp',
+        outputType: 'string',
     },
     {
         id: 'hash-generator',
@@ -82145,6 +82543,8 @@ exports.CORE_TOOLS = [
         keywords: ['hash', 'md5', 'sha1', 'sha256', 'sha512', 'crypto', 'digest'],
         iconName: 'KeyRound',
         isPopular: true,
+        inputType: 'string',
+        outputType: 'string',
     },
     {
         id: 'regex-tester',
@@ -82155,6 +82555,8 @@ exports.CORE_TOOLS = [
         keywords: ['regex', 'regexp', 'match', 'pattern', 'test', 'replace'],
         iconName: 'Regex',
         isPopular: false,
+        inputType: 'regex',
+        outputType: 'string',
     },
     {
         id: 'sql-formatter',
@@ -82165,6 +82567,8 @@ exports.CORE_TOOLS = [
         keywords: ['sql', 'postgres', 'mysql', 'format', 'minify', 'database', 'query'],
         iconName: 'Database',
         isPopular: false,
+        inputType: 'sql',
+        outputType: 'sql',
     },
     {
         id: 'ai-assistant',
@@ -82176,46 +82580,21 @@ exports.CORE_TOOLS = [
         iconName: 'Sparkles',
         isPopular: true,
         isNew: true,
+        inputType: 'string',
+        outputType: 'string',
     },
     {
-        id: 'ai-regex-generator',
-        name: 'AI Regex Generator',
-        slug: 'ai-regex-generator',
-        category: 'AI',
-        description: 'Generate regular expressions from natural language prompts using AI.',
-        keywords: ['ai', 'regex', 'regexp', 'generator', 'prompt', 'pattern'],
-        iconName: 'Sparkles',
+        id: 'pipeline-builder',
+        name: 'Tool Chaining & Pipeline Builder',
+        slug: 'pipeline-builder',
+        category: 'Workflows',
+        description: 'Chain multiple developer tools together to create automated, reusable data processing pipelines.',
+        keywords: ['pipeline', 'chain', 'workflow', 'automation', 'step', 'combine'],
+        iconName: 'GitMerge',
+        isPopular: true,
         isNew: true,
-    },
-    {
-        id: 'ai-sql-generator',
-        name: 'AI SQL Query Generator',
-        slug: 'ai-sql-generator',
-        category: 'AI',
-        description: 'Convert natural language prompts into formatted SQL queries.',
-        keywords: ['ai', 'sql', 'query', 'database', 'generator'],
-        iconName: 'Sparkles',
-        isNew: true,
-    },
-    {
-        id: 'ai-error-explainer',
-        name: 'AI Error & Stack Trace Explainer',
-        slug: 'ai-error-explainer',
-        category: 'AI',
-        description: 'Paste any stack trace or error log to get cause analysis, fix suggestions, and code examples.',
-        keywords: ['ai', 'error', 'stacktrace', 'fix', 'debug', 'explainer', 'log'],
-        iconName: 'Sparkles',
-        isNew: true,
-    },
-    {
-        id: 'ai-code-explainer',
-        name: 'AI Code Explainer',
-        slug: 'ai-code-explainer',
-        category: 'AI',
-        description: 'Understand complex code snippets, execution flow, and catch potential bugs with AI.',
-        keywords: ['ai', 'code', 'explain', 'flow', 'bug', 'review'],
-        iconName: 'Sparkles',
-        isNew: true,
+        inputType: 'string',
+        outputType: 'string',
     },
     {
         id: 'api-tester',
@@ -82227,6 +82606,8 @@ exports.CORE_TOOLS = [
         iconName: 'Globe',
         isPopular: true,
         isNew: true,
+        inputType: 'http-request',
+        outputType: 'http-response',
     },
     {
         id: 'cron-builder',
@@ -82237,6 +82618,8 @@ exports.CORE_TOOLS = [
         keywords: ['cron', 'schedule', 'expression', 'builder', 'generator', 'timer', 'crontab'],
         iconName: 'CalendarClock',
         isNew: true,
+        inputType: 'string',
+        outputType: 'string',
     },
     {
         id: 'qr-generator',
@@ -82247,6 +82630,8 @@ exports.CORE_TOOLS = [
         keywords: ['qr', 'code', 'barcode', 'generator', 'svg', 'png', 'url'],
         iconName: 'QrCode',
         isNew: true,
+        inputType: 'url',
+        outputType: 'string',
     },
     {
         id: 'color-converter',
@@ -82257,6 +82642,8 @@ exports.CORE_TOOLS = [
         keywords: ['color', 'hex', 'rgb', 'hsl', 'oklch', 'wcag', 'contrast', 'palette', 'picker'],
         iconName: 'Palette',
         isNew: true,
+        inputType: 'string',
+        outputType: 'string',
     },
 ];
 function getToolBySlug(slug) {
@@ -82270,6 +82657,214 @@ function searchTools(query) {
         t.description.toLowerCase().includes(q) ||
         t.category.toLowerCase().includes(q) ||
         t.keywords.some((k) => k.toLowerCase().includes(q)));
+}
+function detectSmartContext(input) {
+    const clean = input.trim();
+    if (!clean) {
+        return {
+            detectedType: 'string',
+            confidence: 100,
+            recommendations: [],
+            summary: 'Empty input string.',
+        };
+    }
+    const jwtRegex = /^eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*$/;
+    if (jwtRegex.test(clean)) {
+        return {
+            detectedType: 'jwt',
+            confidence: 98,
+            secondaryDetections: [{ type: 'base64', confidence: 85 }],
+            summary: 'JWT (JSON Web Token) detected with header and signature parts.',
+            recommendations: [
+                { id: 'jwt-decode', label: 'Decode JWT & Inspect Claims', targetToolSlug: 'jwt-decoder', actionType: 'navigate' },
+                { id: 'jwt-chain', label: 'Chain JWT → Format JSON → TypeScript', targetToolSlug: 'pipeline-builder', actionType: 'transform' },
+                { id: 'jwt-ai', label: 'Explain JWT with AI', targetToolSlug: 'ai-assistant', actionType: 'ai' },
+            ],
+        };
+    }
+    if ((clean.startsWith('{') && clean.endsWith('}')) || (clean.startsWith('[') && clean.endsWith(']'))) {
+        try {
+            JSON.parse(clean);
+            return {
+                detectedType: 'json',
+                confidence: 97,
+                recommendations: [
+                    { id: 'json-format', label: 'Format & Validate JSON', targetToolSlug: 'json-formatter', actionType: 'navigate' },
+                    { id: 'json-ts', label: 'Generate TypeScript Interface', targetToolSlug: 'json-to-typescript', actionType: 'transform' },
+                    { id: 'json-zod', label: 'Generate Zod Schema', targetToolSlug: 'json-to-typescript', actionType: 'transform' },
+                    { id: 'json-chain', label: 'Create Pipeline (JSON → TS)', targetToolSlug: 'pipeline-builder', actionType: 'transform' },
+                ],
+                summary: 'Valid JSON object or array structure detected.',
+            };
+        }
+        catch {
+        }
+    }
+    if (clean.includes('Error:') ||
+        clean.includes('TypeError:') ||
+        clean.includes('ReferenceError:') ||
+        clean.includes('SyntaxError:') ||
+        /at\s+.*\.(js|ts|jsx|tsx|py|go|java):\d+/.test(clean)) {
+        return {
+            detectedType: 'error',
+            confidence: 95,
+            recommendations: [
+                { id: 'error-ai', label: 'Explain Stack Trace & Fix with AI', targetToolSlug: 'ai-assistant', actionType: 'ai' },
+            ],
+            summary: 'Runtime Exception or Stack Trace detected.',
+        };
+    }
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    if (uuidRegex.test(clean)) {
+        return {
+            detectedType: 'uuid',
+            confidence: 99,
+            recommendations: [
+                { id: 'uuid-gen', label: 'Generate Bulk UUIDs', targetToolSlug: 'uuid-generator', actionType: 'navigate' },
+            ],
+            summary: 'Universally Unique Identifier (UUID) v4/v7 detected.',
+        };
+    }
+    if (clean.startsWith('http://') || clean.startsWith('https://') || clean.startsWith('ftp://')) {
+        return {
+            detectedType: 'url',
+            confidence: 96,
+            recommendations: [
+                { id: 'url-parse', label: 'Decode & Parse Query Parameters', targetToolSlug: 'url-encoder', actionType: 'navigate' },
+                { id: 'url-qr', label: 'Generate QR Code for URL', targetToolSlug: 'qr-generator', actionType: 'transform' },
+                { id: 'url-api', label: 'Test URL with API Tester', targetToolSlug: 'api-tester', actionType: 'navigate' },
+            ],
+            summary: 'HTTP / HTTPS Web URL detected.',
+        };
+    }
+    if (/\b(SELECT|INSERT INTO|UPDATE|DELETE FROM|CREATE TABLE|ALTER TABLE)\b/i.test(clean)) {
+        return {
+            detectedType: 'sql',
+            confidence: 92,
+            recommendations: [
+                { id: 'sql-fmt', label: 'Format & Beautify SQL', targetToolSlug: 'sql-formatter', actionType: 'navigate' },
+                { id: 'sql-ai', label: 'Generate / Optimize SQL with AI', targetToolSlug: 'ai-assistant', actionType: 'ai' },
+            ],
+            summary: 'SQL database query detected.',
+        };
+    }
+    if (/^\d{10}(\d{3})?$/.test(clean)) {
+        return {
+            detectedType: 'timestamp',
+            confidence: 90,
+            recommendations: [
+                { id: 'ts-convert', label: 'Convert Timestamp to Date', targetToolSlug: 'timestamp-converter', actionType: 'navigate' },
+            ],
+            summary: 'Unix Epoch Timestamp detected.',
+        };
+    }
+    const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+    if (clean.length > 8 && clean.length % 4 === 0 && base64Regex.test(clean)) {
+        return {
+            detectedType: 'base64',
+            confidence: 85,
+            recommendations: [
+                { id: 'b64-decode', label: 'Decode Base64 String', targetToolSlug: 'base64-encoder', actionType: 'navigate' },
+            ],
+            summary: 'Base64 encoded string detected.',
+        };
+    }
+    return {
+        detectedType: 'string',
+        confidence: 60,
+        recommendations: [
+            { id: 'str-hash', label: 'Compute Hash (SHA-256/MD5)', targetToolSlug: 'hash-generator', actionType: 'navigate' },
+            { id: 'str-qr', label: 'Generate QR Code', targetToolSlug: 'qr-generator', actionType: 'navigate' },
+            { id: 'str-b64', label: 'Encode to Base64', targetToolSlug: 'base64-encoder', actionType: 'navigate' },
+        ],
+        summary: 'Standard plain text input detected.',
+    };
+}
+function validatePipeline(steps) {
+    const errors = [];
+    if (steps.length === 0) {
+        return { valid: false, errors: ['Pipeline must contain at least 1 tool step.'] };
+    }
+    for (let i = 0; i < steps.length - 1; i++) {
+        const current = steps[i];
+        const next = steps[i + 1];
+        if (current.outputType !== next.inputType && next.inputType !== 'string') {
+            errors.push(`Incompatible Step ${i + 1} → ${i + 2}: ${current.toolName} outputs "${current.outputType}", but ${next.toolName} requires "${next.inputType}".`);
+        }
+    }
+    return {
+        valid: errors.length === 0,
+        errors,
+    };
+}
+async function executePipeline(steps, initialInput) {
+    const validation = validatePipeline(steps);
+    if (!validation.valid) {
+        return {
+            success: false,
+            results: {},
+            finalOutput: '',
+            error: validation.errors.join('\n'),
+        };
+    }
+    let currentData = initialInput;
+    const results = {};
+    for (let i = 0; i < steps.length; i++) {
+        const step = steps[i];
+        try {
+            if (step.toolSlug === 'jwt-decoder') {
+                const decoded = (0, jwt_tools_1.decodeJwt)(currentData);
+                if (!decoded.success) {
+                    throw new Error(decoded.error || 'Failed to decode JWT token');
+                }
+                currentData = JSON.stringify(decoded.payload, null, 2);
+            }
+            else if (step.toolSlug === 'json-formatter') {
+                const formatted = (0, json_tools_1.formatJson)(currentData, { indent: 2 });
+                if (!formatted.success) {
+                    throw new Error(formatted.error || 'Invalid JSON input');
+                }
+                currentData = formatted.result;
+            }
+            else if (step.toolSlug === 'json-to-typescript') {
+                const obj = JSON.parse(currentData);
+                currentData = `export interface GeneratedType {\n${Object.keys(obj)
+                    .map((k) => `  ${k}: ${typeof obj[k]};`)
+                    .join('\n')}\n}`;
+            }
+            else if (step.toolSlug === 'base64-encoder') {
+                try {
+                    currentData = atob(currentData);
+                }
+                catch {
+                    currentData = btoa(currentData);
+                }
+            }
+            else if (step.toolSlug === 'url-encoder') {
+                currentData = decodeURIComponent(currentData);
+            }
+            else if (step.toolSlug === 'sql-formatter') {
+                currentData = currentData
+                    .replace(/\s+/g, ' ')
+                    .replace(/\b(SELECT|FROM|WHERE|JOIN|GROUP BY|ORDER BY)\b/gi, '\n$1')
+                    .trim();
+            }
+            results[step.id] = currentData;
+        }
+        catch (err) {
+            return {
+                success: false,
+                results,
+                finalOutput: '',
+                error: `Pipeline failed at Step ${i + 1} (${step.toolName}): ${err.message}`,
+            };
+        }
+    }
+    return {
+        success: true,
+        results,
+        finalOutput: currentData,
+    };
 }
 
 

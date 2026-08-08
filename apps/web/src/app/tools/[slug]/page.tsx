@@ -19,6 +19,7 @@ import { ApiTesterTool } from '../../../components/tools/ApiTesterTool';
 import { CronBuilderTool } from '../../../components/tools/CronBuilderTool';
 import { QrGeneratorTool } from '../../../components/tools/QrGeneratorTool';
 import { ColorConverterTool } from '../../../components/tools/ColorConverterTool';
+import { PipelineBuilderTool } from '../../../components/tools/PipelineBuilderTool';
 
 interface ToolPageProps {
   params: {
@@ -70,6 +71,8 @@ export default function ToolPage({ params }: ToolPageProps) {
         return <QrGeneratorTool />;
       case 'color-converter':
         return <ColorConverterTool />;
+      case 'pipeline-builder':
+        return <PipelineBuilderTool />;
       case 'ai-assistant':
         return <AiAssistantTool initialTab="regex" />;
       case 'ai-regex-generator':
