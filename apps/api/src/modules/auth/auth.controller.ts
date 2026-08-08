@@ -209,7 +209,8 @@ export class AuthController {
         });
         const tokenData = await tokenRes.json();
         if (!tokenData.access_token) {
-          throw new UnauthorizedException('Failed to exchange GitHub authorization code.');
+          const errDetail = tokenData.error_description || tokenData.error || 'Failed to exchange GitHub authorization code.';
+          throw new UnauthorizedException(errDetail);
         }
 
         const userRes = await fetch('https://api.github.com/user', {
@@ -217,10 +218,28 @@ export class AuthController {
         });
         const githubUser = await userRes.json();
 
+        let email = githubUser.email;
+        if (!email) {
+          try {
+            const emailsRes = await fetch('https://api.github.com/user/emails', {
+              headers: { Authorization: `Bearer ${tokenData.access_token}`, 'User-Agent': 'DevKit-App' },
+            });
+            if (emailsRes.ok) {
+              const emailsData: Array<{ email: string; primary: boolean; verified: boolean }> = await emailsRes.json();
+              const primaryEmail = emailsData.find((e) => e.primary && e.verified) || emailsData.find((e) => e.verified) || emailsData[0];
+              if (primaryEmail?.email) {
+                email = primaryEmail.email;
+              }
+            }
+          } catch (err) {
+            // Ignore email endpoint error, fall back below
+          }
+        }
+
         profile = {
-          email: githubUser.email || `${githubUser.login}@github.user`,
+          email: email || `${githubUser.login}@users.noreply.github.com`,
           name: githubUser.name || githubUser.login,
-          avatarUrl: githubUser.avatar_url,
+          avatarUrl: githubUser.avatar_url || `https://api.dicebear.com/7.x/identicon/svg?seed=${githubUser.login}`,
           providerId: String(githubUser.id),
         };
       } else {
@@ -249,7 +268,8 @@ export class AuthController {
         });
         const tokenData = await tokenRes.json();
         if (!tokenData.access_token) {
-          throw new UnauthorizedException('Failed to exchange Google authorization code.');
+          const errDetail = tokenData.error_description || tokenData.error || 'Failed to exchange Google authorization code.';
+          throw new UnauthorizedException(errDetail);
         }
 
         const userRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
@@ -259,9 +279,9 @@ export class AuthController {
 
         profile = {
           email: googleUser.email,
-          name: googleUser.name,
-          avatarUrl: googleUser.picture,
-          providerId: googleUser.id,
+          name: googleUser.name || googleUser.given_name || 'Google User',
+          avatarUrl: googleUser.picture || `https://api.dicebear.com/7.x/avataaars/svg?seed=${googleUser.email}`,
+          providerId: String(googleUser.id || googleUser.sub),
         };
       } else {
         profile = {

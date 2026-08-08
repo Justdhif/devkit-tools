@@ -22,21 +22,29 @@ export default function LoginPage() {
     }
   };
 
-  const handleOAuthClick = (provider: 'github' | 'google') => {
-    const githubClientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || 'Ov23liDevKitClientId';
-    const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || 'DevKitGoogleClientId';
+  const handleOAuthClick = async (provider: 'github' | 'google') => {
+    const githubClientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+    const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
     if (provider === 'github') {
-      const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback?provider=github`);
-      // Redirects directly to GitHub's official OAuth Authorization page
-      window.location.href = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=${redirectUri}&scope=user:email`;
+      if (githubClientId && githubClientId.trim() !== '') {
+        const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback?provider=github`);
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${githubClientId.trim()}&redirect_uri=${redirectUri}&scope=user:email`;
+        return;
+      }
+      const ok = await loginOAuth('github');
+      if (ok) router.push('/');
       return;
     }
 
     if (provider === 'google') {
-      const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback?provider=google`);
-      // Redirects directly to Google's official OAuth Account Consent page
-      window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20profile%20email&prompt=select_account`;
+      if (googleClientId && googleClientId.trim() !== '') {
+        const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback?provider=google`);
+        window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId.trim()}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20profile%20email&prompt=select_account`;
+        return;
+      }
+      const ok = await loginOAuth('google');
+      if (ok) router.push('/');
       return;
     }
   };
