@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: 'Fast, privacy-first developer productivity platform featuring JSON tools, JWT decoders, UUID generators, crypto hashes, and more.',
 };
 
+import { PageTransition } from '../components/PageTransition';
+
 export default function RootLayout({
   children,
 }: {
@@ -22,8 +24,8 @@ export default function RootLayout({
           <Header />
           <div className="flex flex-1">
             <Sidebar />
-            <main className="flex-1 pb-16 md:pb-0 overflow-y-auto">
-              {children}
+            <main className="flex-1 pb-16 md:pb-0 overflow-y-auto flex flex-col">
+              <PageTransition>{children}</PageTransition>
             </main>
           </div>
           <CommandPalette />

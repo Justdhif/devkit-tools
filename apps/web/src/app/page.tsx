@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Search, Sparkles, Star, ShieldCheck, ArrowRight, Wrench, Command } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 import { CORE_TOOLS, searchTools } from '@devkit/tool-core';
 import { useDevKitStore } from '../store/useDevKitStore';
 
@@ -15,13 +16,32 @@ export default function HomePage() {
   }, [fetchFavoritesFromDB]);
 
   const tools = searchTools(filterQuery);
-
   const categories = Array.from(new Set(CORE_TOOLS.map((t) => t.category)));
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
+  };
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
       {/* HERO SECTION */}
-      <section className="text-center py-6 sm:py-10 space-y-4">
+      <motion.section
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center py-6 sm:py-10 space-y-4"
+      >
         <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold">
           <Sparkles className="w-3.5 h-3.5" />
           <span>The Developer&apos;s Everyday Toolbox</span>
@@ -53,10 +73,15 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* QUICK CATEGORY TAGS */}
-      <div className="flex flex-wrap items-center justify-center gap-2">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
         <button
           onClick={() => setFilterQuery('')}
           className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
@@ -80,7 +105,7 @@ export default function HomePage() {
             {cat}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* TOOL GRID CATALOG */}
       <section className="space-y-4">
@@ -91,12 +116,19 @@ export default function HomePage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {tools.map((tool) => {
             const favorited = isFavorite(tool.slug);
             return (
-              <div
+              <motion.div
                 key={tool.slug}
+                variants={cardVariants}
+                whileHover={{ y: -3, transition: { duration: 0.15 } }}
                 className="group relative p-5 bg-surface border border-border rounded-xl hover:border-accent/50 hover:shadow-xl transition-all flex flex-col justify-between"
               >
                 <div>
@@ -136,10 +168,10 @@ export default function HomePage() {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </section>
     </div>
   );
