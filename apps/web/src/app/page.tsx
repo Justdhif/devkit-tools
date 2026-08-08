@@ -37,7 +37,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 space-y-8 w-full">
+    <div className="p-4 sm:p-6 md:p-8 lg:p-10 space-y-8 w-full max-w-[1600px] mx-auto">
       <motion.section
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

@@ -12,7 +12,7 @@ export default function HistoryPage() {
 
   return (
     <AuthGuard title="Tool History Cloud Sync" description="Sign in to view, save, and synchronize your local privacy-aware tool operation history.">
-      <div className="p-4 sm:p-6 space-y-6 w-full">
+      <div className="p-4 sm:p-6 md:p-8 lg:p-10 space-y-8 w-full max-w-[1600px] mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
