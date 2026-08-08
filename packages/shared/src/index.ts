@@ -66,6 +66,22 @@ export interface AiExplainCodeResponse {
   potentialIssues: string[];
 }
 
+export interface ApiProxyRequest {
+  url: string;
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  headers?: Record<string, string>;
+  body?: string;
+}
+
+export interface ApiProxyResponse {
+  status: number;
+  statusText: string;
+  headers: Record<string, string>;
+  data: any;
+  responseTimeMs: number;
+  sizeBytes: number;
+}
+
 export interface ToolMetadata {
   id: string;
   name: string;

@@ -15,6 +15,10 @@ import { HashGeneratorTool } from '../../../components/tools/HashGeneratorTool';
 import { RegexTesterTool } from '../../../components/tools/RegexTesterTool';
 import { SqlFormatterTool } from '../../../components/tools/SqlFormatterTool';
 import { AiAssistantTool } from '../../../components/tools/AiAssistantTool';
+import { ApiTesterTool } from '../../../components/tools/ApiTesterTool';
+import { CronBuilderTool } from '../../../components/tools/CronBuilderTool';
+import { QrGeneratorTool } from '../../../components/tools/QrGeneratorTool';
+import { ColorConverterTool } from '../../../components/tools/ColorConverterTool';
 
 interface ToolPageProps {
   params: {
@@ -58,6 +62,14 @@ export default function ToolPage({ params }: ToolPageProps) {
         return <RegexTesterTool />;
       case 'sql-formatter':
         return <SqlFormatterTool />;
+      case 'api-tester':
+        return <ApiTesterTool />;
+      case 'cron-builder':
+        return <CronBuilderTool />;
+      case 'qr-generator':
+        return <QrGeneratorTool />;
+      case 'color-converter':
+        return <ColorConverterTool />;
       case 'ai-assistant':
         return <AiAssistantTool initialTab="regex" />;
       case 'ai-regex-generator':

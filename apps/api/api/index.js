@@ -81946,6 +81946,86 @@ let ToolsController = class ToolsController {
         }
         return { success: true, data: tool };
     }
+    async proxyRequest(body) {
+        if (!body.url) {
+            throw new common_1.BadRequestException('URL parameter is required');
+        }
+        let parsedUrl;
+        try {
+            parsedUrl = new URL(body.url);
+        }
+        catch {
+            throw new common_1.BadRequestException('Invalid URL format');
+        }
+        if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+            throw new common_1.BadRequestException('Only HTTP and HTTPS protocols are allowed');
+        }
+        const hostname = parsedUrl.hostname.toLowerCase();
+        const isPrivateIp = (host) => {
+            if (['localhost', '127.0.0.1', '0.0.0.0', '::1', '169.254.169.254'].includes(host))
+                return true;
+            if (host.startsWith('10.') || host.startsWith('192.168.') || host.startsWith('169.254.'))
+                return true;
+            if (/^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host))
+                return true;
+            return false;
+        };
+        if (isPrivateIp(hostname)) {
+            throw new common_1.HttpException('SSRF Protection: Access to localhost or internal network IP addresses is restricted', common_1.HttpStatus.FORBIDDEN);
+        }
+        const startTime = Date.now();
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
+        try {
+            const fetchOptions = {
+                method: body.method || 'GET',
+                headers: body.headers || {},
+                signal: controller.signal,
+            };
+            if (body.body && ['POST', 'PUT', 'PATCH'].includes(body.method)) {
+                fetchOptions.body = body.body;
+            }
+            const response = await fetch(body.url, fetchOptions);
+            clearTimeout(timeout);
+            const responseTimeMs = Date.now() - startTime;
+            const contentType = response.headers.get('content-type') || '';
+            let data;
+            if (contentType.includes('application/json')) {
+                try {
+                    data = await response.json();
+                }
+                catch {
+                    data = await response.text();
+                }
+            }
+            else {
+                data = await response.text();
+            }
+            const headersObj = {};
+            response.headers.forEach((val, key) => {
+                headersObj[key] = val;
+            });
+            const sizeBytes = typeof data === 'string' ? Buffer.byteLength(data) : JSON.stringify(data).length;
+            return {
+                success: true,
+                data: {
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: headersObj,
+                    data,
+                    responseTimeMs,
+                    sizeBytes,
+                },
+            };
+        }
+        catch (err) {
+            clearTimeout(timeout);
+            if (err.name === 'AbortError') {
+                throw new common_1.HttpException('Proxy Request Timed Out (10s limit)', common_1.HttpStatus.GATEWAY_TIMEOUT);
+            }
+            throw new common_1.HttpException(`Proxy Error: ${err.message}`, common_1.HttpStatus.BAD_GATEWAY);
+        }
+    }
 };
 exports.ToolsController = ToolsController;
 __decorate([
@@ -81962,6 +82042,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ToolsController.prototype, "getTool", null);
+__decorate([
+    (0, common_1.Post)('proxy-request'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ToolsController.prototype, "proxyRequest", null);
 exports.ToolsController = ToolsController = __decorate([
     (0, common_1.Controller)('tools')
 ], ToolsController);
@@ -82128,6 +82215,47 @@ exports.CORE_TOOLS = [
         description: 'Understand complex code snippets, execution flow, and catch potential bugs with AI.',
         keywords: ['ai', 'code', 'explain', 'flow', 'bug', 'review'],
         iconName: 'Sparkles',
+        isNew: true,
+    },
+    {
+        id: 'api-tester',
+        name: 'API Tester & HTTP Client',
+        slug: 'api-tester',
+        category: 'API',
+        description: 'Test HTTP endpoints with custom headers, body payloads, authentication, and SSRF security proxy.',
+        keywords: ['api', 'http', 'rest', 'postman', 'curl', 'tester', 'fetch', 'proxy', 'json'],
+        iconName: 'Globe',
+        isPopular: true,
+        isNew: true,
+    },
+    {
+        id: 'cron-builder',
+        name: 'Cron Expression Builder',
+        slug: 'cron-builder',
+        category: 'Generators',
+        description: 'Build, decode, and understand cron schedule expressions with human-readable explanations.',
+        keywords: ['cron', 'schedule', 'expression', 'builder', 'generator', 'timer', 'crontab'],
+        iconName: 'CalendarClock',
+        isNew: true,
+    },
+    {
+        id: 'qr-generator',
+        name: 'QR Code Generator',
+        slug: 'qr-generator',
+        category: 'Generators',
+        description: 'Generate customizable vector QR codes from URLs or text with instant SVG/PNG download.',
+        keywords: ['qr', 'code', 'barcode', 'generator', 'svg', 'png', 'url'],
+        iconName: 'QrCode',
+        isNew: true,
+    },
+    {
+        id: 'color-converter',
+        name: 'Color Converter & WCAG Checker',
+        slug: 'color-converter',
+        category: 'Date & Color',
+        description: 'Convert color values between HEX, RGB, HSL, HSV, OKLCH with palette generation and WCAG contrast check.',
+        keywords: ['color', 'hex', 'rgb', 'hsl', 'oklch', 'wcag', 'contrast', 'palette', 'picker'],
+        iconName: 'Palette',
         isNew: true,
     },
 ];
