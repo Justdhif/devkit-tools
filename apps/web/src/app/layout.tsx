@@ -8,6 +8,9 @@ import { CommandPalette } from '../components/CommandPalette';
 export const metadata: Metadata = {
   title: "DevKit — The developer's everyday toolbox",
   description: 'Fast, privacy-first developer productivity platform featuring JSON tools, JWT decoders, UUID generators, crypto hashes, and more.',
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 import { PageTransition } from '../components/PageTransition';
