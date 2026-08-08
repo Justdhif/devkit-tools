@@ -81589,8 +81589,7 @@ let AuthController = class AuthController {
                             }
                         }
                     }
-                    catch (err) {
-                    }
+                    catch (err) { }
                 }
                 profile = {
                     email: email || `${githubUser.login}@users.noreply.github.com`,

@@ -20,7 +20,6 @@ export function JsonFormatterTool() {
   const [copied, setCopied] = useState(false);
   const { addHistoryItem } = useDevKitStore();
 
-  // Embedded AI Error Explainer states
   const [aiLoading, setAiLoading] = useState(false);
   const [aiErrorResult, setAiErrorResult] = useState<AiExplainErrorResponse | null>(null);
 
@@ -84,7 +83,6 @@ export function JsonFormatterTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-3 text-xs">
           <SlidersHorizontal className="w-4 h-4 text-accent" />
@@ -129,7 +127,6 @@ export function JsonFormatterTool() {
         </div>
       </div>
 
-      {/* Error alert */}
       {error && (
         <div className="p-3.5 bg-rose-950/40 border border-rose-800/50 rounded-lg text-rose-300 text-xs flex flex-col space-y-2">
           <div className="flex items-center justify-between">
@@ -161,9 +158,7 @@ export function JsonFormatterTool() {
         </div>
       )}
 
-      {/* Input / Output Workspace Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        {/* INPUT PANEL */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
             <span>INPUT JSON</span>
@@ -186,7 +181,6 @@ export function JsonFormatterTool() {
           />
         </div>
 
-        {/* OUTPUT PANEL */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
             <span>RESULT OUTPUT</span>

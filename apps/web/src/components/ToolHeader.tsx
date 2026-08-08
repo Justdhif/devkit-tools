@@ -49,7 +49,6 @@ export function ToolHeader({ tool, onShare }: ToolHeaderProps) {
           </div>
         </div>
 
-        {/* Action Controls: Favorite Star & Share */}
         <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 shrink-0">
           <button
             onClick={() => toggleFavorite(tool.slug)}

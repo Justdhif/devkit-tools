@@ -12,7 +12,6 @@ export function QrGeneratorTool() {
   const [margin, setMargin] = useState(2);
   const [copied, setCopied] = useState(false);
 
-  // Generate SVG QR matrix using Google Chart API or pure client SVG fallback
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(
     text
   )}&color=${fgColor.replace('#', '')}&bgcolor=${bgColor.replace('#', '')}&margin=${margin}`;
@@ -40,7 +39,6 @@ export function QrGeneratorTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3.5 rounded-xl border border-border">
         <div className="flex items-center space-x-2">
           <QrCode className="w-5 h-5 text-accent" />
@@ -65,7 +63,6 @@ export function QrGeneratorTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        {/* Left Configuration Panel */}
         <div className="flex flex-col border border-border rounded-lg bg-surface p-4 space-y-4">
           <div>
             <label className="text-xs font-semibold text-devText-muted block mb-1.5">
@@ -119,7 +116,6 @@ export function QrGeneratorTool() {
           </div>
         </div>
 
-        {/* Right Preview Panel */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden items-center justify-center p-6 space-y-4">
           <div
             className="p-4 rounded-xl border border-border flex items-center justify-center shadow-lg"

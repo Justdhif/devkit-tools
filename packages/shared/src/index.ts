@@ -39,7 +39,7 @@ export interface SmartRecommendation {
 
 export interface SmartDetectionResult {
   detectedType: LogicalType;
-  confidence: number; // 0 to 100
+  confidence: number;
   secondaryDetections?: { type: LogicalType; confidence: number }[];
   recommendations: SmartRecommendation[];
   summary: string;

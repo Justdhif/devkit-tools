@@ -12,7 +12,6 @@ export function RegexTesterTool() {
     'Welcome to DevKit! Contact support@devkit.app or admin@company.io for help.'
   );
 
-  // Embedded AI Assistant states
   const [aiPrompt, setAiPrompt] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiExplanation, setAiExplanation] = useState<string | null>(null);
@@ -40,7 +39,6 @@ export function RegexTesterTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Embedded Contextual AI Assistant Banner */}
       <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold text-accent flex items-center gap-1.5">
@@ -85,7 +83,6 @@ export function RegexTesterTool() {
         {aiError && <p className="text-[11px] text-rose-400">{aiError}</p>}
       </div>
 
-      {/* Pattern Bar */}
       <div className="flex flex-wrap items-center gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-2 flex-1 min-w-[280px]">
           <span className="text-devText-muted font-mono text-base font-bold">/</span>
@@ -118,7 +115,6 @@ export function RegexTesterTool() {
         </div>
       )}
 
-      {/* Input / Matches Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted">

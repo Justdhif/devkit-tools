@@ -70,7 +70,6 @@ export default function SharePage({ params }: { params: { id: string } }) {
 
   return (
     <div className="p-4 sm:p-8 max-w-4xl mx-auto space-y-6">
-      {/* Banner */}
       <div className="p-6 bg-surface border border-border rounded-xl space-y-4 shadow-sm">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
@@ -99,7 +98,6 @@ export default function SharePage({ params }: { params: { id: string } }) {
           )}
         </div>
 
-        {/* Security Redaction Badge */}
         <div className="p-3 bg-emerald-950/20 border border-emerald-800/40 rounded-lg text-emerald-400 text-xs flex items-center space-x-2">
           <ShieldCheck className="w-4 h-4 shrink-0" />
           <span>
@@ -108,7 +106,6 @@ export default function SharePage({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      {/* Configuration View Box */}
       <div className="flex flex-col border border-border rounded-xl bg-surface overflow-hidden">
         <div className="px-4 py-3 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
           <span>CONFIGURATION PAYLOAD (JSON)</span>

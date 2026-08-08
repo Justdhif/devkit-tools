@@ -12,7 +12,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api', { exclude: ['/'] });
   
-  // Security: Payload size limits to prevent Memory Exhaustion & Layer-7 DDoS
   app.use(express.json({ limit: '2mb' }));
   app.use(express.urlencoded({ limit: '2mb', extended: true }));
 
@@ -21,7 +20,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // Security: Strict DTO validation & whitelist filtering against Parameter Pollution / XSS Injection
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

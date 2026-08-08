@@ -75,7 +75,6 @@ export function PipelineBuilderTool() {
     setRunning(true);
     setPipelineError(null);
 
-    // Reset step status
     setSteps((prev) => prev.map((s) => ({ ...s, status: 'running', error: undefined })));
 
     try {
@@ -113,7 +112,6 @@ export function PipelineBuilderTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Header Banner */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3.5 rounded-xl border border-border">
         <div className="flex items-center space-x-2">
           <GitMerge className="w-5 h-5 text-accent" />
@@ -135,7 +133,6 @@ export function PipelineBuilderTool() {
         </div>
       </div>
 
-      {/* Pipeline Validation Error Alert */}
       {!validation.valid && (
         <div className="p-3 bg-rose-950/40 border border-rose-800/50 rounded-lg text-rose-300 text-xs flex items-center space-x-2">
           <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
@@ -156,7 +153,6 @@ export function PipelineBuilderTool() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1">
-        {/* Left Panel: Initial Input */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 space-y-2">
           <span className="text-xs font-semibold text-devText-muted uppercase tracking-wider">Pipeline Initial Input</span>
           <textarea
@@ -167,7 +163,6 @@ export function PipelineBuilderTool() {
           />
         </div>
 
-        {/* Middle & Right Panel: Visual Pipeline Steps */}
         <div className="lg:col-span-2 flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-4 space-y-4 overflow-y-auto">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-semibold text-devText-muted uppercase tracking-wider">

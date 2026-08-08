@@ -57,9 +57,7 @@ export const useDevKitStore = create<DevKitStoreState>()(
           if (res.ok && data.success && Array.isArray(data.data)) {
             set({ favorites: data.data });
           }
-        } catch (err) {
-          // Keep current favorites on network error
-        }
+        } catch (err) {}
       },
 
       toggleFavorite: async (slug: string) => {
@@ -76,7 +74,6 @@ export const useDevKitStore = create<DevKitStoreState>()(
           ? get().favorites.filter((s) => s !== slug)
           : [...get().favorites, slug];
         
-        // Optimistic update
         set({ favorites: newFavs });
 
         try {
@@ -92,9 +89,7 @@ export const useDevKitStore = create<DevKitStoreState>()(
           if (res.ok && data.success && Array.isArray(data.data)) {
             set({ favorites: data.data });
           }
-        } catch (err) {
-          // Keep optimistic state
-        }
+        } catch (err) {}
       },
 
       isFavorite: (slug) => {

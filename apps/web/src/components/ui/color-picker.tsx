@@ -11,19 +11,19 @@ function cn(...inputs: any[]) {
 }
 
 const PRESET_COLORS = [
-  '#6366f1', // Indigo
-  '#8b5cf6', // Violet
-  '#ec4899', // Pink
-  '#f43f5e', // Rose
-  '#ef4444', // Red
-  '#f97316', // Orange
-  '#f59e0b', // Amber
-  '#10b981', // Emerald
-  '#06b6d4', // Cyan
-  '#0284c7', // Sky
-  '#3b82f6', // Blue
-  '#0f172a', // Dark Slate
-  '#ffffff', // White
+  '#6366f1',
+  '#8b5cf6',
+  '#ec4899',
+  '#f43f5e',
+  '#ef4444',
+  '#f97316',
+  '#f59e0b',
+  '#10b981',
+  '#06b6d4',
+  '#0284c7',
+  '#3b82f6',
+  '#0f172a',
+  '#ffffff',
 ];
 
 interface ColorPickerProps {
@@ -74,7 +74,6 @@ export function ColorPicker({ color, onChange, className, label }: ColorPickerPr
             />
           </div>
 
-          {/* Preset Swatches Grid */}
           <div className="grid grid-cols-7 gap-1.5">
             {PRESET_COLORS.map((hex) => {
               const isSelected = color.toLowerCase() === hex.toLowerCase();
@@ -96,7 +95,6 @@ export function ColorPicker({ color, onChange, className, label }: ColorPickerPr
             })}
           </div>
 
-          {/* HEX Input */}
           <div className="flex items-center space-x-2 pt-1 border-t border-border">
             <span className="text-xs font-semibold text-devText-muted font-mono">HEX:</span>
             <input

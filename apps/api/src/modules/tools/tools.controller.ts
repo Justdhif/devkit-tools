@@ -40,7 +40,6 @@ export class ToolsController {
 
     const hostname = parsedUrl.hostname.toLowerCase();
     
-    // SSRF Security Guard (PRD Section 28)
     const isPrivateIp = (host: string): boolean => {
       if (['localhost', '127.0.0.1', '0.0.0.0', '::1', '169.254.169.254'].includes(host)) return true;
       if (host.startsWith('10.') || host.startsWith('192.168.') || host.startsWith('169.254.')) return true;

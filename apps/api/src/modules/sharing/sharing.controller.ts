@@ -6,8 +6,6 @@ export class SharingController {
   @Post()
   async createShare(@Body() body: { toolSlug: string; title: string; configuration: Record<string, any> }) {
     const id = Math.random().toString(36).substring(2, 8);
-    
-    // Privacy Safeguard: Redact known sensitive keys
     const safeConfig = { ...body.configuration };
     const sensitiveKeys = ['token', 'secret', 'password', 'key', 'jwt', 'auth', 'bearer'];
     for (const k of Object.keys(safeConfig)) {

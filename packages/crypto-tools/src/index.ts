@@ -1,4 +1,3 @@
-// UUID Generator (v4 & v7)
 export function generateUuidV4(): string {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     return crypto.randomUUID();
@@ -26,7 +25,6 @@ export function generateBulkUuids(count: number = 5, version: 'v4' | 'v7' = 'v4'
   return Array.from({ length: safeCount }, () => generator());
 }
 
-// Base64 Encoder / Decoder
 export function encodeBase64(input: string, urlSafe: boolean = false): string {
   if (!input) return '';
   try {
@@ -63,7 +61,6 @@ export function decodeBase64(input: string): string {
   }
 }
 
-// URL Encoder / Decoder
 export function encodeUrl(input: string, componentMode: boolean = true): string {
   if (!input) return '';
   return componentMode ? encodeURIComponent(input) : encodeURI(input);
@@ -96,7 +93,6 @@ export function parseQueryParams(urlOrQuery: string): Record<string, string> {
   return result;
 }
 
-// Unix Timestamp Converter
 export interface TimestampParseResult {
   iso: string;
   utc: string;
@@ -110,7 +106,6 @@ export function parseTimestamp(input: string | number): TimestampParseResult | n
 
   if (typeof input === 'number' || !isNaN(Number(input))) {
     const num = Number(input);
-    // Determine if seconds or milliseconds
     const isSeconds = num < 10000000000;
     date = new Date(isSeconds ? num * 1000 : num);
   } else {
@@ -128,7 +123,6 @@ export function parseTimestamp(input: string | number): TimestampParseResult | n
   };
 }
 
-// Client-side Cryptographic Hash Algorithms (Web Crypto API fallback / SHA/MD5)
 export async function computeHash(input: string, algorithm: 'SHA-256' | 'SHA-512' | 'SHA-1' | 'MD5'): Promise<string> {
   if (!input) return '';
 
@@ -147,7 +141,6 @@ export async function computeHash(input: string, algorithm: 'SHA-256' | 'SHA-512
   return `[Web Crypto API unavailable for ${algorithm}]`;
 }
 
-// Pure JS MD5 implementation for client-side privacy without dependencies
 function md5(string: string): string {
   function md5cycle(x: number[], k: number[]) {
     let a = x[0], b = x[1], c = x[2], d = x[3];

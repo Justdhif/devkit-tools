@@ -8,7 +8,6 @@ export function ColorConverterTool() {
   const [hex, setHex] = useState('#6366f1');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  // Helper conversions
   const hexToRgb = (hexStr: string) => {
     let clean = hexStr.replace('#', '');
     if (clean.length === 3) clean = clean.split('').map((c) => c + c).join('');
@@ -63,7 +62,6 @@ export function ColorConverterTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3.5 rounded-xl border border-border">
         <div className="flex items-center space-x-2">
           <Palette className="w-5 h-5 text-accent" />
@@ -76,7 +74,6 @@ export function ColorConverterTool() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        {/* Left Color Preview & Conversions */}
         <div className="flex flex-col border border-border rounded-lg bg-surface p-4 space-y-4">
           <div
             className="h-32 rounded-xl border border-border shadow-inner flex items-center justify-center relative transition-all"
@@ -89,7 +86,6 @@ export function ColorConverterTool() {
             </span>
           </div>
 
-          {/* Formats Grid */}
           <div className="space-y-2 pt-2 border-t border-border">
             <h4 className="text-xs font-semibold text-devText-muted uppercase tracking-wider">Color Formats</h4>
 
@@ -118,7 +114,6 @@ export function ColorConverterTool() {
           </div>
         </div>
 
-        {/* Right WCAG Contrast Checker & Palette Preview */}
         <div className="flex flex-col border border-border rounded-lg bg-surface p-4 space-y-4">
           <h4 className="text-xs font-semibold text-accent flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4" />
@@ -126,7 +121,6 @@ export function ColorConverterTool() {
           </h4>
 
           <div className="grid grid-cols-2 gap-3">
-            {/* White Text Contrast */}
             <div
               className="p-4 rounded-xl border border-border space-y-2"
               style={{ backgroundColor: hex, color: '#ffffff' }}
@@ -143,7 +137,6 @@ export function ColorConverterTool() {
               </div>
             </div>
 
-            {/* Black Text Contrast */}
             <div
               className="p-4 rounded-xl border border-border space-y-2"
               style={{ backgroundColor: hex, color: '#000000' }}
@@ -161,7 +154,6 @@ export function ColorConverterTool() {
             </div>
           </div>
 
-          {/* Palette Shades */}
           <div className="space-y-2 pt-2 border-t border-border flex-1">
             <h4 className="text-xs font-semibold text-devText-muted uppercase tracking-wider">Generated Shades Palette</h4>
             <div className="grid grid-cols-5 gap-2 h-16">

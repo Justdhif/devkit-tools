@@ -34,7 +34,7 @@ export function testRegex(pattern: string, flags: string = 'g', testString: stri
         regex.lastIndex++;
       }
       guard++;
-      if (guard > 2000) break; // Prevent infinite loop
+      if (guard > 2000) break;
     }
 
     return {

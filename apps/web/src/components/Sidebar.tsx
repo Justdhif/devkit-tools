@@ -19,7 +19,6 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Desktop Sidebar */}
       <aside className="hidden md:flex flex-col w-60 border-r border-border bg-sidebar shrink-0 h-[calc(100vh-3.5rem)] sticky top-14">
         <div className="p-3">
           <div className="text-[11px] font-semibold text-devText-muted uppercase tracking-wider px-3 mb-2">
@@ -47,7 +46,6 @@ export function Sidebar() {
           </nav>
         </div>
 
-        {/* Quick Tools list */}
         <div className="p-3 border-t border-border flex-1 overflow-y-auto">
           <div className="text-[11px] font-semibold text-devText-muted uppercase tracking-wider px-3 mb-2 flex items-center justify-between">
             <span>Core Utilities</span>
@@ -76,13 +74,11 @@ export function Sidebar() {
           </div>
         </div>
 
-        {/* Footer info */}
         <div className="p-3 border-t border-border text-[11px] text-devText-muted text-center">
           DevKit v1.0.0 • Client-side Privacy
         </div>
       </aside>
 
-      {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/95 backdrop-blur-md border-t border-border flex items-center justify-around z-40 px-2">
         {navItems.slice(0, 4).map((item) => {
           const Icon = item.icon;

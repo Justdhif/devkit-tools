@@ -69,7 +69,6 @@ export function CommandPalette() {
             className="w-full max-w-xl bg-surface border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col"
             onKeyDown={handleKeyDownModal}
           >
-            {/* Input header */}
             <div className="flex items-center px-4 border-b border-border bg-background">
               <Search className="w-5 h-5 text-devText-muted mr-3 shrink-0" />
               <input
@@ -88,7 +87,6 @@ export function CommandPalette() {
               </button>
             </div>
 
-            {/* Results list */}
             <div className="max-h-96 overflow-y-auto p-2 space-y-1">
               {filteredTools.length === 0 ? (
                 <div className="p-8 text-center text-devText-muted text-sm">
@@ -141,7 +139,6 @@ export function CommandPalette() {
               )}
             </div>
 
-            {/* Modal footer */}
             <div className="px-4 py-2 bg-sidebar border-t border-border flex items-center justify-between text-[11px] text-devText-muted">
               <div className="flex items-center space-x-3">
                 <span>

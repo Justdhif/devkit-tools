@@ -65,7 +65,6 @@ export default function WorkspacesPage() {
                 </button>
               </div>
 
-              {/* Included tools list */}
               <div className="space-y-1.5 pt-2 border-t border-border">
                 <div className="text-[11px] font-semibold text-devText-muted uppercase tracking-wider">
                   Included Tools ({ws.toolSlugs.length})
@@ -91,7 +90,6 @@ export default function WorkspacesPage() {
           ))}
         </div>
 
-        {/* Modal for creating new workspace */}
         {showModal && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
             <form

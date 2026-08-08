@@ -32,7 +32,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // Inputs
   const [regexPrompt, setRegexPrompt] = useState('match email addresses with custom domains like .app or .io');
   const [sqlPrompt, setSqlPrompt] = useState('get total orders and sum of amount grouped by user_id for year 2026');
   const [sqlDialect, setSqlDialect] = useState<'postgres' | 'mysql' | 'sqlite'>('postgres');
@@ -41,7 +40,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
   const [jsonText, setJsonText] = useState('{\n  "id": 101,\n  "username": "devkit_user",\n  "roles": ["admin", "developer"],\n  "isActive": true\n}');
   const [targetLang, setTargetLang] = useState<'typescript' | 'zod' | 'go' | 'python'>('typescript');
 
-  // Outputs
   const [regexResult, setRegexResult] = useState<AiGenerateRegexResponse | null>(null);
   const [sqlResult, setSqlResult] = useState<AiGenerateSqlResponse | null>(null);
   const [errorResult, setErrorResult] = useState<AiExplainErrorResponse | null>(null);
@@ -92,7 +90,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6 overflow-x-hidden">
-      {/* Header Banner */}
       <div className="flex items-center justify-between bg-gradient-to-r from-accent/20 via-purple-500/10 to-transparent p-4 rounded-xl border border-accent/30 shadow-sm">
         <div className="flex items-center space-x-3">
           <div className="p-2 rounded-lg bg-accent/20 border border-accent/40 text-accent">
@@ -127,7 +124,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
         </button>
       </div>
 
-      {/* Tabs Header with Animated Active Pill */}
       <div className="flex items-center space-x-1 border-b border-border overflow-x-auto pb-1 relative">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -162,7 +158,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
         </div>
       )}
 
-      {/* Animated Tab Content Layout */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -172,7 +167,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
           transition={{ duration: 0.18, ease: 'easeOut' }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1"
         >
-          {/* Left Input Box */}
           <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
             <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
               <span>INPUT PROMPT & CONTEXT</span>
@@ -247,7 +241,6 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
             </div>
           </div>
 
-          {/* Right Output Box */}
           <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
             <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
               <span>AI RESULT & EXPLANATION</span>

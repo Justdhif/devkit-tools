@@ -138,9 +138,7 @@ export const useAuthStore = create<AuthStoreState>()(
           } else {
             set({ user: null, token: null, isAuthenticated: false });
           }
-        } catch (err) {
-          // Keep current state on network flicker
-        }
+        } catch (err) {}
       },
     }),
     {

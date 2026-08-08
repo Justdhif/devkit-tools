@@ -35,7 +35,6 @@ export default function HistoryPage() {
           )}
         </div>
 
-        {/* Privacy Guarantee Banner */}
         <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-3 text-xs text-emerald-300 flex items-center space-x-2">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>

@@ -223,10 +223,6 @@ export function searchTools(query: string): ToolMetadata[] {
   );
 }
 
-// -------------------------------------------------------------------------
-// SMART CONTEXT DETECTION ENGINE (Client-Side Privacy-First)
-// -------------------------------------------------------------------------
-
 export function detectSmartContext(input: string): SmartDetectionResult {
   const clean = input.trim();
 
@@ -239,7 +235,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 1. JWT Token Detection
   const jwtRegex = /^eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*$/;
   if (jwtRegex.test(clean)) {
     return {
@@ -255,7 +250,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 2. JSON Detection
   if ((clean.startsWith('{') && clean.endsWith('}')) || (clean.startsWith('[') && clean.endsWith(']'))) {
     try {
       JSON.parse(clean);
@@ -271,11 +265,9 @@ export function detectSmartContext(input: string): SmartDetectionResult {
         summary: 'Valid JSON object or array structure detected.',
       };
     } catch {
-      // Near JSON syntax
     }
   }
 
-  // 3. Error & Stack Trace Detection
   if (
     clean.includes('Error:') ||
     clean.includes('TypeError:') ||
@@ -293,7 +285,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 4. UUID Detection
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   if (uuidRegex.test(clean)) {
     return {
@@ -306,7 +297,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 5. URL Detection
   if (clean.startsWith('http://') || clean.startsWith('https://') || clean.startsWith('ftp://')) {
     return {
       detectedType: 'url',
@@ -320,7 +310,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 6. SQL Query Detection
   if (/\b(SELECT|INSERT INTO|UPDATE|DELETE FROM|CREATE TABLE|ALTER TABLE)\b/i.test(clean)) {
     return {
       detectedType: 'sql',
@@ -333,7 +322,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 7. Unix Timestamp / ISO Date Detection
   if (/^\d{10}(\d{3})?$/.test(clean)) {
     return {
       detectedType: 'timestamp',
@@ -345,7 +333,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // 8. Base64 Detection
   const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
   if (clean.length > 8 && clean.length % 4 === 0 && base64Regex.test(clean)) {
     return {
@@ -358,7 +345,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
     };
   }
 
-  // Fallback Plain String
   return {
     detectedType: 'string',
     confidence: 60,
@@ -371,10 +357,6 @@ export function detectSmartContext(input: string): SmartDetectionResult {
   };
 }
 
-// -------------------------------------------------------------------------
-// TOOL CHAINING & PIPELINE ENGINE
-// -------------------------------------------------------------------------
-
 export function validatePipeline(steps: PipelineStep[]): PipelineValidationResult {
   const errors: string[] = [];
 
@@ -386,7 +368,6 @@ export function validatePipeline(steps: PipelineStep[]): PipelineValidationResul
     const current = steps[i];
     const next = steps[i + 1];
 
-    // Check logical type compatibility
     if (current.outputType !== next.inputType && next.inputType !== 'string') {
       errors.push(
         `Incompatible Step ${i + 1} → ${i + 2}: ${current.toolName} outputs "${current.outputType}", but ${next.toolName} requires "${next.inputType}".`
@@ -470,38 +451,30 @@ export async function executePipeline(
   };
 }
 
-// -------------------------------------------------------------------------
-// SECURITY & PRIVACY REDACTION ENGINE (PRD Section 27)
-// -------------------------------------------------------------------------
-
 export function redactSensitiveData(text: string): { redactedText: string; isSensitive: boolean } {
   if (!text) return { redactedText: text, isSensitive: false };
 
   let isSensitive = false;
   let redacted = text;
 
-  // 1. JWT Tokens
   const jwtPattern = /eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*/g;
   if (jwtPattern.test(redacted)) {
     isSensitive = true;
     redacted = redacted.replace(jwtPattern, '[REDACTED_JWT_TOKEN]');
   }
 
-  // 2. OpenAI / Anthropic / GitHub API Keys
   const apiKeyPattern = /(?:sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16})/g;
   if (apiKeyPattern.test(redacted)) {
     isSensitive = true;
     redacted = redacted.replace(apiKeyPattern, '[REDACTED_API_KEY]');
   }
 
-  // 3. RSA / SSH Private Keys
   const privateKeyPattern = /-----BEGIN[A-Z\s]+PRIVATE KEY-----[[\s\S]*?-----END[A-Z\s]+PRIVATE KEY-----/g;
   if (privateKeyPattern.test(redacted)) {
     isSensitive = true;
     redacted = redacted.replace(privateKeyPattern, '[REDACTED_PRIVATE_KEY]');
   }
 
-  // 4. Authorization Bearer Headers
   const authHeaderPattern = /(Authorization:\s*Bearer\s+)[^\s\n]+/gi;
   if (authHeaderPattern.test(redacted)) {
     isSensitive = true;

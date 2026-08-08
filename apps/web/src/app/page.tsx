@@ -38,7 +38,6 @@ export default function HomePage() {
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8">
-      {/* HERO SECTION */}
       <motion.section
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -56,7 +55,6 @@ export default function HomePage() {
           Fast utilities for your everyday development. Zero context switching, client-side privacy, keyboard-driven navigation.
         </p>
 
-        {/* Global Search Bar */}
         <div className="max-w-xl mx-auto pt-2">
           <div className="relative flex items-center">
             <Search className="w-5 h-5 absolute left-4 text-devText-muted" />
@@ -80,7 +78,6 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* QUICK CATEGORY TAGS */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -112,7 +109,6 @@ export default function HomePage() {
         ))}
       </motion.div>
 
-      {/* TOOL GRID CATALOG */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-devText-primary">Tool Catalog</h2>

@@ -17,7 +17,6 @@ export function Header() {
 
   return (
     <header className="h-14 border-b border-border bg-surface/80 backdrop-blur-md px-4 flex items-center justify-between sticky top-0 z-30">
-      {/* Brand & Search Bar */}
       <div className="flex items-center space-x-4 flex-1 max-w-2xl">
         <Link href="/" className="flex items-center space-x-2 font-bold text-lg text-devText-primary tracking-tight">
           <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-white shadow-sm">
@@ -26,7 +25,6 @@ export function Header() {
           <span className='hidden sm:inline'>DevKit</span>
         </Link>
 
-        {/* Global Search Button / Trigger */}
         <button
           onClick={toggleCommandPalette}
           className="flex-1 max-w-md h-9 px-3 rounded-md bg-background border border-border flex items-center justify-between text-sm text-devText-muted hover:border-accent/50 transition-colors"
@@ -42,14 +40,12 @@ export function Header() {
         </button>
       </div>
 
-      {/* Actions */}
       <div className="flex items-center space-x-2">
         <div className="hidden md:flex items-center space-x-1 text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2 py-1 rounded-md">
           <Shield className="w-3.5 h-3.5" />
           <span>Client Privacy First</span>
         </div>
 
-        {/* User Auth Section */}
         {mounted && isAuthenticated && user ? (
           <Link
             href="/profile"

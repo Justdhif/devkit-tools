@@ -55,7 +55,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
     setError(null);
     setResponse(null);
 
-    // Build URL with query params
     let finalUrl = url.trim();
     const activeParams = params.filter((p) => p.enabled && p.key.trim());
     if (activeParams.length > 0) {
@@ -64,7 +63,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
       finalUrl += (finalUrl.includes('?') ? '&' : '?') + searchParams.toString();
     }
 
-    // Build Headers
     const reqHeaders: Record<string, string> = {};
     headers.filter((h) => h.enabled && h.key.trim()).forEach((h) => {
       reqHeaders[h.key.trim()] = h.value.trim();
@@ -75,7 +73,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
 
     try {
       if (useProxy) {
-        // Send via NestJS SSRF-protected proxy
         const res = await fetch(`${API_BASE_URL}/tools/proxy-request`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -93,7 +90,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
         }
         setResponse(json.data);
       } else {
-        // Direct browser fetch
         const start = Date.now();
         const fetchOptions: RequestInit = {
           method,
@@ -172,7 +168,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Request Bar */}
       <div className="flex flex-wrap items-center gap-2 bg-surface p-3 rounded-xl border border-border">
         <Select value={method} onValueChange={(val: any) => setMethod(val)}>
           <SelectTrigger className="w-24 font-mono font-bold text-accent">
@@ -222,7 +217,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
         </div>
       )}
 
-      {/* Request Options & Proxy Settings */}
       <div className="flex items-center justify-between text-xs bg-sidebar px-3 py-2 rounded-lg border border-border">
         <div className="flex items-center space-x-1 border-b border-border">
           <button
@@ -273,9 +267,7 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
         </label>
       </div>
 
-      {/* Main Grid: Request Config & Response Output */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        {/* Left Request Configuration Panel */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 space-y-3">
           {activeTab === 'params' && (
             <div className="space-y-2 flex-1 overflow-y-auto">
@@ -412,7 +404,6 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
           )}
         </div>
 
-        {/* Right Response Panel */}
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
             <span>RESPONSE INSPECTOR</span>

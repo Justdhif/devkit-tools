@@ -231,9 +231,7 @@ export class AuthController {
                 email = primaryEmail.email;
               }
             }
-          } catch (err) {
-            // Ignore email endpoint error, fall back below
-          }
+          } catch (err) {}
         }
 
         profile = {

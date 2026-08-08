@@ -19,7 +19,6 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Editor & Behavior Preferences */}
       <section className="p-5 bg-surface border border-border rounded-xl space-y-4">
         <h2 className="text-base font-bold text-devText-primary flex items-center space-x-2">
           <Sliders className="w-4 h-4 text-accent" />
@@ -89,7 +88,6 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Privacy Controls */}
       <section className="p-5 bg-surface border border-border rounded-xl space-y-4">
         <h2 className="text-base font-bold text-devText-primary flex items-center space-x-2">
           <Shield className="w-4 h-4 text-emerald-400" />

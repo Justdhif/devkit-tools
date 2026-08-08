@@ -12,7 +12,6 @@ export function SqlFormatterTool() {
   const [output, setOutput] = useState('');
   const [copied, setCopied] = useState(false);
 
-  // Embedded AI states
   const [aiPrompt, setAiPrompt] = useState('');
   const [aiDialect, setAiDialect] = useState<'postgres' | 'mysql' | 'sqlite'>('postgres');
   const [aiLoading, setAiLoading] = useState(false);
@@ -62,7 +61,6 @@ export function SqlFormatterTool() {
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
-      {/* Embedded Contextual AI Assistant Banner */}
       <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold text-accent flex items-center gap-1.5">
