@@ -63,11 +63,11 @@ export default function HomePage() {
               placeholder="Search developer tools... ⌘K"
               value={filterQuery}
               onChange={(e) => setFilterQuery(e.target.value)}
-              className="w-full h-12 pl-12 pr-24 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
+              className="w-full h-12 pl-12 pr-20 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
             />
             <button
               onClick={toggleCommandPalette}
-              className="absolute right-3 px-2.5 py-1 text-xs font-mono bg-background border border-border rounded-md text-devText-muted hover:text-devText-primary flex items-center space-x-1"
+              className="absolute right-2.5 px-2 py-1 text-xs font-mono bg-background border border-border rounded-lg text-devText-muted hover:text-devText-primary flex items-center space-x-1"
             >
               <Command className="w-3 h-3" />
               <span>K</span>
