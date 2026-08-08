@@ -9,7 +9,62 @@ export type ToolCategory =
   | 'Formatters'
   | 'Generators'
   | 'Utilities'
-  | 'Date & Color';
+  | 'Date & Color'
+  | 'AI';
+
+export interface AiExplainErrorRequest {
+  errorText: string;
+  context?: string;
+}
+
+export interface AiExplainErrorResponse {
+  cause: string;
+  explanation: string;
+  likelyFix: string;
+  codeExample?: string;
+}
+
+export interface AiGenerateRegexRequest {
+  prompt: string;
+}
+
+export interface AiGenerateRegexResponse {
+  pattern: string;
+  flags: string;
+  explanation: string;
+  testExamples: string[];
+}
+
+export interface AiGenerateSqlRequest {
+  prompt: string;
+  dialect?: 'postgres' | 'mysql' | 'sqlite' | 'sqlserver';
+}
+
+export interface AiGenerateSqlResponse {
+  sql: string;
+  explanation: string;
+}
+
+export interface AiConvertJsonRequest {
+  jsonString: string;
+  targetLanguage: 'typescript' | 'zod' | 'go' | 'python';
+}
+
+export interface AiConvertJsonResponse {
+  code: string;
+  explanation: string;
+}
+
+export interface AiExplainCodeRequest {
+  code: string;
+  language?: string;
+}
+
+export interface AiExplainCodeResponse {
+  explanation: string;
+  flow: string[];
+  potentialIssues: string[];
+}
 
 export interface ToolMetadata {
   id: string;

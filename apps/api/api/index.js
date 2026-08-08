@@ -81032,12 +81032,13 @@ const tools_controller_1 = __nccwpck_require__(81384);
 const sharing_controller_1 = __nccwpck_require__(40240);
 const auth_controller_1 = __nccwpck_require__(20950);
 const favorites_controller_1 = __nccwpck_require__(1372);
+const ai_module_1 = __nccwpck_require__(60702);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [ai_module_1.AiModule],
         controllers: [app_controller_1.AppController, tools_controller_1.ToolsController, sharing_controller_1.SharingController, auth_controller_1.AuthController, favorites_controller_1.FavoritesController],
         providers: [],
     })
@@ -81156,6 +81157,240 @@ exports.sharedItems = (0, pg_core_1.pgTable)('shared_items', {
     configuration: (0, pg_core_1.jsonb)('configuration').notNull(),
     createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
 });
+
+
+/***/ }),
+
+/***/ 81342:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AiController = void 0;
+const common_1 = __nccwpck_require__(49626);
+const ai_service_1 = __nccwpck_require__(68055);
+let AiController = class AiController {
+    constructor(aiService) {
+        this.aiService = aiService;
+    }
+    async explainError(body) {
+        const data = await this.aiService.explainError(body);
+        return { success: true, data };
+    }
+    async generateRegex(body) {
+        const data = await this.aiService.generateRegex(body);
+        return { success: true, data };
+    }
+    async generateSql(body) {
+        const data = await this.aiService.generateSql(body);
+        return { success: true, data };
+    }
+    async convertJson(body) {
+        const data = await this.aiService.convertJson(body);
+        return { success: true, data };
+    }
+    async explainCode(body) {
+        const data = await this.aiService.explainCode(body);
+        return { success: true, data };
+    }
+};
+exports.AiController = AiController;
+__decorate([
+    (0, common_1.Post)('explain-error'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AiController.prototype, "explainError", null);
+__decorate([
+    (0, common_1.Post)('generate-regex'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AiController.prototype, "generateRegex", null);
+__decorate([
+    (0, common_1.Post)('generate-sql'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AiController.prototype, "generateSql", null);
+__decorate([
+    (0, common_1.Post)('convert-json'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AiController.prototype, "convertJson", null);
+__decorate([
+    (0, common_1.Post)('explain-code'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AiController.prototype, "explainCode", null);
+exports.AiController = AiController = __decorate([
+    (0, common_1.Controller)('ai'),
+    __metadata("design:paramtypes", [ai_service_1.AiService])
+], AiController);
+
+
+/***/ }),
+
+/***/ 60702:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AiModule = void 0;
+const common_1 = __nccwpck_require__(49626);
+const ai_controller_1 = __nccwpck_require__(81342);
+const ai_service_1 = __nccwpck_require__(68055);
+let AiModule = class AiModule {
+};
+exports.AiModule = AiModule;
+exports.AiModule = AiModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [ai_controller_1.AiController],
+        providers: [ai_service_1.AiService],
+        exports: [ai_service_1.AiService],
+    })
+], AiModule);
+
+
+/***/ }),
+
+/***/ 68055:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AiService = void 0;
+const common_1 = __nccwpck_require__(49626);
+let AiService = class AiService {
+    getApiKey() {
+        const apiKey = process.env.GROQ_API_KEY;
+        if (!apiKey) {
+            throw new common_1.HttpException('GROQ_API_KEY is not configured on the server', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return apiKey;
+    }
+    async callGroq(systemPrompt, userPrompt) {
+        const apiKey = this.getApiKey();
+        try {
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.3-70b-versatile',
+                    response_format: { type: 'json_object' },
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: userPrompt },
+                    ],
+                    temperature: 0.2,
+                    max_tokens: 2048,
+                }),
+            });
+            if (!response.ok) {
+                const errBody = await response.text();
+                throw new common_1.HttpException(`Groq API Error (${response.status}): ${errBody}`, common_1.HttpStatus.BAD_GATEWAY);
+            }
+            const data = await response.json();
+            const content = data.choices?.[0]?.message?.content;
+            if (!content) {
+                throw new common_1.HttpException('Empty response received from Groq LLM', common_1.HttpStatus.BAD_GATEWAY);
+            }
+            return content;
+        }
+        catch (err) {
+            if (err instanceof common_1.HttpException)
+                throw err;
+            throw new common_1.HttpException(`Failed to connect to Groq AI service: ${err.message}`, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    async explainError(dto) {
+        const systemPrompt = `You are DevKit AI Error Explainer. Analyze the provided error log or stack trace and return raw valid JSON object with EXACT keys:
+"cause": concise summary of root cause
+"explanation": step by step breakdown of why this error happened
+"likelyFix": actionable steps to fix it
+"codeExample": optional code block demonstrating fix`;
+        const userPrompt = `Context: ${dto.context || 'General'}\nError:\n${dto.errorText}`;
+        const rawJson = await this.callGroq(systemPrompt, userPrompt);
+        return JSON.parse(rawJson);
+    }
+    async generateRegex(dto) {
+        const systemPrompt = `You are DevKit AI Regex Generator. Convert natural language user requirements into regular expressions. Return a valid JSON object with EXACT keys:
+"pattern": string pattern without surrounding slashes (e.g. "[a-z0-9]+")
+"flags": regex flags string (e.g. "g" or "gi" or "m")
+"explanation": explanation of pattern components
+"testExamples": array of 3 sample strings that match this regex`;
+        const userPrompt = `Generate regex for requirement: ${dto.prompt}`;
+        const rawJson = await this.callGroq(systemPrompt, userPrompt);
+        return JSON.parse(rawJson);
+    }
+    async generateSql(dto) {
+        const dialect = dto.dialect || 'postgres';
+        const systemPrompt = `You are DevKit AI SQL Generator. Convert natural language database requests into clean, formatted ${dialect} SQL queries. Return a valid JSON object with EXACT keys:
+"sql": clean, beautified SQL query
+"explanation": explanation of tables, joins, filters, and optimization logic used`;
+        const userPrompt = `Dialect: ${dialect}\nRequirement: ${dto.prompt}`;
+        const rawJson = await this.callGroq(systemPrompt, userPrompt);
+        return JSON.parse(rawJson);
+    }
+    async convertJson(dto) {
+        const systemPrompt = `You are DevKit AI JSON Converter. Convert JSON strings into ${dto.targetLanguage} types/schemas/classes. Return a valid JSON object with EXACT keys:
+"code": exact code block representation
+"explanation": brief notes on generated types`;
+        const userPrompt = `Target Language: ${dto.targetLanguage}\nJSON Content:\n${dto.jsonString}`;
+        const rawJson = await this.callGroq(systemPrompt, userPrompt);
+        return JSON.parse(rawJson);
+    }
+    async explainCode(dto) {
+        const systemPrompt = `You are DevKit AI Code Explainer. Analyze code snippets for logic, flow, and potential bugs. Return a valid JSON object with EXACT keys:
+"explanation": high level summary of what code does
+"flow": array of strings describing step by step execution
+"potentialIssues": array of strings detailing edge cases, bugs, or security/performance risks`;
+        const userPrompt = `Language: ${dto.language || 'auto'}\nCode:\n${dto.code}`;
+        const rawJson = await this.callGroq(systemPrompt, userPrompt);
+        return JSON.parse(rawJson);
+    }
+};
+exports.AiService = AiService;
+exports.AiService = AiService = __decorate([
+    (0, common_1.Injectable)()
+], AiService);
 
 
 /***/ }),
@@ -81333,16 +81568,34 @@ let AuthController = class AuthController {
                 });
                 const tokenData = await tokenRes.json();
                 if (!tokenData.access_token) {
-                    throw new common_1.UnauthorizedException('Failed to exchange GitHub authorization code.');
+                    const errDetail = tokenData.error_description || tokenData.error || 'Failed to exchange GitHub authorization code.';
+                    throw new common_1.UnauthorizedException(errDetail);
                 }
                 const userRes = await fetch('https://api.github.com/user', {
                     headers: { Authorization: `Bearer ${tokenData.access_token}`, 'User-Agent': 'DevKit-App' },
                 });
                 const githubUser = await userRes.json();
+                let email = githubUser.email;
+                if (!email) {
+                    try {
+                        const emailsRes = await fetch('https://api.github.com/user/emails', {
+                            headers: { Authorization: `Bearer ${tokenData.access_token}`, 'User-Agent': 'DevKit-App' },
+                        });
+                        if (emailsRes.ok) {
+                            const emailsData = await emailsRes.json();
+                            const primaryEmail = emailsData.find((e) => e.primary && e.verified) || emailsData.find((e) => e.verified) || emailsData[0];
+                            if (primaryEmail?.email) {
+                                email = primaryEmail.email;
+                            }
+                        }
+                    }
+                    catch (err) {
+                    }
+                }
                 profile = {
-                    email: githubUser.email || `${githubUser.login}@github.user`,
+                    email: email || `${githubUser.login}@users.noreply.github.com`,
                     name: githubUser.name || githubUser.login,
-                    avatarUrl: githubUser.avatar_url,
+                    avatarUrl: githubUser.avatar_url || `https://api.dicebear.com/7.x/identicon/svg?seed=${githubUser.login}`,
                     providerId: String(githubUser.id),
                 };
             }
@@ -81372,7 +81625,8 @@ let AuthController = class AuthController {
                 });
                 const tokenData = await tokenRes.json();
                 if (!tokenData.access_token) {
-                    throw new common_1.UnauthorizedException('Failed to exchange Google authorization code.');
+                    const errDetail = tokenData.error_description || tokenData.error || 'Failed to exchange Google authorization code.';
+                    throw new common_1.UnauthorizedException(errDetail);
                 }
                 const userRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
                     headers: { Authorization: `Bearer ${tokenData.access_token}` },
@@ -81380,9 +81634,9 @@ let AuthController = class AuthController {
                 const googleUser = await userRes.json();
                 profile = {
                     email: googleUser.email,
-                    name: googleUser.name,
-                    avatarUrl: googleUser.picture,
-                    providerId: googleUser.id,
+                    name: googleUser.name || googleUser.given_name || 'Google User',
+                    avatarUrl: googleUser.picture || `https://api.dicebear.com/7.x/avataaars/svg?seed=${googleUser.email}`,
+                    providerId: String(googleUser.id || googleUser.sub),
                 };
             }
             else {
@@ -81824,6 +82078,57 @@ exports.CORE_TOOLS = [
         keywords: ['sql', 'postgres', 'mysql', 'format', 'minify', 'database', 'query'],
         iconName: 'Database',
         isPopular: false,
+    },
+    {
+        id: 'ai-assistant',
+        name: 'AI Developer Assistant Hub',
+        slug: 'ai-assistant',
+        category: 'AI',
+        description: 'Contextual AI assistant for Error Explainer, Code Explainer, Regex Generator, and SQL Query Generator powered by Groq LLM.',
+        keywords: ['ai', 'groq', 'assistant', 'error', 'explainer', 'regex', 'sql', 'generator', 'code', 'llm'],
+        iconName: 'Sparkles',
+        isPopular: true,
+        isNew: true,
+    },
+    {
+        id: 'ai-regex-generator',
+        name: 'AI Regex Generator',
+        slug: 'ai-regex-generator',
+        category: 'AI',
+        description: 'Generate regular expressions from natural language prompts using AI.',
+        keywords: ['ai', 'regex', 'regexp', 'generator', 'prompt', 'pattern'],
+        iconName: 'Sparkles',
+        isNew: true,
+    },
+    {
+        id: 'ai-sql-generator',
+        name: 'AI SQL Query Generator',
+        slug: 'ai-sql-generator',
+        category: 'AI',
+        description: 'Convert natural language prompts into formatted SQL queries.',
+        keywords: ['ai', 'sql', 'query', 'database', 'generator'],
+        iconName: 'Sparkles',
+        isNew: true,
+    },
+    {
+        id: 'ai-error-explainer',
+        name: 'AI Error & Stack Trace Explainer',
+        slug: 'ai-error-explainer',
+        category: 'AI',
+        description: 'Paste any stack trace or error log to get cause analysis, fix suggestions, and code examples.',
+        keywords: ['ai', 'error', 'stacktrace', 'fix', 'debug', 'explainer', 'log'],
+        iconName: 'Sparkles',
+        isNew: true,
+    },
+    {
+        id: 'ai-code-explainer',
+        name: 'AI Code Explainer',
+        slug: 'ai-code-explainer',
+        category: 'AI',
+        description: 'Understand complex code snippets, execution flow, and catch potential bugs with AI.',
+        keywords: ['ai', 'code', 'explain', 'flow', 'bug', 'review'],
+        iconName: 'Sparkles',
+        isNew: true,
     },
 ];
 function getToolBySlug(slug) {

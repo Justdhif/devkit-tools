@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Database, Copy, Check, Sparkles } from 'lucide-react';
+import { Database, Copy, Check, Sparkles, Loader2 } from 'lucide-react';
+import { aiService } from '../../services/aiService';
 
 const SAMPLE_SQL = `SELECT u.id, u.username, u.email, count(o.id) as total_orders FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE u.created_at >= '2026-01-01' GROUP BY u.id, u.username, u.email HAVING count(o.id) > 5 ORDER BY total_orders DESC;`;
 
@@ -10,8 +11,14 @@ export function SqlFormatterTool() {
   const [output, setOutput] = useState('');
   const [copied, setCopied] = useState(false);
 
+  // Embedded AI states
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiDialect, setAiDialect] = useState<'postgres' | 'mysql' | 'sqlite'>('postgres');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiExplanation, setAiExplanation] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
   const handleFormat = () => {
-    // Standard SQL keyword formatting
     let formatted = input
       .replace(/\s+/g, ' ')
       .replace(/\b(SELECT|FROM|WHERE|LEFT JOIN|RIGHT JOIN|INNER JOIN|JOIN|GROUP BY|HAVING|ORDER BY|LIMIT|OFFSET|UPDATE|DELETE|INSERT INTO|VALUES|SET|AND|OR)\b/gi, '\n$1')
@@ -32,8 +39,84 @@ export function SqlFormatterTool() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleGenerateSql = async () => {
+    if (!aiPrompt.trim()) return;
+    setAiLoading(true);
+    setAiError(null);
+    setAiExplanation(null);
+
+    try {
+      const res = await aiService.generateSql({ prompt: aiPrompt, dialect: aiDialect });
+      if (res.sql) {
+        setInput(res.sql);
+        setOutput(res.sql);
+      }
+      setAiExplanation(res.explanation);
+    } catch (err: any) {
+      setAiError(err.message || 'Failed to generate SQL with AI');
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+      {/* Embedded Contextual AI Assistant Banner */}
+      <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-xs font-semibold text-accent flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            AI Assistant: Describe the SQL query you need...
+          </label>
+          <div className="flex items-center space-x-2">
+            <select
+              value={aiDialect}
+              onChange={(e: any) => setAiDialect(e.target.value)}
+              className="bg-background text-devText-primary border border-border text-[11px] rounded px-2 py-0.5 focus:outline-none"
+            >
+              <option value="postgres">PostgreSQL</option>
+              <option value="mysql">MySQL</option>
+              <option value="sqlite">SQLite</option>
+            </select>
+            <span className="text-[10px] text-devText-muted font-mono">Groq LLM</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            type="text"
+            value={aiPrompt}
+            onChange={(e) => setAiPrompt(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleGenerateSql()}
+            placeholder="e.g. get total sales by product category for Q1 2026..."
+            className="flex-1 bg-background border border-border text-devText-primary rounded px-3 py-1.5 text-xs focus:outline-none focus:border-accent"
+          />
+          <button
+            onClick={handleGenerateSql}
+            disabled={aiLoading || !aiPrompt.trim()}
+            className="px-3 py-1.5 bg-accent text-background font-medium text-xs rounded hover:bg-accent-hover transition-colors disabled:opacity-50 flex items-center space-x-1 shrink-0"
+          >
+            {aiLoading ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Generate SQL</span>
+              </>
+            )}
+          </button>
+        </div>
+        {aiExplanation && (
+          <p className="text-[11px] text-devText-secondary bg-background p-2 rounded border border-border">
+            <span className="font-semibold text-accent">AI Explanation: </span>
+            {aiExplanation}
+          </p>
+        )}
+        {aiError && <p className="text-[11px] text-rose-400">{aiError}</p>}
+      </div>
+
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-2">
           <Database className="w-4 h-4 text-accent" />

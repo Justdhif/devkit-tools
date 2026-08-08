@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Copy, Download, Check, AlertCircle, Sparkles, SlidersHorizontal } from 'lucide-react';
+import { Copy, Download, Check, AlertCircle, Sparkles, SlidersHorizontal, Loader2 } from 'lucide-react';
 import { formatJson, minifyJson, validateJson } from '@devkit/json-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
+import { aiService } from '../../services/aiService';
+import { AiExplainErrorResponse } from '@devkit/shared';
 
 const SAMPLE_JSON = `{\n  "name": "DevKit",\n  "type": "Developer Productivity Platform",\n  "features": ["JSON Formatter", "JWT Decoder", "UUID Generator"],\n  "privacyFirst": true,\n  "stats": {\n    "speedMs": 0,\n    "version": "1.0.0"\n  }\n}`;
 
@@ -16,7 +18,12 @@ export function JsonFormatterTool() {
   const [copied, setCopied] = useState(false);
   const { addHistoryItem } = useDevKitStore();
 
+  // Embedded AI Error Explainer states
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiErrorResult, setAiErrorResult] = useState<AiExplainErrorResponse | null>(null);
+
   const handleFormat = () => {
+    setAiErrorResult(null);
     const res = formatJson(input, { indent, sortKeys });
     if (res.success) {
       setOutput(res.result);
@@ -28,6 +35,7 @@ export function JsonFormatterTool() {
   };
 
   const handleMinify = () => {
+    setAiErrorResult(null);
     const res = minifyJson(input);
     if (res.success) {
       setOutput(res.result);
@@ -35,6 +43,22 @@ export function JsonFormatterTool() {
       addHistoryItem('json-formatter', 'Minified JSON document');
     } else {
       setError(res.error);
+    }
+  };
+
+  const handleExplainErrorWithAi = async () => {
+    if (!error && !input) return;
+    setAiLoading(true);
+    try {
+      const res = await aiService.explainError({
+        errorText: error || 'JSON Syntax error',
+        context: `JSON Input Snippet: ${input.substring(0, 300)}`,
+      });
+      setAiErrorResult(res);
+    } catch (err: any) {
+      console.error(err);
+    } finally {
+      setAiLoading(false);
     }
   };
 
@@ -106,9 +130,33 @@ export function JsonFormatterTool() {
 
       {/* Error alert */}
       {error && (
-        <div className="p-3 bg-rose-950/40 border border-rose-800/50 rounded-lg text-rose-300 text-xs flex items-center space-x-2">
-          <AlertCircle className="w-4 h-4 shrink-0" />
-          <span>{error}</span>
+        <div className="p-3.5 bg-rose-950/40 border border-rose-800/50 rounded-lg text-rose-300 text-xs flex flex-col space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              <span>{error}</span>
+            </div>
+            <button
+              onClick={handleExplainErrorWithAi}
+              disabled={aiLoading}
+              className="px-2.5 py-1 bg-accent/20 border border-accent/40 text-accent font-semibold rounded text-[11px] hover:bg-accent/30 transition-colors flex items-center space-x-1"
+            >
+              {aiLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
+              <span>Explain Error with AI</span>
+            </button>
+          </div>
+
+          {aiErrorResult && (
+            <div className="p-3 bg-background border border-border rounded-md text-xs text-devText-primary space-y-2 mt-2">
+              <div className="flex items-center space-x-1.5 text-accent font-semibold">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>AI Error Diagnosis:</span>
+              </div>
+              <p><strong>Cause:</strong> {aiErrorResult.cause}</p>
+              <p><strong>Explanation:</strong> {aiErrorResult.explanation}</p>
+              <p className="text-emerald-400"><strong>Likely Fix:</strong> {aiErrorResult.likelyFix}</p>
+            </div>
+          )}
         </div>
       )}
 
@@ -119,7 +167,11 @@ export function JsonFormatterTool() {
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
             <span>INPUT JSON</span>
             <button
-              onClick={() => setInput('')}
+              onClick={() => {
+                setInput('');
+                setError(undefined);
+                setAiErrorResult(null);
+              }}
               className="hover:text-devText-primary text-[11px]"
             >
               Clear

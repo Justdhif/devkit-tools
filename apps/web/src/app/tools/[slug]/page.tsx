@@ -14,6 +14,7 @@ import { TimestampConverterTool } from '../../../components/tools/TimestampConve
 import { HashGeneratorTool } from '../../../components/tools/HashGeneratorTool';
 import { RegexTesterTool } from '../../../components/tools/RegexTesterTool';
 import { SqlFormatterTool } from '../../../components/tools/SqlFormatterTool';
+import { AiAssistantTool } from '../../../components/tools/AiAssistantTool';
 
 interface ToolPageProps {
   params: {
@@ -57,6 +58,16 @@ export default function ToolPage({ params }: ToolPageProps) {
         return <RegexTesterTool />;
       case 'sql-formatter':
         return <SqlFormatterTool />;
+      case 'ai-assistant':
+        return <AiAssistantTool initialTab="regex" />;
+      case 'ai-regex-generator':
+        return <AiAssistantTool initialTab="regex" />;
+      case 'ai-sql-generator':
+        return <AiAssistantTool initialTab="sql" />;
+      case 'ai-error-explainer':
+        return <AiAssistantTool initialTab="error" />;
+      case 'ai-code-explainer':
+        return <AiAssistantTool initialTab="code" />;
       default:
         return <JsonFormatterTool />;
     }

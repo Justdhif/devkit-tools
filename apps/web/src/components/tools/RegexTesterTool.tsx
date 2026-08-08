@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Regex as RegexIcon, AlertCircle, Sparkles } from 'lucide-react';
+import { Regex as RegexIcon, AlertCircle, Sparkles, Loader2, Check } from 'lucide-react';
 import { testRegex, RegexTestOutput } from '@devkit/regex-tools';
+import { aiService } from '../../services/aiService';
 
 export function RegexTesterTool() {
   const [pattern, setPattern] = useState('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}');
@@ -11,10 +12,79 @@ export function RegexTesterTool() {
     'Welcome to DevKit! Contact support@devkit.app or admin@company.io for help.'
   );
 
+  // Embedded AI Assistant states
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiExplanation, setAiExplanation] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
   const result: RegexTestOutput = testRegex(pattern, flags, testString);
+
+  const handleGenerateRegex = async () => {
+    if (!aiPrompt.trim()) return;
+    setAiLoading(true);
+    setAiError(null);
+    setAiExplanation(null);
+
+    try {
+      const res = await aiService.generateRegex({ prompt: aiPrompt });
+      if (res.pattern) setPattern(res.pattern);
+      if (res.flags) setFlags(res.flags);
+      setAiExplanation(res.explanation);
+    } catch (err: any) {
+      setAiError(err.message || 'Failed to generate regex with AI');
+    } finally {
+      setAiLoading(false);
+    }
+  };
 
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+      {/* Embedded Contextual AI Assistant Banner */}
+      <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-xs font-semibold text-accent flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            AI Assistant: Describe the regex pattern you need...
+          </label>
+          <span className="text-[10px] text-devText-muted font-mono">Powered by Groq LLM</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            type="text"
+            value={aiPrompt}
+            onChange={(e) => setAiPrompt(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleGenerateRegex()}
+            placeholder="e.g. match phone numbers with optional country code (+62 or 08)..."
+            className="flex-1 bg-background border border-border text-devText-primary rounded px-3 py-1.5 text-xs focus:outline-none focus:border-accent"
+          />
+          <button
+            onClick={handleGenerateRegex}
+            disabled={aiLoading || !aiPrompt.trim()}
+            className="px-3 py-1.5 bg-accent text-background font-medium text-xs rounded hover:bg-accent-hover transition-colors disabled:opacity-50 flex items-center space-x-1 shrink-0"
+          >
+            {aiLoading ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Generate Regex</span>
+              </>
+            )}
+          </button>
+        </div>
+        {aiExplanation && (
+          <p className="text-[11px] text-devText-secondary bg-background p-2 rounded border border-border">
+            <span className="font-semibold text-accent">AI Explanation: </span>
+            {aiExplanation}
+          </p>
+        )}
+        {aiError && <p className="text-[11px] text-rose-400">{aiError}</p>}
+      </div>
+
       {/* Pattern Bar */}
       <div className="flex flex-wrap items-center gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-2 flex-1 min-w-[280px]">
