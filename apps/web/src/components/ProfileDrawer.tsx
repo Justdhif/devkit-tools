@@ -211,18 +211,18 @@ export function ProfileDrawer() {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between gap-2.5 pt-2">
+                  <div className="flex items-center justify-center gap-2 pt-2">
                     <button
                       type="button"
                       disabled={isLoading}
                       onClick={() => handleOAuthClick("github")}
-                      className="flex-1 py-3.5 px-2.5 bg-background border border-border/80 hover:border-accent/60 rounded-xl text-sm font-bold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-2 transition-all shadow-xs disabled:opacity-50 group"
+                      className="flex-1 py-3 px-1.5 bg-background border border-border/80 hover:border-accent/60 rounded-xl text-sm font-bold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-1.5 transition-all shadow-xs disabled:opacity-50 group"
                     >
                       <Github className="w-5 h-5 group-hover:scale-110 transition-transform shrink-0" />
                       <span className="truncate">GitHub</span>
                     </button>
 
-                    <span className="text-base sm:text-lg font-black text-devText-secondary px-1.5 lowercase shrink-0">
+                    <span className="text-2xl sm:text-3xl font-extrabold leading-none text-devText-secondary px-1 lowercase shrink-0 select-none">
                       or
                     </span>
 
@@ -230,7 +230,7 @@ export function ProfileDrawer() {
                       type="button"
                       disabled={isLoading}
                       onClick={() => handleOAuthClick("google")}
-                      className="flex-1 py-3.5 px-2.5 bg-background border border-border/80 hover:border-accent/60 rounded-xl text-sm font-bold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-2 transition-all shadow-xs disabled:opacity-50 group"
+                      className="flex-1 py-3 px-1.5 bg-background border border-border/80 hover:border-accent/60 rounded-xl text-sm font-bold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-1.5 transition-all shadow-xs disabled:opacity-50 group"
                     >
                       <Chrome className="w-5 h-5 text-accent group-hover:scale-110 transition-transform shrink-0" />
                       <span className="truncate">Google</span>
