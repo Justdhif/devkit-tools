@@ -42,9 +42,6 @@ export function ToolHeader({ tool, onShare }: ToolHeaderProps) {
               <h1 className="text-xl sm:text-2xl font-bold text-devText-primary tracking-tight">
                 {tool.name}
               </h1>
-              <span className="text-xs px-2 py-0.5 rounded-md bg-accent/10 text-accent font-medium border border-accent/20">
-                {tool.category}
-              </span>
             </div>
             <p className="text-sm text-devText-secondary mt-1 max-w-2xl">
               {tool.description}
