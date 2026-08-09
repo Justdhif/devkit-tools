@@ -9,6 +9,24 @@ export function InitialLoader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Check if page was refreshed or loaded for the first time in this session
+    const navs = window.performance.getEntriesByType('navigation');
+    const isReload = navs.length > 0 
+      ? (navs[0] as PerformanceNavigationTiming).type === 'reload'
+      : window.performance.navigation.type === 1;
+    const hasLoadedBefore = sessionStorage.getItem('devkit_loaded');
+
+    if (hasLoadedBefore && !isReload) {
+      setLoading(false);
+      return;
+    }
+
+    // Set loaded flag in session storage
+    sessionStorage.setItem('devkit_loaded', 'true');
+
+    // Remove no-loader helper class if it exists to ensure animation can be seen
+    document.documentElement.classList.remove('no-loader');
+
     // Phase 1: Animate progress bar simulating loading assets
     const duration = 1000; // 1 second loader
     const intervalTime = 20;
@@ -40,7 +58,7 @@ export function InitialLoader() {
             opacity: 0,
             transition: { duration: 0.4, ease: 'easeInOut' }
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#09090B] text-white"
+          className="initial-loader-overlay fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#09090B] text-white"
         >
           {/* Background Glow */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">

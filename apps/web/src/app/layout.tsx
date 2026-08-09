@@ -38,6 +38,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const navs = window.performance.getEntriesByType('navigation');
+                const isReload = navs.length > 0 
+                  ? navs[0].type === 'reload'
+                  : window.performance.navigation.type === 1;
+                const hasLoadedBefore = sessionStorage.getItem('devkit_loaded');
+                if (hasLoadedBefore && !isReload) {
+                  document.documentElement.classList.add('no-loader');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="dark bg-background text-devText-primary min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <NextTopLoader 

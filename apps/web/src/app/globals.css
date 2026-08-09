@@ -50,3 +50,9 @@ code, pre, .font-mono {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(113, 113, 122, 0.5);
 }
+
+/* Loader bypass rule */
+.no-loader .initial-loader-overlay {
+  display: none !important;
+}
+

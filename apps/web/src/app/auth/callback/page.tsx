@@ -80,10 +80,10 @@ function AuthCallbackContent() {
           </h2>
           <p className="text-xs text-rose-300">{errorMsg}</p>
           <button
-            onClick={() => router.push("/login")}
+            onClick={() => router.push("/")}
             className="px-4 py-2 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg transition-colors"
           >
-            Back to Login
+            Back to Home
           </button>
         </div>
       )}
