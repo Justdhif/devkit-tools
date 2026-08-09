@@ -211,7 +211,7 @@ export function ProfileDrawer() {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-center gap-2 pt-2">
+                  <div className="flex items-center justify-center gap-5 pt-2">
                     <div
                       onClick={() => !isLoading && handleOAuthClick("github")}
                       className={`flex-1 py-3 px-1.5 bg-background border border-border/80 hover:border-accent/60 rounded-xl text-sm font-bold text-devText-primary hover:bg-sidebar flex items-center justify-center space-x-1.5 transition-all shadow-xs group cursor-pointer select-none ${
@@ -222,7 +222,7 @@ export function ProfileDrawer() {
                       <span className="truncate">GitHub</span>
                     </div>
 
-                    <span className="text-2xl sm:text-3xl font-extrabold leading-none text-devText-secondary px-1 lowercase shrink-0 select-none">
+                    <span className="text-4xl font-extrabold leading-none text-devText-secondary px-1 uppercase shrink-0 select-none">
                       or
                     </span>
 
