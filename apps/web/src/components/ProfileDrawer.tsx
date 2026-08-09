@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useDevKitStore } from "../store/useDevKitStore";
 import { useAuthStore } from "../store/useAuthStore";
+import Image from "next/image";
 
 export function ProfileDrawer() {
   const {
@@ -256,10 +257,10 @@ export function ProfileDrawer() {
             )}
 
             {/* Background Wallpaper */}
-            <div className="absolute bottom-0 left-0 right-0 h-44 pointer-events-none overflow-hidden select-none z-0 opacity-20">
-              <img
-                src="/chatgpt.png"
-                alt="ChatGPT Wallpaper"
+            <div className="absolute bottom-0 left-0 right-0 h-44 pointer-events-none overflow-hidden select-none z-0">
+              <Image
+                src="/wallpaper.png"
+                alt="Wallpaper"
                 className="w-full h-full object-cover object-bottom"
               />
             </div>
