@@ -82,13 +82,12 @@ export function ProfileDrawer() {
             className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50"
           />
 
-          {/* Slide-over Drawer */}
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface border-l border-border z-50 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto relative"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface border-l border-border z-50 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
           >
             {/* Header */}
             <div className="relative z-10">
