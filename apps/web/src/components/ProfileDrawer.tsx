@@ -261,6 +261,10 @@ export function ProfileDrawer() {
               <Image
                 src="/wallpaper.png"
                 alt="Wallpaper"
+                width={400}
+                height={400}
+                priority
+                quality={100}
                 className="w-full h-full object-cover object-bottom"
               />
             </div>
