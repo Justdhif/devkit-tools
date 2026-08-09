@@ -88,10 +88,10 @@ export function ProfileDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface border-l border-border z-50 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-surface border-l border-border z-50 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto relative"
           >
             {/* Header */}
-            <div>
+            <div className="relative z-10">
               <div className="flex items-center justify-between border-b border-border pb-4 mb-6">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -241,8 +241,8 @@ export function ProfileDrawer() {
             </div>
 
             {/* Footer Actions */}
-            <div className="pt-6 border-t border-border mt-6">
-              {isAuthenticated && user ? (
+            {isAuthenticated && user && (
+              <div className="mt-6 z-10">
                 <button
                   onClick={() => {
                     logout();
@@ -253,14 +253,16 @@ export function ProfileDrawer() {
                   <LogOut className="w-4 h-4" />
                   <span>Log Out of Account</span>
                 </button>
-              ) : (
-                <div className="text-center text-[11px] text-devText-muted flex items-center justify-center space-x-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>
-                    Client-side privacy guaranteed. Zero passwords saved.
-                  </span>
-                </div>
-              )}
+              </div>
+            )}
+
+            {/* Background Wallpaper */}
+            <div className="absolute bottom-0 left-0 right-0 h-44 pointer-events-none overflow-hidden select-none z-0 opacity-20">
+              <img
+                src="/chatgpt.png"
+                alt="ChatGPT Wallpaper"
+                className="w-full h-full object-cover object-bottom"
+              />
             </div>
           </motion.aside>
         </>
