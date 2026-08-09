@@ -44,7 +44,7 @@ export default function HomePage() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="text-center py-6 sm:py-10"
       >
-        <div className="font-mono text-3xl font-bold tracking-tight select-none">
+        <div className="font-departure text-3xl font-bold tracking-tight select-none">
           <span className="text-accent">DEV</span>
           <span className="text-zinc-100">KIT</span>
         </div>
