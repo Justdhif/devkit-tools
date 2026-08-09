@@ -7,6 +7,19 @@ import { CommandPalette } from '../components/CommandPalette';
 import { ProfileDrawer } from '../components/ProfileDrawer';
 import NextTopLoader from 'nextjs-toploader';
 import { InitialLoader } from '../components/InitialLoader';
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "DevKit — The developer's everyday toolbox",
@@ -24,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="dark bg-background text-devText-primary min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <NextTopLoader 
