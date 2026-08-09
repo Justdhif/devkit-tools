@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Command, Sparkles, Shield, LogIn } from 'lucide-react';
+import { Sparkles, Shield, LogIn } from 'lucide-react';
 import { useDevKitStore } from '../store/useDevKitStore';
 import { useAuthStore } from '../store/useAuthStore';
 
 export function Header() {
-  const { toggleCommandPalette, toggleProfileDrawer } = useDevKitStore();
+  const { toggleProfileDrawer } = useDevKitStore();
   const { user, isAuthenticated } = useAuthStore();
   const [mounted, setMounted] = useState(false);
 
@@ -17,27 +17,13 @@ export function Header() {
 
   return (
     <header className="h-14 border-b border-border bg-surface/80 backdrop-blur-md px-4 flex items-center justify-between sticky top-0 z-30">
-      <div className="flex items-center space-x-4 flex-1 max-w-2xl">
+      <div className="flex items-center">
         <Link href="/" className="flex items-center space-x-2 font-bold text-lg text-devText-primary tracking-tight">
           <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-white shadow-sm">
             <Sparkles className="w-4 h-4" />
           </div>
           <span className='hidden sm:inline'>DevKit</span>
         </Link>
-
-        <button
-          onClick={toggleCommandPalette}
-          className="flex-1 max-w-md h-9 px-3 rounded-md bg-background border border-border flex items-center justify-between text-sm text-devText-muted hover:border-accent/50 transition-colors"
-        >
-          <div className="flex items-center space-x-2 truncate">
-            <Search className="w-4 h-4 text-devText-muted shrink-0" />
-            <span className="truncate">Search developer tools...</span>
-          </div>
-          <kbd className="hidden sm:inline-flex items-center space-x-1 px-1.5 py-0.5 text-[10px] font-mono font-medium text-devText-muted bg-surface border border-border rounded">
-            <Command className="w-3 h-3" />
-            <span>K</span>
-          </kbd>
-        </button>
       </div>
 
       <div className="flex items-center space-x-2">
