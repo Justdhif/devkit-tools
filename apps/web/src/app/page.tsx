@@ -44,9 +44,9 @@ export default function HomePage() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="text-center py-6 sm:py-10 space-y-4"
       >
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>The Developer&apos;s Everyday Toolbox</span>
+        <div className="font-mono text-2xl font-bold tracking-tight select-none pb-1">
+          <span className="text-zinc-500">dev</span>
+          <span className="text-zinc-100">kit</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-devText-primary tracking-tight">
           Developer tools, <span className="text-accent">all in one place.</span>
