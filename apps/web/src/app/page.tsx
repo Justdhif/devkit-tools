@@ -42,14 +42,14 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center py-6 sm:py-10 space-y-4"
+        className="text-center py-6 sm:py-10"
       >
-        <div className="font-mono text-2xl font-bold tracking-tight select-none pb-1">
-          <span className="text-zinc-500">dev</span>
-          <span className="text-zinc-100">kit</span>
+        <div className="font-mono text-3xl font-bold tracking-tight select-none">
+          <span className="text-accent">DEV</span>
+          <span className="text-zinc-100">KIT</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-devText-primary tracking-tight">
-          Developer tools, <span className="text-accent">all in one place.</span>
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-devText-primary tracking-tight mb-4">
+          Developer tools, all in one place.
         </h1>
         <p className="text-sm sm:text-base text-devText-secondary max-w-2xl mx-auto">
           Fast utilities for your everyday development. Zero context switching, client-side privacy, keyboard-driven navigation.
