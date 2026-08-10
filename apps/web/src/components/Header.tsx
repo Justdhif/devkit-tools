@@ -143,7 +143,7 @@ export function Header() {
       </AnimatePresence>
 
       {/* Spacer */}
-      <div className="flex-1" />
+      <div className="hidden md:block flex-1" />
 
       {/* Right side actions */}
       <div className="flex items-center space-x-2">
