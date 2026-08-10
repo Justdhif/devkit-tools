@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Wrench, Star, History, LayoutGrid, Heart } from 'lucide-react';
+import { Home, Star, History, LayoutGrid } from 'lucide-react';
 import { CORE_TOOLS } from '@devkit/tool-core';
 
 export function Sidebar() {

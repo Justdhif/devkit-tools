@@ -14,8 +14,6 @@ import {
 import { useDevKitStore } from "../store/useDevKitStore";
 
 export default function NotFound() {
-  const { toggleCommandPalette } = useDevKitStore();
-
   const quickTools = [
     {
       slug: "json-formatter",
@@ -72,13 +70,13 @@ export default function NotFound() {
             <span>Return to Catalog</span>
           </Link>
 
-          <button
-            onClick={toggleCommandPalette}
+          <Link
+            href="/"
             className="w-full sm:w-auto px-6 py-3 bg-background border border-border text-devText-primary hover:bg-sidebar hover:border-accent/40 text-xs font-semibold rounded-xl flex items-center justify-center space-x-2 transition-colors"
           >
             <Search className="w-4 h-4 text-accent" />
-            <span>Search Utilities (⌘K)</span>
-          </button>
+            <span>Search Utilities</span>
+          </Link>
         </div>
 
         {/* Popular Utilities Quick Navigation */}

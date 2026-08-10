@@ -10,9 +10,6 @@ interface DevKitStoreState {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   
-  isCommandPaletteOpen: boolean;
-  setCommandPaletteOpen: (open: boolean) => void;
-  toggleCommandPalette: () => void;
 
   isProfileDrawerOpen: boolean;
   setProfileDrawerOpen: (open: boolean) => void;
@@ -41,9 +38,6 @@ export const useDevKitStore = create<DevKitStoreState>()(
       searchQuery: '',
       setSearchQuery: (query) => set({ searchQuery: query }),
 
-      isCommandPaletteOpen: false,
-      setCommandPaletteOpen: (open) => set({ isCommandPaletteOpen: open }),
-      toggleCommandPalette: () => set((state) => ({ isCommandPaletteOpen: !state.isCommandPaletteOpen })),
 
       isProfileDrawerOpen: false,
       setProfileDrawerOpen: (open) => set({ isProfileDrawerOpen: open }),

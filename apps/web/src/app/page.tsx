@@ -1,22 +1,92 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Search, Sparkles, Star, ShieldCheck, ArrowRight, Wrench, Command } from 'lucide-react';
+import React from 'react';
+import { Search, Star, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
 import { CORE_TOOLS, searchTools } from '@devkit/tool-core';
 import { useDevKitStore } from '../store/useDevKitStore';
 import { SmartContextPanel } from '../components/SmartContextPanel';
+import { useSearch } from '../context/SearchContext';
+import { SearchDropdown } from '../components/SearchDropdown';
 
 export default function HomePage() {
   const router = useRouter();
-  const [filterQuery, setFilterQuery] = useState('');
-  const { toggleFavorite, isFavorite, toggleCommandPalette, fetchFavoritesFromDB } = useDevKitStore();
+  const { query: filterQuery, setQuery: setFilterQuery } = useSearch();
+  const { toggleFavorite, isFavorite, fetchFavoritesFromDB, history } = useDevKitStore();
+  const [isFocused, setIsFocused] = React.useState(false);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const displayTools = React.useMemo(() => {
+    if (filterQuery.trim() !== '') {
+      return searchTools(filterQuery).slice(0, 6);
+    }
+
+    // Find the most frequent tools in history
+    const counts: Record<string, number> = {};
+    history.forEach((item) => {
+      counts[item.toolSlug] = (counts[item.toolSlug] || 0) + 1;
+    });
+
+    const sortedSlugs = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    
+    const frequentTools: typeof CORE_TOOLS = [];
+    sortedSlugs.forEach((slug) => {
+      const tool = CORE_TOOLS.find((t) => t.slug === slug);
+      if (tool) frequentTools.push(tool);
+    });
+
+    const result = frequentTools.slice(0, 3);
+
+    // Pad with defaults if less than 3
+    if (result.length < 3) {
+      const defaultSlugs = ['json-formatter', 'jwt-decoder', 'uuid-generator'];
+      for (const slug of defaultSlugs) {
+        if (result.length >= 3) break;
+        if (!result.some((t) => t.slug === slug)) {
+          const tool = CORE_TOOLS.find((t) => t.slug === slug);
+          if (tool) result.push(tool);
+        }
+      }
+    }
+    return result;
+  }, [filterQuery, history]);
 
   React.useEffect(() => {
     fetchFavoritesFromDB();
   }, [fetchFavoritesFromDB]);
+
+  React.useEffect(() => {
+    setSelectedIndex(0);
+  }, [filterQuery]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (displayTools.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % displayTools.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev - 1 + displayTools.length) % displayTools.length);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (displayTools[selectedIndex]) {
+        router.push(`/tools/${displayTools[selectedIndex].slug}`);
+        setIsFocused(false);
+        e.currentTarget.blur();
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      setIsFocused(false);
+      e.currentTarget.blur();
+    }
+  };
+
+  const handleSelect = (slug: string) => {
+    router.push(`/tools/${slug}`);
+    setIsFocused(false);
+  };
 
   const tools = searchTools(filterQuery);
   const categories = Array.from(new Set(CORE_TOOLS.map((t) => t.category)));
@@ -56,23 +126,34 @@ export default function HomePage() {
         </p>
 
         <div className="max-w-xl mx-auto pt-2">
-          <div className="relative flex items-center">
-            <Search className="w-5 h-5 absolute left-4 text-devText-muted" />
+          {/* layoutId matches Header mini search bar for shared animation */}
+          <motion.div
+            layoutId="devkit-search-bar"
+            className="relative flex items-center"
+            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+          >
+            <Search className="w-5 h-5 absolute left-4 text-devText-muted pointer-events-none" />
             <input
               type="text"
-              placeholder="Search developer tools... ⌘K"
+              placeholder="Search developer tools..."
               value={filterQuery}
               onChange={(e) => setFilterQuery(e.target.value)}
-              className="w-full h-12 pl-12 pr-14 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              onKeyDown={handleKeyDown}
+              className="w-full h-12 pl-12 pr-4 bg-surface border border-border rounded-xl text-devText-primary text-sm focus:outline-none focus:border-accent shadow-lg transition-colors"
             />
-            <button
-              onClick={toggleCommandPalette}
-              className="absolute right-2.5 px-2 py-1 text-xs font-mono bg-background border border-border rounded-lg text-devText-muted hover:text-devText-primary flex items-center space-x-1"
-            >
-              <Command className="w-3 h-3" />
-              <span>K</span>
-            </button>
-          </div>
+
+            {isFocused && (
+              <SearchDropdown
+                filteredTools={displayTools}
+                selectedIndex={selectedIndex}
+                onSelect={handleSelect}
+                onMouseEnterItem={setSelectedIndex}
+                query={filterQuery}
+              />
+            )}
+          </motion.div>
 
           <SmartContextPanel input={filterQuery} className="mt-3 text-left" />
         </div>
