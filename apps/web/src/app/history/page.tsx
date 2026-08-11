@@ -20,7 +20,7 @@ interface RemoteHistoryItem {
 }
 
 export default function HistoryPage() {
-  const { token } = useAuthStore();
+  const { token, fetchMe } = useAuthStore();
   const { clearHistory } = useDevKitStore();
 
   const [items, setItems] = useState<RemoteHistoryItem[]>([]);
@@ -28,12 +28,20 @@ export default function HistoryPage() {
   const [error, setError] = useState<string | null>(null);
 
   const fetchHistory = useCallback(async () => {
-    if (!token) return;
     setLoading(true);
     setError(null);
     try {
+      // Pastikan token selalu fresh sebelum fetch
+      await fetchMe();
+      // Baca token terbaru langsung dari store state (bukan dari closure lama)
+      const freshToken = useAuthStore.getState().token;
+      if (!freshToken) {
+        setError('Session expired. Please sign in again.');
+        setLoading(false);
+        return;
+      }
       const res = await fetch(`${API_BASE_URL}/history?limit=50`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${freshToken}` },
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -46,18 +54,19 @@ export default function HistoryPage() {
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [fetchMe]);
 
   useEffect(() => {
     fetchHistory();
   }, [fetchHistory]);
 
   const handleClearAll = async () => {
-    if (!token) return;
+    const freshToken = useAuthStore.getState().token;
+    if (!freshToken) return;
     try {
       await fetch(`${API_BASE_URL}/history`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${freshToken}` },
       });
       clearHistory(); // juga bersihkan localStorage
       setItems([]);

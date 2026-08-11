@@ -100,27 +100,33 @@ export const useAuthStore = create<AuthStoreState>()(
         const { token, refreshToken } = get();
         if (!token && !refreshToken) return;
 
-        try {
-          const res = await fetch(`${API_BASE_URL}/auth/me`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const data = await res.json();
-          if (res.ok && data.success) {
-            set({
-              user: data.user,
-              token: data.accessToken || data.token || token,
-              refreshToken: data.refreshToken || refreshToken,
-              isAuthenticated: true,
+        // Kalau ada access token, coba dulu
+        if (token) {
+          try {
+            const res = await fetch(`${API_BASE_URL}/auth/me`, {
+              headers: { Authorization: `Bearer ${token}` },
             });
-            return;
-          }
-        } catch (err) {}
-
-        if (refreshToken) {
-          await get().refreshTokens();
-        } else {
-          set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+            const data = await res.json();
+            if (res.ok && data.success) {
+              set({
+                user: data.user,
+                token: data.accessToken || data.token || token,
+                refreshToken: data.refreshToken || refreshToken,
+                isAuthenticated: true,
+              });
+              return;
+            }
+          } catch (err) {}
         }
+
+        // Access token expired atau gagal — coba refresh
+        if (refreshToken) {
+          const refreshed = await get().refreshTokens();
+          if (refreshed) return; // berhasil, token baru sudah di-set
+        }
+
+        // Keduanya gagal, logout
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
       },
     }),
     {

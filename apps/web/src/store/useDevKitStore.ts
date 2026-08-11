@@ -118,21 +118,34 @@ export const useDevKitStore = create<DevKitStoreState>()(
 
         set({ history: [newItem, ...history.slice(0, 49)] });
 
-        // Sync ke database jika user login
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (isAuthenticated && token && !finalSensitive) {
-          fetch(`${API_BASE_URL}/history`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
+        // Sync ke database jika user login (async, tidak blocking)
+        const { isAuthenticated } = useAuthStore.getState();
+        if (isAuthenticated && !finalSensitive) {
+          const syncToDb = async () => {
+            let { token } = useAuthStore.getState();
+            const payload = {
               toolSlug,
               inputSummary: redacted.redactedText.slice(0, 200),
               isSensitive: finalSensitive,
-            }),
-          }).catch(() => {/* silent fail — history tetap tersimpan di localStorage */});
+            };
+            const doPost = (t: string) =>
+              fetch(`${API_BASE_URL}/history`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${t}` },
+                body: JSON.stringify(payload),
+              });
+
+            const res = await doPost(token!).catch(() => null);
+            if (res && res.status === 401) {
+              // Token expired — coba refresh dulu lalu retry sekali
+              const refreshed = await useAuthStore.getState().refreshTokens();
+              if (refreshed) {
+                const newToken = useAuthStore.getState().token;
+                if (newToken) await doPost(newToken).catch(() => null);
+              }
+            }
+          };
+          syncToDb();
         }
       },
       clearHistory: () => set({ history: [] }),
