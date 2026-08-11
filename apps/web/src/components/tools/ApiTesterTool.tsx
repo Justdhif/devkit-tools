@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Globe,
   Send,
@@ -219,40 +220,32 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
 
       <div className="flex items-center justify-between text-xs bg-sidebar px-3 py-2 rounded-lg border border-border">
         <div className="flex items-center space-x-1 border-b border-border">
-          <button
-            onClick={() => setActiveTab('params')}
-            className={`px-3 py-1 font-medium transition-colors border-b-2 ${
-              activeTab === 'params' ? 'border-accent text-accent' : 'border-transparent text-devText-muted'
-            }`}
-          >
-            Params ({params.filter((p) => p.enabled && p.key).length})
-          </button>
-          <button
-            onClick={() => setActiveTab('headers')}
-            className={`px-3 py-1 font-medium transition-colors border-b-2 ${
-              activeTab === 'headers' ? 'border-accent text-accent' : 'border-transparent text-devText-muted'
-            }`}
-          >
-            Headers ({headers.filter((h) => h.enabled && h.key).length})
-          </button>
-          {['POST', 'PUT', 'PATCH'].includes(method) && (
-            <button
-              onClick={() => setActiveTab('body')}
-              className={`px-3 py-1 font-medium transition-colors border-b-2 ${
-                activeTab === 'body' ? 'border-accent text-accent' : 'border-transparent text-devText-muted'
-              }`}
-            >
-              Body
-            </button>
-          )}
-          <button
-            onClick={() => setActiveTab('auth')}
-            className={`px-3 py-1 font-medium transition-colors border-b-2 ${
-              activeTab === 'auth' ? 'border-accent text-accent' : 'border-transparent text-devText-muted'
-            }`}
-          >
-            Auth
-          </button>
+          {(['params', 'headers', ...((['POST', 'PUT', 'PATCH'].includes(method) ? ['body'] : [])), 'auth'] as TabType[]).map((tab) => {
+            const isActive = activeTab === tab;
+            const label =
+              tab === 'params' ? `Params (${params.filter((p) => p.enabled && p.key).length})`
+              : tab === 'headers' ? `Headers (${headers.filter((h) => h.enabled && h.key).length})`
+              : tab === 'body' ? 'Body'
+              : 'Auth';
+            return (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`relative px-3 py-1 font-medium transition-colors ${
+                  isActive ? 'text-accent font-semibold' : 'text-devText-muted hover:text-devText-primary'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="apiTabPill"
+                    className="absolute inset-0 border-b-2 border-accent rounded-t-sm"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{label}</span>
+              </button>
+            );
+          })}
         </div>
 
         <label className="flex items-center space-x-1.5 cursor-pointer text-devText-secondary hover:text-devText-primary">
@@ -267,7 +260,15 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
         </label>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+      <AnimatePresence mode="wait">
+      <motion.div
+        key={activeTab}
+        initial={{ opacity: 0, scale: 0.995 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.995 }}
+        transition={{ duration: 0.18, ease: 'easeOut' }}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1"
+      >
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 space-y-3">
           {activeTab === 'params' && (
             <div className="space-y-2 flex-1 overflow-y-auto">
@@ -461,7 +462,8 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
