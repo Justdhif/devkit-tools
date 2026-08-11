@@ -6,6 +6,7 @@ import { History, Trash2, ArrowRight, ShieldCheck, Lock } from 'lucide-react';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { getToolBySlug } from '@devkit/tool-core';
 import { AuthGuard } from '../../components/AuthGuard';
+import { Button } from '../../components/ui/button';
 
 export default function HistoryPage() {
   const { history, clearHistory } = useDevKitStore();
@@ -25,13 +26,14 @@ export default function HistoryPage() {
           </div>
 
           {history.length > 0 && (
-            <button
+            <Button
+              variant="destructive"
+              size="sm"
               onClick={clearHistory}
-              className="px-3 py-1.5 bg-rose-950/40 border border-rose-800/40 text-rose-300 hover:bg-rose-900/50 text-xs font-semibold rounded-md flex items-center space-x-1.5 transition-colors"
             >
               <Trash2 className="w-3.5 h-3.5" />
               <span>Clear History</span>
-            </button>
+            </Button>
           )}
         </div>
 

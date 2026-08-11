@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { QrCode, Download, Copy, Check, SlidersHorizontal } from 'lucide-react';
 import { ColorPicker } from '../ui/color-picker';
+import { useDevKitStore } from '../../store/useDevKitStore';
 
 export function QrGeneratorTool() {
   const [text, setText] = useState('https://devkit-tools.vercel.app');
@@ -11,6 +12,7 @@ export function QrGeneratorTool() {
   const [size, setSize] = useState(256);
   const [margin, setMargin] = useState(2);
   const [copied, setCopied] = useState(false);
+  const { addHistoryItem } = useDevKitStore();
 
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(
     text
@@ -26,6 +28,7 @@ export function QrGeneratorTool() {
       a.download = `devkit-qrcode.${format}`;
       a.click();
       URL.revokeObjectURL(url);
+      addHistoryItem('qr-generator', `Downloaded QR code (${format.toUpperCase()}): ${text.slice(0, 50)}`);
     } catch (err) {
       console.error(err);
     }
@@ -35,6 +38,7 @@ export function QrGeneratorTool() {
     navigator.clipboard.writeText(qrUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    addHistoryItem('qr-generator', `Copied QR link for: ${text.slice(0, 50)}`);
   };
 
   return (

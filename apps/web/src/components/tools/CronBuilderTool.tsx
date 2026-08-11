@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { CalendarClock, Copy, Check, Sparkles, HelpCircle } from 'lucide-react';
+import { useDevKitStore } from '../../store/useDevKitStore';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 export function CronBuilderTool() {
@@ -12,6 +13,8 @@ export function CronBuilderTool() {
   const [dayOfWeek, setDayOfWeek] = useState('*');
 
   const [copied, setCopied] = useState(false);
+
+  const { addHistoryItem } = useDevKitStore();
 
   const cronExpression = `${minute.trim() || '*'} ${hour.trim() || '*'} ${dayOfMonth.trim() || '*'} ${month.trim() || '*'} ${dayOfWeek.trim() || '*'}`;
 
@@ -81,6 +84,7 @@ export function CronBuilderTool() {
     navigator.clipboard.writeText(cronExpression);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    addHistoryItem('cron-builder', `Copied cron: ${cronExpression}`);
   };
 
   return (

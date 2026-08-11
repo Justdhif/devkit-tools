@@ -1,12 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Palette, Copy, Check, Sparkles, ShieldCheck } from 'lucide-react';
 import { ColorPicker } from '../ui/color-picker';
+import { useDevKitStore } from '../../store/useDevKitStore';
 
 export function ColorConverterTool() {
   const [hex, setHex] = useState('#6366f1');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const { addHistoryItem } = useDevKitStore();
+  const historyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
+    historyTimerRef.current = setTimeout(() => {
+      addHistoryItem('color-converter', `Inspected color: ${hex.toUpperCase()}`);
+    }, 1500);
+    return () => { if (historyTimerRef.current) clearTimeout(historyTimerRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hex]);
 
   const hexToRgb = (hexStr: string) => {
     let clean = hexStr.replace('#', '');

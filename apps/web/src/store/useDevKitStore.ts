@@ -120,16 +120,7 @@ export const useDevKitStore = create<DevKitStoreState>()(
       },
       clearHistory: () => set({ history: [] }),
 
-      workspaces: [
-        {
-          id: 'default-backend',
-          name: 'My Backend Toolkit',
-          description: 'Essential utilities for REST API development',
-          toolSlugs: ['jwt-decoder', 'json-formatter', 'hash-generator', 'uuid-generator'],
-          createdAt: '2026-01-01T00:00:00.000Z',
-          updatedAt: '2026-01-01T00:00:00.000Z',
-        },
-      ],
+      workspaces: [],
       addWorkspace: (name, toolSlugs, description) =>
         set((state) => ({
           workspaces: [
@@ -179,6 +170,19 @@ export const useDevKitStore = create<DevKitStoreState>()(
         workspaces: state.workspaces,
         settings: state.settings,
       }),
+      version: 2,
+      migrate: (persistedState: any, version: number) => {
+        if (version < 2) {
+          // Hapus workspace default hardcoded lama yang tidak seharusnya ada
+          const legacyIds = ['default-backend'];
+          if (persistedState?.workspaces) {
+            persistedState.workspaces = persistedState.workspaces.filter(
+              (w: any) => !legacyIds.includes(w.id)
+            );
+          }
+        }
+        return persistedState;
+      },
     }
   )
 );

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Star, Share2, Check, Shield } from 'lucide-react';
 import { ToolMetadata } from '@devkit/shared';
 import { useDevKitStore } from '../store/useDevKitStore';
+import { Button } from './ui/button';
 
 interface ToolHeaderProps {
   tool: ToolMetadata;
@@ -50,27 +51,26 @@ export function ToolHeader({ tool, onShare }: ToolHeaderProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 shrink-0">
-          <button
+          <Button
             onClick={() => toggleFavorite(tool.slug)}
-            className={`p-2 rounded-md border text-sm font-medium flex items-center space-x-1.5 transition-colors ${
-              favorited
-                ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                : 'bg-background border-border text-devText-secondary hover:text-devText-primary'
-            }`}
+            variant={favorited ? 'ghost' : 'secondary'}
+            size="sm"
+            className={favorited ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20' : ''}
             title={favorited ? 'Remove from favorites' : 'Add to favorites'}
           >
             <Star className={`w-4 h-4 ${favorited ? 'fill-amber-400' : ''}`} />
             <span className="hidden sm:inline">{favorited ? 'Favorited' : 'Favorite'}</span>
-          </button>
+          </Button>
 
-          <button
+          <Button
             onClick={handleShareClick}
-            className="p-2 rounded-md border border-border bg-background text-devText-secondary hover:text-devText-primary hover:border-accent/50 text-sm font-medium flex items-center space-x-1.5 transition-colors"
+            variant="secondary"
+            size="sm"
             title="Share Configuration"
           >
             {copiedShare ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
             <span className="hidden sm:inline">{copiedShare ? 'Copied Link' : 'Share'}</span>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

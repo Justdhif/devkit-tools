@@ -6,6 +6,7 @@ import { GitMerge, Plus, Play, Trash2, ArrowDown, Check, Copy, AlertCircle, Load
 import { motion, AnimatePresence } from 'framer-motion';
 import { PipelineStep } from '@devkit/shared';
 import { CORE_TOOLS, validatePipeline, executePipeline } from '@devkit/tool-core';
+import { useDevKitStore } from '../../store/useDevKitStore';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 export function PipelineBuilderTool() {
@@ -47,6 +48,7 @@ export function PipelineBuilderTool() {
   const [pipelineError, setPipelineError] = useState<string | null>(null);
   const [copiedStepId, setCopiedStepId] = useState<string | null>(null);
   const [selectedToolSlug, setSelectedToolSlug] = useState('json-formatter');
+  const { addHistoryItem } = useDevKitStore();
 
   const validation = validatePipeline(steps);
 
@@ -87,6 +89,7 @@ export function PipelineBuilderTool() {
             output: res.results[s.id],
           }))
         );
+        addHistoryItem('pipeline-builder', `Pipeline executed: ${steps.map((s) => s.toolName).join(' → ')}`);
       } else {
         setPipelineError(res.error || 'Pipeline execution failed.');
         setSteps((prev) =>

@@ -13,7 +13,7 @@ import {
   Check,
   Zap,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { aiService } from '../../services/aiService';
 import {
   AiExplainErrorResponse,
@@ -23,6 +23,10 @@ import {
   AiExplainCodeResponse,
 } from '@devkit/shared';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { useDevKitStore } from '../../store/useDevKitStore';
+import { Button } from '../ui/button';
+import { Textarea } from '../ui/input';
+import { Card, CardHeader } from '../ui/card';
 
 type AiTab = 'regex' | 'sql' | 'error' | 'code' | 'json';
 
@@ -52,6 +56,8 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const { addHistoryItem } = useDevKitStore();
+
   const handleRunAi = async () => {
     setLoading(true);
     setError(null);
@@ -60,18 +66,23 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
       if (activeTab === 'regex') {
         const res = await aiService.generateRegex({ prompt: regexPrompt });
         setRegexResult(res);
+        addHistoryItem('ai-assistant', `AI Regex: "${regexPrompt.slice(0, 50)}"`);
       } else if (activeTab === 'sql') {
         const res = await aiService.generateSql({ prompt: sqlPrompt, dialect: sqlDialect });
         setSqlResult(res);
+        addHistoryItem('ai-assistant', `AI SQL (${sqlDialect}): "${sqlPrompt.slice(0, 50)}"`);
       } else if (activeTab === 'error') {
         const res = await aiService.explainError({ errorText });
         setErrorResult(res);
+        addHistoryItem('ai-assistant', `AI Error Explain: "${errorText.slice(0, 50)}"`);
       } else if (activeTab === 'code') {
         const res = await aiService.explainCode({ code: codeText });
         setCodeResult(res);
+        addHistoryItem('ai-assistant', `AI Code Explain: ${codeText.split('\n')[0].slice(0, 50)}`);
       } else if (activeTab === 'json') {
         const res = await aiService.convertJson({ jsonString: jsonText, targetLanguage: targetLang });
         setJsonResult(res);
+        addHistoryItem('ai-assistant', `AI JSON → ${targetLang.toUpperCase()} conversion`);
       }
     } catch (err: any) {
       setError(err.message || 'An error occurred while calling Groq AI service.');
@@ -105,10 +116,9 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
           </div>
         </div>
 
-        <button
+        <Button
           onClick={handleRunAi}
           disabled={loading}
-          className="flex items-center space-x-2 px-4 py-2 bg-accent text-background font-medium text-xs rounded-lg hover:bg-accent-hover transition-colors disabled:opacity-50 shrink-0"
         >
           {loading ? (
             <>
@@ -121,7 +131,7 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
               <span>Generate</span>
             </>
           )}
-        </button>
+        </Button>
       </div>
 
       <div className="flex items-center space-x-1 border-b border-border overflow-x-auto pb-1 relative">
@@ -158,17 +168,9 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
         </div>
       )}
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, scale: 0.995 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.995 }}
-          transition={{ duration: 0.18, ease: 'easeOut' }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1"
-        >
-          <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-            <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+          <Card>
+            <CardHeader>
               <span>INPUT PROMPT & CONTEXT</span>
               {activeTab === 'sql' && (
                 <Select value={sqlDialect} onValueChange={(val: any) => setSqlDialect(val)}>
@@ -195,57 +197,57 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
                   </SelectContent>
                 </Select>
               )}
-            </div>
+            </CardHeader>
 
             <div className="p-3 flex-1 flex flex-col space-y-3">
               {activeTab === 'regex' && (
-                <textarea
+                <Textarea
                   value={regexPrompt}
                   onChange={(e) => setRegexPrompt(e.target.value)}
                   placeholder="Describe what pattern you want to match in natural language..."
-                  className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px]"
+                  className="flex-1 min-h-[220px]"
                 />
               )}
               {activeTab === 'sql' && (
-                <textarea
+                <Textarea
                   value={sqlPrompt}
                   onChange={(e) => setSqlPrompt(e.target.value)}
                   placeholder="Describe the database query you want in natural language..."
-                  className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px]"
+                  className="flex-1 min-h-[220px]"
                 />
               )}
               {activeTab === 'error' && (
-                <textarea
+                <Textarea
                   value={errorText}
                   onChange={(e) => setErrorText(e.target.value)}
                   placeholder="Paste stack trace or error log here..."
-                  className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px]"
+                  className="flex-1 min-h-[220px]"
                 />
               )}
               {activeTab === 'code' && (
-                <textarea
+                <Textarea
                   value={codeText}
                   onChange={(e) => setCodeText(e.target.value)}
                   placeholder="Paste code snippet to analyze..."
-                  className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px]"
+                  className="flex-1 min-h-[220px]"
                 />
               )}
               {activeTab === 'json' && (
-                <textarea
+                <Textarea
                   value={jsonText}
                   onChange={(e) => setJsonText(e.target.value)}
                   placeholder="Paste raw JSON object here..."
-                  className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px]"
+                  className="flex-1 min-h-[220px]"
                 />
               )}
             </div>
-          </div>
+          </Card>
 
-          <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-            <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
+          <Card>
+            <CardHeader>
               <span>AI RESULT & EXPLANATION</span>
               {loading && <Loader2 className="w-3.5 h-3.5 animate-spin text-accent" />}
-            </div>
+            </CardHeader>
 
             <div className="p-4 flex-1 overflow-y-auto space-y-4 text-xs font-sans">
               {!regexResult && !sqlResult && !errorResult && !codeResult && !jsonResult && !loading && (
@@ -388,9 +390,8 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
                 </div>
               )}
             </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+          </Card>
+      </div>
     </div>
   );
 }

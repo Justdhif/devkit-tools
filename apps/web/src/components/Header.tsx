@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSearch } from '../context/SearchContext';
 import { CORE_TOOLS, searchTools } from '@devkit/tool-core';
 import { SearchDropdown } from './SearchDropdown';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
 export function Header() {
   const { toggleProfileDrawer, history } = useDevKitStore();
@@ -118,7 +120,7 @@ export function Header() {
             transition={{ type: 'spring', stiffness: 380, damping: 30 }}
           >
             <Search className="w-4 h-4 absolute left-3 text-devText-muted pointer-events-none" />
-            <input
+            <Input
               type="text"
               placeholder="Search tools..."
               value={query}
@@ -126,7 +128,7 @@ export function Header() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onKeyDown={handleKeyDown}
-              className="w-full h-8 pl-9 pr-3 bg-background border border-border rounded-lg text-devText-primary text-xs focus:outline-none focus:border-accent transition-colors"
+              className="pl-9 pr-3 h-8 text-xs rounded-lg"
             />
 
             {isFocused && (
@@ -166,14 +168,15 @@ export function Header() {
             <span className="hidden sm:inline max-w-[90px] truncate">{user.name}</span>
           </button>
         ) : (
-          <button
+          <Button
             onClick={toggleProfileDrawer}
-            className="p-2 sm:px-3 sm:py-1.5 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-md flex items-center space-x-1.5 transition-colors shadow-xs"
+            size="sm"
+            className="p-2 sm:px-3 sm:py-1.5"
             title="Sign In"
           >
             <LogIn className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
             <span className="hidden sm:inline">Sign In</span>
-          </button>
+          </Button>
         )}
       </div>
     </header>

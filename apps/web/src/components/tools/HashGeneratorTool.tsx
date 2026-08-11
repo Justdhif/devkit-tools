@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { KeyRound, Copy, Check, Shield } from 'lucide-react';
 import { computeHash } from '@devkit/crypto-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
@@ -15,6 +15,7 @@ export function HashGeneratorTool() {
   }>({ md5: '', sha1: '', sha256: '', sha512: '' });
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const { addHistoryItem } = useDevKitStore();
+  const historyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -33,9 +34,20 @@ export function HashGeneratorTool() {
       }
     };
     calculateAll();
+
+    // Debounce history recording
+    if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
+    if (input.trim()) {
+      historyTimerRef.current = setTimeout(() => {
+        addHistoryItem('hash-generator', `Hashed: "${input.slice(0, 40)}${input.length > 40 ? '…' : ''}"`);
+      }, 1500);
+    }
+
     return () => {
       active = false;
+      if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   const handleCopy = (val: string, key: string) => {

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Database, Copy, Check, Sparkles, Loader2 } from 'lucide-react';
 import { aiService } from '../../services/aiService';
+import { useDevKitStore } from '../../store/useDevKitStore';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 const SAMPLE_SQL = `SELECT u.id, u.username, u.email, count(o.id) as total_orders FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE u.created_at >= '2026-01-01' GROUP BY u.id, u.username, u.email HAVING count(o.id) > 5 ORDER BY total_orders DESC;`;
@@ -18,6 +19,8 @@ export function SqlFormatterTool() {
   const [aiExplanation, setAiExplanation] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
 
+  const { addHistoryItem } = useDevKitStore();
+
   const handleFormat = () => {
     let formatted = input
       .replace(/\s+/g, ' ')
@@ -25,11 +28,13 @@ export function SqlFormatterTool() {
       .replace(/\s*,\s*/g, ',\n  ')
       .trim();
     setOutput(formatted);
+    addHistoryItem('sql-formatter', 'Formatted SQL query');
   };
 
   const handleMinify = () => {
     const minified = input.replace(/\s+/g, ' ').trim();
     setOutput(minified);
+    addHistoryItem('sql-formatter', 'Minified SQL query');
   };
 
   const handleCopy = () => {
@@ -52,6 +57,7 @@ export function SqlFormatterTool() {
         setOutput(res.sql);
       }
       setAiExplanation(res.explanation);
+      addHistoryItem('sql-formatter', `AI Generated SQL (${aiDialect}): "${aiPrompt.slice(0, 50)}"`);
     } catch (err: any) {
       setAiError(err.message || 'Failed to generate SQL with AI');
     } finally {

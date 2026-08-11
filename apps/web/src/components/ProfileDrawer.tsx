@@ -8,7 +8,6 @@ import {
   LogOut,
   Github,
   Chrome,
-  ShieldCheck,
   Star,
   History,
   LayoutGrid,
@@ -17,6 +16,7 @@ import {
 import { useDevKitStore } from "../store/useDevKitStore";
 import { useAuthStore } from "../store/useAuthStore";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 export function ProfileDrawer() {
   const {
@@ -103,12 +103,13 @@ export function ProfileDrawer() {
                       : "Sign In to DevKit"}
                   </h2>
                 </div>
-                <button
+                <Button
+                  variant="ghost"
+                  size="icon"
                   onClick={() => setProfileDrawerOpen(false)}
-                  className="p-1.5 rounded-lg text-devText-muted hover:text-devText-primary hover:bg-background transition-colors"
                 >
                   <X className="w-5 h-5" />
-                </button>
+                </Button>
               </div>
 
               {/* Logged-In User Profile State */}
@@ -179,14 +180,18 @@ export function ProfileDrawer() {
                     </div>
                   </div>
 
-                  {/* Session Status Banner */}
-                  <div className="p-3 bg-emerald-950/30 border border-emerald-800/40 rounded-xl text-xs text-emerald-300 flex items-center space-x-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>
-                      <strong>JWT Cycle Active:</strong> Session automatically
-                      refreshes in background without expiration.
-                    </span>
-                  </div>
+                  {/* Log Out Button */}
+                  <Button
+                    variant="destructive"
+                    onClick={() => {
+                      logout();
+                      setProfileDrawerOpen(false);
+                    }}
+                    className="w-full py-2.5 rounded-xl"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Log Out of Account</span>
+                  </Button>
                 </div>
               ) : (
                 /* Unauthenticated / Guest OAuth Sign-In Panel */
@@ -239,22 +244,6 @@ export function ProfileDrawer() {
                 </div>
               )}
             </div>
-
-            {/* Footer Actions */}
-            {isAuthenticated && user && (
-              <div className="mt-6 z-10">
-                <button
-                  onClick={() => {
-                    logout();
-                    setProfileDrawerOpen(false);
-                  }}
-                  className="w-full py-2.5 bg-rose-950/40 border border-rose-800/40 text-rose-300 hover:bg-rose-900/50 text-xs font-semibold rounded-xl flex items-center justify-center space-x-2 transition-colors"
-                >
-                  <LogOut className="w-4 h-4" />
-                  <span>Log Out of Account</span>
-                </button>
-              </div>
-            )}
 
             {/* Background Wallpaper */}
             <div className="absolute bottom-0 left-0 right-0 h-44 pointer-events-none overflow-hidden select-none z-0">

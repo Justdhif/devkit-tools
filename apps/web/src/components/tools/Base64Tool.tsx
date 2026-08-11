@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import { Copy, Check, Binary, AlertCircle } from 'lucide-react';
 import { encodeBase64, decodeBase64 } from '@devkit/crypto-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
+import { Button } from '../ui/button';
+import { Checkbox } from '../ui/checkbox';
+import { Card, CardHeader } from '../ui/card';
+import { Textarea } from '../ui/input';
 
 export function Base64Tool() {
   const [input, setInput] = useState('Hello DevKit World!');
@@ -46,29 +50,21 @@ export function Base64Tool() {
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <label className="flex items-center space-x-2 text-xs cursor-pointer text-devText-secondary hover:text-devText-primary">
-          <input
-            type="checkbox"
+          <Checkbox
             checked={urlSafe}
-            onChange={(e) => setUrlSafe(e.target.checked)}
-            className="rounded accent-accent"
+            onCheckedChange={(checked) => setUrlSafe(checked === true)}
           />
           <span>URL-Safe Base64 (replace +/ with -_)</span>
         </label>
 
         <div className="flex items-center space-x-2">
-          <button
-            onClick={handleEncode}
-            className="px-4 py-1.5 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-md flex items-center space-x-1 shadow-xs transition-colors"
-          >
+          <Button onClick={handleEncode} size="sm">
             <Binary className="w-3.5 h-3.5" />
             <span>Encode</span>
-          </button>
-          <button
-            onClick={handleDecode}
-            className="px-4 py-1.5 bg-background border border-border text-devText-primary hover:bg-surface text-xs font-medium rounded-md transition-colors"
-          >
+          </Button>
+          <Button onClick={handleDecode} variant="secondary" size="sm">
             Decode
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -80,37 +76,39 @@ export function Base64Tool() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-          <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted">
+        <Card>
+          <CardHeader>
             <span>INPUT TEXT OR BASE64</span>
-          </div>
-          <textarea
+          </CardHeader>
+          <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type raw text or base64 string..."
-            className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
+            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
           />
-        </div>
+        </Card>
 
-        <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-          <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between items-center">
+        <Card>
+          <CardHeader>
             <span>PROCESSED RESULT</span>
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={handleCopy}
               disabled={!output}
-              className="hover:text-devText-primary text-xs flex items-center space-x-1 disabled:opacity-50"
+              className="h-auto p-0 hover:bg-transparent text-xs"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Copied' : 'Copy'}</span>
-            </button>
-          </div>
-          <textarea
+            </Button>
+          </CardHeader>
+          <Textarea
             readOnly
             value={output}
             placeholder="Result will appear here..."
-            className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
+            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
           />
-        </div>
+        </Card>
       </div>
     </div>
   );

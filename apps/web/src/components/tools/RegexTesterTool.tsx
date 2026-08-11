@@ -1,9 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Regex as RegexIcon, AlertCircle, Sparkles, Loader2, Check } from 'lucide-react';
 import { testRegex, RegexTestOutput } from '@devkit/regex-tools';
 import { aiService } from '../../services/aiService';
+import { useDevKitStore } from '../../store/useDevKitStore';
+import { Button } from '../ui/button';
+import { Input, Textarea } from '../ui/input';
+import { Card, CardHeader } from '../ui/card';
 
 export function RegexTesterTool() {
   const [pattern, setPattern] = useState('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}');
@@ -17,7 +21,23 @@ export function RegexTesterTool() {
   const [aiExplanation, setAiExplanation] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
 
+  const { addHistoryItem } = useDevKitStore();
+  const historyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const result: RegexTestOutput = testRegex(pattern, flags, testString);
+
+  // Debounce history recording saat user aktif menguji pattern
+  useEffect(() => {
+    if (!pattern.trim()) return;
+    if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
+    historyTimerRef.current = setTimeout(() => {
+      addHistoryItem('regex-tester', `Pattern: /${pattern}/${flags} — ${result.count} match(es)`);
+    }, 1500);
+    return () => {
+      if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pattern, flags, testString]);
 
   const handleGenerateRegex = async () => {
     if (!aiPrompt.trim()) return;
@@ -30,6 +50,7 @@ export function RegexTesterTool() {
       if (res.pattern) setPattern(res.pattern);
       if (res.flags) setFlags(res.flags);
       setAiExplanation(res.explanation);
+      addHistoryItem('regex-tester', `AI Generated: /${res.pattern || pattern}/${res.flags || flags}`);
     } catch (err: any) {
       setAiError(err.message || 'Failed to generate regex with AI');
     } finally {
@@ -48,18 +69,17 @@ export function RegexTesterTool() {
           <span className="text-[10px] text-devText-muted font-mono">Powered by Groq LLM</span>
         </div>
         <div className="flex items-center gap-2">
-          <input
-            type="text"
+          <Input
             value={aiPrompt}
             onChange={(e) => setAiPrompt(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleGenerateRegex()}
             placeholder="e.g. match phone numbers with optional country code (+62 or 08)..."
-            className="flex-1 bg-background border border-border text-devText-primary rounded px-3 py-1.5 text-xs focus:outline-none focus:border-accent"
+            className="flex-1 font-sans"
           />
-          <button
+          <Button
             onClick={handleGenerateRegex}
             disabled={aiLoading || !aiPrompt.trim()}
-            className="px-3 py-1.5 bg-accent text-background font-medium text-xs rounded hover:bg-accent-hover transition-colors disabled:opacity-50 flex items-center space-x-1 shrink-0"
+            size="sm"
           >
             {aiLoading ? (
               <>
@@ -72,7 +92,7 @@ export function RegexTesterTool() {
                 <span>Generate Regex</span>
               </>
             )}
-          </button>
+          </Button>
         </div>
         {aiExplanation && (
           <p className="text-[11px] text-devText-secondary bg-background p-2 rounded border border-border">
@@ -86,20 +106,18 @@ export function RegexTesterTool() {
       <div className="flex flex-wrap items-center gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-2 flex-1 min-w-[280px]">
           <span className="text-devText-muted font-mono text-base font-bold">/</span>
-          <input
-            type="text"
+          <Input
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
             placeholder="Enter regex pattern (e.g. \\d+)"
-            className="flex-1 bg-background border border-border text-devText-primary rounded px-3 py-1.5 font-mono text-xs focus:outline-none"
+            className="flex-1"
           />
           <span className="text-devText-muted font-mono text-base font-bold">/</span>
-          <input
-            type="text"
+          <Input
             value={flags}
             onChange={(e) => setFlags(e.target.value)}
             placeholder="flags"
-            className="w-16 bg-background border border-border text-devText-primary rounded px-2 py-1.5 font-mono text-xs focus:outline-none"
+            className="w-16"
           />
         </div>
 
@@ -116,22 +134,22 @@ export function RegexTesterTool() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
-        <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-          <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted">
+        <Card>
+          <CardHeader>
             <span>TEST STRING INPUT</span>
-          </div>
-          <textarea
+          </CardHeader>
+          <Textarea
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Type text to test regex against..."
-            className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[250px]"
+            className="flex-1 border-0 bg-transparent rounded-none min-h-[250px]"
           />
-        </div>
+        </Card>
 
-        <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
-          <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted">
+        <Card>
+          <CardHeader>
             <span>MATCH DETAILS ({result.matches.length})</span>
-          </div>
+          </CardHeader>
           <div className="p-3 space-y-2 overflow-y-auto max-h-[350px]">
             {result.matches.length === 0 ? (
               <div className="text-devText-muted text-xs p-4 text-center">No regex matches found.</div>
@@ -149,7 +167,7 @@ export function RegexTesterTool() {
               ))
             )}
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { Star, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { CORE_TOOLS } from '@devkit/tool-core';
 import { AuthGuard } from '../../components/AuthGuard';
+import { Button } from '../../components/ui/button';
 
 import { useRouter } from 'next/navigation';
 
@@ -53,15 +54,17 @@ export default function FavoritesPage() {
                     <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-background text-accent uppercase tracking-wider">
                       {tool.category}
                     </span>
-                    <button
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={(e) => {
                         e.stopPropagation();
                         toggleFavorite(tool.slug);
                       }}
-                      className="text-amber-400 hover:opacity-75 relative z-10"
+                      className="h-6 w-6 text-amber-400 hover:text-amber-300 relative z-10"
                     >
                       <Star className="w-4 h-4 fill-amber-400" />
-                    </button>
+                    </Button>
                   </div>
                   <h3 className="text-base font-bold text-devText-primary mt-3 group-hover:text-accent transition-colors">{tool.name}</h3>
                   <p className="text-xs text-devText-secondary mt-1 line-clamp-2">{tool.description}</p>
