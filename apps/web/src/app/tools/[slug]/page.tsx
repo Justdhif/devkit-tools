@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import { getToolBySlug } from '@devkit/tool-core';
+import { useDevKitStore } from '../../../store/useDevKitStore';
 import { ToolHeader } from '../../../components/ToolHeader';
 import { JsonFormatterTool } from '../../../components/tools/JsonFormatterTool';
 import { JsonToTypescriptTool } from '../../../components/tools/JsonToTypescriptTool';
@@ -29,6 +30,15 @@ interface ToolPageProps {
 
 export default function ToolPage({ params }: ToolPageProps) {
   const tool = getToolBySlug(params.slug);
+  const { addHistoryItem } = useDevKitStore();
+
+  // Catat kunjungan ke tool ini saat halaman pertama kali dibuka
+  useEffect(() => {
+    if (tool) {
+      addHistoryItem(tool.slug, `Visited ${tool.name}`);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.slug]);
 
   if (!tool) {
     return (

@@ -117,6 +117,23 @@ export const useDevKitStore = create<DevKitStoreState>()(
         };
 
         set({ history: [newItem, ...history.slice(0, 49)] });
+
+        // Sync ke database jika user login
+        const { token, isAuthenticated } = useAuthStore.getState();
+        if (isAuthenticated && token && !finalSensitive) {
+          fetch(`${API_BASE_URL}/history`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              toolSlug,
+              inputSummary: redacted.redactedText.slice(0, 200),
+              isSensitive: finalSensitive,
+            }),
+          }).catch(() => {/* silent fail — history tetap tersimpan di localStorage */});
+        }
       },
       clearHistory: () => set({ history: [] }),
 

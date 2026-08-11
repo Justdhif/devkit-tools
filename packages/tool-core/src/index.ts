@@ -6,8 +6,47 @@ import {
   PipelineValidationResult,
   LogicalType,
 } from '@devkit/shared';
-import { formatJson, minifyJson } from '@devkit/json-tools';
-import { decodeJwt } from '@devkit/jwt-tools';
+
+// Inline dari @devkit/json-tools — menghindari masalah ncc saat bundling di Vercel
+function formatJson(input: string, options: { indent?: number } = {}): { success: boolean; result: string; error?: string } {
+  const { indent = 2 } = options;
+  if (!input.trim()) return { success: true, result: '' };
+  try {
+    const result = JSON.stringify(JSON.parse(input), null, indent);
+    return { success: true, result };
+  } catch (err: any) {
+    return { success: false, result: input, error: err?.message || 'Invalid JSON syntax' };
+  }
+}
+
+// Inline dari @devkit/jwt-tools — menghindari masalah ncc saat bundling di Vercel
+function base64UrlDecode(str: string): string {
+  let output = str.replace(/-/g, '+').replace(/_/g, '/');
+  switch (output.length % 4) {
+    case 2: output += '=='; break;
+    case 3: output += '='; break;
+  }
+  try {
+    return decodeURIComponent(
+      atob(output).split('').map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')
+    );
+  } catch {
+    return atob(output);
+  }
+}
+
+function decodeJwt(token: string): { success: boolean; payload?: Record<string, any>; error?: string } {
+  const clean = token.trim().replace(/^Bearer\s+/i, '');
+  const parts = clean.split('.');
+  if (parts.length !== 3) return { success: false, error: 'Invalid JWT format.' };
+  try {
+    const payload = JSON.parse(base64UrlDecode(parts[1]));
+    return { success: true, payload };
+  } catch (err: any) {
+    return { success: false, error: err?.message || 'Failed to decode JWT' };
+  }
+}
+
 
 export const CORE_TOOLS: ToolMetadata[] = [
   {
