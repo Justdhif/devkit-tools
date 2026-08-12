@@ -5,14 +5,24 @@ import { SharingController } from './modules/sharing/sharing.controller';
 import { AuthController } from './modules/auth/auth.controller';
 import { FavoritesController } from './modules/favorites/favorites.controller';
 import { HistoryController } from './modules/history/history.controller';
+import { PipelinesController } from './modules/pipelines/pipelines.controller';
 import { AiModule } from './modules/ai/ai.module';
 import { AiRateLimitMiddleware } from './modules/ai/ai-rate-limit.middleware';
 
 @Module({
   imports: [AiModule],
-  controllers: [AppController, ToolsController, SharingController, AuthController, FavoritesController, HistoryController],
+  controllers: [
+    AppController,
+    ToolsController,
+    SharingController,
+    AuthController,
+    FavoritesController,
+    HistoryController,
+    PipelinesController,
+  ],
   providers: [],
 })
+
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer

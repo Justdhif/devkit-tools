@@ -244,7 +244,32 @@ export const CORE_TOOLS: ToolMetadata[] = [
     inputType: 'string',
     outputType: 'string',
   },
+  {
+    id: 'diff-viewer',
+    name: 'Code & JSON Diff Viewer',
+    slug: 'diff-viewer',
+    category: 'Utilities',
+    description: 'Compare two text or JSON documents side-by-side with line-by-line diff highlighting.',
+    keywords: ['diff', 'compare', 'json', 'text', 'difference', 'merge', 'side-by-side'],
+    iconName: 'GitCompare',
+    isNew: true,
+    inputType: 'string',
+    outputType: 'string',
+  },
+  {
+    id: 'curl-converter',
+    name: 'cURL Parser & Code Generator',
+    slug: 'curl-converter',
+    category: 'API',
+    description: 'Parse raw cURL commands into JavaScript Fetch, Axios, Python Requests, Go, or PHP code.',
+    keywords: ['curl', 'parser', 'fetch', 'axios', 'python', 'requests', 'code', 'convert', 'http'],
+    iconName: 'Terminal',
+    isNew: true,
+    inputType: 'string',
+    outputType: 'http-request',
+  },
 ];
+
 
 export function getToolBySlug(slug: string): ToolMetadata | undefined {
   return CORE_TOOLS.find((t) => t.slug === slug);

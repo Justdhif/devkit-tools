@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   GitMerge,
@@ -15,57 +15,89 @@ import {
   Loader2,
   CopyPlus,
   Save,
+  Download,
+  Upload,
+  FolderOpen,
+  X,
+  Sparkles,
 } from 'lucide-react';
-import { PipelineStep } from '@devkit/shared';
+import { PipelineStep, ToolPipeline } from '@devkit/shared';
 import { CORE_TOOLS, validatePipeline, executePipeline, executeSingleStep } from '@devkit/tool-core';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
+const PREBUILT_PRESETS: { id: string; name: string; description: string; initialInput: string; steps: PipelineStep[] }[] = [
+  {
+    id: 'prebuilt-jwt',
+    name: 'JWT Inspector & TypeScript',
+    description: 'Decodes JWT token -> Formats Payload JSON -> Generates TypeScript Interfaces',
+    initialInput: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkRldktpdCBVc2VyIiwicm9sZSI6ImRldmVsb3BlciIsImlhdCI6MTUxNjIzOTAyMn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+    steps: [
+      { id: 'step-jwt-1', toolSlug: 'jwt-decoder', toolName: 'JWT Decoder & Inspector', inputType: 'jwt', outputType: 'json', status: 'idle' },
+      { id: 'step-jwt-2', toolSlug: 'json-formatter', toolName: 'JSON Formatter / Validator', inputType: 'json', outputType: 'json', status: 'idle' },
+      { id: 'step-jwt-3', toolSlug: 'json-to-typescript', toolName: 'JSON → TypeScript Generator', inputType: 'json', outputType: 'typescript', status: 'idle' },
+    ],
+  },
+  {
+    id: 'prebuilt-zod',
+    name: 'API Response Zod Schema',
+    description: 'Executes HTTP Request -> Formats JSON Response -> Generates Zod Schema',
+    initialInput: '{\n  "status": "success",\n  "code": 200,\n  "data": {\n    "userId": 42,\n    "username": "devkit_admin",\n    "active": true\n  }\n}',
+    steps: [
+      { id: 'step-zod-1', toolSlug: 'json-formatter', toolName: 'JSON Formatter / Validator', inputType: 'json', outputType: 'json', status: 'idle' },
+      { id: 'step-zod-2', toolSlug: 'json-to-typescript', toolName: 'JSON → Zod Schema', inputType: 'json', outputType: 'typescript', config: { targetLanguage: 'zod' }, status: 'idle' },
+    ],
+  },
+  {
+    id: 'prebuilt-url',
+    name: 'URL & Base64 Payload Extractor',
+    description: 'Decodes URL Query String -> Decodes Base64 String -> Formats JSON',
+    initialInput: 'eyJ1c2VySWQiOjEwMSwibmFtZSI6IkFsaWNlIn0=',
+    steps: [
+      { id: 'step-url-1', toolSlug: 'base64-encoder', toolName: 'Base64 Decoder', inputType: 'base64', outputType: 'string', config: { mode: 'decode' }, status: 'idle' },
+      { id: 'step-url-2', toolSlug: 'json-formatter', toolName: 'JSON Formatter', inputType: 'json', outputType: 'json', status: 'idle' },
+    ],
+  },
+];
+
 export function PipelineBuilderTool() {
   const searchParams = useSearchParams();
   const paramInput = searchParams.get('initialInput') || '';
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const {
+    savedPipelines,
+    fetchPipelinesFromDB,
+    savePipelineToDB,
+    deletePipelineFromDB,
+    addHistoryItem,
+  } = useDevKitStore();
 
   const [input, setInput] = useState(
-    paramInput ||
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkRldktpdCBVc2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    paramInput || PREBUILT_PRESETS[0].initialInput
   );
 
-  const [steps, setSteps] = useState<PipelineStep[]>([
-    {
-      id: 'step-1',
-      toolSlug: 'jwt-decoder',
-      toolName: 'JWT Decoder & Inspector',
-      inputType: 'jwt',
-      outputType: 'json',
-      status: 'idle',
-    },
-    {
-      id: 'step-2',
-      toolSlug: 'json-formatter',
-      toolName: 'JSON Formatter / Validator',
-      inputType: 'json',
-      outputType: 'json',
-      status: 'idle',
-    },
-    {
-      id: 'step-3',
-      toolSlug: 'json-to-typescript',
-      toolName: 'JSON → TypeScript Generator',
-      inputType: 'json',
-      outputType: 'typescript',
-      status: 'idle',
-    },
-  ]);
+  const [steps, setSteps] = useState<PipelineStep[]>(PREBUILT_PRESETS[0].steps);
+  const [pipelineName, setPipelineName] = useState(PREBUILT_PRESETS[0].name);
 
   const [running, setRunning] = useState(false);
   const [runningStepId, setRunningStepId] = useState<string | null>(null);
   const [pipelineError, setPipelineError] = useState<string | null>(null);
   const [copiedStepId, setCopiedStepId] = useState<string | null>(null);
-  const [savedSuccess, setSavedSuccess] = useState(false);
   const [selectedToolSlug, setSelectedToolSlug] = useState('json-formatter');
-  const { addHistoryItem } = useDevKitStore();
+
+  // Save Modal state
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [saveName, setSaveName] = useState('');
+  const [saveDesc, setSaveDesc] = useState('');
+  const [savingLoading, setSavingLoading] = useState(false);
+  const [saveStatusMessage, setSaveStatusMessage] = useState<string | null>(null);
 
   const validation = validatePipeline(steps);
+
+  useEffect(() => {
+    fetchPipelinesFromDB();
+  }, [fetchPipelinesFromDB]);
 
   const handleAddStep = () => {
     const targetTool = CORE_TOOLS.find((t) => t.slug === selectedToolSlug);
@@ -116,7 +148,6 @@ export function PipelineBuilderTool() {
     setRunningStepId(stepId);
     setPipelineError(null);
 
-    // Determines input data from previous step's output or initial input
     const stepInput = index === 0 ? input : steps[index - 1].output || input;
 
     try {
@@ -150,7 +181,7 @@ export function PipelineBuilderTool() {
             output: res.results[s.id],
           }))
         );
-        addHistoryItem('pipeline-builder', `Pipeline executed: ${steps.map((s) => s.toolName).join(' → ')}`);
+        addHistoryItem('pipeline-builder', `Executed Pipeline: ${pipelineName}`);
       } else {
         setPipelineError(res.error || 'Pipeline execution failed.');
         setSteps((prev) =>
@@ -168,10 +199,126 @@ export function PipelineBuilderTool() {
     }
   };
 
-  const handleSavePipeline = () => {
-    addHistoryItem('pipeline-builder', `Saved Pipeline Preset: ${steps.map((s) => s.toolName).join(' → ')}`);
-    setSavedSuccess(true);
-    setTimeout(() => setSavedSuccess(false), 2500);
+  // Open Save Modal
+  const handleOpenSaveModal = () => {
+    setSaveName(pipelineName || 'My Custom Pipeline');
+    setSaveDesc('');
+    setSaveStatusMessage(null);
+    setIsSaveModalOpen(true);
+  };
+
+  // Submit Save to Neon DB
+  const handleSaveToDatabase = async () => {
+    if (!saveName.trim()) return;
+    setSavingLoading(true);
+    setSaveStatusMessage(null);
+
+    const cleanSteps = steps.map((s) => ({
+      id: s.id,
+      toolSlug: s.toolSlug,
+      toolName: s.toolName,
+      inputType: s.inputType,
+      outputType: s.outputType,
+      config: s.config,
+    }));
+
+    const res = await savePipelineToDB({
+      name: saveName.trim(),
+      description: saveDesc.trim() || undefined,
+      initialInput: input,
+      steps: cleanSteps,
+    });
+
+    setSavingLoading(false);
+    if (res.success) {
+      setPipelineName(saveName.trim());
+      setSaveStatusMessage('Saved directly to Neon DB!');
+      setTimeout(() => {
+        setIsSaveModalOpen(false);
+        setSaveStatusMessage(null);
+      }, 1500);
+    } else {
+      setSaveStatusMessage(res.error || 'Failed to save to database');
+    }
+  };
+
+  const handleSelectPreset = (presetId: string) => {
+    // Check prebuilt presets
+    const pre = PREBUILT_PRESETS.find((p) => p.id === presetId);
+    if (pre) {
+      setPipelineName(pre.name);
+      setInput(pre.initialInput);
+      setSteps(pre.steps.map((s) => ({ ...s, status: 'idle', output: undefined })));
+      return;
+    }
+
+    // Check user DB saved presets
+    const userPreset = savedPipelines.find((p) => p.id === presetId);
+    if (userPreset) {
+      setPipelineName(userPreset.name);
+      if (userPreset.initialInput) setInput(userPreset.initialInput);
+      setSteps(userPreset.steps.map((s) => ({ ...s, status: 'idle', output: undefined })));
+    }
+  };
+
+  const handleDeleteUserPipeline = async (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    await deletePipelineFromDB(id);
+  };
+
+  const handleExportJSON = () => {
+    const exportData = {
+      name: pipelineName,
+      initialInput: input,
+      steps: steps.map((s) => ({
+        id: s.id,
+        toolSlug: s.toolSlug,
+        toolName: s.toolName,
+        inputType: s.inputType,
+        outputType: s.outputType,
+        config: s.config,
+      })),
+      exportedAt: new Date().toISOString(),
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${pipelineName.toLowerCase().replace(/[^a-z0-9]/g, '-')}-pipeline.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target?.result as string);
+        if (json.name) setPipelineName(json.name);
+        if (json.initialInput) setInput(json.initialInput);
+        if (Array.isArray(json.steps)) {
+          setSteps(
+            json.steps.map((s: any) => ({
+              id: s.id || `step-${Date.now()}`,
+              toolSlug: s.toolSlug,
+              toolName: s.toolName || s.toolSlug,
+              inputType: s.inputType || 'string',
+              outputType: s.outputType || 'string',
+              config: s.config,
+              status: 'idle',
+            }))
+          );
+        }
+      } catch (err) {
+        alert('Invalid pipeline JSON format.');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
   };
 
   const handleCopy = (text: string, stepId: string) => {
@@ -182,35 +329,105 @@ export function PipelineBuilderTool() {
 
   return (
     <div className="flex flex-col space-y-4">
+      {/* Hidden File Input for Import JSON */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleImportJSON}
+        accept=".json"
+        className="hidden"
+      />
+
+      {/* Header Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3.5 rounded-xl border border-border">
         <div className="flex items-center space-x-2">
-          <GitMerge className="w-5 h-5 text-accent" />
+          <GitMerge className="w-5 h-5 text-accent shrink-0" />
           <div>
-            <h2 className="text-sm font-semibold text-devText-primary">Tool Chaining & Pipeline Builder</h2>
+            <h2 className="text-sm font-semibold text-devText-primary">{pipelineName}</h2>
             <p className="text-xs text-devText-secondary">
-              Connect output from one tool as input for the next in automated workflows.
+              Chain multiple tools into automated pipelines saved directly to Neon DB.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Preset Selector */}
+          <div className="flex items-center space-x-1">
+            <Select onValueChange={handleSelectPreset}>
+              <SelectTrigger className="w-44 text-xs bg-background border-border">
+                <FolderOpen className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
+                <SelectValue placeholder="Load Preset" />
+              </SelectTrigger>
+              <SelectContent>
+                <div className="px-2 py-1 text-[10px] font-bold uppercase text-devText-muted">
+                  Pre-built Workflows
+                </div>
+                {PREBUILT_PRESETS.map((p) => (
+                  <SelectItem key={p.id} value={p.id} className="text-xs">
+                    {p.name}
+                  </SelectItem>
+                ))}
+
+                {savedPipelines.length > 0 && (
+                  <>
+                    <div className="px-2 py-1 text-[10px] font-bold uppercase text-accent border-t border-border mt-1 pt-1">
+                      Neon DB Saved Pipelines ({savedPipelines.length})
+                    </div>
+                    {savedPipelines.map((p) => (
+                      <div
+                        key={p.id}
+                        onClick={() => handleSelectPreset(p.id)}
+                        className="px-2 py-1.5 hover:bg-surface text-xs flex items-center justify-between cursor-pointer rounded"
+                      >
+                        <span className="truncate max-w-[140px] text-devText-primary">{p.name}</span>
+                        <button
+                          onClick={(e) => handleDeleteUserPipeline(e, p.id)}
+                          title="Delete from DB"
+                          className="text-devText-muted hover:text-rose-400 p-0.5 ml-1"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Export JSON */}
           <button
-            onClick={handleSavePipeline}
+            onClick={handleExportJSON}
+            title="Export Pipeline as JSON file"
+            className="px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1 transition-colors"
+          >
+            <Download className="w-3.5 h-3.5 text-devText-secondary" />
+            <span className="hidden md:inline">Export JSON</span>
+          </button>
+
+          {/* Import JSON */}
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            title="Import Pipeline from JSON file"
+            className="px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1 transition-colors"
+          >
+            <Upload className="w-3.5 h-3.5 text-devText-secondary" />
+            <span className="hidden md:inline">Import JSON</span>
+          </button>
+
+          {/* Save to DB */}
+          <button
+            onClick={handleOpenSaveModal}
             className="px-3 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
           >
-            {savedSuccess ? <Check className="w-4 h-4 text-emerald-400" /> : <Save className="w-4 h-4 text-accent" />}
+            <Save className="w-4 h-4 text-accent" />
             <span>
-              {savedSuccess ? (
-                'Saved!'
-              ) : (
-                <>
-                  <span className="hidden sm:inline">Save Preset</span>
-                  <span className="sm:hidden">Save</span>
-                </>
-              )}
+              <span className="hidden sm:inline">Save Preset</span>
+              <span className="sm:hidden">Save</span>
             </span>
           </button>
 
+          {/* Run Pipeline */}
           <button
             onClick={handleRunPipeline}
             disabled={running || !validation.valid || !input.trim()}
@@ -223,7 +440,6 @@ export function PipelineBuilderTool() {
             </span>
           </button>
         </div>
-
       </div>
 
       {!validation.valid && (
@@ -245,6 +461,7 @@ export function PipelineBuilderTool() {
         </div>
       )}
 
+      {/* Main Workspace Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 pb-24 sm:pb-4">
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 space-y-2">
           <span className="text-xs font-semibold text-devText-muted uppercase tracking-wider">
@@ -363,7 +580,6 @@ export function PipelineBuilderTool() {
                     </div>
                   </div>
 
-
                   {step.output && (
                     <div className="pt-1">
                       <div className="flex justify-between items-center text-[10px] font-semibold text-devText-muted mb-1">
@@ -402,6 +618,81 @@ export function PipelineBuilderTool() {
           </div>
         </div>
       </div>
+
+      {/* Save Preset to Neon DB Modal */}
+      {isSaveModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+          <div className="w-full max-w-md bg-surface border border-border rounded-xl p-5 shadow-2xl space-y-4 relative">
+            <button
+              onClick={() => setIsSaveModalOpen(false)}
+              className="absolute top-4 right-4 text-devText-muted hover:text-devText-primary"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center space-x-2 border-b border-border pb-3">
+              <Save className="w-5 h-5 text-accent" />
+              <div>
+                <h3 className="text-sm font-bold text-devText-primary">Save Preset to Neon Database</h3>
+                <p className="text-xs text-devText-secondary">Stores your pipeline steps permanently in Neon DB.</p>
+              </div>
+            </div>
+
+            <div className="space-y-3 text-xs">
+              <div>
+                <label className="block text-devText-muted font-semibold mb-1">Pipeline Preset Name</label>
+                <input
+                  type="text"
+                  value={saveName}
+                  onChange={(e) => setSaveName(e.target.value)}
+                  placeholder="e.g. My API Debugger Chain"
+                  className="w-full p-2.5 bg-background border border-border rounded text-devText-primary focus:outline-none focus:border-accent"
+                />
+              </div>
+
+              <div>
+                <label className="block text-devText-muted font-semibold mb-1">Description (Optional)</label>
+                <textarea
+                  value={saveDesc}
+                  onChange={(e) => setSaveDesc(e.target.value)}
+                  placeholder="Briefly describe what this pipeline chain does..."
+                  className="w-full p-2.5 bg-background border border-border rounded text-devText-primary focus:outline-none focus:border-accent h-20 resize-none"
+                />
+              </div>
+            </div>
+
+            {saveStatusMessage && (
+              <p
+                className={`text-xs ${
+                  saveStatusMessage.includes('SUCCESS') || saveStatusMessage.includes('Saved')
+                    ? 'text-emerald-400'
+                    : 'text-rose-400'
+                }`}
+              >
+                {saveStatusMessage}
+              </p>
+            )}
+
+            <div className="flex items-center justify-end space-x-2 pt-2 border-t border-border">
+              <button
+                onClick={() => setIsSaveModalOpen(false)}
+                className="px-3 py-1.5 bg-background border border-border hover:bg-surface text-devText-primary text-xs rounded-lg"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleSaveToDatabase}
+                disabled={savingLoading || !saveName.trim()}
+                className="px-4 py-1.5 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg flex items-center space-x-1.5 disabled:opacity-50"
+              >
+                {savingLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                <span>Save to Neon DB</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

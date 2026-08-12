@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { ToolHistoryItem, UserWorkspace, UserSettings } from '@devkit/shared';
+import { ToolHistoryItem, UserWorkspace, UserSettings, ToolPipeline } from '@devkit/shared';
 import { redactSensitiveData } from '@devkit/tool-core';
 import { useAuthStore } from './useAuthStore';
+
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
@@ -28,9 +29,15 @@ interface DevKitStoreState {
   addWorkspace: (name: string, toolSlugs: string[], description?: string) => void;
   removeWorkspace: (id: string) => void;
 
+  savedPipelines: ToolPipeline[];
+  fetchPipelinesFromDB: () => Promise<void>;
+  savePipelineToDB: (pipeline: Partial<ToolPipeline> & { name: string; steps: any[] }) => Promise<{ success: boolean; data?: any; error?: string }>;
+  deletePipelineFromDB: (id: string) => Promise<boolean>;
+
   settings: UserSettings;
   updateSettings: (newSettings: Partial<UserSettings>) => void;
 }
+
 
 export const useDevKitStore = create<DevKitStoreState>()(
   persist(
@@ -169,6 +176,94 @@ export const useDevKitStore = create<DevKitStoreState>()(
         set((state) => ({
           workspaces: state.workspaces.filter((w) => w.id !== id),
         })),
+
+      savedPipelines: [],
+
+      fetchPipelinesFromDB: async () => {
+        const { token, isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated || !token) {
+          return;
+        }
+        try {
+          const res = await fetch(`${API_BASE_URL}/pipelines`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await res.json();
+          if (res.ok && data.success && Array.isArray(data.data)) {
+            set({ savedPipelines: data.data });
+          }
+        } catch (err) {}
+      },
+
+      savePipelineToDB: async (pipeline) => {
+        const { token, isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated || !token) {
+          useAuthStore.getState();
+          // Fallback local save if guest mode
+          const newPipe: ToolPipeline = {
+            id: pipeline.id || `pipeline-${Date.now()}`,
+            name: pipeline.name,
+            description: pipeline.description,
+            initialInput: pipeline.initialInput,
+            steps: pipeline.steps,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          };
+          const existing = get().savedPipelines.findIndex((p) => p.id === newPipe.id);
+          let updatedList: ToolPipeline[];
+          if (existing >= 0) {
+            updatedList = [...get().savedPipelines];
+            updatedList[existing] = newPipe;
+          } else {
+            updatedList = [newPipe, ...get().savedPipelines];
+          }
+          set({ savedPipelines: updatedList });
+          return { success: true, data: newPipe };
+        }
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/pipelines`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(pipeline),
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            await get().fetchPipelinesFromDB();
+            return { success: true, data: data.data };
+          }
+          return { success: false, error: data.error || 'Failed to save pipeline' };
+        } catch (err: any) {
+          return { success: false, error: err.message || 'Network error saving pipeline' };
+        }
+      },
+
+      deletePipelineFromDB: async (id) => {
+        const { token, isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated || !token) {
+          set({ savedPipelines: get().savedPipelines.filter((p) => p.id !== id) });
+          return true;
+        }
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/pipelines/${id}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            await get().fetchPipelinesFromDB();
+            return true;
+          }
+          return false;
+        } catch {
+          return false;
+        }
+      },
+
 
       settings: {
         appearance: 'dark',
