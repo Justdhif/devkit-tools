@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getToolBySlug } from '@devkit/tool-core';
 import { useDevKitStore } from '../../../store/useDevKitStore';
 import { ToolHeader } from '../../../components/ToolHeader';
-import { ToolHelpSection } from '../../../components/ToolHelpSection';
+import { ToolHelpDrawer } from '../../../components/ToolHelpDrawer';
 import { JsonFormatterTool } from '../../../components/tools/JsonFormatterTool';
 import { JsonToTypescriptTool } from '../../../components/tools/JsonToTypescriptTool';
 import { JwtDecoderTool } from '../../../components/tools/JwtDecoderTool';
@@ -31,6 +31,7 @@ interface ToolPageProps {
 export default function ToolPage({ params }: ToolPageProps) {
   const tool = getToolBySlug(params.slug);
   const { addHistoryItem } = useDevKitStore();
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   // Catat kunjungan ke tool ini saat halaman pertama kali dibuka
   useEffect(() => {
@@ -100,11 +101,18 @@ export default function ToolPage({ params }: ToolPageProps) {
 
   return (
     <div className="flex flex-col min-h-full">
-      <ToolHeader tool={tool} />
+      <ToolHeader tool={tool} onOpenHelp={() => setIsHelpOpen(true)} />
       <div className="flex-1 p-4 sm:p-6 space-y-6">
-        <ToolHelpSection toolSlug={tool.slug} />
         {renderToolComponent()}
       </div>
+
+      {/* Slide-over Drawer Documentation */}
+      <ToolHelpDrawer
+        toolSlug={tool.slug}
+        toolName={tool.name}
+        isOpen={isHelpOpen}
+        onClose={() => setIsHelpOpen(false)}
+      />
     </div>
   );
 }
