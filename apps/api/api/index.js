@@ -81033,6 +81033,7 @@ const sharing_controller_1 = __nccwpck_require__(40240);
 const auth_controller_1 = __nccwpck_require__(20950);
 const favorites_controller_1 = __nccwpck_require__(1372);
 const history_controller_1 = __nccwpck_require__(312);
+const pipelines_controller_1 = __nccwpck_require__(43176);
 const ai_module_1 = __nccwpck_require__(60702);
 const ai_rate_limit_middleware_1 = __nccwpck_require__(75697);
 let AppModule = class AppModule {
@@ -81046,7 +81047,15 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [ai_module_1.AiModule],
-        controllers: [app_controller_1.AppController, tools_controller_1.ToolsController, sharing_controller_1.SharingController, auth_controller_1.AuthController, favorites_controller_1.FavoritesController, history_controller_1.HistoryController],
+        controllers: [
+            app_controller_1.AppController,
+            tools_controller_1.ToolsController,
+            sharing_controller_1.SharingController,
+            auth_controller_1.AuthController,
+            favorites_controller_1.FavoritesController,
+            history_controller_1.HistoryController,
+            pipelines_controller_1.PipelinesController,
+        ],
         providers: [],
     })
 ], AppModule);
@@ -81106,7 +81115,7 @@ __exportStar(__nccwpck_require__(45063), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.sharedItems = exports.workspaceTools = exports.savedWorkspaces = exports.toolHistory = exports.favorites = exports.tools = exports.users = void 0;
+exports.savedPipelines = exports.sharedItems = exports.workspaceTools = exports.savedWorkspaces = exports.toolHistory = exports.favorites = exports.tools = exports.users = void 0;
 const pg_core_1 = __nccwpck_require__(83615);
 exports.users = (0, pg_core_1.pgTable)('users', {
     id: (0, pg_core_1.text)('id').primaryKey(),
@@ -81164,6 +81173,16 @@ exports.sharedItems = (0, pg_core_1.pgTable)('shared_items', {
     title: (0, pg_core_1.text)('title').notNull(),
     configuration: (0, pg_core_1.jsonb)('configuration').notNull(),
     createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+});
+exports.savedPipelines = (0, pg_core_1.pgTable)('saved_pipelines', {
+    id: (0, pg_core_1.text)('id').primaryKey(),
+    userId: (0, pg_core_1.text)('user_id').notNull().references(() => exports.users.id, { onDelete: 'cascade' }),
+    name: (0, pg_core_1.text)('name').notNull(),
+    description: (0, pg_core_1.text)('description'),
+    initialInput: (0, pg_core_1.text)('initial_input'),
+    steps: (0, pg_core_1.jsonb)('steps').notNull(),
+    createdAt: (0, pg_core_1.timestamp)('created_at').defaultNow().notNull(),
+    updatedAt: (0, pg_core_1.timestamp)('updated_at').defaultNow().notNull(),
 });
 
 
@@ -82088,6 +82107,133 @@ exports.HistoryController = HistoryController = __decorate([
 
 /***/ }),
 
+/***/ 43176:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PipelinesController = void 0;
+const common_1 = __nccwpck_require__(49626);
+const database_1 = __nccwpck_require__(41499);
+const jwt = __nccwpck_require__(78374);
+const JWT_SECRET = process.env.JWT_SECRET || 'devkit_super_secret_jwt_key_development_2026';
+function verifyToken(authHeader) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        throw new common_1.UnauthorizedException('Authentication required to access saved pipelines.');
+    }
+    const token = authHeader.replace(/^Bearer\s+/i, '');
+    try {
+        return jwt.verify(token, JWT_SECRET);
+    }
+    catch {
+        throw new common_1.UnauthorizedException('Invalid or expired session token.');
+    }
+}
+let PipelinesController = class PipelinesController {
+    async getPipelines(authHeader) {
+        const user = verifyToken(authHeader);
+        const rows = await database_1.db
+            .select()
+            .from(database_1.savedPipelines)
+            .where((0, database_1.eq)(database_1.savedPipelines.userId, user.sub))
+            .orderBy((0, database_1.desc)(database_1.savedPipelines.createdAt));
+        return { success: true, data: rows };
+    }
+    async savePipeline(authHeader, body) {
+        const user = verifyToken(authHeader);
+        if (!body.name || !body.name.trim()) {
+            throw new common_1.BadRequestException('Pipeline name is required');
+        }
+        if (!Array.isArray(body.steps) || body.steps.length === 0) {
+            throw new common_1.BadRequestException('Pipeline must contain at least 1 step');
+        }
+        const pipelineId = body.id || `pipeline-${Date.now()}`;
+        const existing = await database_1.db
+            .select()
+            .from(database_1.savedPipelines)
+            .where((0, database_1.and)((0, database_1.eq)(database_1.savedPipelines.id, pipelineId), (0, database_1.eq)(database_1.savedPipelines.userId, user.sub)));
+        if (existing.length > 0) {
+            await database_1.db
+                .update(database_1.savedPipelines)
+                .set({
+                name: body.name.trim(),
+                description: body.description || null,
+                initialInput: body.initialInput || null,
+                steps: body.steps,
+                updatedAt: new Date(),
+            })
+                .where((0, database_1.and)((0, database_1.eq)(database_1.savedPipelines.id, pipelineId), (0, database_1.eq)(database_1.savedPipelines.userId, user.sub)));
+        }
+        else {
+            await database_1.db.insert(database_1.savedPipelines).values({
+                id: pipelineId,
+                userId: user.sub,
+                name: body.name.trim(),
+                description: body.description || null,
+                initialInput: body.initialInput || null,
+                steps: body.steps,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            });
+        }
+        return { success: true, data: { id: pipelineId, name: body.name } };
+    }
+    async deletePipeline(authHeader, id) {
+        const user = verifyToken(authHeader);
+        const deleted = await database_1.db
+            .delete(database_1.savedPipelines)
+            .where((0, database_1.and)((0, database_1.eq)(database_1.savedPipelines.id, id), (0, database_1.eq)(database_1.savedPipelines.userId, user.sub)))
+            .returning();
+        if (deleted.length === 0) {
+            throw new common_1.NotFoundException('Pipeline not found or not owned by user');
+        }
+        return { success: true, message: 'Pipeline deleted successfully' };
+    }
+};
+exports.PipelinesController = PipelinesController;
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Headers)('authorization')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PipelinesController.prototype, "getPipelines", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Headers)('authorization')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], PipelinesController.prototype, "savePipeline", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Headers)('authorization')),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], PipelinesController.prototype, "deletePipeline", null);
+exports.PipelinesController = PipelinesController = __decorate([
+    (0, common_1.Controller)('pipelines')
+], PipelinesController);
+
+
+/***/ }),
+
 /***/ 40240:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -82560,6 +82706,30 @@ exports.CORE_TOOLS = [
         isNew: true,
         inputType: 'string',
         outputType: 'string',
+    },
+    {
+        id: 'diff-viewer',
+        name: 'Code & JSON Diff Viewer',
+        slug: 'diff-viewer',
+        category: 'Utilities',
+        description: 'Compare two text or JSON documents side-by-side with line-by-line diff highlighting.',
+        keywords: ['diff', 'compare', 'json', 'text', 'difference', 'merge', 'side-by-side'],
+        iconName: 'GitCompare',
+        isNew: true,
+        inputType: 'string',
+        outputType: 'string',
+    },
+    {
+        id: 'curl-converter',
+        name: 'cURL Parser & Code Generator',
+        slug: 'curl-converter',
+        category: 'API',
+        description: 'Parse raw cURL commands into JavaScript Fetch, Axios, Python Requests, Go, or PHP code.',
+        keywords: ['curl', 'parser', 'fetch', 'axios', 'python', 'requests', 'code', 'convert', 'http'],
+        iconName: 'Terminal',
+        isNew: true,
+        inputType: 'string',
+        outputType: 'http-request',
     },
 ];
 function getToolBySlug(slug) {
