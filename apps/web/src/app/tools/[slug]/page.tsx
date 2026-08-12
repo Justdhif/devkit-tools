@@ -102,8 +102,8 @@ export default function ToolPage({ params }: ToolPageProps) {
     <div className="flex flex-col min-h-full">
       <ToolHeader tool={tool} />
       <div className="flex-1 p-4 sm:p-6 space-y-6">
-        {renderToolComponent()}
         <ToolHelpSection toolSlug={tool.slug} />
+        {renderToolComponent()}
       </div>
     </div>
   );

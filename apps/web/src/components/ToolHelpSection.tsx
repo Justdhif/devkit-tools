@@ -36,7 +36,7 @@ export function ToolHelpSection({ toolSlug, defaultExpanded = false }: ToolHelpS
   };
 
   return (
-    <div id="tool-help-section" className="mt-8 border-t border-border pt-6 pb-10">
+    <div id="tool-help-section" className="w-full">
       <div className="bg-surface border border-border rounded-xl overflow-hidden shadow-xs">
         {/* Banner Header */}
         <button
