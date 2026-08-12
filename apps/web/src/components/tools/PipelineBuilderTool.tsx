@@ -199,7 +199,16 @@ export function PipelineBuilderTool() {
             className="px-3 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
           >
             {savedSuccess ? <Check className="w-4 h-4 text-emerald-400" /> : <Save className="w-4 h-4 text-accent" />}
-            <span>{savedSuccess ? 'Saved!' : 'Save Preset'}</span>
+            <span>
+              {savedSuccess ? (
+                'Saved!'
+              ) : (
+                <>
+                  <span className="hidden sm:inline">Save Preset</span>
+                  <span className="sm:hidden">Save</span>
+                </>
+              )}
+            </span>
           </button>
 
           <button
@@ -208,9 +217,13 @@ export function PipelineBuilderTool() {
             className="px-4 py-2 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg flex items-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50"
           >
             {running ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
-            <span>Run Complete Pipeline</span>
+            <span>
+              <span className="hidden sm:inline">Run Complete Pipeline</span>
+              <span className="sm:hidden">Run</span>
+            </span>
           </button>
         </div>
+
       </div>
 
       {!validation.valid && (
