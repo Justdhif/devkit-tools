@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Star, Share2, Check, Shield } from 'lucide-react';
+import { ArrowLeft, Star, Share2, Check, HelpCircle } from 'lucide-react';
 import { ToolMetadata } from '@devkit/shared';
 import { useDevKitStore } from '../store/useDevKitStore';
 import { Button } from './ui/button';
@@ -27,12 +27,19 @@ export function ToolHeader({ tool, onShare }: ToolHeaderProps) {
     }
   };
 
+  const handleScrollToHelp = () => {
+    const el = document.getElementById('tool-help-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="border-b border-border bg-surface/50 p-4 sm:p-5">
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-3">
           <Link
-            href="/"
+            href="/tools"
             className="mt-1 p-1.5 rounded-md border border-border bg-background text-devText-secondary hover:text-devText-primary hover:border-accent/50 transition-colors"
             title="Back to Tools"
           >
@@ -51,6 +58,17 @@ export function ToolHeader({ tool, onShare }: ToolHeaderProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 shrink-0">
+          <Button
+            onClick={handleScrollToHelp}
+            variant="ghost"
+            size="sm"
+            className="text-accent hover:bg-accent/10 border border-accent/20"
+            title="View Tool Guide & Help"
+          >
+            <HelpCircle className="w-4 h-4 text-accent" />
+            <span className="hidden sm:inline">Guide & Help</span>
+          </Button>
+
           <Button
             onClick={() => toggleFavorite(tool.slug)}
             variant={favorited ? 'ghost' : 'secondary'}

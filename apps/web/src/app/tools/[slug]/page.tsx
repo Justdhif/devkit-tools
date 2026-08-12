@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { notFound } from 'next/navigation';
 import { getToolBySlug } from '@devkit/tool-core';
 import { useDevKitStore } from '../../../store/useDevKitStore';
 import { ToolHeader } from '../../../components/ToolHeader';
+import { ToolHelpSection } from '../../../components/ToolHelpSection';
 import { JsonFormatterTool } from '../../../components/tools/JsonFormatterTool';
 import { JsonToTypescriptTool } from '../../../components/tools/JsonToTypescriptTool';
 import { JwtDecoderTool } from '../../../components/tools/JwtDecoderTool';
@@ -99,9 +99,12 @@ export default function ToolPage({ params }: ToolPageProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col min-h-full">
       <ToolHeader tool={tool} />
-      <div className="flex-1 overflow-y-auto">{renderToolComponent()}</div>
+      <div className="flex-1 p-4 sm:p-6 space-y-6">
+        {renderToolComponent()}
+        <ToolHelpSection toolSlug={tool.slug} />
+      </div>
     </div>
   );
 }
