@@ -7,7 +7,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Check,
-  Zap,
 } from 'lucide-react';
 import { Button } from './button';
 
@@ -32,6 +31,9 @@ const MONTH_NAMES = [
   'November',
   'December',
 ];
+
+// Opsi tahun dari 1970 (start Unix epoch) hingga 2050
+const YEAR_OPTIONS = Array.from({ length: 2050 - 1970 + 1 }, (_, i) => 1970 + i);
 
 export function DateTimePicker({ value, onChange, className = '' }: DateTimePickerProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,11 +78,33 @@ export function DateTimePicker({ value, onChange, className = '' }: DateTimePick
   const firstDayOfWeek = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1).getDay();
 
   const handlePrevMonth = () => {
-    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1));
+    const prev = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+    setViewDate(prev);
+    setSelectedYear(prev.getFullYear());
+    setSelectedMonth(prev.getMonth());
   };
 
   const handleNextMonth = () => {
-    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1));
+    const next = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+    setViewDate(next);
+    setSelectedYear(next.getFullYear());
+    setSelectedMonth(next.getMonth());
+  };
+
+  const handleMonthSelect = (m: number) => {
+    const y = viewDate.getFullYear();
+    const newDate = new Date(y, m, Math.min(selectedDay, 28));
+    setViewDate(newDate);
+    setSelectedMonth(m);
+    applyDateTime(y, m, selectedDay, hours, minutes, seconds);
+  };
+
+  const handleYearSelect = (y: number) => {
+    const m = viewDate.getMonth();
+    const newDate = new Date(y, m, Math.min(selectedDay, 28));
+    setViewDate(newDate);
+    setSelectedYear(y);
+    applyDateTime(y, m, selectedDay, hours, minutes, seconds);
   };
 
   const applyDateTime = (
@@ -166,20 +190,48 @@ export function DateTimePicker({ value, onChange, className = '' }: DateTimePick
       {/* Popover Card */}
       {isOpen && (
         <div className="absolute right-0 sm:left-0 top-full mt-2 z-50 w-72 sm:w-80 p-4 bg-surface border border-border rounded-xl shadow-2xl space-y-4">
-          {/* Header Month / Year Navigation */}
-          <div className="flex items-center justify-between pb-2 border-b border-border">
+          {/* Header Month & Year Manual Selectors */}
+          <div className="flex items-center justify-between gap-1 pb-2 border-b border-border">
             <button
               onClick={handlePrevMonth}
               className="p-1 text-devText-muted hover:text-devText-primary hover:bg-sidebar rounded transition-colors"
+              title="Previous Month"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="text-xs font-bold text-devText-primary">
-              {MONTH_NAMES[viewDate.getMonth()]} {viewDate.getFullYear()}
-            </span>
+
+            <div className="flex items-center space-x-1.5 flex-1 justify-center">
+              {/* Month Dropdown */}
+              <select
+                value={viewDate.getMonth()}
+                onChange={(e) => handleMonthSelect(parseInt(e.target.value))}
+                className="bg-background border border-border text-devText-primary font-bold text-xs rounded px-2 py-1 focus:outline-none focus:border-accent cursor-pointer"
+              >
+                {MONTH_NAMES.map((name, idx) => (
+                  <option key={idx} value={idx} className="bg-surface text-devText-primary">
+                    {name}
+                  </option>
+                ))}
+              </select>
+
+              {/* Year Dropdown */}
+              <select
+                value={viewDate.getFullYear()}
+                onChange={(e) => handleYearSelect(parseInt(e.target.value))}
+                className="bg-background border border-border text-devText-primary font-bold text-xs rounded px-2 py-1 focus:outline-none focus:border-accent cursor-pointer font-mono"
+              >
+                {YEAR_OPTIONS.map((y) => (
+                  <option key={y} value={y} className="bg-surface text-devText-primary">
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <button
               onClick={handleNextMonth}
               className="p-1 text-devText-muted hover:text-devText-primary hover:bg-sidebar rounded transition-colors"
+              title="Next Month"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
