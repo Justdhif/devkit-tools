@@ -75,7 +75,7 @@ export function Base64Tool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
             <span>INPUT TEXT OR BASE64</span>
@@ -84,7 +84,7 @@ export function Base64Tool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type raw text or base64 string..."
-            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
+            className="h-[360px] border-0 bg-transparent rounded-none resize-none font-mono text-xs"
           />
         </Card>
 
@@ -106,10 +106,11 @@ export function Base64Tool() {
             readOnly
             value={output}
             placeholder="Result will appear here..."
-            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
+            className="h-[360px] border-0 bg-transparent rounded-none resize-none font-mono text-xs"
           />
         </Card>
       </div>
     </div>
   );
 }
+

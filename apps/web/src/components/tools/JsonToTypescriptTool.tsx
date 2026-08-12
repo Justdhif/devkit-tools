@@ -176,7 +176,7 @@ export function JsonToTypescriptTool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden">
           <div className="px-3 py-2 border-b border-border bg-sidebar text-xs font-semibold text-devText-muted flex justify-between">
             <span>RAW JSON OBJECT</span>
@@ -185,7 +185,7 @@ export function JsonToTypescriptTool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste JSON object..."
-            className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
+            className="h-[360px] w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none"
           />
         </div>
 
@@ -205,10 +205,11 @@ export function JsonToTypescriptTool() {
             readOnly
             value={output}
             placeholder="Click 'Generate Code' or use AI above to generate types..."
-            className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
+            className="h-[360px] w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none"
           />
         </div>
       </div>
     </div>
   );
 }
+

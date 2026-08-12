@@ -79,37 +79,40 @@ export function JsonFormatterTool() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'devkit-formatted.json';
+    a.download = 'formatted.json';
     a.click();
     URL.revokeObjectURL(url);
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
+      {/* Options Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
-        <div className="flex items-center space-x-3 text-xs">
-          <SlidersHorizontal className="w-4 h-4 text-accent" />
+        <div className="flex flex-wrap items-center gap-4 text-xs">
           <div className="flex items-center space-x-2">
-            <label className="text-devText-muted">Indent:</label>
+            <SlidersHorizontal className="w-4 h-4 text-devText-muted" />
+            <span className="text-devText-muted font-medium">Indent:</span>
             <Select value={String(indent)} onValueChange={(val) => setIndent(Number(val))}>
-              <SelectTrigger className="w-28 text-xs">
+              <SelectTrigger className="w-28 h-8 text-xs">
                 <SelectValue placeholder="Indent" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="2">2 Spaces</SelectItem>
                 <SelectItem value="4">4 Spaces</SelectItem>
-                <SelectItem value="8">8 Spaces</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
-          <label className="flex items-center space-x-2 cursor-pointer text-devText-secondary hover:text-devText-primary">
+          <div className="flex items-center space-x-2">
             <Checkbox
+              id="sortKeys"
               checked={sortKeys}
-              onCheckedChange={(checked) => setSortKeys(Boolean(checked))}
+              onCheckedChange={(c) => setSortKeys(Boolean(c))}
             />
-            <span>Sort Keys Alphabetically</span>
-          </label>
+            <label htmlFor="sortKeys" className="text-devText-secondary cursor-pointer select-none">
+              Sort Keys Alphabetically
+            </label>
+          </div>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -157,7 +160,7 @@ export function JsonFormatterTool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
             <span>INPUT JSON</span>
@@ -178,7 +181,7 @@ export function JsonFormatterTool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Paste your JSON here..."
-            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
+            className="h-[360px] border-0 bg-transparent rounded-none resize-none font-mono text-xs"
           />
         </Card>
 
@@ -212,7 +215,7 @@ export function JsonFormatterTool() {
             readOnly
             value={output}
             placeholder="Formatted or minified output will appear here..."
-            className="flex-1 border-0 bg-transparent rounded-none min-h-[300px]"
+            className="h-[360px] border-0 bg-transparent rounded-none resize-none font-mono text-xs"
           />
         </Card>
       </div>

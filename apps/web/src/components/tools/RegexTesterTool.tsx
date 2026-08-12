@@ -133,7 +133,7 @@ export function RegexTesterTool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
             <span>TEST STRING INPUT</span>
@@ -142,7 +142,7 @@ export function RegexTesterTool() {
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Type text to test regex against..."
-            className="flex-1 border-0 bg-transparent rounded-none min-h-[250px]"
+            className="h-[300px] border-0 bg-transparent rounded-none resize-none font-mono text-xs"
           />
         </Card>
 
@@ -150,7 +150,7 @@ export function RegexTesterTool() {
           <CardHeader>
             <span>MATCH DETAILS ({result.matches.length})</span>
           </CardHeader>
-          <div className="p-3 space-y-2 overflow-y-auto max-h-[350px]">
+          <div className="p-3 space-y-2 overflow-y-auto h-[300px]">
             {result.matches.length === 0 ? (
               <div className="text-devText-muted text-xs p-4 text-center">No regex matches found.</div>
             ) : (
@@ -172,3 +172,4 @@ export function RegexTesterTool() {
     </div>
   );
 }
+
