@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Copy, Check, Code2, AlertCircle } from 'lucide-react';
+import { Copy, Check, Code2, AlertCircle, Sparkles, Loader2 } from 'lucide-react';
 import {
   jsonToTypescript,
   jsonToZod,
@@ -9,6 +9,9 @@ import {
   jsonToPythonDataclass,
 } from '@devkit/json-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
+import { aiService } from '../../services/aiService';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
 
 const SAMPLE_JSON = `{\n  "id": "usr_9921",\n  "username": "alex_dev",\n  "email": "alex@devkit.app",\n  "active": true,\n  "roles": ["admin", "developer"],\n  "settings": {\n    "theme": "dark",\n    "notifications": true\n  }\n}`;
 
@@ -20,6 +23,14 @@ export function JsonToTypescriptTool() {
   const [error, setError] = useState<string | undefined>(undefined);
   const [copied, setCopied] = useState(false);
   const { addHistoryItem } = useDevKitStore();
+
+  // AI state
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [aiExplanation, setAiExplanation] = useState<string | null>(null);
+
+  const TARGET_LANG_MAP = { ts: 'typescript', zod: 'zod', go: 'go', python: 'python' } as const;
 
   const handleConvert = () => {
     let res;
@@ -44,8 +55,78 @@ export function JsonToTypescriptTool() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // AI: describe a JSON structure → AI generates JSON → convert to types
+  const handleAiGenerate = async () => {
+    if (!aiPrompt.trim()) return;
+    setAiLoading(true);
+    setAiError(null);
+    setAiExplanation(null);
+
+    try {
+      const lang = TARGET_LANG_MAP[targetType];
+      const res = await aiService.convertJson({
+        jsonString: aiPrompt,
+        targetLanguage: lang,
+      });
+      if (res.code) {
+        setOutput(res.code);
+        setError(undefined);
+      }
+      setAiExplanation(res.explanation);
+      addHistoryItem('json-to-typescript', `AI JSON → ${targetType.toUpperCase()}: "${aiPrompt.slice(0, 50)}"`);
+    } catch (err: any) {
+      setAiError(err.message || 'Failed to generate types with AI');
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+      {/* AI Assistant Banner */}
+      <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="text-xs font-semibold text-accent flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+            AI JSON Converter: Paste JSON or describe the structure you need...
+          </label>
+          <span className="text-[10px] text-devText-muted font-mono">Powered by Groq LLM</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Input
+            value={aiPrompt}
+            onChange={(e) => setAiPrompt(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleAiGenerate()}
+            placeholder={`e.g. {"user": {"id": 1, "name": "John"}} or "a product with nested variants"`}
+            className="flex-1 font-mono text-xs"
+          />
+          <Button
+            onClick={handleAiGenerate}
+            disabled={aiLoading || !aiPrompt.trim()}
+            size="sm"
+          >
+            {aiLoading ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Generate with AI</span>
+              </>
+            )}
+          </Button>
+        </div>
+        {aiExplanation && (
+          <p className="text-[11px] text-devText-secondary bg-background p-2 rounded border border-border">
+            <span className="font-semibold text-accent">AI Notes: </span>
+            {aiExplanation}
+          </p>
+        )}
+        {aiError && <p className="text-[11px] text-rose-400">{aiError}</p>}
+      </div>
+
       {/* Target Selector & Options */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex flex-wrap items-center gap-3 text-xs">
@@ -123,7 +204,7 @@ export function JsonToTypescriptTool() {
           <textarea
             readOnly
             value={output}
-            placeholder="Click 'Generate Code' to view generated types..."
+            placeholder="Click 'Generate Code' or use AI above to generate types..."
             className="flex-1 w-full p-3 bg-transparent text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
           />
         </div>

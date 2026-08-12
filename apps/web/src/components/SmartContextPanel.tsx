@@ -25,11 +25,28 @@ export function SmartContextPanel({ input, onSelectAction, className = '' }: Sma
 
   if (!detection) return null;
 
+  // Mapping dari detected type ke tab AiAssistantTool
+  const AI_TAB_MAP: Record<string, string> = {
+    error: 'error',
+    stack_trace: 'error',
+    jwt: 'error',
+    json: 'json',
+    sql: 'sql',
+    regex: 'regex',
+    code: 'code',
+  };
+
   const handleActionClick = (rec: SmartRecommendation) => {
     if (onSelectAction) {
       onSelectAction(rec);
     }
-    if (rec.actionType === 'navigate' || rec.actionType === 'ai') {
+
+    if (rec.actionType === 'ai') {
+      // Build contextual URL: pre-fill tab + input + auto-trigger
+      const tab = AI_TAB_MAP[detection.detectedType] || 'error';
+      const encodedInput = encodeURIComponent(input.substring(0, 1000));
+      router.push(`/tools/ai-assistant?tab=${tab}&input=${encodedInput}&autorun=1`);
+    } else if (rec.actionType === 'navigate') {
       router.push(`/tools/${rec.targetToolSlug}`);
     } else if (rec.targetToolSlug === 'pipeline-builder') {
       router.push(`/tools/pipeline-builder?initialInput=${encodeURIComponent(input.substring(0, 500))}`);

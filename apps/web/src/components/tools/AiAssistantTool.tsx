@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   Sparkles,
   Loader2,
@@ -31,7 +32,17 @@ import { Card, CardHeader } from '../ui/card';
 type AiTab = 'regex' | 'sql' | 'error' | 'code' | 'json';
 
 export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
-  const [activeTab, setActiveTab] = useState<AiTab>(initialTab || 'regex');
+  const searchParams = useSearchParams();
+  const didInit = useRef(false);
+
+  // Resolve initial tab from prop or URL param
+  const resolveTab = (): AiTab => {
+    const urlTab = searchParams?.get('tab') as AiTab | null;
+    if (urlTab && ['regex', 'sql', 'error', 'code', 'json'].includes(urlTab)) return urlTab;
+    return initialTab || 'regex';
+  };
+
+  const [activeTab, setActiveTab] = useState<AiTab>(resolveTab);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -49,6 +60,36 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
   const [errorResult, setErrorResult] = useState<AiExplainErrorResponse | null>(null);
   const [codeResult, setCodeResult] = useState<AiExplainCodeResponse | null>(null);
   const [jsonResult, setJsonResult] = useState<AiConvertJsonResponse | null>(null);
+
+  // Pre-fill dari URL query params (dari SmartContextPanel)
+  useEffect(() => {
+    if (didInit.current) return;
+    didInit.current = true;
+
+    const urlTab = searchParams?.get('tab') as AiTab | null;
+    const urlInput = searchParams?.get('input');
+    const autorun = searchParams?.get('autorun') === '1';
+
+    if (urlTab && ['regex', 'sql', 'error', 'code', 'json'].includes(urlTab)) {
+      setActiveTab(urlTab);
+    }
+
+    if (urlInput) {
+      const decoded = decodeURIComponent(urlInput);
+      if (urlTab === 'error') setErrorText(decoded);
+      else if (urlTab === 'sql') setSqlPrompt(decoded);
+      else if (urlTab === 'json') setJsonText(decoded);
+      else if (urlTab === 'code') setCodeText(decoded);
+      else if (urlTab === 'regex') setRegexPrompt(decoded);
+    }
+
+    if (autorun && urlInput) {
+      // Trigger AI setelah state ter-set (next tick)
+      setTimeout(() => {
+        document.getElementById('ai-generate-btn')?.click();
+      }, 100);
+    }
+  }, [searchParams]);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -117,6 +158,7 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
         </div>
 
         <Button
+          id="ai-generate-btn"
           onClick={handleRunAi}
           disabled={loading}
         >
