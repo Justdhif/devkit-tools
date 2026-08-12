@@ -18,7 +18,7 @@ export function Sidebar() {
 
   return (
     <>
-      <aside className="hidden md:flex flex-col w-60 border-r border-border bg-sidebar shrink-0 h-[calc(100vh-3.5rem)] sticky top-14">
+      <aside className="hidden md:flex flex-col w-60 border-r border-border bg-sidebar shrink-0 h-full">
         <div className="p-3">
           <div className="text-[11px] font-semibold text-devText-muted uppercase tracking-wider px-3 mb-2">
             Navigation

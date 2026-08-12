@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ backgroundColor: '#09090B' }}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} h-full overflow-hidden`} style={{ backgroundColor: '#09090B' }}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -56,7 +56,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="dark bg-background text-devText-primary min-h-screen flex flex-col antialiased" style={{ backgroundColor: '#09090B' }} suppressHydrationWarning>
+      <body className="dark bg-background text-devText-primary h-full overflow-hidden flex flex-col antialiased" style={{ backgroundColor: '#09090B' }} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <SearchProvider>
             <NextTopLoader 
@@ -72,12 +72,14 @@ export default function RootLayout({
             />
             <InitialLoader />
             <MotionLayoutRoot>
-              <Header />
-              <div className="flex flex-1">
-                <Sidebar />
-                <main className="flex-1 pb-16 md:pb-0 overflow-y-auto flex flex-col min-h-0">
-                  <PageTransition>{children}</PageTransition>
-                </main>
+              <div className="flex flex-col h-screen max-h-screen overflow-hidden">
+                <Header />
+                <div className="flex flex-1 overflow-hidden min-h-0">
+                  <Sidebar />
+                  <main className="flex-1 overflow-y-auto flex flex-col min-h-0 pb-16 md:pb-0">
+                    <PageTransition>{children}</PageTransition>
+                  </main>
+                </div>
               </div>
             </MotionLayoutRoot>
             <ProfileDrawer />
