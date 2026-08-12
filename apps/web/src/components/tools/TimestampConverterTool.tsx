@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Clock, RefreshCw, Copy, Check } from 'lucide-react';
+import { Clock, RefreshCw, Copy, Check, Calendar } from 'lucide-react';
 import { parseTimestamp, TimestampParseResult } from '@devkit/crypto-tools';
 import { useDevKitStore } from '../../store/useDevKitStore';
+import { DateTimePicker } from '../ui/date-time-picker';
+import { Button } from '../ui/button';
 
 export function TimestampConverterTool() {
   const [input, setInput] = useState<string>('1716239022');
@@ -32,34 +34,50 @@ export function TimestampConverterTool() {
     }
   };
 
+  const handlePickerChange = (date: Date) => {
+    const epochSec = Math.floor(date.getTime() / 1000).toString();
+    handleConvert(epochSec);
+  };
+
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
+  const pickerDate = parsed ? new Date(parsed.unixMilliseconds) : new Date();
+
   return (
     <div className="flex flex-col space-y-4">
       {/* Input controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
-        <div className="flex items-center space-x-3 flex-1 max-w-lg">
+        <div className="flex items-center space-x-3 flex-1 min-w-[280px]">
           <Clock className="w-4 h-4 text-accent shrink-0" />
           <input
             type="text"
             value={input}
             onChange={(e) => handleConvert(e.target.value)}
             placeholder="Enter timestamp in sec/ms or ISO date (e.g. 1716239022)"
-            className="w-full bg-background border border-border text-devText-primary rounded px-3 py-1.5 text-xs font-mono focus:outline-none"
+            className="w-full bg-background border border-border text-devText-primary rounded px-3 py-1.5 text-xs font-mono focus:outline-none focus:border-accent"
           />
         </div>
 
-        <button
-          onClick={handleNow}
-          className="px-3.5 py-1.5 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-md flex items-center space-x-1 transition-colors shadow-xs"
-        >
-          <RefreshCw className="w-3.5 h-3.5" />
-          <span>Set Current Time (Now)</span>
-        </button>
+        <div className="flex items-center space-x-2 shrink-0">
+          {/* Custom Date & Time Picker */}
+          <DateTimePicker
+            value={pickerDate}
+            onChange={handlePickerChange}
+          />
+
+          <Button
+            onClick={handleNow}
+            size="sm"
+            className="h-8 text-xs font-semibold flex items-center space-x-1"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+            <span>Set Now</span>
+          </Button>
+        </div>
       </div>
 
       {/* Conversion Output Grid */}
@@ -81,7 +99,7 @@ export function TimestampConverterTool() {
                 <span>{item.value}</span>
                 <button
                   onClick={() => copyToClipboard(item.value, item.key)}
-                  className="p-1 text-devText-muted hover:text-accent ml-2 shrink-0"
+                  className="p-1 text-devText-muted hover:text-accent ml-2 shrink-0 transition-colors"
                 >
                   {copiedKey === item.key ? (
                     <Check className="w-4 h-4 text-emerald-400" />
