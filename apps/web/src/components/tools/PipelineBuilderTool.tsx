@@ -245,7 +245,7 @@ export function PipelineBuilderTool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 pb-24 sm:pb-4">
         <div className="flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 space-y-2">
           <span className="text-xs font-semibold text-devText-muted uppercase tracking-wider">
             Pipeline Initial Input
@@ -254,19 +254,19 @@ export function PipelineBuilderTool() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter initial string data (JSON, JWT, URL, SQL, etc.)..."
-            className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[300px]"
+            className="flex-1 w-full p-3 bg-background border border-border rounded text-devText-primary font-mono text-xs focus:outline-none resize-none min-h-[220px] sm:min-h-[300px]"
           />
         </div>
 
-        <div className="lg:col-span-2 flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-4 space-y-4 overflow-y-auto">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold text-devText-muted uppercase tracking-wider">
+        <div className="lg:col-span-2 flex flex-col border border-border rounded-lg bg-surface overflow-hidden p-3 sm:p-4 space-y-4 overflow-y-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <h3 className="text-xs font-semibold text-devText-muted uppercase tracking-wider shrink-0">
               Pipeline Steps ({steps.length})
             </h3>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 w-full sm:w-auto">
               <Select value={selectedToolSlug} onValueChange={(val) => setSelectedToolSlug(val)}>
-                <SelectTrigger className="w-48 text-xs">
+                <SelectTrigger className="flex-1 sm:w-48 text-xs">
                   <SelectValue placeholder="Choose Tool" />
                 </SelectTrigger>
                 <SelectContent>
@@ -279,10 +279,13 @@ export function PipelineBuilderTool() {
               </Select>
               <button
                 onClick={handleAddStep}
-                className="px-3 py-1.5 bg-background border border-border hover:bg-surface text-accent text-xs font-semibold rounded-lg flex items-center space-x-1"
+                className="px-3 py-1.5 bg-background border border-border hover:bg-surface text-accent text-xs font-semibold rounded-lg flex items-center space-x-1 shrink-0"
               >
                 <Plus className="w-3.5 h-3.5" />
-                <span>Add Step</span>
+                <span>
+                  <span className="hidden xs:inline">Add Step</span>
+                  <span className="xs:hidden">Add</span>
+                </span>
               </button>
             </div>
           </div>
@@ -291,18 +294,18 @@ export function PipelineBuilderTool() {
             {steps.map((step, idx) => (
               <React.Fragment key={step.id}>
                 <div className="p-3 bg-background border border-border rounded-xl space-y-2 relative">
-                  <div className="flex items-center justify-between border-b border-border/50 pb-2">
-                    <div className="flex items-center space-x-2">
-                      <span className="w-5 h-5 rounded-full bg-accent/20 border border-accent/40 text-accent font-bold text-[10px] flex items-center justify-center">
+                  <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-border/50 pb-2">
+                    <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                      <span className="w-5 h-5 rounded-full bg-accent/20 border border-accent/40 text-accent font-bold text-[10px] flex items-center justify-center shrink-0">
                         {idx + 1}
                       </span>
                       <span className="text-xs font-bold text-devText-primary">{step.toolName}</span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sidebar border border-border text-devText-muted">
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sidebar border border-border text-devText-muted shrink-0">
                         {step.inputType} → {step.outputType}
                       </span>
                     </div>
 
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-1 shrink-0 ml-auto sm:ml-0">
                       <button
                         onClick={() => handleRunSingleStep(step.id, idx)}
                         disabled={runningStepId === step.id}
@@ -314,7 +317,10 @@ export function PipelineBuilderTool() {
                         ) : (
                           <Play className="w-3 h-3 text-emerald-400 fill-emerald-400" />
                         )}
-                        <span>Run Step</span>
+                        <span>
+                          <span className="hidden sm:inline">Run Step</span>
+                          <span className="sm:hidden">Run</span>
+                        </span>
                       </button>
 
                       <button
@@ -356,6 +362,7 @@ export function PipelineBuilderTool() {
                       </button>
                     </div>
                   </div>
+
 
                   {step.output && (
                     <div className="pt-1">
