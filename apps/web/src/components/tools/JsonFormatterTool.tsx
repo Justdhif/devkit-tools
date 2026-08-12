@@ -11,6 +11,8 @@ import { Checkbox } from '../ui/checkbox';
 import { Button } from '../ui/button';
 import { Card, CardHeader } from '../ui/card';
 import { Textarea } from '../ui/input';
+import { PostExecutionRecommendations } from '../PostExecutionRecommendations';
+
 
 const SAMPLE_JSON = `{\n  "name": "DevKit",\n  "type": "Developer Productivity Platform",\n  "features": ["JSON Formatter", "JWT Decoder", "UUID Generator"],\n  "privacyFirst": true,\n  "stats": {\n    "speedMs": 0,\n    "version": "1.0.0"\n  }\n}`;
 
@@ -219,6 +221,18 @@ export function JsonFormatterTool() {
           />
         </Card>
       </div>
+
+      {output && (
+        <PostExecutionRecommendations
+          currentOutput={output}
+          actions={[
+            { id: 'json-ts', label: 'Generate TypeScript', targetSlug: 'json-to-typescript' },
+            { id: 'json-zod', label: 'Generate Zod Schema', targetSlug: 'json-to-typescript' },
+            { id: 'json-ai', label: 'Explain JSON with AI', targetSlug: 'ai-assistant' },
+          ]}
+        />
+      )}
     </div>
   );
 }
+

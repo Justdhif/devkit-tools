@@ -19,6 +19,9 @@ export type LogicalType =
   | 'jwt'
   | 'url'
   | 'base64'
+  | 'base64url'
+  | 'url-query'
+  | 'iso-date'
   | 'uuid'
   | 'timestamp'
   | 'regex'
@@ -28,6 +31,7 @@ export type LogicalType =
   | 'error'
   | 'typescript'
   | 'zod-schema';
+
 
 export interface SmartRecommendation {
   id: string;

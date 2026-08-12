@@ -342,19 +342,10 @@ Penerima dapat membuka tool dengan konfigurasi yang sama.
 
 devkit.app/share/8f2a91
 
-18. Community Tools
+18. Community Tools (Out of Scope / Removed from MVP)
 
-Developer dapat publish utility.
+Fitur Community Tools (user-generated utilities, creator profiles, community likes & moderation) disepakati berada di luar cakupan DevKit MVP dan dihapus dari ruang lingkup pengembangan utama.
 
-Creator profile.
-
-Like, favorite, discovery, share.
-
-Official vs community dibedakan.
-
-Moderation/validation sebelum public release.
-
-Contoh: Tailwind Class Merger, Prisma Schema Generator, Laravel Route Generator, React Props Generator, NestJS DTO Generator.
 
 19. Authentication & Account
 

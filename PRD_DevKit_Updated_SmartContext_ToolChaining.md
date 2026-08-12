@@ -780,19 +780,10 @@ Penerima dapat membuka tool dengan konfigurasi yang sama.
 
 devkit.app/share/8f2a91
 
-18. Community Tools
+18. Community Tools (Out of Scope / Removed from MVP)
 
-Developer dapat publish utility.
+Fitur Community Tools (user-generated utilities, creator profiles, community likes & moderation) disepakati berada di luar cakupan DevKit MVP dan dihapus dari ruang lingkup pengembangan utama.
 
-Creator profile.
-
-Like, favorite, discovery, share.
-
-Official vs community dibedakan.
-
-Moderation/validation sebelum public release.
-
-Contoh: Tailwind Class Merger, Prisma Schema Generator, Laravel Route Generator, React Props Generator, NestJS DTO Generator.
 
 19. Authentication & Account
 
@@ -1158,46 +1149,10 @@ AI SQL Generator
 
 AI Code Explainer
 
-Phase 5 — Social
+Phase 5 & 6 (Out of Scope / Non-MVP Ecosystem)
 
-Shareable tools
+Fitur sosial lanjutan (Community tools), Monetisasi, serta Ekstensi Browser & VS Code / CLI berada di luar cakupan DevKit MVP dan dihapus dari ruang lingkup proyek. Focus 100% dialokasikan untuk menyempurnakan Core Tools, Smart Context Detection Engine, dan Tool Chaining Pipeline.
 
-Public workspace
-
-Community tools
-
-Likes/Favorites
-
-Tool discovery
-
-Moderation
-
-Phase 6 — Ecosystem
-
-Browser Extension
-
-VS Code Extension
-
-CLI
-
-Shared core package
-
-Team workspace
-
-34. Monetization (Optional)
-
-Monetization bukan prioritas MVP; validasi product usage terlebih dahulu.
-
-35. Future Ecosystem: Extension & CLI
-
-Website: devkit.app
-CLI:
-devkit json format file.json
-devkit jwt decode TOKEN
-devkit uuid generate
-
-VS Code:
-Command Palette → DevKit: JSON Format
 
 36. Success Metrics
 
