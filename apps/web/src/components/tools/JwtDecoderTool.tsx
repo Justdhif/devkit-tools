@@ -27,7 +27,7 @@ export function JwtDecoderTool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       {/* Privacy Notice Banner */}
       <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-3 text-xs text-emerald-300 flex items-center space-x-2">
         <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />

@@ -47,7 +47,7 @@ export function Base64Tool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <label className="flex items-center space-x-2 text-xs cursor-pointer text-devText-secondary hover:text-devText-primary">
           <Checkbox

@@ -45,7 +45,7 @@ export function UuidGeneratorTool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       {/* Options Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex flex-wrap items-center gap-4 text-xs">

@@ -73,7 +73,7 @@ export function ColorConverterTool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3.5 rounded-xl border border-border">
         <div className="flex items-center space-x-2">
           <Palette className="w-5 h-5 text-accent" />

@@ -177,7 +177,7 @@ export function ApiTesterTool({ initialConfig }: { initialConfig?: any }) {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       <div className="flex flex-wrap items-center gap-2 bg-surface p-3 rounded-xl border border-border">
         <Select value={method} onValueChange={(val: any) => setMethod(val)}>
           <SelectTrigger className="w-24 font-mono font-bold text-accent">

@@ -51,7 +51,7 @@ export function UrlEncoderTool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3 bg-surface p-3 rounded-lg border border-border">
         <div className="flex items-center space-x-3 text-xs">
           <span className="text-devText-muted font-medium">Mode:</span>

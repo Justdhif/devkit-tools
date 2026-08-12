@@ -59,7 +59,7 @@ export function RegexTesterTool() {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6">
+    <div className="flex flex-col space-y-4">
       <div className="bg-surface p-3.5 rounded-lg border border-accent/30 space-y-2">
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold text-accent flex items-center gap-1.5">

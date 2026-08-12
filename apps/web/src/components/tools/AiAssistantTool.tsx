@@ -141,7 +141,7 @@ export function AiAssistantTool({ initialTab }: { initialTab?: AiTab }) {
   ];
 
   return (
-    <div className="flex flex-col h-full space-y-4 p-4 sm:p-6 overflow-x-hidden">
+    <div className="flex flex-col space-y-4 overflow-x-hidden">
       <div className="flex items-center justify-between bg-gradient-to-r from-accent/20 via-purple-500/10 to-transparent p-4 rounded-xl border border-accent/30 shadow-sm">
         <div className="flex items-center space-x-3">
           <div className="p-2 rounded-lg bg-accent/20 border border-accent/40 text-accent">
