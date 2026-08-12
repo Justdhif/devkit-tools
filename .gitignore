@@ -6,8 +6,13 @@ node_modules
 .next/
 out/
 
-# NestJS / Dist
+# NestJS / Dist & API Build Outputs
 dist/
+dist-api/
+apps/api/api/
+apps/api/dist/
+apps/api/dist-api/
+
 
 # Environment variables
 .env
