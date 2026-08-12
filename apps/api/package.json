@@ -5,7 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "build": "npx @vercel/ncc build src/serverless.ts -o api && node -e \"fs.rmSync('api/apps', {recursive: true, force: true}); fs.rmSync('api/packages', {recursive: true, force: true});\"",
-    "vercel-build": "pnpm build",
+    "vercel-build": "cd ../.. && pnpm build --filter=@devkit/api^... && cd apps/api && pnpm build",
     "dev": "nest start --watch",
     "start": "node api/index.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
