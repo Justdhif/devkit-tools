@@ -2,12 +2,12 @@
   "name": "@devkit/api",
   "version": "1.0.0",
   "private": true,
-  "main": "api/index.js",
+  "main": "api/index.ts",
   "scripts": {
-    "build": "npx @vercel/ncc build src/serverless.ts -o api && node -e \"fs.rmSync('api/apps', {recursive: true, force: true}); fs.rmSync('api/packages', {recursive: true, force: true});\"",
-    "vercel-build": "cd ../.. && pnpm build --filter=@devkit/api^... && cd apps/api && pnpm build",
+    "build": "tsc --noEmit",
+    "vercel-build": "cd ../.. && pnpm build --filter=@devkit/api^...",
     "dev": "nest start --watch",
-    "start": "node api/index.js",
+    "start": "nest start",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "typecheck": "tsc --noEmit"
   },

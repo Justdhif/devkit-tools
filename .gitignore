@@ -9,9 +9,14 @@ out/
 # NestJS / Dist & API Build Outputs
 dist/
 dist-api/
-apps/api/api/
 apps/api/dist/
 apps/api/dist-api/
+apps/api/api/*.js
+apps/api/api/*.d.ts
+apps/api/api/apps/
+apps/api/api/packages/
+!apps/api/api/index.ts
+
 
 
 # Environment variables
