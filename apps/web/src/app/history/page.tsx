@@ -6,7 +6,6 @@ import {
   History,
   Trash2,
   ArrowRight,
-  ShieldCheck,
   Lock,
   Loader2,
   RefreshCw,
@@ -131,14 +130,6 @@ export default function HistoryPage() {
           </div>
         </div>
 
-        <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-lg p-3 text-xs text-emerald-300 flex items-center space-x-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-          <span>
-            <strong>Privacy Safeguard:</strong> Secrets and sensitive tokens (such as JWTs) are
-            automatically redacted and never persisted in history.
-          </span>
-        </div>
-
         {loading ? (
           <div className="p-12 border border-border bg-surface rounded-xl flex flex-col items-center justify-center space-y-3">
             <Loader2 className="w-8 h-8 text-accent animate-spin" />
@@ -162,50 +153,9 @@ export default function HistoryPage() {
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="border border-border bg-surface rounded-xl divide-y divide-border overflow-hidden">
-              {paginatedItems.map((item) => {
-                const tool = getToolBySlug(item.toolSlug);
-                const dateStr = new Date(item.createdAt).toLocaleString();
-                return (
-                  <div
-                    key={item.id}
-                    className="p-4 flex items-center justify-between hover:bg-sidebar transition-colors"
-                  >
-                    <div className="space-y-1 min-w-0 flex-1 mr-3">
-                      <div className="flex items-center space-x-2 flex-wrap gap-y-1">
-                        <span className="text-sm font-bold text-devText-primary">
-                          {tool?.name || item.toolSlug}
-                        </span>
-                        {item.isSensitive && (
-                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/60 border border-amber-800/60 text-amber-400 font-mono flex items-center space-x-1">
-                            <Lock className="w-3 h-3" />
-                            <span>Sensitive</span>
-                          </span>
-                        )}
-                      </div>
-                      {item.inputSummary && (
-                        <p className="text-xs text-devText-secondary font-mono truncate">
-                          {item.inputSummary}
-                        </p>
-                      )}
-                      <span className="text-[11px] text-devText-muted block">{dateStr}</span>
-                    </div>
-
-                    <Link
-                      href={`/tools/${item.toolSlug}`}
-                      className="px-3 py-1.5 bg-background border border-border text-devText-primary hover:border-accent/50 text-xs font-medium rounded-md flex items-center space-x-1 transition-colors shrink-0"
-                    >
-                      <span>Reopen</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Pagination Controls */}
+            {/* Pagination Controls (Positioned Above History List) */}
             {totalPages > 1 && (
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-1">
                 <span className="text-xs text-devText-muted">
                   Showing{' '}
                   <span className="font-semibold text-devText-primary">
@@ -260,6 +210,48 @@ export default function HistoryPage() {
                 </div>
               </div>
             )}
+
+            {/* History Items List */}
+            <div className="border border-border bg-surface rounded-xl divide-y divide-border overflow-hidden">
+              {paginatedItems.map((item) => {
+                const tool = getToolBySlug(item.toolSlug);
+                const dateStr = new Date(item.createdAt).toLocaleString();
+                return (
+                  <div
+                    key={item.id}
+                    className="p-4 flex items-center justify-between hover:bg-sidebar transition-colors"
+                  >
+                    <div className="space-y-1 min-w-0 flex-1 mr-3">
+                      <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                        <span className="text-sm font-bold text-devText-primary">
+                          {tool?.name || item.toolSlug}
+                        </span>
+                        {item.isSensitive && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/60 border border-amber-800/60 text-amber-400 font-mono flex items-center space-x-1">
+                            <Lock className="w-3 h-3" />
+                            <span>Sensitive</span>
+                          </span>
+                        )}
+                      </div>
+                      {item.inputSummary && (
+                        <p className="text-xs text-devText-secondary font-mono truncate">
+                          {item.inputSummary}
+                        </p>
+                      )}
+                      <span className="text-[11px] text-devText-muted block">{dateStr}</span>
+                    </div>
+
+                    <Link
+                      href={`/tools/${item.toolSlug}`}
+                      className="px-3 py-1.5 bg-background border border-border text-devText-primary hover:border-accent/50 text-xs font-medium rounded-md flex items-center space-x-1 transition-colors shrink-0"
+                    >
+                      <span>Reopen</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
