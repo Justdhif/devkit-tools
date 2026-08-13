@@ -28,25 +28,18 @@ function verifyToken(authHeader?: string): { sub: string; email: string } {
 export class FavoritesController {
   @Get()
   async getFavorites(@Headers('authorization') authHeader?: string) {
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return { success: true, data: [] };
-    }
-    const token = authHeader.replace(/^Bearer\s+/i, '');
-    try {
-      const user = jwt.verify(token, JWT_SECRET) as { sub: string; email: string };
-      const userFavs = await db
-        .select({ toolSlug: favorites.toolSlug })
-        .from(favorites)
-        .where(eq(favorites.userId, user.sub));
+    const user = verifyToken(authHeader);
+    const userFavs = await db
+      .select({ toolSlug: favorites.toolSlug })
+      .from(favorites)
+      .where(eq(favorites.userId, user.sub));
 
-      return {
-        success: true,
-        data: userFavs.map((f) => f.toolSlug),
-      };
-    } catch {
-      return { success: true, data: [] };
-    }
+    return {
+      success: true,
+      data: userFavs.map((f) => f.toolSlug),
+    };
   }
+
 
 
   @Post('toggle')

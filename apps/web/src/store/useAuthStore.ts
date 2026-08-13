@@ -81,16 +81,36 @@ export const useAuthStore = create<AuthStoreState>()(
         const { token, refreshToken } = get();
         if (!token && !refreshToken) return;
 
-        try {
-          const me = await authService.getMe();
-          set({
-            user: me,
-            isAuthenticated: true,
-          });
-        } catch (err) {
-          set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+        if (token) {
+          try {
+            const me = await authService.getMe();
+            set({
+              user: me,
+              isAuthenticated: true,
+            });
+            return;
+          } catch (err) {
+            // Token expired, attempt refresh below
+          }
         }
+
+        if (refreshToken) {
+          const refreshed = await get().refreshTokens();
+          if (refreshed) {
+            try {
+              const me = await authService.getMe();
+              set({
+                user: me,
+                isAuthenticated: true,
+              });
+              return;
+            } catch (err) {}
+          }
+        }
+
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
       },
+
 
     }),
     {

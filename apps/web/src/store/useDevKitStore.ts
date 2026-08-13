@@ -150,16 +150,12 @@ export const useDevKitStore = create<DevKitStoreState>()(
       savedPipelines: [],
 
       fetchPipelinesFromDB: async () => {
-        const { isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated) {
-          set({ savedPipelines: [] });
-          return;
-        }
         try {
           const pipelines = await pipelineService.getPipelines();
           set({ savedPipelines: pipelines });
         } catch (err) {}
       },
+
 
 
       savePipelineToDB: async (pipeline) => {
