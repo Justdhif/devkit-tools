@@ -3,14 +3,13 @@ import { persist } from 'zustand/middleware';
 import { ToolHistoryItem, UserWorkspace, UserSettings, ToolPipeline } from '@devkit/shared';
 import { redactSensitiveData } from '@devkit/tool-core';
 import { useAuthStore } from './useAuthStore';
-
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+import { favoriteService } from '../services/favoriteService';
+import { historyService } from '../services/historyService';
+import { pipelineService } from '../services/pipelineService';
 
 interface DevKitStoreState {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  
 
   isProfileDrawerOpen: boolean;
   setProfileDrawerOpen: (open: boolean) => void;
@@ -38,13 +37,11 @@ interface DevKitStoreState {
   updateSettings: (newSettings: Partial<UserSettings>) => void;
 }
 
-
 export const useDevKitStore = create<DevKitStoreState>()(
   persist(
     (set, get) => ({
       searchQuery: '',
       setSearchQuery: (query) => set({ searchQuery: query }),
-
 
       isProfileDrawerOpen: false,
       setProfileDrawerOpen: (open) => set({ isProfileDrawerOpen: open }),
@@ -53,25 +50,20 @@ export const useDevKitStore = create<DevKitStoreState>()(
       favorites: [],
 
       fetchFavoritesFromDB: async () => {
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated || !token) {
+        const { isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated) {
           set({ favorites: [] });
           return;
         }
         try {
-          const res = await fetch(`${API_BASE_URL}/favorites`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const data = await res.json();
-          if (res.ok && data.success && Array.isArray(data.data)) {
-            set({ favorites: data.data });
-          }
+          const favs = await favoriteService.getFavorites();
+          set({ favorites: favs });
         } catch (err) {}
       },
 
       toggleFavorite: async (slug: string) => {
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated || !token) {
+        const { isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated) {
           set({ isProfileDrawerOpen: true });
           return;
         }
@@ -84,18 +76,8 @@ export const useDevKitStore = create<DevKitStoreState>()(
         set({ favorites: newFavs });
 
         try {
-          const res = await fetch(`${API_BASE_URL}/favorites/toggle`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ toolSlug: slug }),
-          });
-          const data = await res.json();
-          if (res.ok && data.success && Array.isArray(data.data)) {
-            set({ favorites: data.data });
-          }
+          const updatedFavs = await favoriteService.toggleFavorite(slug);
+          set({ favorites: updatedFavs });
         } catch (err) {}
       },
 
@@ -125,37 +107,25 @@ export const useDevKitStore = create<DevKitStoreState>()(
 
         set({ history: [newItem, ...history.slice(0, 49)] });
 
-        // Sync ke database jika user login (async, tidak blocking)
+        // Sync ke database jika user login via historyService
         const { isAuthenticated } = useAuthStore.getState();
         if (isAuthenticated && !finalSensitive) {
-          const syncToDb = async () => {
-            let { token } = useAuthStore.getState();
-            const payload = {
+          historyService
+            .addHistory({
               toolSlug,
               inputSummary: redacted.redactedText.slice(0, 200),
               isSensitive: finalSensitive,
-            };
-            const doPost = (t: string) =>
-              fetch(`${API_BASE_URL}/history`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${t}` },
-                body: JSON.stringify(payload),
-              });
-
-            const res = await doPost(token!).catch(() => null);
-            if (res && res.status === 401) {
-              // Token expired — coba refresh dulu lalu retry sekali
-              const refreshed = await useAuthStore.getState().refreshTokens();
-              if (refreshed) {
-                const newToken = useAuthStore.getState().token;
-                if (newToken) await doPost(newToken).catch(() => null);
-              }
-            }
-          };
-          syncToDb();
+            })
+            .catch(() => null);
         }
       },
-      clearHistory: () => set({ history: [] }),
+      clearHistory: () => {
+        set({ history: [] });
+        const { isAuthenticated } = useAuthStore.getState();
+        if (isAuthenticated) {
+          historyService.clearHistory().catch(() => null);
+        }
+      },
 
       workspaces: [],
       addWorkspace: (name, toolSlugs, description) =>
@@ -180,34 +150,15 @@ export const useDevKitStore = create<DevKitStoreState>()(
       savedPipelines: [],
 
       fetchPipelinesFromDB: async () => {
-        let token = useAuthStore.getState().token;
-        if (!token && typeof window !== 'undefined') {
-          try {
-            const raw = localStorage.getItem('auth-storage');
-            if (raw) {
-              const parsed = JSON.parse(raw);
-              token = parsed?.state?.token || null;
-            }
-          } catch {}
-        }
-        if (!token) return;
-
         try {
-          const res = await fetch(`${API_BASE_URL}/pipelines`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const data = await res.json();
-          if (res.ok && data.success && Array.isArray(data.data)) {
-            set({ savedPipelines: data.data });
-          }
+          const pipelines = await pipelineService.getPipelines();
+          set({ savedPipelines: pipelines });
         } catch (err) {}
       },
 
-
       savePipelineToDB: async (pipeline) => {
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated || !token) {
-          useAuthStore.getState();
+        const { isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated) {
           // Fallback local save if guest mode
           const newPipe: ToolPipeline = {
             id: pipeline.id || `pipeline-${Date.now()}`,
@@ -231,39 +182,30 @@ export const useDevKitStore = create<DevKitStoreState>()(
         }
 
         try {
-          const res = await fetch(`${API_BASE_URL}/pipelines`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(pipeline),
+          const saved = await pipelineService.savePipeline({
+            id: pipeline.id,
+            name: pipeline.name,
+            description: pipeline.description,
+            initialInput: pipeline.initialInput,
+            steps: pipeline.steps,
           });
-          const data = await res.json();
-          if (res.ok && data.success) {
-            await get().fetchPipelinesFromDB();
-            return { success: true, data: data.data };
-          }
-          return { success: false, error: data.error || 'Failed to save pipeline' };
+          await get().fetchPipelinesFromDB();
+          return { success: true, data: saved };
         } catch (err: any) {
-          return { success: false, error: err.message || 'Network error saving pipeline' };
+          return { success: false, error: err.message || 'Failed to save pipeline to Neon DB' };
         }
       },
 
       deletePipelineFromDB: async (id) => {
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated || !token) {
+        const { isAuthenticated } = useAuthStore.getState();
+        if (!isAuthenticated) {
           set({ savedPipelines: get().savedPipelines.filter((p) => p.id !== id) });
           return true;
         }
 
         try {
-          const res = await fetch(`${API_BASE_URL}/pipelines/${id}`, {
-            method: 'DELETE',
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          const data = await res.json();
-          if (res.ok && data.success) {
+          const success = await pipelineService.deletePipeline(id);
+          if (success) {
             await get().fetchPipelinesFromDB();
             return true;
           }
@@ -272,7 +214,6 @@ export const useDevKitStore = create<DevKitStoreState>()(
           return false;
         }
       },
-
 
       settings: {
         appearance: 'dark',
@@ -307,7 +248,6 @@ export const useDevKitStore = create<DevKitStoreState>()(
       version: 2,
       migrate: (persistedState: any, version: number) => {
         if (version < 2) {
-          // Hapus workspace default hardcoded lama yang tidak seharusnya ada
           const legacyIds = ['default-backend'];
           if (persistedState?.workspaces) {
             persistedState.workspaces = persistedState.workspaces.filter(

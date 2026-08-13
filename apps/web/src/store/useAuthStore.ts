@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { authService } from '../services/authService';
 
 export interface AuthUser {
   id: string;
@@ -26,8 +27,6 @@ interface AuthStoreState {
   refreshTokens: () => Promise<boolean>;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
-
 export const useAuthStore = create<AuthStoreState>()(
   persist(
     (set, get) => ({
@@ -41,28 +40,18 @@ export const useAuthStore = create<AuthStoreState>()(
       loginOAuth: async (provider, details = {}) => {
         set({ isLoading: true, error: null });
         try {
-          const res = await fetch(`${API_BASE_URL}/auth/oauth`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ provider, ...details }),
-          });
-          const data = await res.json();
-          if (!res.ok || !data.success) {
-            set({ error: data.message || `${provider} authentication failed`, isLoading: false });
-            return false;
-          }
-
+          const authData = await authService.loginOAuth({ provider, ...details });
           set({
-            user: data.user,
-            token: data.accessToken || data.token,
-            refreshToken: data.refreshToken || null,
+            user: authData.user,
+            token: authData.accessToken,
+            refreshToken: authData.refreshToken || null,
             isAuthenticated: true,
             isLoading: false,
             error: null,
           });
           return true;
         } catch (err: any) {
-          set({ error: 'Network error. Please try again.', isLoading: false });
+          set({ error: err.message || `${provider} authentication failed`, isLoading: false });
           return false;
         }
       },
@@ -75,57 +64,39 @@ export const useAuthStore = create<AuthStoreState>()(
         const { refreshToken } = get();
         if (!refreshToken) return false;
         try {
-          const res = await fetch(`${API_BASE_URL}/auth/refresh`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ refreshToken }),
+          const newTokens = await authService.refreshTokens(refreshToken);
+          set({
+            token: newTokens.accessToken,
+            refreshToken: newTokens.refreshToken || refreshToken,
+            isAuthenticated: true,
           });
-          const data = await res.json();
-          if (res.ok && data.success) {
-            set({
-              user: data.user,
-              token: data.accessToken || data.token,
-              refreshToken: data.refreshToken || refreshToken,
-              isAuthenticated: true,
-            });
-            return true;
-          }
-        } catch (err) {}
-
-        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
-        return false;
+          return true;
+        } catch (err) {
+          set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+          return false;
+        }
       },
 
       fetchMe: async () => {
         const { token, refreshToken } = get();
         if (!token && !refreshToken) return;
 
-        // Kalau ada access token, coba dulu
         if (token) {
           try {
-            const res = await fetch(`${API_BASE_URL}/auth/me`, {
-              headers: { Authorization: `Bearer ${token}` },
+            const me = await authService.getMe();
+            set({
+              user: me,
+              isAuthenticated: true,
             });
-            const data = await res.json();
-            if (res.ok && data.success) {
-              set({
-                user: data.user,
-                token: data.accessToken || data.token || token,
-                refreshToken: data.refreshToken || refreshToken,
-                isAuthenticated: true,
-              });
-              return;
-            }
+            return;
           } catch (err) {}
         }
 
-        // Access token expired atau gagal — coba refresh
         if (refreshToken) {
           const refreshed = await get().refreshTokens();
-          if (refreshed) return; // berhasil, token baru sudah di-set
+          if (refreshed) return;
         }
 
-        // Keduanya gagal, logout
         set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
       },
     }),

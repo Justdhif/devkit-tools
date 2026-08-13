@@ -16,10 +16,10 @@ import { useAuthStore } from '../../store/useAuthStore';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { getToolBySlug } from '@devkit/tool-core';
 import { AuthGuard } from '../../components/AuthGuard';
-import { Button } from '../../components/ui/button';
+import { historyService } from '../../services/historyService';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 const PAGE_SIZE = 10;
+
 
 interface RemoteHistoryItem {
   id: string;
@@ -43,24 +43,11 @@ export default function HistoryPage() {
     setError(null);
     try {
       await fetchMe();
-      const freshToken = useAuthStore.getState().token;
-      if (!freshToken) {
-        setError('Session expired. Please sign in again.');
-        setLoading(false);
-        return;
-      }
-      const res = await fetch(`${API_BASE_URL}/history?limit=100`, {
-        headers: { Authorization: `Bearer ${freshToken}` },
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setItems(data.data);
-        setCurrentPage(1);
-      } else {
-        setError(data.message || 'Failed to fetch history');
-      }
-    } catch {
-      setError('Network error. Could not load history.');
+      const data = await historyService.getHistory();
+      setItems(data);
+      setCurrentPage(1);
+    } catch (err: any) {
+      setError(err.message || 'Network error. Could not load history.');
     } finally {
       setLoading(false);
     }
@@ -71,13 +58,8 @@ export default function HistoryPage() {
   }, [fetchHistory]);
 
   const handleClearAll = async () => {
-    const freshToken = useAuthStore.getState().token;
-    if (!freshToken) return;
     try {
-      await fetch(`${API_BASE_URL}/history`, {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${freshToken}` },
-      });
+      await historyService.clearHistory();
       clearHistory();
       setItems([]);
       setCurrentPage(1);
@@ -85,6 +67,7 @@ export default function HistoryPage() {
       // silent
     }
   };
+
 
   // Pagination calculation
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));

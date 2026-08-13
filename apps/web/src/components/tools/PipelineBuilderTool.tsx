@@ -24,9 +24,10 @@ import {
 import { PipelineStep, ToolPipeline } from '@devkit/shared';
 import { CORE_TOOLS, validatePipeline, executePipeline, executeSingleStep } from '@devkit/tool-core';
 import { useDevKitStore } from '../../store/useDevKitStore';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
 
 const PREBUILT_PRESETS: { id: string; name: string; description: string; initialInput: string; steps: PipelineStep[] }[] = [
+
   {
     id: 'prebuilt-jwt',
     name: 'JWT Inspector & TypeScript',
@@ -363,18 +364,16 @@ export function PipelineBuilderTool() {
                 <SelectValue placeholder="Load Preset" />
               </SelectTrigger>
               <SelectContent>
-                <div className="px-2 py-1 text-[10px] font-bold uppercase text-devText-muted">
-                  Pre-built Workflows
-                </div>
+                <SelectLabel>Pre-built Workflows</SelectLabel>
                 {PREBUILT_PRESETS.map((p) => (
                   <SelectItem key={p.id} value={p.id} className="text-xs">
                     {p.name}
                   </SelectItem>
                 ))}
 
-                <div className="px-2 py-1 text-[10px] font-bold uppercase text-accent border-t border-border mt-1 pt-1">
+                <SelectLabel className="border-t border-border mt-1 pt-1 text-accent">
                   Neon DB Saved Pipelines ({savedPipelines.length})
-                </div>
+                </SelectLabel>
                 {savedPipelines.length > 0 ? (
                   savedPipelines.map((p) => (
                     <SelectItem key={p.id} value={p.id} className="text-xs">
@@ -382,11 +381,12 @@ export function PipelineBuilderTool() {
                     </SelectItem>
                   ))
                 ) : (
-                  <div className="px-2 py-1.5 text-[11px] italic text-devText-muted text-center">
+                  <SelectItem value="_empty" disabled className="text-[11px] italic text-devText-muted">
                     No custom presets in Neon DB
-                  </div>
+                  </SelectItem>
                 )}
               </SelectContent>
+
 
             </Select>
           </div>

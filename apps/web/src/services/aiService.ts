@@ -1,3 +1,4 @@
+import { apiClient } from '../lib/apiClient';
 import {
   AiExplainErrorRequest,
   AiExplainErrorResponse,
@@ -11,23 +12,9 @@ import {
   AiExplainCodeResponse,
 } from '@devkit/shared';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
-
 async function postAi<TRequest, TResponse>(endpoint: string, body: TRequest): Promise<TResponse> {
-  const res = await fetch(`${API_BASE_URL}/ai/${endpoint}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-
-  const json = await res.json();
-  if (!res.ok || !json.success) {
-    throw new Error(json.message || json.error || 'Failed to execute AI request');
-  }
-
-  return json.data as TResponse;
+  const res = await apiClient.post<{ success: boolean; data: TResponse }>(`/ai/${endpoint}`, body);
+  return res.data.data;
 }
 
 export const aiService = {
