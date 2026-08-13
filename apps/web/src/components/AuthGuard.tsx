@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Lock, LogIn, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Lock, LogIn, ShieldCheck, Loader2 } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useDevKitStore } from '../store/useDevKitStore';
 
@@ -18,10 +18,24 @@ export function AuthGuard({
 }: AuthGuardProps) {
   const { isAuthenticated } = useAuthStore();
   const { toggleProfileDrawer } = useDevKitStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="p-12 flex items-center justify-center min-h-[300px]">
+        <Loader2 className="w-6 h-6 text-accent animate-spin" />
+      </div>
+    );
+  }
 
   if (isAuthenticated) {
     return <>{children}</>;
   }
+
 
   return (
     <div className="p-4 sm:p-12 max-w-xl mx-auto my-8">
