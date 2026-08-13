@@ -16,6 +16,12 @@ export function Sidebar() {
     { label: 'Workspaces', href: '/workspaces', icon: LayoutGrid },
   ];
 
+  const utilityTools = React.useMemo(() => {
+    return CORE_TOOLS.filter((tool) => tool.category === 'Utilities').sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+  }, []);
+
   return (
     <>
       <aside className="hidden md:flex flex-col w-60 border-r border-border bg-sidebar shrink-0 h-full">
@@ -49,11 +55,11 @@ export function Sidebar() {
           <div className="text-[11px] font-semibold text-devText-muted uppercase tracking-wider px-3 mb-2 flex items-center justify-between">
             <span>Core Utilities</span>
             <span className="text-[10px] bg-surface px-1.5 py-0.5 rounded border border-border">
-              {CORE_TOOLS.length}
+              {utilityTools.length}
             </span>
           </div>
           <div className="space-y-0.5">
-            {CORE_TOOLS.map((tool) => {
+            {utilityTools.map((tool) => {
               const href = `/tools/${tool.slug}`;
               const isActive = pathname === href;
               return (
@@ -72,6 +78,7 @@ export function Sidebar() {
             })}
           </div>
         </div>
+
 
         <div className="p-3 border-t border-border text-[11px] text-devText-muted text-center">
           DevKit v1.0.0 • Client-side Privacy
