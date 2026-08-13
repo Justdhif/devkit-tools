@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Param, Query, BadRequestException, HttpExc
 import { CORE_TOOLS, getToolBySlug, searchTools } from '@devkit/tool-core';
 import { ApiProxyRequest, ApiProxyResponse } from '@devkit/shared';
 import { db, tools, eq } from '../../database';
+import { sql } from 'drizzle-orm';
 
 @Controller('tools')
 export class ToolsController implements OnModuleInit {
@@ -11,6 +12,12 @@ export class ToolsController implements OnModuleInit {
 
   private async seedToolsIfEmpty() {
     try {
+      // Automatically ensure table structure has all required columns in Neon DB PostgreSQL
+      await db.execute(sql`ALTER TABLE "tools" ADD COLUMN IF NOT EXISTS "icon_name" text;`);
+      await db.execute(sql`ALTER TABLE "tools" ADD COLUMN IF NOT EXISTS "is_popular" boolean DEFAULT false;`);
+      await db.execute(sql`ALTER TABLE "tools" ADD COLUMN IF NOT EXISTS "is_new" boolean DEFAULT false;`);
+      await db.execute(sql`ALTER TABLE "tools" ADD COLUMN IF NOT EXISTS "keywords" text;`);
+
       const existing = await db.select().from(tools).limit(1);
       if (!existing || existing.length === 0) {
         const rows = CORE_TOOLS.map((t) => ({
@@ -27,9 +34,10 @@ export class ToolsController implements OnModuleInit {
         await db.insert(tools).values(rows).onConflictDoNothing();
       }
     } catch (err) {
-      // Fallback silently if DB is unreachable
+      // Fallback silently if DB is unreachable or migrating
     }
   }
+
 
   @Get()
   async getTools(@Query('q') q?: string) {
