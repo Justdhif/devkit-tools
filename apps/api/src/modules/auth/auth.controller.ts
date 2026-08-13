@@ -166,8 +166,9 @@ export class AuthController {
         })
         .where(eq(users.id, records[0].id));
     } else {
-      const userId = `usr_${provider}_${Math.random().toString(36).substring(2, 8)}`;
+      const userId = `usr_${Math.random().toString(36).substring(2, 10)}`;
       const newUser = {
+
         id: userId,
         email: providerEmail,
         name: providerName,
