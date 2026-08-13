@@ -81,24 +81,17 @@ export const useAuthStore = create<AuthStoreState>()(
         const { token, refreshToken } = get();
         if (!token && !refreshToken) return;
 
-        if (token) {
-          try {
-            const me = await authService.getMe();
-            set({
-              user: me,
-              isAuthenticated: true,
-            });
-            return;
-          } catch (err) {}
+        try {
+          const me = await authService.getMe();
+          set({
+            user: me,
+            isAuthenticated: true,
+          });
+        } catch (err) {
+          set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
         }
-
-        if (refreshToken) {
-          const refreshed = await get().refreshTokens();
-          if (refreshed) return;
-        }
-
-        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
       },
+
     }),
     {
       name: 'devkit-auth-storage',
