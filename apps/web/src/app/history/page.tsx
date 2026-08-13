@@ -15,10 +15,11 @@ import {
 import { useAuthStore } from '../../store/useAuthStore';
 import { useDevKitStore } from '../../store/useDevKitStore';
 import { getToolBySlug } from '@devkit/tool-core';
-import { AuthGuard } from '../../components/AuthGuard';
+import { Button } from '../../components/ui/button';
 import { historyService } from '../../services/historyService';
 
 const PAGE_SIZE = 10;
+
 
 
 interface RemoteHistoryItem {

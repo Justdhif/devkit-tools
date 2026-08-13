@@ -641,8 +641,11 @@ export function PipelineBuilderTool() {
                     <ArrowDown className="w-4 h-4 text-accent/60 animate-bounce" />
                   </div>
                 )}
+              </React.Fragment>
             ))
-            )}
+          )}
+
+
           </div>
 
         </div>
