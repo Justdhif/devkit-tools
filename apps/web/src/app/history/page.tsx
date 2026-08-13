@@ -14,9 +14,10 @@ import {
 } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 import { useDevKitStore } from '../../store/useDevKitStore';
-import { getToolBySlug } from '@devkit/tool-core';
 import { Button } from '../../components/ui/button';
+import { AuthGuard } from '../../components/AuthGuard';
 import { historyService } from '../../services/historyService';
+
 
 const PAGE_SIZE = 10;
 
