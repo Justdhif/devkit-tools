@@ -83,12 +83,16 @@ export const useAuthStore = create<AuthStoreState>()(
 
         if (token) {
           try {
-            const me = await authService.getMe();
-            set({
-              user: me,
-              isAuthenticated: true,
-            });
-            return;
+            const res = await authService.getMe();
+            if (res && res.user) {
+              set({
+                user: res.user,
+                token: res.accessToken || token,
+                refreshToken: res.refreshToken || refreshToken,
+                isAuthenticated: true,
+              });
+              return;
+            }
           } catch (err) {
             // Token expired, attempt refresh below
           }
@@ -98,18 +102,23 @@ export const useAuthStore = create<AuthStoreState>()(
           const refreshed = await get().refreshTokens();
           if (refreshed) {
             try {
-              const me = await authService.getMe();
-              set({
-                user: me,
-                isAuthenticated: true,
-              });
-              return;
+              const res = await authService.getMe();
+              if (res && res.user) {
+                set({
+                  user: res.user,
+                  token: res.accessToken || get().token,
+                  refreshToken: res.refreshToken || get().refreshToken,
+                  isAuthenticated: true,
+                });
+                return;
+              }
             } catch (err) {}
           }
         }
 
         set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
       },
+
 
 
     }),
