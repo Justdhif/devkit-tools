@@ -4,8 +4,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Star, History, LayoutGrid } from 'lucide-react';
-import { CORE_TOOLS, ToolMetadata } from '@devkit/tool-core';
+import { CORE_TOOLS } from '@devkit/tool-core';
+import type { ToolMetadata } from '@devkit/shared';
 import { toolService } from '../services/toolService';
+
 
 export function Sidebar() {
   const pathname = usePathname();

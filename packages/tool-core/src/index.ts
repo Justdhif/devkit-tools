@@ -7,6 +7,9 @@ import {
   LogicalType,
 } from '@devkit/shared';
 
+export type { ToolMetadata, SmartDetectionResult, SmartRecommendation, PipelineStep, PipelineValidationResult, LogicalType };
+
+
 // Inline dari @devkit/json-tools — menghindari masalah ncc saat bundling di Vercel
 function formatJson(input: string, options: { indent?: number } = {}): { success: boolean; result: string; error?: string } {
   const { indent = 2 } = options;

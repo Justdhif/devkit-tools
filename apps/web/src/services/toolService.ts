@@ -1,5 +1,7 @@
 import { apiClient } from '../lib/apiClient';
-import { ToolMetadata, CORE_TOOLS } from '@devkit/tool-core';
+import { CORE_TOOLS } from '@devkit/tool-core';
+import type { ToolMetadata } from '@devkit/shared';
+
 
 export const toolService = {
   /**
