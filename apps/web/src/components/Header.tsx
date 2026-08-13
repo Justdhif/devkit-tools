@@ -113,7 +113,7 @@ export function Header() {
         <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-white shadow-sm">
           <Sparkles className="w-4 h-4" />
         </div>
-        <div className="font-departure text-lg font-bold tracking-tight select-none hidden sm:flex items-center">
+        <div className="font-departure text-xl sm:text-2xl font-bold tracking-tight select-none hidden sm:flex items-center">
           <span className="text-accent">DEV</span>
           <span className="text-zinc-100">KIT</span>
         </div>
@@ -121,11 +121,12 @@ export function Header() {
 
       {/* Mobile Centered DEV KIT Brand on Home Page */}
       {isHome && (
-        <div className="sm:hidden absolute left-1/2 -translate-x-1/2 font-departure text-lg font-bold tracking-tight select-none flex items-center pointer-events-none">
+        <div className="sm:hidden absolute left-1/2 -translate-x-1/2 font-departure text-2xl font-bold tracking-wider select-none flex items-center pointer-events-none">
           <span className="text-accent">DEV</span>
           <span className="text-zinc-100">KIT</span>
         </div>
       )}
+
 
 
       {/* Search bar — shown on all non-home pages (including /tools) */}
