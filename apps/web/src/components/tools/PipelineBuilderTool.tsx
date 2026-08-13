@@ -79,12 +79,14 @@ export function PipelineBuilderTool() {
 
   const [steps, setSteps] = useState<PipelineStep[]>(PREBUILT_PRESETS[0].steps);
   const [pipelineName, setPipelineName] = useState(PREBUILT_PRESETS[0].name);
+  const [selectedPresetId, setSelectedPresetId] = useState<string | undefined>(undefined);
 
   const [running, setRunning] = useState(false);
   const [runningStepId, setRunningStepId] = useState<string | null>(null);
   const [pipelineError, setPipelineError] = useState<string | null>(null);
   const [copiedStepId, setCopiedStepId] = useState<string | null>(null);
   const [selectedToolSlug, setSelectedToolSlug] = useState('json-formatter');
+
 
   // Save Modal state
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
@@ -243,6 +245,7 @@ export function PipelineBuilderTool() {
   };
 
   const handleSelectPreset = (presetId: string) => {
+    setSelectedPresetId(presetId);
     // Check prebuilt presets
     const pre = PREBUILT_PRESETS.find((p) => p.id === presetId);
     if (pre) {
@@ -260,6 +263,7 @@ export function PipelineBuilderTool() {
       setSteps(userPreset.steps.map((s) => ({ ...s, status: 'idle', output: undefined })));
     }
   };
+
 
   const handleDeleteUserPipeline = async (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
@@ -353,7 +357,7 @@ export function PipelineBuilderTool() {
         <div className="flex flex-col w-full sm:w-auto gap-2.5">
           {/* Preset Selector Dropdown - Full Width on Mobile */}
           <div className="w-full sm:w-64">
-            <Select onValueChange={handleSelectPreset}>
+            <Select value={selectedPresetId} onValueChange={handleSelectPreset}>
               <SelectTrigger className="w-full text-xs bg-background border-border">
                 <FolderOpen className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
                 <SelectValue placeholder="Load Preset" />
@@ -368,32 +372,25 @@ export function PipelineBuilderTool() {
                   </SelectItem>
                 ))}
 
-                {savedPipelines.length > 0 && (
-                  <>
-                    <div className="px-2 py-1 text-[10px] font-bold uppercase text-accent border-t border-border mt-1 pt-1">
-                      Neon DB Saved Pipelines ({savedPipelines.length})
-                    </div>
-                    {savedPipelines.map((p) => (
-                      <div
-                        key={p.id}
-                        onClick={() => handleSelectPreset(p.id)}
-                        className="px-2 py-1.5 hover:bg-surface text-xs flex items-center justify-between cursor-pointer rounded"
-                      >
-                        <span className="truncate max-w-[140px] text-devText-primary">{p.name}</span>
-                        <button
-                          onClick={(e) => handleDeleteUserPipeline(e, p.id)}
-                          title="Delete from DB"
-                          className="text-devText-muted hover:text-rose-400 p-0.5 ml-1"
-                        >
-                          <Trash2 className="w-3 h-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </>
+                <div className="px-2 py-1 text-[10px] font-bold uppercase text-accent border-t border-border mt-1 pt-1">
+                  Neon DB Saved Pipelines ({savedPipelines.length})
+                </div>
+                {savedPipelines.length > 0 ? (
+                  savedPipelines.map((p) => (
+                    <SelectItem key={p.id} value={p.id} className="text-xs">
+                      {p.name}
+                    </SelectItem>
+                  ))
+                ) : (
+                  <div className="px-2 py-1.5 text-[11px] italic text-devText-muted text-center">
+                    No custom presets in Neon DB
+                  </div>
                 )}
               </SelectContent>
+
             </Select>
           </div>
+
 
           {/* Action Buttons Row: Export, Import, Save, Run */}
           <div className="flex flex-wrap items-center gap-2 w-full">
@@ -512,7 +509,30 @@ export function PipelineBuilderTool() {
           </div>
 
           <div className="space-y-3">
-            {steps.map((step, idx) => (
+            {steps.length === 0 ? (
+              <div className="flex flex-col items-center justify-center p-8 bg-background/50 border border-dashed border-border rounded-xl text-center space-y-3 my-2">
+                <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                  <GitMerge className="w-6 h-6" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-sm font-semibold text-devText-primary">
+                    No Pipeline Steps Configured
+                  </h4>
+                  <p className="text-xs text-devText-secondary max-w-sm">
+                    Select a preset from the dropdown above or pick a tool and click &quot;Add Step&quot; to build your automated pipeline.
+                  </p>
+                </div>
+                <button
+                  onClick={handleAddStep}
+                  className="px-4 py-2 bg-accent/10 border border-accent/30 text-accent hover:bg-accent/20 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add First Step</span>
+                </button>
+              </div>
+            ) : (
+              steps.map((step, idx) => (
+
               <React.Fragment key={step.id}>
                 <div className="p-3 bg-background border border-border rounded-xl space-y-2 relative">
                   <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-border/50 pb-2">
@@ -617,9 +637,10 @@ export function PipelineBuilderTool() {
                     <ArrowDown className="w-4 h-4 text-accent/60 animate-bounce" />
                   </div>
                 )}
-              </React.Fragment>
-            ))}
+            ))
+            )}
           </div>
+
         </div>
       </div>
 

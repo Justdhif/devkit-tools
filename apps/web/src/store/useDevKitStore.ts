@@ -180,10 +180,18 @@ export const useDevKitStore = create<DevKitStoreState>()(
       savedPipelines: [],
 
       fetchPipelinesFromDB: async () => {
-        const { token, isAuthenticated } = useAuthStore.getState();
-        if (!isAuthenticated || !token) {
-          return;
+        let token = useAuthStore.getState().token;
+        if (!token && typeof window !== 'undefined') {
+          try {
+            const raw = localStorage.getItem('auth-storage');
+            if (raw) {
+              const parsed = JSON.parse(raw);
+              token = parsed?.state?.token || null;
+            }
+          } catch {}
         }
+        if (!token) return;
+
         try {
           const res = await fetch(`${API_BASE_URL}/pipelines`, {
             headers: { Authorization: `Bearer ${token}` },
@@ -194,6 +202,7 @@ export const useDevKitStore = create<DevKitStoreState>()(
           }
         } catch (err) {}
       },
+
 
       savePipelineToDB: async (pipeline) => {
         const { token, isAuthenticated } = useAuthStore.getState();
