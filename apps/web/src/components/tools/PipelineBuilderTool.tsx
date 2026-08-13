@@ -24,7 +24,8 @@ import {
 import { PipelineStep, ToolPipeline } from '@devkit/shared';
 import { CORE_TOOLS, validatePipeline, executePipeline, executeSingleStep } from '@devkit/tool-core';
 import { useDevKitStore } from '../../store/useDevKitStore';
-import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
+
 
 const PREBUILT_PRESETS: { id: string; name: string; description: string; initialInput: string; steps: PipelineStep[] }[] = [
 
@@ -362,28 +363,33 @@ export function PipelineBuilderTool() {
                 <SelectValue placeholder="Load Preset" />
               </SelectTrigger>
               <SelectContent>
-                <SelectLabel>Pre-built Workflows</SelectLabel>
-                {PREBUILT_PRESETS.map((p) => (
-                  <SelectItem key={p.id} value={p.id} className="text-xs">
-                    {p.name}
-                  </SelectItem>
-                ))}
-
-                <SelectLabel className="border-t border-border mt-1 pt-1 text-accent">
-                  Neon DB Saved Pipelines ({savedPipelines.length})
-                </SelectLabel>
-                {savedPipelines.length > 0 ? (
-                  savedPipelines.map((p) => (
+                <SelectGroup>
+                  <SelectLabel>Pre-built Workflows</SelectLabel>
+                  {PREBUILT_PRESETS.map((p) => (
                     <SelectItem key={p.id} value={p.id} className="text-xs">
                       {p.name}
                     </SelectItem>
-                  ))
-                ) : (
-                  <SelectItem value="_empty" disabled className="text-[11px] italic text-devText-muted">
-                    No custom presets in Neon DB
-                  </SelectItem>
-                )}
+                  ))}
+                </SelectGroup>
+
+                <SelectGroup>
+                  <SelectLabel className="border-t border-border mt-1 pt-1 text-accent">
+                    Neon DB Saved Pipelines ({savedPipelines.length})
+                  </SelectLabel>
+                  {savedPipelines.length > 0 ? (
+                    savedPipelines.map((p) => (
+                      <SelectItem key={p.id} value={p.id} className="text-xs">
+                        {p.name}
+                      </SelectItem>
+                    ))
+                  ) : (
+                    <SelectItem value="_empty" disabled className="text-[11px] italic text-devText-muted">
+                      No custom presets in Neon DB
+                    </SelectItem>
+                  )}
+                </SelectGroup>
               </SelectContent>
+
 
 
             </Select>
