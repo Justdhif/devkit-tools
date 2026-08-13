@@ -350,11 +350,11 @@ export function PipelineBuilderTool() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Preset Selector */}
-          <div className="flex items-center space-x-1">
+        <div className="flex flex-col w-full sm:w-auto gap-2.5">
+          {/* Preset Selector Dropdown - Full Width on Mobile */}
+          <div className="w-full sm:w-64">
             <Select onValueChange={handleSelectPreset}>
-              <SelectTrigger className="w-44 text-xs bg-background border-border">
+              <SelectTrigger className="w-full text-xs bg-background border-border">
                 <FolderOpen className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
                 <SelectValue placeholder="Load Preset" />
               </SelectTrigger>
@@ -395,51 +395,55 @@ export function PipelineBuilderTool() {
             </Select>
           </div>
 
-          {/* Export JSON */}
-          <button
-            onClick={handleExportJSON}
-            title="Export Pipeline as JSON file"
-            className="px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1 transition-colors"
-          >
-            <Download className="w-3.5 h-3.5 text-devText-secondary" />
-            <span className="hidden md:inline">Export JSON</span>
-          </button>
+          {/* Action Buttons Row: Export, Import, Save, Run */}
+          <div className="flex flex-wrap items-center gap-2 w-full">
+            {/* Export JSON */}
+            <button
+              onClick={handleExportJSON}
+              title="Export Pipeline as JSON file"
+              className="flex-1 sm:flex-none px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center justify-center space-x-1 transition-colors"
+            >
+              <Download className="w-3.5 h-3.5 text-devText-secondary" />
+              <span>Export</span>
+            </button>
 
-          {/* Import JSON */}
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            title="Import Pipeline from JSON file"
-            className="px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1 transition-colors"
-          >
-            <Upload className="w-3.5 h-3.5 text-devText-secondary" />
-            <span className="hidden md:inline">Import JSON</span>
-          </button>
+            {/* Import JSON */}
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              title="Import Pipeline from JSON file"
+              className="flex-1 sm:flex-none px-2.5 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center justify-center space-x-1 transition-colors"
+            >
+              <Upload className="w-3.5 h-3.5 text-devText-secondary" />
+              <span>Import</span>
+            </button>
 
-          {/* Save to DB */}
-          <button
-            onClick={handleOpenSaveModal}
-            className="px-3 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
-          >
-            <Save className="w-4 h-4 text-accent" />
-            <span>
-              <span className="hidden sm:inline">Save Preset</span>
-              <span className="sm:hidden">Save</span>
-            </span>
-          </button>
+            {/* Save to DB */}
+            <button
+              onClick={handleOpenSaveModal}
+              className="flex-1 sm:flex-none px-3 py-2 bg-background border border-border hover:bg-surface text-devText-primary text-xs font-semibold rounded-lg flex items-center justify-center space-x-1.5 transition-colors"
+            >
+              <Save className="w-4 h-4 text-accent" />
+              <span>
+                <span className="hidden sm:inline">Save Preset</span>
+                <span className="sm:hidden">Save</span>
+              </span>
+            </button>
 
-          {/* Run Pipeline */}
-          <button
-            onClick={handleRunPipeline}
-            disabled={running || !validation.valid || !input.trim()}
-            className="px-4 py-2 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg flex items-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50"
-          >
-            {running ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
-            <span>
-              <span className="hidden sm:inline">Run Complete Pipeline</span>
-              <span className="sm:hidden">Run</span>
-            </span>
-          </button>
+            {/* Run Pipeline */}
+            <button
+              onClick={handleRunPipeline}
+              disabled={running || !validation.valid || !input.trim()}
+              className="flex-1 sm:flex-none px-4 py-2 bg-accent hover:bg-accent-hover text-white text-xs font-semibold rounded-lg flex items-center justify-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50"
+            >
+              {running ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-white" />}
+              <span>
+                <span className="hidden sm:inline">Run Complete Pipeline</span>
+                <span className="sm:hidden">Run</span>
+              </span>
+            </button>
+          </div>
         </div>
+
       </div>
 
       {!validation.valid && (
