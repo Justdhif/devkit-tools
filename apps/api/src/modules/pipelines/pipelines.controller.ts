@@ -31,16 +31,23 @@ function verifyToken(authHeader?: string): { sub: string; email: string } {
 export class PipelinesController {
   @Get()
   async getPipelines(@Headers('authorization') authHeader?: string) {
-    const user = verifyToken(authHeader);
-
-    const rows = await db
-      .select()
-      .from(savedPipelines)
-      .where(eq(savedPipelines.userId, user.sub))
-      .orderBy(desc(savedPipelines.createdAt));
-
-    return { success: true, data: rows };
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return { success: true, data: [] };
+    }
+    const token = authHeader.replace(/^Bearer\s+/i, '');
+    try {
+      const user = jwt.verify(token, JWT_SECRET) as { sub: string; email: string };
+      const rows = await db
+        .select()
+        .from(savedPipelines)
+        .where(eq(savedPipelines.userId, user.sub))
+        .orderBy(desc(savedPipelines.createdAt));
+      return { success: true, data: rows };
+    } catch {
+      return { success: true, data: [] };
+    }
   }
+
 
   @Post()
   async savePipeline(

@@ -74,13 +74,11 @@ export function PipelineBuilderTool() {
     addHistoryItem,
   } = useDevKitStore();
 
-  const [input, setInput] = useState(
-    paramInput || PREBUILT_PRESETS[0].initialInput
-  );
-
-  const [steps, setSteps] = useState<PipelineStep[]>(PREBUILT_PRESETS[0].steps);
-  const [pipelineName, setPipelineName] = useState(PREBUILT_PRESETS[0].name);
+  const [input, setInput] = useState(paramInput || '');
+  const [steps, setSteps] = useState<PipelineStep[]>([]);
+  const [pipelineName, setPipelineName] = useState('New Pipeline');
   const [selectedPresetId, setSelectedPresetId] = useState<string | undefined>(undefined);
+
 
   const [running, setRunning] = useState(false);
   const [runningStepId, setRunningStepId] = useState<string | null>(null);
