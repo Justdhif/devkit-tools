@@ -1,11 +1,70 @@
-import { Controller, Get, Post, Body, Param, Query, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, BadRequestException, HttpException, HttpStatus, OnModuleInit } from '@nestjs/common';
 import { CORE_TOOLS, getToolBySlug, searchTools } from '@devkit/tool-core';
 import { ApiProxyRequest, ApiProxyResponse } from '@devkit/shared';
+import { db, tools, eq } from '../../database';
 
 @Controller('tools')
-export class ToolsController {
+export class ToolsController implements OnModuleInit {
+  async onModuleInit() {
+    await this.seedToolsIfEmpty();
+  }
+
+  private async seedToolsIfEmpty() {
+    try {
+      const existing = await db.select().from(tools).limit(1);
+      if (!existing || existing.length === 0) {
+        const rows = CORE_TOOLS.map((t) => ({
+          id: t.id,
+          slug: t.slug,
+          name: t.name,
+          category: t.category,
+          description: t.description,
+          iconName: t.iconName || null,
+          isPopular: Boolean(t.isPopular),
+          isNew: Boolean(t.isNew),
+          keywords: t.keywords ? JSON.stringify(t.keywords) : null,
+        }));
+        await db.insert(tools).values(rows).onConflictDoNothing();
+      }
+    } catch (err) {
+      // Fallback silently if DB is unreachable
+    }
+  }
+
   @Get()
-  getTools(@Query('q') q?: string) {
+  async getTools(@Query('q') q?: string) {
+    await this.seedToolsIfEmpty();
+    try {
+      const rows = await db.select().from(tools);
+      if (rows && rows.length > 0) {
+        let results = rows.map((r) => ({
+          id: r.id,
+          slug: r.slug,
+          name: r.name,
+          category: r.category,
+          description: r.description,
+          iconName: r.iconName,
+          isPopular: r.isPopular,
+          isNew: r.isNew,
+          keywords: r.keywords ? JSON.parse(r.keywords) : [],
+        }));
+
+        if (q) {
+          const queryStr = q.toLowerCase().trim();
+          results = results.filter(
+            (t) =>
+              t.name.toLowerCase().includes(queryStr) ||
+              t.description.toLowerCase().includes(queryStr) ||
+              t.category.toLowerCase().includes(queryStr) ||
+              (t.keywords && t.keywords.some((k: string) => k.toLowerCase().includes(queryStr)))
+          );
+        }
+        return { success: true, data: results };
+      }
+    } catch (err) {
+      // Fallback to static package
+    }
+
     if (q) {
       return { success: true, data: searchTools(q) };
     }
@@ -13,13 +72,38 @@ export class ToolsController {
   }
 
   @Get(':slug')
-  getTool(@Param('slug') slug: string) {
+  async getTool(@Param('slug') slug: string) {
+    await this.seedToolsIfEmpty();
+    try {
+      const rows = await db.select().from(tools).where(eq(tools.slug, slug)).limit(1);
+      if (rows && rows.length > 0) {
+        const r = rows[0];
+        return {
+          success: true,
+          data: {
+            id: r.id,
+            slug: r.slug,
+            name: r.name,
+            category: r.category,
+            description: r.description,
+            iconName: r.iconName,
+            isPopular: r.isPopular,
+            isNew: r.isNew,
+            keywords: r.keywords ? JSON.parse(r.keywords) : [],
+          },
+        };
+      }
+    } catch (err) {
+      // Fallback
+    }
+
     const tool = getToolBySlug(slug);
     if (!tool) {
       return { success: false, error: 'Tool not found' };
     }
     return { success: true, data: tool };
   }
+
 
   @Post('proxy-request')
   async proxyRequest(@Body() body: ApiProxyRequest): Promise<{ success: boolean; data: ApiProxyResponse }> {
