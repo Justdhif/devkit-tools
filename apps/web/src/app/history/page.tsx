@@ -18,7 +18,7 @@ import { getToolBySlug } from '@devkit/tool-core';
 
 import { Button } from '../../components/ui/button';
 import { AuthGuard } from '../../components/AuthGuard';
-import { historyService } from '../../services/historyService';
+import { historyService, HistoryItem } from '../../services/historyService';
 
 
 
@@ -26,19 +26,11 @@ const PAGE_SIZE = 10;
 
 
 
-interface RemoteHistoryItem {
-  id: string;
-  toolSlug: string;
-  inputSummary: string | null;
-  isSensitive: boolean;
-  createdAt: string;
-}
-
 export default function HistoryPage() {
   const { token, fetchMe } = useAuthStore();
   const { clearHistory } = useDevKitStore();
 
-  const [items, setItems] = useState<RemoteHistoryItem[]>([]);
+  const [items, setItems] = useState<HistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);

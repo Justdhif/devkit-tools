@@ -3,9 +3,9 @@ import { apiClient } from '../lib/apiClient';
 export interface HistoryItem {
   id: string;
   toolSlug: string;
-  inputSummary?: string;
+  inputSummary?: string | null;
   isSensitive?: boolean;
-  createdAt?: string;
+  createdAt: string;
 }
 
 export const historyService = {
