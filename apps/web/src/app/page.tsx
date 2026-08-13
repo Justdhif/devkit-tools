@@ -114,11 +114,8 @@ export default function HomePage() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="text-center py-6 sm:py-10"
       >
-        <div className="font-departure text-3xl font-bold tracking-tight select-none">
-          <span className="text-accent">DEV</span>
-          <span className="text-zinc-100">KIT</span>
-        </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-devText-primary tracking-tight mb-4">
+
           Developer tools, all in one place.
         </h1>
         <p className="text-sm sm:text-base text-devText-secondary max-w-2xl mx-auto">

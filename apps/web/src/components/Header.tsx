@@ -113,8 +113,20 @@ export function Header() {
         <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-white shadow-sm">
           <Sparkles className="w-4 h-4" />
         </div>
-        <span className="hidden sm:inline">DevKit</span>
+        <div className="font-departure text-lg font-bold tracking-tight select-none hidden sm:flex items-center">
+          <span className="text-accent">DEV</span>
+          <span className="text-zinc-100">KIT</span>
+        </div>
       </Link>
+
+      {/* Mobile Centered DEV KIT Brand on Home Page */}
+      {isHome && (
+        <div className="sm:hidden absolute left-1/2 -translate-x-1/2 font-departure text-lg font-bold tracking-tight select-none flex items-center pointer-events-none">
+          <span className="text-accent">DEV</span>
+          <span className="text-zinc-100">KIT</span>
+        </div>
+      )}
+
 
       {/* Search bar — shown on all non-home pages (including /tools) */}
       <AnimatePresence>
@@ -158,7 +170,8 @@ export function Header() {
       <div className="hidden md:block flex-1" />
 
       {/* Right side actions */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 ml-auto">
+
         <div className="hidden md:flex items-center space-x-1 text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2 py-1 rounded-md">
           <Shield className="w-3.5 h-3.5" />
           <span>Client Privacy First</span>
