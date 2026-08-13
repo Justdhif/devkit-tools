@@ -1,5 +1,12 @@
 import { apiClient } from '../lib/apiClient';
-import { HistoryItem } from '@devkit/shared';
+
+export interface HistoryItem {
+  id: string;
+  toolSlug: string;
+  inputSummary?: string;
+  isSensitive?: boolean;
+  createdAt?: string;
+}
 
 export const historyService = {
   /**
@@ -13,7 +20,7 @@ export const historyService = {
   /**
    * Save a new execution history item to DB
    */
-  async addHistory(item: Omit<HistoryItem, 'id' | 'timestamp'>): Promise<HistoryItem> {
+  async addHistory(item: Omit<HistoryItem, 'id' | 'createdAt'>): Promise<HistoryItem> {
     const res = await apiClient.post<{ success: boolean; data: HistoryItem }>('/history', item);
     return res.data.data;
   },
