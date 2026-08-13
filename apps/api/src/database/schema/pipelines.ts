@@ -1,4 +1,5 @@
 import { pgTable, text, timestamp, jsonb } from 'drizzle-orm/pg-core';
+import type { PgColumn, PgTableWithColumns } from 'drizzle-orm/pg-core';
 import { users } from './users';
 
 export const savedPipelines = pgTable('saved_pipelines', {

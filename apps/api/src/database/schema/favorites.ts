@@ -1,4 +1,5 @@
 import { pgTable, text, timestamp, primaryKey } from 'drizzle-orm/pg-core';
+import type { PgColumn, PgTableWithColumns } from 'drizzle-orm/pg-core';
 import { users } from './users';
 
 export const favorites = pgTable(

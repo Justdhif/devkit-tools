@@ -1,4 +1,5 @@
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import type { PgColumn, PgTableWithColumns } from 'drizzle-orm/pg-core';
 
 export const tools = pgTable('tools', {
   id: text('id').primaryKey(),
