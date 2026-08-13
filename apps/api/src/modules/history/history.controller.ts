@@ -34,18 +34,27 @@ export class HistoryController {
     @Headers('authorization') authHeader?: string,
     @Query('limit') limit?: string,
   ) {
-    const user = verifyToken(authHeader);
-    const take = Math.min(parseInt(limit || '50', 10), 100);
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return { success: true, data: [] };
+    }
+    const token = authHeader.replace(/^Bearer\s+/i, '');
+    try {
+      const user = jwt.verify(token, JWT_SECRET) as { sub: string; email: string };
+      const take = Math.min(parseInt(limit || '50', 10), 100);
 
-    const rows = await db
-      .select()
-      .from(toolHistory)
-      .where(eq(toolHistory.userId, user.sub))
-      .orderBy(desc(toolHistory.createdAt))
-      .limit(take);
+      const rows = await db
+        .select()
+        .from(toolHistory)
+        .where(eq(toolHistory.userId, user.sub))
+        .orderBy(desc(toolHistory.createdAt))
+        .limit(take);
 
-    return { success: true, data: rows };
+      return { success: true, data: rows };
+    } catch {
+      return { success: true, data: [] };
+    }
   }
+
 
   @Post()
   async addHistory(

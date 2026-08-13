@@ -36,10 +36,20 @@ export default function HistoryPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchHistory = useCallback(async () => {
+    const authState = useAuthStore.getState();
+    if (!authState.isAuthenticated && !authState.token && !authState.refreshToken) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
     try {
       await fetchMe();
+      if (!useAuthStore.getState().isAuthenticated) {
+        setItems([]);
+        return;
+      }
       const data = await historyService.getHistory();
       setItems(data);
       setCurrentPage(1);
@@ -49,6 +59,7 @@ export default function HistoryPage() {
       setLoading(false);
     }
   }, [fetchMe]);
+
 
   useEffect(() => {
     fetchHistory();
